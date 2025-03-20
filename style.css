@@ -202,6 +202,7 @@ h1 {
 
 .campo-form{
     width: 100%;
+    font-weight: bold;
     padding: 1rem;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
