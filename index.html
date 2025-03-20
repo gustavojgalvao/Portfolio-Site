@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Index.js">
 </head>
 
 <body>
@@ -89,31 +90,12 @@
                 <textarea placeholder="Digite sua Mensagem" rows="4" class="campo-form" id="mensagem"></textarea>
             </div>
 
-            <button type="submit" class="botao-form">Enviar Formulário</button>
+            <button type="submit" class="botao-form">Enviar Mensagem</button>
         </form>
     </section>
 
-    <Script>
+    <Script src="script.js"></Script>
 
-        function enviarWhats(event) {
-            event.preventDefault()
-
-            const nome = document.getElementById("nome").value;
-            const mensagem = document.getElementById("mensagem").value;
-            const telefone = '5571992550509'
-
-            const texto = `Me chamo ${nome}, ${mensagem}. Espero sua Resposta!`
-            const msgFormatada = encodeURIComponent(texto)
-
-            const url = `https://whatsa.me/5571992550509/?t=${msgFormatada}`
-
-            window.open(url, '_blank')
-
-            console.log(url)
-
-        }
-
-    </Script>
 </body>
 
 </html>
