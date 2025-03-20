@@ -9,6 +9,8 @@
 </head>
 
 <body>
+    <div class="particulas"></div>
+
     <nav class="navegacao">
         <ul class="menu">
             <li>
@@ -27,9 +29,9 @@
     </nav>
 
     <main id="inicio" class="cabecalho">
-            <img src="/img/pixelart.png" alt="foto-perfil" class="foto-perfil">
-            <h1>Gustavo Galvão</h1>
-            <p class="cabecalho-subtitulo">Web dev | Front-end</p>
+        <img src="/img/pixelart.png" alt="foto-perfil" class="foto-perfil">
+        <h1>Gustavo Galvão</h1>
+        <p class="cabecalho-subtitulo">Web dev | Front-end</p>
     </main>
 
     <section id="sobre" class="sobre">
@@ -49,37 +51,69 @@
 
             <div class="projetos-item">
                 <img src="/img/projeto1.png" alt="projeto1" class="projetos-imagem">
-                <h3 class="info-projetos">Loja de Carros</h3>
-                <p>Loja de carros desenvolvida com HTML, CSS e JavaScript.</p>
+                <div class="caixa-texto-projeto">
+                    <h3 class="info-projetos">Loja de Carros</h3>
+                    <p class="paragrafo-projetos">Loja de carros desenvolvida com HTML, CSS e JavaScript.</p>
+                </div>
             </div>
 
             <div class="projetos-item">
                 <img src="/img/projeto2.png" alt="projeto2" class="projetos-imagem">
-                <h3 class="info-projetos">Site de Viagens</h3>
-                <p>Site de viagens projetado para suas viagens dos sonhos.</p>
-
-                <div class="projetos-item">
-                    <img src="/img/projeto3.png" alt="projeto3" class="projetos-imagem">
-                    <h3 class="info-projetos">Página Microsoft</h3>
-                    <p>Página da Microsoft representativa para demosntrar os conhecimentos gerais em web.</p>
+                <div class="caixa-texto-projeto">
+                    <h3 class="info-projetos">Site de Viagens</h3>
+                    <p class="paragrafo-projetos">Site de viagens projetado para suas viagens dos sonhos.</p>
                 </div>
             </div>
+
+            <div class="projetos-item">
+                <img src="/img/projeto3.png" alt="projeto3" class="projetos-imagem">
+                <div class="caixa-texto-projeto">
+                    <h3 class="info-projetos">Página Microsoft</h3>
+                    <p class="paragrafo-projetos">Página da Microsoft representativa para demosntrar os
+                        conhecimentos gerais
+                        em web.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="contato" class="contato">
-        <h2 class="contato-titulo">Contato</h2>
+        <h2 class="contato-titulo">Entre em Contato</h2>
 
-        <form class="formulario-contato" id="formulario" action="">
+        <form class="formulario-contato" id="formulario" onsubmit="enviarWhats(event)">
             <div class="grupo-form">
-                <input type="text" placeholder="Nome" class="campo-form">
+                <input type="text" placeholder="Nome" class="campo-form" id="nome">
             </div>
 
             <div class="grupo-form">
-                <textarea placeholder="Digite sua Mensagem" class="text-form"></textarea>
+                <textarea placeholder="Digite sua Mensagem" rows="4" class="campo-form" id="mensagem"></textarea>
             </div>
-        </form> 
+
+            <button type="submit" class="botao-form">Enviar Formulário</button>
+        </form>
     </section>
 
+    <Script>
+
+        function enviarWhats(event) {
+            event.preventDefault()
+
+            const nome = document.getElementById("nome").value;
+            const mensagem = document.getElementById("mensagem").value;
+            const telefone = '5571992550509'
+
+            const texto = `Me chamo ${nome}, ${mensagem}. Espero sua Resposta!`
+            const msgFormatada = encodeURIComponent(texto)
+
+            const url = `https://whatsa.me/5571992550509/?t=${msgFormatada}`
+
+            window.open(url, '_blank')
+
+            console.log(url)
+
+        }
+
+    </Script>
 </body>
 
 </html>
