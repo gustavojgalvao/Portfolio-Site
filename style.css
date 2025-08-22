@@ -140,6 +140,7 @@ h1 {
     justify-content: center;
     max-width: 1100px;
     margin: 0 auto;
+    margin-bottom: 4rem;
 }
 
 .projetos-item {
@@ -152,7 +153,7 @@ h1 {
     width: 30%;
     min-width: 300px;
     max-width: 350px;
-    
+    text-decoration: none;
 }
 
 .projetos-item:hover {
@@ -174,6 +175,29 @@ h1 {
 
 .caixa-texto-projeto {
     padding: 1.5rem;
+}
+
+.botao-projeto { 
+    color: var(--claro);
+    background: linear-gradient(45deg, var(--primaria), var(--secundaria));
+    border: none;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 20%;
+    transition: all 0.5s ease;
+    text-decoration: none;
+    display: block;        
+    margin: 0 auto;
+    text-align: center;  
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.botao-projeto:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
 }
 
 .contato {
