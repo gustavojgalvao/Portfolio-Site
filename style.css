@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 html {
@@ -10,32 +10,50 @@ html {
 }
 
 :root {
-    --primaria: #4f46e5;
-    --secundaria: #7c3aed;
-    --escuro: #0f172a;
-    --claro: #e2e8f0;
+    --primaria: #9C83FF;
+    --secundaria: #FF9051;
+    --escuro: #000;
+    --claro: #fff;
     --vidro: rgba(255, 255, 255, 0.1);
 }
 
 body {
     background-color: var(--escuro);
     color: var(--claro);
+    background-image: url(/img/Background\ Pattern.png);
+    background-repeat: no-repeat;
+    background-position: 25vw -2vh;
+    background-size: contain;
 }
 
 .navegacao {
     position: fixed;
-    background: rgba(15, 23, 42, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
     width: 100%;
     z-index: 100;
     top: 0;
-    padding: 1.5rem;
+    padding: 1rem 15rem;
 }
 
-.menu {
+.menu,
+.btn-nav {
     display: flex;
     list-style: none;
-    gap: 3rem;
+    gap: 2rem;
     justify-content: center;
+}
+
+.btn-CV {
+    padding: 10px 12px;
+    background-color: #ffffff;
+    border-radius: .6rem;
+    text-decoration: none;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .menu-link {
@@ -62,7 +80,7 @@ body {
 }
 
 .cabecalho {
-    min-height: 100vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,24 +88,42 @@ body {
 }
 
 .foto-perfil {
-    width: 400px;
-    height: 400px;
-    box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+    width: 250px;
+    height: 250px;
+    box-shadow: 0 0 20px rgba(46, 46, 46, 0.5);
     border-radius: 50%;
-    border: 4px solid var(--vidro);
     animation: flutuar 5s ease-in-out infinite;
 }
 
 h1 {
-    font-size: 3.5rem;
-    color: var(--primaria);
+    font-size: 60px;
+    height: auto;
+    color: var(--claro);
     font-weight: bold;
-    margin: 20px;
+    
 }
 
 .cabecalho-subtitulo {
     font-size: 1.5rem;
+    margin-top: -1rem;
     color: var(--claro);
+    font-weight: 600;
+}
+
+.cabecalho-subtitulo span {
+  background: linear-gradient(90deg, var(--primaria), var(--secundaria));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.cabecalho p {
+    margin: 1rem auto;
+    width: 35%;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 300;
 }
 
 .sobre {
@@ -255,18 +291,6 @@ h1 {
 .botao-form:hover {
     transform: translateY(-4px);
     box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
-}
-
-.particulas{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: 0.5;
-    background: radial-gradient(circle at 10% 20%, var(--primaria) 0%, transparent 20%), 
-    radial-gradient(circle at 90% 80%, var(--secundaria) 0%, transparent 20%), var(--escuro);
 }
 
 @keyframes flutuar {
