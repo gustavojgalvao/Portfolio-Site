@@ -7,7 +7,13 @@
     <title>Gustavo Galvão</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="/img/favicon-32x32.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -16,16 +22,19 @@
     <nav class="navegacao">
         <ul class="menu">
             <li>
-                <a href="#inicio" class="menu-link">Inicio</a>
+                <a href="#inicio" class="menu-link">Menu</a>
             </li>
             <li>
-                <a href="#sobre" class="menu-link">Sobre</a>
+                <a href="#sobre" class="menu-link">About</a>
             </li>
             <li>
-                <a href="#projetos" class="menu-link">Projetos</a>
+                <a href="#skill" class="menu-link">Skills</a>
             </li>
             <li>
-                <a href="#contato" class="menu-link">Contato</a>
+                <a href="#projetos" class="menu-link">Projects</a>
+            </li>
+            <li>
+                <a href="#contato" class="menu-link">Contact</a>
             </li>
         </ul>
 
@@ -38,22 +47,49 @@
         <img src="/img/pixelart.png" alt="foto-perfil" class="foto-perfil">
         <h1>Gustavo Galvão</h1>
         <h2 class="cabecalho-subtitulo">I do Code & <span>Chill</span></h2>
-        <p>Aspiring Full Stack Developer focused on AI and modern web solutions, blending design creativity with technical precision to build impactful digital experiences.</p>
+        <p>Aspiring Full Stack Developer focused on AI and modern web solutions, blending design creativity with
+            technical precision to build impactful digital experiences.</p>
+        <a href="">Contact Me</a>
     </main>
 
     <section id="sobre" class="sobre">
-        <h2 class="sobre-titulo">Sobre mim</h2>
+        <div class="sobre-titulo">
+            <h2>About Me</h2>
+            <a class="explore">EXPLORE NOW</a>
+        </div>
         <div class="sobre-container">
-            <p class="sobre-paragrafo">Sou Gustavo Galvão, estudante de Engenharia de Software,
-                desenvolvedor web e designer. Aprimoro meus conhecimentos
-                em JavaScript e back-end para me tornar full-stack.
-                Também atuo com design, marketing digital e gestão de
-                marcas. Meu foco é criar soluções inovadoras e impactantes.</p>
+            <p class="sobre-paragrafo">I am Gustavo Galvão, a Computer Science student with a strong interest in
+                technology and innovation. My journey is driven by the pursuit of constant growth and the desire to
+                transform ideas into projects that create a positive impact. <br><br>
+                As a digital development enthusiast, i thrive at the intersection of creativity and logic. I focus on designing intuitive interfaces,
+                websites, and apps, turning ideas into impactful digital experiences. Driven by innovation, I build
+                elegant, efficient, and functional solutions, constantly pushing projects beyond expectations and
+                exploring the cutting edge of technology.</p>
         </div>
     </section>
 
-    <section id="projetos" class="projetos">
-        <h2 class="projetos-titulo">Meus projetos</h2>
+    <section id="skill" class="sobre">
+        <div class="sobre-titulo">
+            <h2>Skills</h2>
+            <a class="explore">EXPLORE NOW</a>
+        </div>
+        <div class="card-skills">
+            <div class="card"><img src="/img/html.png" alt=""></div>
+            <div class="card"><img src="/img/css.png" alt=""></div>
+            <div class="card"><img src="/img/js.png" alt=""></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+    </section>
+
+    <section id="projetos" class="sobre">
+        <div class="sobre-titulo">
+            <h2>projects</h2>
+            <a href="/projetos.html" class="explore">EXPLORE NOW</a>
+        </div>
         <div class="projetos-container">
 
             <a class="projetos-item">
@@ -83,8 +119,6 @@
                 </div>
             </a>
         </div>
-        <button type="button" class="botao-projeto" onclick="window.location.href='projetos.html'">Mais
-            projetos</button>
     </section>
 
     <section id="contato" class="contato">

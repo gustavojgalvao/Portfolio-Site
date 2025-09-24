@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'inter', sans-serif;
 }
 
 html {
@@ -54,6 +54,13 @@ body {
     color: #000000;
     font-size: 1rem;
     font-weight: 500;
+    transition: all .2s ease;
+}
+
+.btn-CV:hover {
+    color: #fff;
+    background: #000;
+    border: solid 1px #fff;
 }
 
 .menu-link {
@@ -100,22 +107,22 @@ h1 {
     height: auto;
     color: var(--claro);
     font-weight: bold;
-    
+
 }
 
 .cabecalho-subtitulo {
     font-size: 1.5rem;
-    margin-top: -1rem;
+    margin-top: -.5rem;
     color: var(--claro);
     font-weight: 600;
 }
 
 .cabecalho-subtitulo span {
-  background: linear-gradient(90deg, var(--primaria), var(--secundaria));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+    background: linear-gradient(90deg, var(--primaria), var(--secundaria));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 .cabecalho p {
@@ -126,30 +133,135 @@ h1 {
     font-weight: 300;
 }
 
+.cabecalho a {
+    margin-top: 2rem;
+    background: #000;
+    padding: 1rem 4rem;
+    border-radius: 80px;
+    border: solid 1px #fff;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    transition: all .2 ease;
+}
+
+.cabecalho a:hover {
+    color: #000;
+    background: #fff;
+}
+
 .sobre {
     padding: 6rem 2rem;
 }
 
 .sobre-titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.sobre-titulo h2 {
+    text-transform: uppercase;
+    font-weight: 800;
     font-size: 3rem;
     color: var(--claro);
     text-align: center;
+}
+
+.explore {
+    width: 200px;
+    text-align: center;
     margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    font-size: .8rem;
+    background: linear-gradient(90deg, var(--primaria), var(--secundaria));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+.explore:hover {
+    font-size: .85rem;
 }
 
 .sobre-container {
-    padding: 2rem;
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
-    border-radius: 1rem;
-    border: 1px solid var(--vidro);
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.05);
 }
 
 .sobre-paragrafo {
     text-align: center;
     font-size: 1rem;
+}
+
+.card-skills {
+    display: grid;
+    grid-template-columns: repeat(4, 150px);
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    width: 150px;
+    height: 150px;
+    background: #2e2e2e;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform .5s;
+}
+
+.card {
+    width: 150px;
+    height: 150px;
+    background: #2e2e2e;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
+    transform-style: preserve-3d;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card img {
+    width: 5rem;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: rotate(25deg) translateX(-100%);
+    transition: transform 1s ease;
+}
+
+
+.card:hover::before {
+    transform: rotate(25deg) translateX(200%);
+}
+
+.card:hover {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+    transform: scale(1.05) rotateX(-5deg) rotateY(5deg);
 }
 
 .projetos {
@@ -194,18 +306,18 @@ h1 {
 
 .projetos-item:hover {
     transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+    box-shadow: 0 10px 20px rgba(129, 129, 129, 0.2);
 }
 
-.info-projetos{
+.info-projetos {
     font-size: 1.5rem;
     color: var(--claro);
     margin: 5px 0;
     margin-bottom: 5px;
 }
 
-.paragrafo-projetos{
-    color: rgba(226, 232,240, 0.8);
+.paragrafo-projetos {
+    color: rgba(226, 232, 240, 0.8);
     line-height: 1.25rem;
 }
 
@@ -213,7 +325,7 @@ h1 {
     padding: 1.5rem;
 }
 
-.botao-projeto { 
+.botao-projeto {
     color: var(--claro);
     background: linear-gradient(45deg, var(--primaria), var(--secundaria));
     border: none;
@@ -224,9 +336,9 @@ h1 {
     width: 20%;
     transition: all 0.5s ease;
     text-decoration: none;
-    display: block;        
+    display: block;
     margin: 0 auto;
-    text-align: center;  
+    text-align: center;
     font-size: 1.5rem;
     font-weight: 500;
 }
@@ -246,7 +358,7 @@ h1 {
     margin-bottom: 40px;
 }
 
-.formulario-contato{
+.formulario-contato {
     max-width: 600px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.05);
@@ -256,11 +368,11 @@ h1 {
     border: 1px solid var(--vidro);
 }
 
-.grupo-form{
+.grupo-form {
     margin-bottom: 1.5rem;
 }
 
-.campo-form{
+.campo-form {
     width: 100%;
     font-weight: bold;
     padding: 1rem;
@@ -276,7 +388,7 @@ h1 {
     box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
 }
 
-.botao-form { 
+.botao-form {
     color: var(--claro);
     background: linear-gradient(45deg, var(--primaria), var(--secundaria));
     border: none;
@@ -294,7 +406,9 @@ h1 {
 }
 
 @keyframes flutuar {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
 
@@ -304,12 +418,12 @@ h1 {
 }
 
 @media screen and (max-width: 440px) {
-   .foto-perfil {
-      width: 300px;
-      height: 300px;
-   }
+    .foto-perfil {
+        width: 300px;
+        height: 300px;
+    }
 
-   .botao-projeto {
-    width: 200px;
-   }
+    .botao-projeto {
+        width: 200px;
+    }
 }
