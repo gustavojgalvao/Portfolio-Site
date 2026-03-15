@@ -10,17 +10,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/main.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
-    <!-- Background Animado -->
-    <div class="animated-bg">
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="code-loader">
+                <span id="loading-text" class="mono-text">Initializing Systems</span><span class="blinking-cursor">_</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="loading-percent" id="loading-percent">0%</div>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -28,11 +34,11 @@
         <div class="nav-container">
             <div class="logo">GNJG</div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">Sobre</a></li>
-                <li><a href="#skills" class="nav-link">Habilidades</a></li>
-                <li><a href="#projects" class="nav-link">Projetos</a></li>
-                <li><a href="#contact" class="nav-link">Contato</a></li>
+                <li><a href="#home" class="nav-link interactive">Home</a></li>
+                <li><a href="#about" class="nav-link interactive">Sobre</a></li>
+                <li><a href="#skills" class="nav-link interactive">Habilidades</a></li>
+                <li><a href="#projects" class="nav-link interactive">Projetos</a></li>
+                <li><a href="#contact" class="nav-link interactive">Contato</a></li>
             </ul>
             <a href="curriculo-gustavogalvao.pdf" download class="nav-cta"><i class="ri-file-download-line"></i>
                 Download CV</a>
@@ -50,26 +56,27 @@
             <div class="hero-image">
                 <img src="/img/pixelart.png" alt="Gustavo Galvão">
             </div>
-            <h1 class="hero-title">Gustavo Galvão</h1>
-            <p class="hero-subtitle">I do Code & <span class="gradient-text">Chill</span></p>
-            <p class="hero-description">
+            <h1 class="hero-title hero-reveal">Gustavo Galvão</h1>
+            <p class="hero-subtitle hero-reveal">I do Code & <span class="gradient-text">Chill</span></p>
+            <p class="hero-description hero-reveal">
                 Desenvolvedor Full Stack com foco em IA e soluções web modernas, mesclando criatividade em design com
                 precisão técnica para construir experiências digitais impactantes.
             </p>
-            <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">Entre em Contato</a>
-                <a href="#projects" class="btn btn-secondary">Ver Projetos</a>
+            <div class="hero-cta hero-reveal">
+                <a href="#contact" class="btn btn-primary magnetic interactive">Entre em Contato</a>
+                <a href="#projects" class="btn btn-secondary magnetic interactive">Ver Projetos</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about">
-        <div class="section-header">
-            <p class="section-label">Sobre Mim</p>
-            <h2 class="section-title">Transformando Ideias em <span class="gradient-text">Realidade Digital</span></h2>
-        </div>
-        <div class="about-content">
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <p class="section-label">Sobre Mim</p>
+                <h2 class="section-title">Transformando Ideias em <span class="gradient-text">Realidade Digital</span></h2>
+            </div>
+            <div class="about-content scroll-reveal">
             <div class="about-text">
                 <p>
                     Sou Gustavo Galvão, estudante de Ciência da Computação com forte interesse em tecnologia e inovação.
@@ -100,19 +107,55 @@
                     <div class="stat-label">Dedicação</div>
                 </div>
             </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <p class="section-label">Jornada</p>
+                <h2 class="section-title">Minha <span class="gradient-text">Trajetória</span></h2>
+            </div>
+            <div class="timeline-container scroll-reveal">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label" style="text-align:left; color:var(--color-accent-primary);">2020 - Início</div>
+                        <h3 style="text-align:left; margin:var(--space-2) 0;">Primeiros Passos</h3>
+                        <p style="text-align:left; font-size:var(--text-sm); color:var(--color-text-secondary);">Descoberta do mundo da tecnologia e início dos estudos em lógica de programação.</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label" style="text-align:left; color:var(--color-accent-primary);">2021 - Fundação</div>
+                        <h3 style="text-align:left; margin:var(--space-2) 0;">HTML & CSS</h3>
+                        <p style="text-align:left; font-size:var(--text-sm); color:var(--color-text-secondary);">Domínio da estruturação web e estilização de interfaces modernas e responsivas.</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label" style="text-align:left; color:var(--color-accent-primary);">2022 - Interatividade</div>
+                        <h3 style="text-align:left; margin:var(--space-2) 0;">JavaScript Avançado</h3>
+                        <p style="text-align:left; font-size:var(--text-sm); color:var(--color-text-secondary);">Desenvolvimento de aplicações dinâmicas e interações complexas no front-end.</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label" style="text-align:left; color:var(--color-accent-primary);">2023+ Presente</div>
+                        <h3 style="text-align:left; margin:var(--space-2) 0;">Projetos Full Stack</h3>
+                        <p style="text-align:left; font-size:var(--text-sm); color:var(--color-text-secondary);">Construção de experiências digitais completas, escaláveis e visualmente impressionantes.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills">
-        <div class="section-header">
-            <p class="section-label">Habilidades</p>
-            <h2 class="section-title">Minhas <span class="gradient-text">Tecnologias</span></h2>
-            <p class="section-description">
-                Conjunto diversificado de tecnologias e ferramentas que utilizo para criar soluções digitais modernas
-            </p>
-        </div>
-        <div class="skills-grid">
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <p class="section-label">Habilidades</p>
+                <h2 class="section-title">Minhas <span class="gradient-text">Tecnologias</span></h2>
+                <p class="section-description">
+                    Conjunto diversificado de tecnologias e ferramentas que utilizo para criar soluções digitais modernas
+                </p>
+            </div>
+            <div class="skills-grid scroll-reveal">
             <div class="skill-card">
                 <div class="skill-icon"><i class="ri-html5-fill"></i></div>
                 <div class="skill-name">HTML5</div>
@@ -153,21 +196,23 @@
                 <div class="skill-icon"><img src="/img/ai.svg" alt="" style="width: 2.5rem;"></div>
                 <div class="skill-name">IAA</div>
             </div>
+            </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects">
-        <div class="section-header">
-            <p class="section-label">Portfólio</p>
-            <h2 class="section-title">Projetos em <span class="gradient-text">Destaque</span></h2>
-            <p class="section-description">
-                Conheça alguns dos meus trabalhos mais recentes e impactantes
-            </p>
-        </div>
-        <div class="projects-grid">
-            <a href="https://brl2go.vercel.app" class="project-card" target="_blank" rel="noopener noreferrer">
-                <img src="/img/Conversor de Moedas em tempo real.png" alt="Projeto 1" class="project-image">
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <p class="section-label">Portfólio</p>
+                <h2 class="section-title">Projetos em <span class="gradient-text">Destaque</span></h2>
+                <p class="section-description">
+                    Conheça alguns dos meus trabalhos mais recentes e impactantes
+                </p>
+            </div>
+            <div class="projects-grid scroll-reveal">
+            <a href="https://brl2go.vercel.app" class="project-card tilt-card interactive" target="_blank" rel="noopener noreferrer">
+                <div class="project-image-wrapper"><img src="/img/Conversor de Moedas em tempo real.png" alt="Projeto 1" class="project-image"></div>
                 <div class="project-content">
                     <h3 class="project-title">BRL2GO</h3>
                     <p class="project-description">
@@ -181,8 +226,8 @@
                 </div>
             </a>
 
-            <a href="https://fried-chicken-beta.vercel.app/" class="project-card" target="_blank" rel="noopener noreferrer">
-                <img src="/img/Fried-chicken.png" alt="Projeto 2" class="project-image">
+            <a href="https://fried-chicken-beta.vercel.app/" class="project-card tilt-card interactive" target="_blank" rel="noopener noreferrer">
+                <div class="project-image-wrapper"><img src="/img/Fried-chicken.png" alt="Projeto 2" class="project-image"></div>
                 <div class="project-content">
                     <h3 class="project-title">Fried Chicken</h3>
                     <p class="project-description">
@@ -197,8 +242,8 @@
                 </div>
             </a>
 
-            <a href="https://hestus.vercel.app" class="project-card" target="_blank" rel="noopener noreferrer">
-                <img src="/img/hestus.png" alt="Projeto 3" class="project-image">
+            <a href="https://hestus.vercel.app" class="project-card tilt-card interactive" target="_blank" rel="noopener noreferrer">
+                <div class="project-image-wrapper"><img src="/img/hestus.png" alt="Projeto 3" class="project-image"></div>
                 <div class="project-content">
                     <h3 class="project-title">Hestus Ai</h3>
                     <p class="project-description">
@@ -212,23 +257,25 @@
                 </div>
             </a>
         </div>
-        <div class="more-projects">
-                <a href="/projetos.html" class="text-more">
+        <div class="more-projects scroll-reveal">
+                <a href="/projetos.html" class="interactive text-more">
                     Mais Projetos <i class="fa-solid fa-arrow-right-long"></i>
                 </a>
+        </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-header">
-            <p class="section-label">Contato</p>
-            <h2 class="section-title">Vamos Trabalhar <span class="gradient-text">Juntos</span></h2>
-            <p class="section-description">
-                Tem um projeto em mente? Entre em contato e vamos transformar suas ideias em realidade
-            </p>
-        </div>
-        <div class="contact-container">
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <p class="section-label">Contato</p>
+                <h2 class="section-title">Vamos Trabalhar <span class="gradient-text">Juntos</span></h2>
+                <p class="section-description">
+                    Tem um projeto em mente? Entre em contato e vamos transformar suas ideias em realidade
+                </p>
+            </div>
+            <div class="contact-container scroll-reveal">
             <form class="contact-form" id="contactForm">
                 <div class="form-group">
                     <label class="form-label">Nome</label>
@@ -243,8 +290,25 @@
                     <textarea class="form-textarea" id="message" placeholder="Digite sua mensagem..."
                         required></textarea>
                 </div>
-                <button type="submit" class="form-button">Enviar Mensagem</button>
+                <button type="submit" class="form-button btn btn-primary magnetic interactive">Enviar Mensagem</button>
             </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminal Section -->
+    <section id="terminal" class="section">
+        <div class="container">
+            <div class="terminal-window scroll-reveal">
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="terminal-body mono-text">
+                    <span class="terminal-prompt">guest@portfolio:~$</span> <span id="typing-effect"></span><span class="blinking-cursor">_</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -273,7 +337,12 @@
         <p class="copyright">© 2025 Gustavo Galvão. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- GSAP & Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Application Logic -->
+    <script type="module" src="js/app.js"></script>
 </body>
 
 </html>
