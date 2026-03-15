@@ -37,12 +37,12 @@ export const Navigation = {
                     if (textSpan) textSpan.innerText = 'Loading';
                     
                     preloader.style.display = "flex";
-                    gsap.fromTo(preloader, 
-                        { y: "-100%" }, 
+                    gsap.set(preloader, { y: "-100%", opacity: 1 });
+                    gsap.to(preloader, 
                         {
                             y: "0%",
                             duration: 0.6,
-                            ease: "power2.out", // Hardcoded to avoid dependency on MotionSystem being scoped
+                            ease: "power3.inOut",
                             onComplete: () => {
                                 window.location.href = href;
                             }

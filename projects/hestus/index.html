@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estudo de Caso: Hestus AI - Landing page para empresa de automação e Inteligência Artificial corporativa.">
+    <meta property="og:title" content="Projeto: Hestus AI - Gustavo Galvão">
+    <meta property="og:description" content="Automação & Inteligência Artificial.">
+    <title>Projeto: Hestus AI - Gustavo Galvão</title>
+    <link rel="icon" href="/img/code-solid-full.svg">
+    <!-- Preconnects & Preloads -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" href="/css/main.css" as="style">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
+</head>
+
+<body class="case-study-page">
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="code-loader">
+                <span id="loading-text" class="mono-text">Loading Case Study</span><span class="blinking-cursor">_</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="loading-percent" id="loading-percent">0%</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="/index.html" class="logo interactive" style="font-size: var(--text-base); display:flex; align-items:center; gap: 8px;" aria-label="Voltar para a Home">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Voltar
+            </a>
+            <div class="nav-menu" id="navMenu" style="gap:var(--space-4);">
+                <a href="/index.html#contact" class="nav-cta interactive">Vamos Trabalhar Juntos</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Case Study Hero -->
+    <main class="case-study-hero section" style="padding-top: calc(var(--nav-height) + var(--space-8));">
+        <div class="container">
+            <div class="case-header scroll-reveal" style="text-align: center; max-width: 800px; margin: 0 auto var(--space-12);">
+                <h1 class="section-title">Hestus AI</h1>
+                <p class="section-description" style="margin-bottom: var(--space-6);">
+                    Landing page corporativa para uma empresa de automação B2B movida por Inteligência Artificial.
+                </p>
+                <div class="project-tags" style="justify-content: center;">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">UI/UX B2B</span>
+                </div>
+            </div>
+            <div class="case-hero-image scroll-reveal" style="border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--color-bg-border);">
+                <img src="/img/hestus.png" alt="Hestus AI Preview" style="width: 100%; display: block;" fetchpriority="high" decoding="async">
+            </div>
+        </div>
+    </main>
+
+    <!-- Case Study Content -->
+    <section class="case-study-content section">
+        <div class="container">
+            <div class="case-grid scroll-reveal" style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-16);">
+                <div class="case-text">
+                    <h2 class="section-title" style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">O Contexto & Desafio</h2>
+                    <p style="color: var(--color-text-secondary); margin-bottom: var(--space-8); font-size: var(--text-lg);">
+                        Vender serviços de IA B2B (Business-to-Business) demanda uma percepção cristalina de confiança, alta tecnologia corporativa e clareza nos retornos (ROI). O desafio com a "Hestus" era criar uma fundação visual impecável e futurística que transicionasse rapidamente um Lead frio (pequenos e médios negócios) para um visitante convencido de que aplicar IA era o único caminho racional. 
+                    </p>
+                    
+                    <h2 class="section-title" style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">A Solução Técnica</h2>
+                    <p style="color: var(--color-text-secondary); margin-bottom: var(--space-8); font-size: var(--text-lg);">
+                        Adotei uma estrutura limpa onde o conteúdo é o absoluto protagonista. Espaços negativos massivos em torno das Proposições de Valor (USP) garantem leitura livre de carga cognitiva. Desenvolvi transições suaves de conteúdo que engajam psicologicamente sem distrair o olhar da meta primária: captura do lead.
+                    </p>
+
+                    <h2 class="section-title" style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">Aprendizados & Impacto</h2>
+                    <p style="color: var(--color-text-secondary); margin-bottom: var(--space-8); font-size: var(--text-lg);">
+                        Foi uma verdadeira consolidação em "Design para Conversão B2B", aprendendo como microinterações focadas transmitem autoridade corporativa massiva, mesmo em escopos HTML e CSS relativamente simples. O refinamento contínuo das hierarquias textuais foi a maior vitória da iteração.
+                    </p>
+                </div>
+                
+                <div class="case-sidebar">
+                    <div class="sidebar-box" style="background: var(--color-bg-glass); border: 1px solid var(--color-bg-border); padding: var(--space-6); border-radius: var(--radius-lg); margin-bottom: var(--space-6);">
+                        <h4 style="margin-bottom: var(--space-4); color: var(--color-text-primary);">Tecnologias</h4>
+                        <ul style="list-style: none; color: var(--color-text-secondary); display: flex; flex-direction: column; gap: var(--space-2);">
+                            <li><i class="fa-solid fa-check" style="color: var(--color-accent-primary); margin-right: 8px;"></i> HTML5 Semântico</li>
+                            <li><i class="fa-solid fa-check" style="color: var(--color-accent-primary); margin-right: 8px;"></i> Modular CSS</li>
+                            <li><i class="fa-solid fa-check" style="color: var(--color-accent-primary); margin-right: 8px;"></i> UX Conversion Focus</li>
+                            <li><i class="fa-solid fa-check" style="color: var(--color-accent-primary); margin-right: 8px;"></i> Vercel Deployment</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-box" style="background: var(--color-bg-glass); border: 1px solid var(--color-bg-border); padding: var(--space-6); border-radius: var(--radius-lg);">
+                        <h4 style="margin-bottom: var(--space-4); color: var(--color-text-primary);">Links do Projeto</h4>
+                        <a href="https://hestus.vercel.app" target="_blank" class="btn btn-primary magnetic interactive" style="width: 100%; padding: var(--space-3); margin-bottom: var(--space-3); font-size: var(--text-sm);">
+                            <i class="fa-solid fa-arrow-up-right-from-square" style="margin-right: 8px;"></i> Ver Ao Vivo
+                        </a>
+                        <a href="https://github.com/gustavojgalvao/Hestus" target="_blank" class="btn btn-secondary magnetic interactive" style="width: 100%; padding: var(--space-3); font-size: var(--text-sm);">
+                            <i class="fa-brands fa-github" style="margin-right: 8px;"></i> Repositório GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="copyright">© 2025 Gustavo Galvão. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- GSAP & Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Application Logic -->
+    <script type="module" src="/js/app.js"></script>
+</body>
+
+</html>

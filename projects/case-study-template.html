@@ -6,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto: BRL2GO - Gustavo Galvão</title>
     <link rel="icon" href="/img/code-solid-full.svg">
+    <!-- Preconnects & Preloads -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" href="css/main.css" as="style">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
 </head>
 
 <body class="case-study-page">
@@ -30,8 +34,8 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo interactive" style="font-size: var(--text-base); display:flex; align-items:center; gap: 8px;">
-                <i class="fa-solid fa-arrow-left"></i> Voltar
+            <a href="index.html" class="logo interactive" style="font-size: var(--text-base); display:flex; align-items:center; gap: 8px;" aria-label="Voltar para a Home">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Voltar
             </a>
             <div class="nav-menu" id="navMenu" style="gap:var(--space-4);">
                 <a href="index.html#contact" class="nav-cta interactive">Vamos Trabalhar Juntos</a>
@@ -55,7 +59,7 @@
                 </div>
             </div>
             <div class="case-hero-image scroll-reveal" style="border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--color-bg-border);">
-                <img src="/img/Conversor de Moedas em tempo real.png" alt="BRL2GO Preview" style="width: 100%; display: block;">
+                <img src="/img/Conversor de Moedas em tempo real.png" alt="BRL2GO Preview" style="width: 100%; display: block;" fetchpriority="high" decoding="async">
             </div>
         </div>
     </main>

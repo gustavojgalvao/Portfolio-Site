@@ -16,11 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. UI & Interactions
     Cursor.init();
     Navigation.init();
-    WebGLBackground.init();
     Interactions.init();
     
-    // 3. Storytelling & Section Animations
-    Animations.init();
+    // 3. Conditional Systems (Code Splitting strategy)
+    if (document.querySelector('.hero-image') || document.getElementById('home')) {
+        WebGLBackground.init();
+    }
+    
+    if (document.querySelectorAll('.scroll-reveal').length > 0) {
+        Animations.init();
+    }
     
     console.log("App initialized.");
 });
