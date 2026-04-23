@@ -58,6 +58,7 @@ export const Navigation = {
     bindEvents() {
         if(this.mobileToggle) {
             this.mobileToggle.addEventListener('click', () => {
+                this.mobileToggle.classList.toggle('active');
                 this.navMenu.classList.toggle('active');
             });
         }
@@ -65,6 +66,7 @@ export const Navigation = {
         this.links.forEach(link => {
             link.addEventListener('click', () => {
                 if(this.navMenu) this.navMenu.classList.remove('active');
+                if(this.mobileToggle) this.mobileToggle.classList.remove('active');
             });
         });
 

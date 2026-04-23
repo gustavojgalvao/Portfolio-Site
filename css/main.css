@@ -110,6 +110,24 @@ nav.scrolled {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+}
+
+.nav-left, .nav-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    justify-content: flex-end;
+    gap: var(--space-4);
+}
+
+.nav-center {
+    flex: 2;
+    display: flex;
+    justify-content: center;
 }
 
 .logo {
@@ -118,12 +136,14 @@ nav.scrolled {
     letter-spacing: -0.05em;
     color: var(--color-text-primary);
     text-decoration: none;
+    z-index: 2;
 }
 
 .nav-menu {
     display: flex;
     gap: var(--space-8);
     list-style: none;
+    align-items: center;
 }
 
 .nav-link {
@@ -152,6 +172,82 @@ nav.scrolled {
 
 .nav-link:hover::after, .nav-link.active::after {
     width: 100%;
+}
+
+/* CTA Button - "Baixar Currículo" */
+.nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-6);
+    background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-tertiary));
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--text-sm);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+    box-shadow: 0 0 15px rgba(156, 131, 255, 0.2);
+    z-index: 2;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+}
+
+.nav-cta:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 5px 25px rgba(156, 131, 255, 0.5);
+    color: #fff;
+}
+
+.nav-cta:hover::before {
+    left: 150%;
+}
+
+.nav-cta:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.nav-cta i {
+    font-size: 1.2em;
+    transition: transform var(--transition-fast);
+}
+
+.nav-cta:hover i {
+    transform: translateY(2px);
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: var(--z-above);
+}
+
+.mobile-toggle span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--color-text-primary);
+    transition: all var(--transition-fast);
+    border-radius: var(--radius-sm);
+    transform-origin: left center;
+}
+
+.mobile-only {
+    display: none;
 }
 
 /* Preloader */
@@ -647,6 +743,9 @@ footer {
     padding: var(--space-12) 0;
     border-top: 1px solid var(--color-bg-border);
     margin-top: var(--space-16);
+    position: relative;
+    z-index: 10;
+    background: var(--color-bg-base);
 }
 
 .social-links {
@@ -686,17 +785,96 @@ footer {
     font-size: var(--text-sm);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+    .nav-center {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(16px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform var(--transition-normal);
+        z-index: 1;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: var(--space-8);
+        width: 100%;
+    }
+
+    .nav-menu.active {
+        /* JS toggles active on .nav-menu but it's inside .nav-center, wait... JS toggles .nav-menu */
+    }
+
+    /* We need to apply the transform to .nav-menu directly if that's what JS toggles */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(16px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform var(--transition-normal);
+        z-index: 1;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-menu.active {
+        transform: translateX(0);
+    }
+
+    .nav-link {
+        font-size: var(--text-2xl);
+    }
+
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: block;
+        margin-top: var(--space-6);
+    }
+
+    .nav-cta {
+        font-size: var(--text-lg);
+        padding: var(--space-4) var(--space-8);
+    }
+
     .about-content {
         grid-template-columns: 1fr;
     }
+    
     .stats-grid {
         grid-template-columns: 1fr;
     }
+    
     .contact-form {
         padding: var(--space-6);
     }
+    
     .hero-cta {
         flex-direction: column;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 8vw, 4rem);
     }
 }

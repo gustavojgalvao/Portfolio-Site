@@ -47,21 +47,35 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">GNJG</div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link interactive">Home</a></li>
-                <li><a href="#about" class="nav-link interactive">Sobre</a></li>
-                <li><a href="#skills" class="nav-link interactive">Habilidades</a></li>
-                <li><a href="#projects" class="nav-link interactive">Projetos</a></li>
-                <li><a href="#contact" class="nav-link interactive">Contato</a></li>
-            </ul>
-            <a href="curriculo-gustavogalvao.pdf" download class="nav-cta"><i class="ri-file-download-line"
-                    aria-hidden="true"></i>
-                Download CV</a>
-            <div class="mobile-toggle" id="mobileToggle" role="button" tabindex="0" aria-label="Abrir menu mobile">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-left">
+                <div class="logo">GNJG</div>
+            </div>
+            
+            <div class="nav-center" id="navMenuWrapper">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link interactive">Home</a></li>
+                    <li><a href="#about" class="nav-link interactive">Sobre</a></li>
+                    <li><a href="#skills" class="nav-link interactive">Habilidades</a></li>
+                    <li><a href="#projects" class="nav-link interactive">Projetos</a></li>
+                    <li><a href="#contact" class="nav-link interactive">Contato</a></li>
+                    <!-- Mobile only CTA -->
+                    <li class="mobile-only">
+                        <a href="curriculo-gustavogalvao.pdf" download class="nav-cta interactive">
+                            <i class="ri-file-download-line" aria-hidden="true"></i> Baixar Currículo
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <a href="curriculo-gustavogalvao.pdf" download class="nav-cta desktop-only interactive">
+                    <i class="ri-file-download-line" aria-hidden="true"></i> Baixar Currículo
+                </a>
+                <div class="mobile-toggle" id="mobileToggle" role="button" tabindex="0" aria-label="Abrir menu mobile">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
