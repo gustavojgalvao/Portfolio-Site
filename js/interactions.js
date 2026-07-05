@@ -2,6 +2,7 @@ export const Interactions = {
     init() {
         this.initMagneticButtons();
         this.initTiltEffects();
+        this.initContactForm();
         console.log("Interactions initialized.");
     },
     
@@ -70,5 +71,23 @@ export const Interactions = {
                 }
             });
         });
+    },
+
+    initContactForm() {
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+                const whatsappMessage = `Olá! Meu nome é ${name}. Email: ${email}. Mensagem: ${message}`;
+                const whatsappUrl = `https://wa.me/5571992550509?text=${encodeURIComponent(whatsappMessage)}`;
+
+                window.open(whatsappUrl, '_blank');
+                contactForm.reset();
+            });
+        }
     }
 };
