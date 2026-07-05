@@ -60,6 +60,10 @@ export const Navigation = {
             this.mobileToggle.addEventListener('click', () => {
                 this.mobileToggle.classList.toggle('active');
                 this.navMenu.classList.toggle('active');
+                
+                // Toggle active on the wrapper too (.nav-center)
+                const wrapper = document.getElementById('navMenuWrapper');
+                if (wrapper) wrapper.classList.toggle('active');
             });
         }
         
@@ -67,6 +71,9 @@ export const Navigation = {
             link.addEventListener('click', () => {
                 if(this.navMenu) this.navMenu.classList.remove('active');
                 if(this.mobileToggle) this.mobileToggle.classList.remove('active');
+                
+                const wrapper = document.getElementById('navMenuWrapper');
+                if (wrapper) wrapper.classList.remove('active');
             });
         });
 

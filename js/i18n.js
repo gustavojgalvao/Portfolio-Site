@@ -231,7 +231,7 @@ function applyTranslations(lang) {
     });
 
     // Curriculum download buttons (desktop + mobile)
-    document.querySelectorAll('.nav-cta').forEach(btn => {
+    document.querySelectorAll('.btn-download-cv').forEach(btn => {
         btn.setAttribute('href', t.navCurriculumFile);
         btn.setAttribute('download', '');          // garante que download nunca suma
         // Rebuild inner content preserving the icon
