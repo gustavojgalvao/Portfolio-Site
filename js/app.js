@@ -6,6 +6,7 @@ import { WebGLBackground } from './webgl-bg.js';
 import { Cursor } from './cursor.js';
 import { Performance } from './performance.js';
 import { Analytics } from './analytics.js';
+import { I18n } from './i18n.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Core Systems
@@ -13,7 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
     Analytics.init();
     MotionSystem.init();
     
-    // 2. UI & Interactions
+    // 2. Internationalization (runs before UI so button is ready)
+    I18n.init();
+
+    // 3. UI & Interactions
     Cursor.init();
     Navigation.init();
     Interactions.init();
