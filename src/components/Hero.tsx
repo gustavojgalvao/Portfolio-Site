@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { TextMorph } from './ui/text-morph';
 import { MessageSquare, ArrowRight, ShieldCheck, Award } from 'lucide-react';
@@ -7,6 +7,35 @@ import { useGsapReveal } from '../hooks/useGsapReveal';
 export const Hero: React.FC = () => {
   const { language, t } = useLanguage();
   const containerRef = useGsapReveal({ y: 30, duration: 0.8, stagger: 0.15 });
+
+  const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({
+    transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+    transition: 'transform 0.5s ease-out',
+  });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -12; // Max tilt angle
+    const rotateY = ((x - centerX) / centerX) * 12;
+
+    setTiltStyle({
+      transform: `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`,
+      transition: 'transform 0.1s ease-out',
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setTiltStyle({
+      transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+      transition: 'transform 0.5s ease-out',
+    });
+  };
 
   const whatsappUrl =
     'https://wa.me/WHATSAPP_NUMBER_PLACEHOLDER?text=' +
@@ -88,15 +117,20 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Clean Developer Portrait */}
+          {/* RIGHT COLUMN: 3D Interactive Mouse-Tilt Developer Portrait */}
           <div className="lg:col-span-5 relative flex justify-center items-center">
-            <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl glass-card p-3 overflow-hidden border border-white/15 shadow-2xl">
+            <div
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              style={tiltStyle}
+              className="relative w-full max-w-md aspect-[4/5] rounded-3xl glass-card p-3 overflow-hidden border border-white/15 shadow-2xl cursor-pointer will-change-transform"
+            >
               <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black">
                 {/* Clean Professional Developer Photo */}
                 <img
                   src="/fotoperfil.png"
                   alt="Gustavo Galvão"
-                  className="w-full h-full object-cover filter contrast-105 group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover filter contrast-105 pointer-events-none"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
 
@@ -105,7 +139,7 @@ export const Hero: React.FC = () => {
                   <Award className="w-5 h-5 text-orange-400" />
                   <div>
                     <span className="block text-xs font-bold text-white">Gustavo Galvão</span>
-                    <span className="block text-[11px] font-mono text-zinc-400">Senior Web & AI Dev</span>
+                    <span className="block text-[11px] font-mono text-zinc-400">Senior Web &amp; AI Dev</span>
                   </div>
                 </div>
 
