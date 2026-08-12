@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { PortfolioTeaser } from './components/PortfolioTeaser';
+import { Comparison } from './components/Comparison';
 import { Services } from './components/Services';
 import { FeaturedSystems } from './components/FeaturedSystems';
-import { Process } from './components/Process';
+import { CaseStudies } from './components/CaseStudies';
+import { Pricing } from './components/Pricing';
+import { AboutMe } from './components/AboutMe';
+import { FAQ } from './components/FAQ';
 import { Contact } from './components/Contact';
 import { PortfolioPage } from './components/PortfolioPage';
 import { Footer } from './components/Footer';
@@ -13,10 +16,8 @@ import { Footer } from './components/Footer';
 export const AppContent: React.FC = () => {
   const [route, setRoute] = useState<'home' | 'portfolio'>('home');
 
-  // Handle browser route sync if needed
   useEffect(() => {
-    const path = window.location.pathname;
-    if (path === '/portfolio') {
+    if (window.location.pathname === '/portfolio') {
       setRoute('portfolio');
     }
   }, []);
@@ -33,33 +34,42 @@ export const AppContent: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black text-zinc-100 bg-dot-grid relative selection:bg-orange-500 selection:text-black">
-      {/* Sticky Blurred Glass Navbar */}
+      {/* Navbar */}
       <Navbar
         currentRoute={route}
         onNavigatePortfolio={handleNavigatePortfolio}
         onNavigateHome={handleNavigateHome}
       />
 
-      {/* Main View Router */}
+      {/* Main Sections */}
       <main>
         {route === 'home' ? (
           <>
             {/* Section 1: Hero */}
-            <Hero onNavigatePortfolio={handleNavigatePortfolio} />
+            <Hero />
 
-            {/* Section 2: Portfolio Teaser Banner */}
-            <PortfolioTeaser onNavigatePortfolio={handleNavigatePortfolio} />
+            {/* Section 2: Agency vs Direct Comparison */}
+            <Comparison />
 
-            {/* Section 3: Services */}
+            {/* Section 3: Core Services & Deliverables */}
             <Services />
 
-            {/* Section 3.5: Interactive Circular Carousel Showcase */}
+            {/* Section 4: Interactive Systems Showcase */}
             <FeaturedSystems />
 
-            {/* Section 4: Process Timeline */}
-            <Process />
+            {/* Section 5: Case Studies & Delivered Systems */}
+            <CaseStudies />
 
-            {/* Section 5: WhatsApp Contact Form */}
+            {/* Section 6: Transparent Pricing Packages */}
+            <Pricing />
+
+            {/* Section 7: About Me & Bio */}
+            <AboutMe />
+
+            {/* Section 8: FAQ & Objection Handling */}
+            <FAQ />
+
+            {/* Section 9: Conversion Contact Form */}
             <Contact />
           </>
         ) : (
@@ -67,7 +77,7 @@ export const AppContent: React.FC = () => {
         )}
       </main>
 
-      {/* Minimal Footer */}
+      {/* Footer */}
       <Footer />
     </div>
   );

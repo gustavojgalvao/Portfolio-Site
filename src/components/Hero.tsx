@@ -1,51 +1,49 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { TextMorph } from './ui/text-morph';
-import { MessageSquare, ArrowRight, ShieldCheck, Zap, UserCheck, Code2, Cpu } from 'lucide-react';
+import { MessageSquare, ArrowRight, ShieldCheck, Award } from 'lucide-react';
+import { useGsapReveal } from '../hooks/useGsapReveal';
 
-interface HeroProps {
-  onNavigatePortfolio: () => void;
-}
-
-export const Hero: React.FC<HeroProps> = ({ onNavigatePortfolio }) => {
+export const Hero: React.FC = () => {
   const { language, t } = useLanguage();
+  const containerRef = useGsapReveal({ y: 30, duration: 0.8, stagger: 0.15 });
 
   const whatsappUrl =
     'https://wa.me/WHATSAPP_NUMBER_PLACEHOLDER?text=' +
     encodeURIComponent(
       language === 'en'
-        ? "Hi Gustavo! I saw your portfolio and would like to start a project."
-        : 'Olá Gustavo! Vi seu portfólio e gostaria de iniciar um projeto.'
+        ? "Hi Gustavo! I'd like to discuss a high-converting web or AI project."
+        : 'Olá Gustavo! Gostaria de conversar sobre um projeto de alta conversão.'
     );
 
-  return (
-    <section className="relative min-h-[90vh] pt-12 pb-20 overflow-hidden flex flex-col justify-center">
-      {/* Ambient background glows */}
-      <div className="glow-orange-top" />
-      <div className="glow-red-bottom" />
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
 
+  return (
+    <section id="hero" ref={containerRef as React.RefObject<HTMLElement>} className="relative min-h-[85vh] pt-12 pb-20 flex flex-col justify-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* LEFT COLUMN (Content & Copy) */}
-          <div className="lg:col-span-7 space-y-8 text-left">
-            {/* Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-              <span className="text-xs font-mono tracking-wide text-orange-300 uppercase font-semibold">
+          {/* LEFT COLUMN: Sales Copy & Conversion CTAs */}
+          <div className="lg:col-span-7 space-y-8 text-left gsap-child">
+            {/* Eyebrow Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30">
+              <span className="w-2 h-2 rounded-full bg-orange-500" />
+              <span className="text-xs font-mono tracking-wider text-orange-400 uppercase font-semibold">
                 {t.hero.eyebrow}
               </span>
             </div>
 
-            {/* Main H1 Title with TextMorph */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
+            {/* Main Sales Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
               <span>{t.hero.titleStart} </span>
               <span className="block mt-1 sm:inline-block">
                 <TextMorph
                   words={t.hero.morphWords}
                   interval={2800}
                   className="text-gradient-orange-gold font-black inline-flex"
-                  charClassName="drop-shadow-[0_0_25px_rgba(255,110,0,0.4)]"
                 />
               </span>
               <span className="block mt-1 text-zinc-300">{t.hero.titleEnd}</span>
@@ -56,86 +54,65 @@ export const Hero: React.FC<HeroProps> = ({ onNavigatePortfolio }) => {
               {t.hero.subtitle}
             </p>
 
-            {/* Two CTAs */}
+            {/* Conversion CTAs */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 hover:from-orange-600 hover:to-amber-600 text-black font-bold text-sm sm:text-base shadow-xl shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-[1.02] transition-all"
+                className="btn-shine inline-flex items-center gap-2 px-7 py-4 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-black font-bold text-sm sm:text-base shadow-xl shadow-orange-500/20 hover:scale-[1.02] transition-all"
               >
                 <MessageSquare className="w-5 h-5" />
                 <span>{t.hero.primaryCta}</span>
               </a>
 
               <button
-                onClick={onNavigatePortfolio}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-panel hover:bg-white/10 text-white border border-white/15 hover:border-orange-500/40 font-semibold text-sm sm:text-base transition-all group"
+                onClick={() => scrollToSection('work')}
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-full glass-card hover:bg-white/10 text-white font-semibold text-sm sm:text-base transition-all group"
               >
                 <span>{t.hero.secondaryCta}</span>
                 <ArrowRight className="w-4 h-4 text-orange-400 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
 
-            {/* 3-Column Micro Trust Strip */}
-            <div className="pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {t.hero.trustStrip.map((item, idx) => (
+            {/* 4-Metric Proof Bar */}
+            <div className="pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6">
+              {t.hero.proofBar.map((item, idx) => (
                 <div key={idx} className="space-y-1">
-                  <div className="flex items-center gap-1.5">
-                    {idx === 0 && <ShieldCheck className="w-3.5 h-3.5 text-orange-400" />}
-                    {idx === 1 && <Zap className="w-3.5 h-3.5 text-amber-400" />}
-                    {idx === 2 && <UserCheck className="w-3.5 h-3.5 text-yellow-400" />}
-                    <span className="text-[11px] font-mono font-bold tracking-wider text-orange-400 uppercase">
-                      {item.label}
-                    </span>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">
+                    <span className="text-gradient-orange-gold">{item.value}</span>
                   </div>
-                  <p className="text-xs text-zinc-400 leading-snug">{item.desc}</p>
+                  <div className="text-xs text-zinc-400 font-medium">{item.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* RIGHT COLUMN (Photo + Abstract Rim-Lit Tech Artwork) */}
+          {/* RIGHT COLUMN: Clean Developer Portrait */}
           <div className="lg:col-span-5 relative flex justify-center items-center">
-            <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl glass-panel p-3 border border-white/15 shadow-2xl overflow-hidden group">
-              
-              {/* Outer rim glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-tr from-orange-600 via-amber-500 to-red-600 rounded-3xl opacity-30 blur-xl group-hover:opacity-60 transition-opacity" />
-
-              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black/80">
-                {/* Developer Photo */}
+            <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl glass-card p-3 overflow-hidden border border-white/15 shadow-2xl">
+              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black">
+                {/* Clean Professional Developer Photo */}
                 <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80"
-                  alt="Gustavo - Web Developer & AI Automation Specialist"
-                  className="w-full h-full object-cover object-center filter grayscale brightness-90 contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80"
+                  alt="Gustavo Galvão - Web Developer & AI Automation Specialist"
+                  className="w-full h-full object-cover object-top filter contrast-105"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
 
-                {/* Orange/Red Rim Light Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent mix-blend-multiply opacity-80" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-orange-950/40 via-transparent to-red-950/30" />
-
-                {/* Floating Orbiting Tech Rings Overlay */}
-                <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-                  <div className="w-64 h-64 border border-orange-500/30 rounded-full animate-[spin_20s_linear_infinite] [transform:rotateX(60deg)_rotateY(20deg)]" />
-                  <div className="absolute w-56 h-56 border border-amber-400/30 rounded-full animate-[spin_15s_linear_infinite_reverse] [transform:rotateX(40deg)_rotateY(-30deg)]" />
-                  <div className="absolute w-48 h-48 border border-red-500/20 rounded-full animate-[spin_25s_linear_infinite] [transform:rotateX(75deg)_rotateY(10deg)]" />
-                </div>
-
-                {/* Floating Micro-Badge Top Left */}
-                <div className="absolute top-4 left-4 glass-panel px-3 py-1.5 rounded-full flex items-center gap-2 border border-white/20 shadow-lg">
-                  <Cpu className="w-4 h-4 text-orange-400 animate-pulse" />
-                  <span className="text-xs font-mono font-bold text-white tracking-wider">
-                    AI Automation
-                  </span>
-                </div>
-
-                {/* Floating Micro-Badge Bottom Right */}
-                <div className="absolute bottom-4 right-4 glass-panel px-3.5 py-2 rounded-xl border border-white/20 shadow-xl flex items-center gap-2">
-                  <Code2 className="w-4 h-4 text-amber-400" />
+                {/* Stat Badge Overlay 1 */}
+                <div className="absolute bottom-4 left-4 glass-card px-4 py-2.5 rounded-xl border border-white/15 flex items-center gap-3">
+                  <Award className="w-5 h-5 text-orange-400" />
                   <div>
-                    <span className="block text-xs font-mono text-zinc-400">Stack</span>
-                    <span className="block text-xs font-bold text-white">React · GSAP · AI</span>
+                    <span className="block text-xs font-bold text-white">Gustavo Galvão</span>
+                    <span className="block text-[11px] font-mono text-zinc-400">Senior Web & AI Dev</span>
                   </div>
+                </div>
+
+                {/* Stat Badge Overlay 2 */}
+                <div className="absolute top-4 right-4 glass-card px-3.5 py-1.5 rounded-full border border-white/15 flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <span className="text-xs font-mono font-bold text-emerald-300">Verified Specialist</span>
                 </div>
               </div>
             </div>

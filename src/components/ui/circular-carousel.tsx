@@ -22,8 +22,8 @@ export interface CircularCarouselProps {
 }
 
 const VISIBLE_COUNT = 5;
-const RADIUS_X = 220;
-const RADIUS_Y = 100;
+const RADIUS_X = 280;
+const RADIUS_Y = 110;
 
 function getItemPosition(index: number, activeIndex: number, total: number) {
   const offset = index - activeIndex;
@@ -41,8 +41,8 @@ function getItemPosition(index: number, activeIndex: number, total: number) {
 
   const distance = Math.abs(adjustedOffset);
   const maxDistance = half + 1;
-  const scale = Math.max(0, 1 - (distance / maxDistance) * 0.3);
-  const opacity = Math.max(0.3, 1 - (distance / maxDistance) * 0.7);
+  const scale = Math.max(0, 1 - (distance / maxDistance) * 0.25);
+  const opacity = Math.max(0.35, 1 - (distance / maxDistance) * 0.65);
   const zIndex = VISIBLE_COUNT - distance;
 
   return { x, y, scale, opacity, zIndex, adjustedOffset };
@@ -111,12 +111,12 @@ export function CircularCarousel({
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       className={cn(
-        "relative flex flex-col items-center justify-center gap-8 outline-none",
+        "relative flex flex-col items-center justify-center gap-10 outline-none my-4",
         className,
       )}
     >
       {/* Circular track */}
-      <div className="relative h-[280px] w-full max-w-lg">
+      <div className="relative h-[340px] w-full max-w-xl">
         <AnimatePresence mode="popLayout">
           {items.map((item, i) => {
             const pos = getItemPosition(i, activeIndex, total);
@@ -139,40 +139,40 @@ export function CircularCarousel({
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{
                   duration: 0.65,
-                  ease: [0.22, 1, 0.36, 1],
+                  ease: [0.22, 1, 0.36, 1] as const,
                 }}
                 onClick={() => goTo(i)}
                 aria-label={item.title}
                 aria-selected={isActive}
                 role="option"
                 className={cn(
-                  "absolute left-1/2 top-1/2 flex h-32 w-48 -translate-x-1/2 -translate-y-1/2 cursor-pointer flex-col items-start justify-between rounded-2xl border border-white/10 bg-gradient-to-b from-zinc-800/90 to-zinc-900/90 p-4 backdrop-blur-sm transition-shadow duration-300",
+                  "absolute left-1/2 top-1/2 flex h-40 w-60 sm:h-44 sm:w-72 -translate-x-1/2 -translate-y-1/2 cursor-pointer flex-col items-start justify-between rounded-3xl border p-5 backdrop-blur-md transition-all duration-300",
                   isActive
-                    ? "shadow-[0_20px_60px_-12px_rgba(255,85,0,0.3)] border-orange-500/50"
-                    : "shadow-[0_8px_24px_-4px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_32px_-4px_rgba(0,0,0,0.4)]",
+                    ? "bg-black/90 border-orange-500/60 shadow-[0_20px_50px_-10px_rgba(255,85,0,0.25)]"
+                    : "bg-zinc-900/80 border-white/10 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.4)] hover:border-white/25",
                 )}
                 style={{ transformOrigin: "center center" }}
               >
                 {item.tag && (
-                  <span className="rounded-full bg-orange-500/20 text-orange-300 border border-orange-500/30 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider">
+                  <span className="rounded-full bg-orange-500/20 text-orange-300 border border-orange-500/30 px-3 py-1 text-[11px] font-mono font-bold uppercase tracking-wider">
                     {item.tag}
                   </span>
                 )}
-                <div className="w-full text-left">
+                <div className="w-full text-left space-y-1">
                   <h3
                     className={cn(
-                      "font-semibold leading-tight transition-colors duration-300",
+                      "font-bold leading-tight transition-colors duration-300",
                       isActive
-                        ? "text-white text-base"
-                        : "text-white/80 text-sm",
+                        ? "text-white text-base sm:text-lg"
+                        : "text-white/80 text-sm sm:text-base",
                     )}
                   >
                     {item.title}
                   </h3>
                   <p
                     className={cn(
-                      "mt-1 line-clamp-2 text-xs leading-relaxed transition-colors duration-300",
-                      isActive ? "text-white/70" : "text-white/40",
+                      "line-clamp-2 text-xs sm:text-sm leading-relaxed transition-colors duration-300",
+                      isActive ? "text-zinc-300" : "text-zinc-400",
                     )}
                   >
                     {item.description}

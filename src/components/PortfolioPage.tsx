@@ -38,7 +38,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onBackHome }) => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {t.portfolioPage.projects.map((proj) => (
+          {t.portfolioPage.projects.map((proj: { id: string; image: string; title: string; category: string; desc: string; tags: string[]; linkText: string }) => (
             <div
               key={proj.id}
               className="glass-panel rounded-3xl border border-white/10 overflow-hidden hover:border-orange-500/40 transition-all duration-300 flex flex-col justify-between group shadow-xl"
@@ -70,7 +70,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onBackHome }) => {
 
                 <div className="space-y-4 pt-4 border-t border-white/10">
                   <div className="flex flex-wrap gap-1.5">
-                    {proj.tags.map((tag, idx) => (
+                    {proj.tags.map((tag: string, idx: number) => (
                       <span
                         key={idx}
                         className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-400"

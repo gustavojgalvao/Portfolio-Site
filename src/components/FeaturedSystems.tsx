@@ -108,7 +108,7 @@ export const FeaturedSystems: React.FC = () => {
         </div>
 
         {/* Circular Carousel Component */}
-        <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-white/10 shadow-2xl relative">
+        <div className="relative pt-4">
           <CircularCarousel items={items} autoPlayInterval={3500} />
         </div>
 
