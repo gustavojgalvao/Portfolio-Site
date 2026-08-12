@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { MessageSquare, Globe } from 'lucide-react';
+import { MessageSquare, Globe, ExternalLink } from 'lucide-react';
 
 interface NavbarProps {
-  currentRoute?: string;
+  currentRoute?: 'home' | 'portfolio';
   onNavigatePortfolio?: () => void;
   onNavigateHome?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
+  currentRoute = 'home',
+  onNavigatePortfolio,
   onNavigateHome,
 }) => {
   const { language, toggleLanguage, t } = useLanguage();
@@ -31,11 +33,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   const scrollToSection = (id: string) => {
-    if (onNavigateHome) onNavigateHome();
-    setTimeout(() => {
+    if (currentRoute === 'portfolio' && onNavigateHome) {
+      onNavigateHome();
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 50);
+    }
   };
 
   return (
@@ -47,26 +54,26 @@ export const Navbar: React.FC<NavbarProps> = ({
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Left: Logo */}
-        <button
-          onClick={() => scrollToSection('hero')}
-          className="flex items-center gap-3 group text-left focus:outline-none"
-        >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-black font-extrabold text-xl shadow-lg shadow-orange-500/20 group-hover:scale-105 transition-transform">
-            G
-          </div>
-          <div>
-            <span className="block text-base font-bold text-white tracking-tight group-hover:text-orange-400 transition-colors">
-              Gustavo Galvão
-            </span>
-            <span className="block text-[11px] font-mono text-zinc-400">
-              {t.nav.role}
-            </span>
-          </div>
-        </button>
+        {/* Left: Empty / Clean spacing as requested */}
+        <div className="flex items-center">
+          {currentRoute === 'portfolio' && onNavigateHome && (
+            <button
+              onClick={onNavigateHome}
+              className="text-xs font-mono text-zinc-400 hover:text-orange-400 transition-colors"
+            >
+              ← {language === 'en' ? 'Back to Landing Page' : 'Voltar para Início'}
+            </button>
+          )}
+        </div>
 
-        {/* Center: Anchor Links (Desktop) */}
+        {/* Center: Navigation Links */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
+          <button
+            onClick={() => scrollToSection('hero')}
+            className="hover:text-orange-400 transition-colors"
+          >
+            {language === 'en' ? 'Home' : 'Início'}
+          </button>
           <button
             onClick={() => scrollToSection('services')}
             className="hover:text-orange-400 transition-colors"
@@ -91,11 +98,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             {t.nav.about}
           </button>
+
+          {/* Full Portfolio Button */}
           <button
-            onClick={() => scrollToSection('faq')}
-            className="hover:text-orange-400 transition-colors"
+            onClick={onNavigatePortfolio}
+            className="text-orange-400 font-semibold hover:text-amber-300 transition-colors flex items-center gap-1"
           >
-            {t.nav.faq}
+            <span>{language === 'en' ? 'Full Portfolio' : 'Portfólio Completo'}</span>
+            <ExternalLink className="w-3.5 h-3.5" />
           </button>
         </nav>
 

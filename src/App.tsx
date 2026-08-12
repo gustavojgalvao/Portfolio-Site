@@ -34,12 +34,14 @@ export const AppContent: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black text-zinc-100 bg-dot-grid relative selection:bg-orange-500 selection:text-black">
-      {/* Navbar */}
-      <Navbar
-        currentRoute={route}
-        onNavigatePortfolio={handleNavigatePortfolio}
-        onNavigateHome={handleNavigateHome}
-      />
+      {/* Navbar rendered only on Home page */}
+      {route === 'home' && (
+        <Navbar
+          currentRoute={route}
+          onNavigatePortfolio={handleNavigatePortfolio}
+          onNavigateHome={handleNavigateHome}
+        />
+      )}
 
       {/* Main Sections */}
       <main>
@@ -58,13 +60,13 @@ export const AppContent: React.FC = () => {
             <FeaturedSystems />
 
             {/* Section 5: Case Studies & Delivered Systems */}
-            <CaseStudies />
+            <CaseStudies onNavigatePortfolio={handleNavigatePortfolio} />
 
             {/* Section 6: Transparent Pricing Packages */}
             <Pricing />
 
             {/* Section 7: About Me & Bio */}
-            <AboutMe />
+            <AboutMe onNavigatePortfolio={handleNavigatePortfolio} />
 
             {/* Section 8: FAQ & Objection Handling */}
             <FAQ />

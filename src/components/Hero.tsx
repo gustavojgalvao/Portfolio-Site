@@ -94,9 +94,9 @@ export const Hero: React.FC = () => {
               <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black">
                 {/* Clean Professional Developer Photo */}
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80"
-                  alt="Gustavo Galvão - Web Developer & AI Automation Specialist"
-                  className="w-full h-full object-cover object-top filter contrast-105"
+                  src="/fotoperfil.png"
+                  alt="Gustavo Galvão"
+                  className="w-full h-full object-cover filter contrast-105 group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
 

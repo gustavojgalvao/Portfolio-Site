@@ -1,8 +1,12 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Sparkles, Layers } from 'lucide-react';
 
-export const CaseStudies: React.FC = () => {
+interface CaseStudiesProps {
+  onNavigatePortfolio?: () => void;
+}
+
+export const CaseStudies: React.FC<CaseStudiesProps> = ({ onNavigatePortfolio }) => {
   const { language, t } = useLanguage();
 
   return (
@@ -23,8 +27,8 @@ export const CaseStudies: React.FC = () => {
           </p>
         </div>
 
-        {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* 3 Main Case Studies Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {t.caseStudies.items.map((cs) => (
             <div
               key={cs.id}
@@ -94,6 +98,23 @@ export const CaseStudies: React.FC = () => {
             </div>
           ))}
         </div>
+
+        {/* Explore Full Portfolio CTA Button */}
+        {onNavigatePortfolio && (
+          <div className="text-center">
+            <button
+              onClick={onNavigatePortfolio}
+              className="btn-shine inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-white/10 hover:bg-white/15 text-white border border-white/15 font-bold text-sm sm:text-base hover:border-orange-500/40 shadow-xl transition-all"
+            >
+              <Layers className="w-5 h-5 text-orange-400" />
+              <span>
+                {language === 'en'
+                  ? 'Explore All Projects in Full Portfolio →'
+                  : 'Explorar Todos os Projetos no Portfólio Completo →'}
+              </span>
+            </button>
+          </div>
+        )}
 
       </div>
     </section>
