@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useLoading } from '../context/LoadingContext';
 import { MessageSquare, Globe, ExternalLink } from 'lucide-react';
 
 interface NavbarProps {
@@ -14,7 +15,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   onNavigateHome,
 }) => {
   const { language, toggleLanguage, t } = useLanguage();
+  const { triggerLoading } = useLoading();
   const [scrolled, setScrolled] = useState(false);
+
+  const handleToggleLanguage = () => {
+    triggerLoading(() => {
+      toggleLanguage();
+    }, 3000);
+  };
 
   const whatsappUrl =
     'https://wa.me/WHATSAPP_NUMBER_PLACEHOLDER?text=' +
@@ -112,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Right: Language Switcher & WhatsApp CTA */}
         <div className="flex items-center gap-3 sm:gap-4">
           <button
-            onClick={toggleLanguage}
+            onClick={handleToggleLanguage}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-zinc-300 hover:text-white transition-all"
             aria-label="Toggle language"
           >
@@ -126,9 +134,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-shine flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-black font-bold text-xs sm:text-sm shadow-lg shadow-orange-500/20 hover:scale-105 transition-all"
+            className="btn-shine flex items-center gap-2 px-4 py-2.5 rounded-full bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-orange-500/20 hover:scale-105 transition-all"
           >
-            <MessageSquare className="w-4 h-4" />
+            <MessageSquare className="w-4 h-4 text-white" />
             <span>{t.nav.cta}</span>
           </a>
         </div>

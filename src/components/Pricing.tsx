@@ -45,7 +45,7 @@ export const Pricing: React.FC = () => {
                 {/* Popular Badge Ribbon */}
                 {isPopular && (
                   <div className="absolute top-0 right-0">
-                    <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-black text-[10px] font-mono font-extrabold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider block shadow-lg">
+                    <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white text-[10px] font-mono font-extrabold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider block shadow-lg">
                       {plan.badge}
                     </span>
                   </div>
@@ -88,11 +88,11 @@ export const Pricing: React.FC = () => {
                     rel="noopener noreferrer"
                     className={`btn-shine w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl font-bold text-sm transition-all ${
                       isPopular
-                        ? 'bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-black shadow-lg shadow-orange-500/20'
+                        ? 'bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white shadow-lg shadow-orange-500/20'
                         : 'bg-white/10 hover:bg-white/15 text-white border border-white/10'
                     }`}
                   >
-                    <MessageSquare className="w-4 h-4" />
+                    <MessageSquare className="w-4 h-4 text-white" />
                     <span>{plan.cta}</span>
                   </a>
                 </div>

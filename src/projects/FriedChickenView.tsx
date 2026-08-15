@@ -96,7 +96,7 @@ export const FriedChickenView: React.FC<ProjectViewProps> = ({ onClose }) => {
               onClick={() => setActiveCategory(cat)}
               className={`px-5 py-2.5 rounded-full text-xs font-mono font-bold transition-all ${
                 activeCategory === cat
-                  ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-black shadow-lg shadow-orange-500/20'
+                  ? 'bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white shadow-lg shadow-orange-500/20'
                   : 'glass-card border border-white/10 text-zinc-300 hover:text-white'
               }`}
             >
@@ -132,9 +132,9 @@ export const FriedChickenView: React.FC<ProjectViewProps> = ({ onClose }) => {
                 <span className="text-lg font-extrabold font-mono text-white">{item.price}</span>
                 <button
                   onClick={() => setCartCount((prev) => prev + 1)}
-                  className="px-4 py-2 rounded-xl bg-orange-500 hover:bg-orange-600 text-black font-bold text-xs flex items-center gap-1.5 transition-all"
+                  className="px-4 py-2 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs flex items-center gap-1.5 transition-all"
                 >
-                  <Check className="w-3.5 h-3.5" />
+                  <Check className="w-3.5 h-3.5 text-white" />
                   <span>Adicionar</span>
                 </button>
               </div>

@@ -92,9 +92,9 @@ export const HestusAiView: React.FC<ProjectViewProps> = ({ onClose }) => {
 
           <button
             onClick={handleSimulateAI}
-            className="btn-shine w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-black font-bold text-sm shadow-lg shadow-orange-500/20 hover:scale-[1.01] transition-all"
+            className="btn-shine w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white font-bold text-sm shadow-lg shadow-orange-500/20 hover:scale-[1.01] transition-all"
           >
-            <Zap className="w-4 h-4" />
+            <Zap className="w-4 h-4 text-white" />
             <span>Simular Pontuação do Lead com IA</span>
           </button>
 

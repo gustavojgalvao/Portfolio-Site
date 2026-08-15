@@ -52,7 +52,7 @@ export const Contact: React.FC = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={t.contact.namePlaceholder}
-                  className="w-full px-4 py-3.5 rounded-xl bg-black/60 border border-white/10 text-white text-sm placeholder-zinc-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all outline-none"
+                  className="w-full px-4 py-3.5 rounded-xl glass-input text-white text-sm placeholder-zinc-500 focus:border-orange-500 transition-all outline-none"
                 />
               </div>
 
@@ -68,7 +68,7 @@ export const Contact: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t.contact.emailPlaceholder}
-                  className="w-full px-4 py-3.5 rounded-xl bg-black/60 border border-white/10 text-white text-sm placeholder-zinc-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all outline-none"
+                  className="w-full px-4 py-3.5 rounded-xl glass-input text-white text-sm placeholder-zinc-500 focus:border-orange-500 transition-all outline-none"
                 />
               </div>
 
@@ -84,18 +84,18 @@ export const Contact: React.FC = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder={t.contact.messagePlaceholder}
-                  className="w-full px-4 py-3.5 rounded-xl bg-black/60 border border-white/10 text-white text-sm placeholder-zinc-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all outline-none resize-none"
+                  className="w-full px-4 py-3.5 rounded-xl glass-input text-white text-sm placeholder-zinc-500 focus:border-orange-500 transition-all outline-none resize-none"
                 />
               </div>
 
               {/* Submit CTA */}
               <button
                 type="submit"
-                className="btn-shine w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-black font-bold text-base shadow-xl shadow-orange-500/20 hover:scale-[1.01] transition-all"
+                className="btn-shine w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white font-bold text-base shadow-xl shadow-orange-500/20 hover:scale-[1.01] transition-all"
               >
-                <MessageSquare className="w-5 h-5" />
+                <MessageSquare className="w-5 h-5 text-white" />
                 <span>{t.contact.submitCta}</span>
-                <Send className="w-4 h-4 ml-1" />
+                <Send className="w-4 h-4 ml-1 text-white" />
               </button>
 
               <p className="text-center text-xs text-zinc-500 font-mono pt-2">

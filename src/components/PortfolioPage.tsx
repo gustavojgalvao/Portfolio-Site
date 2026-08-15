@@ -207,9 +207,9 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onBackHome }) => {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-shine inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-black font-bold text-sm shadow-xl shadow-orange-500/20 hover:scale-105 transition-all"
+                  className="btn-shine inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white font-bold text-sm shadow-xl shadow-orange-500/20 hover:scale-105 transition-all"
                 >
-                  <MessageSquare className="w-4 h-4" />
+                  <MessageSquare className="w-4 h-4 text-white" />
                   <span>{isPt ? 'Entre em Contato' : 'Get in Touch'}</span>
                 </a>
 
@@ -474,10 +474,10 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onBackHome }) => {
                   {proj.isInteractive ? (
                     <button
                       onClick={() => setActiveModal(proj.id)}
-                      className="btn-shine inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-black font-mono font-bold text-xs shadow-lg shadow-orange-500/20 hover:scale-[1.02] transition-all"
+                      className="btn-shine inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white font-mono font-bold text-xs shadow-lg shadow-orange-500/20 hover:scale-[1.02] transition-all"
                     >
                       <span>{isPt ? 'Abrir Projeto Interativo React' : 'Launch React Interactive App'}</span>
-                      <ArrowUpRight className="w-4 h-4" />
+                      <ArrowUpRight className="w-4 h-4 text-white" />
                     </button>
                   ) : (
                     <a
@@ -511,9 +511,9 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({ onBackHome }) => {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-shine inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-black font-bold text-base shadow-xl shadow-orange-500/20 hover:scale-105 transition-all"
+              className="btn-shine inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white font-bold text-base shadow-xl shadow-orange-500/20 hover:scale-105 transition-all"
             >
-              <MessageSquare className="w-5 h-5" />
+              <MessageSquare className="w-5 h-5 text-white" />
               <span>{isPt ? 'Iniciar Conversa no WhatsApp →' : 'Start Discussion on WhatsApp →'}</span>
             </a>
           </div>

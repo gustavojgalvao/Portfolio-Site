@@ -35,7 +35,7 @@ export const AboutMe: React.FC<AboutMeProps> = ({ onNavigatePortfolio }) => {
               <div>
                 <button
                   onClick={onNavigatePortfolio}
-                  className="btn-shine inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-black font-bold text-sm shadow-lg shadow-orange-500/20 hover:scale-105 transition-all group"
+                  className="btn-shine inline-flex items-center gap-2.5 px-7 py-4 rounded-full bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 text-white font-bold text-sm shadow-lg shadow-orange-500/20 hover:scale-105 transition-all group"
                 >
                   <span>
                     {language === 'en'

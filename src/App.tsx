@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
+import { LoadingProvider, useLoading } from './context/LoadingContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Comparison } from './components/Comparison';
@@ -15,6 +16,7 @@ import { Footer } from './components/Footer';
 
 export const AppContent: React.FC = () => {
   const [route, setRoute] = useState<'home' | 'portfolio'>('home');
+  const { triggerLoading } = useLoading();
 
   useEffect(() => {
     if (window.location.pathname === '/portfolio') {
@@ -23,13 +25,17 @@ export const AppContent: React.FC = () => {
   }, []);
 
   const handleNavigatePortfolio = () => {
-    setRoute('portfolio');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    triggerLoading(() => {
+      setRoute('portfolio');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 3000);
   };
 
   const handleNavigateHome = () => {
-    setRoute('home');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    triggerLoading(() => {
+      setRoute('home');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 3000);
   };
 
   return (
@@ -88,9 +94,12 @@ export const AppContent: React.FC = () => {
 export const App: React.FC = () => {
   return (
     <LanguageProvider>
-      <AppContent />
+      <LoadingProvider>
+        <AppContent />
+      </LoadingProvider>
     </LanguageProvider>
   );
 };
 
 export default App;
+
