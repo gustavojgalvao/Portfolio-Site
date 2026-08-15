@@ -88,8 +88,8 @@ export const FeaturedSystems: React.FC = () => {
   const items = language === 'en' ? itemsEn : itemsPt;
 
   return (
-    <section className="py-20 relative z-10 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+    <section className="py-24 relative z-10 overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-14">
         
         {/* Header */}
         <div className="space-y-4 max-w-2xl mx-auto">
@@ -102,13 +102,13 @@ export const FeaturedSystems: React.FC = () => {
           </h2>
           <p className="text-zinc-400 text-sm sm:text-base">
             {language === 'en'
-              ? 'Explore the interactive core components powering Gustavo’s digital solutions.'
+              ? 'Explore the interactive core components powering Gustavo\'s digital solutions.'
               : 'Explore os componentes centrais interativos das soluções digitais do Gustavo.'}
           </p>
         </div>
 
         {/* Circular Carousel Component */}
-        <div className="relative pt-4">
+        <div className="relative">
           <CircularCarousel items={items} autoPlayInterval={3500} />
         </div>
 
