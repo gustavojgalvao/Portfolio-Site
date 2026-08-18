@@ -156,9 +156,9 @@ const INDEPENDENT_IMAGES: Record<string, string> = {
   'fried-chicken': '/img/Fried-chicken.png',
   'hestus-ai': '/img/hestus.png',
   'devsclub-store': '/img/devsclub-store.png',
-  'nexus-studio': '/img/projeto2.png',
-  'cloudpulse-metrics': '/img/projeto1.png',
-  'aura-design-system': '/img/projeto3.png',
+  'lu-phellipo': '/img/projeto2.png',
+  'cebe-portal': '/img/projeto1.png',
+  promptbase: '/img/projeto3.png',
 };
 
 /* ── Main Component ─────────────────────────────────────────── */
