@@ -1,70 +1,91 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { ChevronDown, Sparkles, HelpCircle } from 'lucide-react';
+import { useGsapReveal } from '../hooks/useGsapReveal';
+import { Plus, Minus } from 'lucide-react';
 
 export const FAQ: React.FC = () => {
   const { t } = useLanguage();
-  const [openIdx, setOpenIdx] = useState<number | null>(0);
-
-  const toggleAccordion = (idx: number) => {
-    setOpenIdx((prev) => (prev === idx ? null : idx));
-  };
+  const containerRef = useGsapReveal({ y: 40, duration: 0.9, stagger: 0.1 });
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 relative z-10">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
-        <div className="text-center space-y-4 mb-16">
-          <div className="section-badge mx-auto">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>{t.faq.badge}</span>
+    <section
+      id="faq"
+      ref={containerRef as React.RefObject<HTMLElement>}
+      className="relative py-28 px-4 sm:px-6 lg:px-8 bg-[#050505] overflow-hidden"
+    >
+      {/* Ambient glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden="true"
+        style={{
+          background:
+            'radial-gradient(ellipse 50% 40% at 50% 0%, rgba(232,100,47,0.05) 0%, transparent 70%)',
+        }}
+      />
+
+      <div className="max-w-2xl mx-auto relative z-10">
+        {/* Heading */}
+        <div className="text-center mb-12 gsap-child">
+          <div className="section-badge inline-flex mb-5">
+            {t.faq.eyebrow}
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          <h2
+            className="text-3xl sm:text-4xl font-extrabold text-white"
+            style={{ letterSpacing: '-0.025em' }}
+          >
             {t.faq.title}
           </h2>
-          <p className="text-zinc-400 text-base sm:text-lg">
-            {t.faq.subtitle}
-          </p>
         </div>
 
-        {/* Accordion List */}
-        <div className="space-y-4">
-          {t.faq.items.map((item, idx) => {
-            const isOpen = openIdx === idx;
-
-            return (
-              <div
-                key={idx}
-                className="glass-card rounded-2xl border border-white/10 overflow-hidden transition-all duration-300"
+        {/* FAQ items */}
+        <div className="space-y-3 gsap-child">
+          {t.faq.items.map((item, i) => (
+            <div
+              key={i}
+              className="glass-feature overflow-hidden"
+              itemScope
+              itemType="https://schema.org/Question"
+            >
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                className="w-full flex items-start justify-between gap-4 px-6 py-5 text-left"
+                aria-expanded={open === i}
               >
-                <button
-                  onClick={() => toggleAccordion(idx)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none"
+                <span
+                  className="text-[15px] font-semibold text-white leading-snug"
+                  style={{ letterSpacing: '-0.01em' }}
+                  itemProp="name"
                 >
-                  <div className="flex items-center gap-3">
-                    <HelpCircle className="w-4 h-4 text-orange-400 shrink-0" />
-                    <span className="text-base sm:text-lg font-bold text-white">
-                      {item.question}
-                    </span>
-                  </div>
-                  <ChevronDown
-                    className={`w-5 h-5 text-zinc-400 transition-transform duration-300 shrink-0 ${
-                      isOpen ? 'rotate-180 text-orange-400' : ''
-                    }`}
-                  />
-                </button>
+                  {item.question}
+                </span>
+                <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full border border-white/15 flex items-center justify-center">
+                  {open === i ? (
+                    <Minus className="w-3 h-3 text-[#FFC069]" />
+                  ) : (
+                    <Plus className="w-3 h-3 text-zinc-400" />
+                  )}
+                </span>
+              </button>
 
-                {isOpen && (
-                  <div className="px-6 pb-6 pt-0 border-t border-white/5 text-zinc-300 text-sm leading-relaxed">
-                    <p className="pt-4">{item.answer}</p>
-                  </div>
-                )}
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  open === i ? 'max-h-60' : 'max-h-0'
+                }`}
+                itemScope
+                itemType="https://schema.org/Answer"
+                itemProp="acceptedAnswer"
+              >
+                <p
+                  className="px-6 pb-5 text-sm text-zinc-400 leading-relaxed"
+                  itemProp="text"
+                >
+                  {item.answer}
+                </p>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
-
       </div>
     </section>
   );

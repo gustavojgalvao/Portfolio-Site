@@ -5,13 +5,10 @@ export const Footer: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="py-12 border-t border-white/10 relative z-10 text-center space-y-2">
-      <div className="max-w-7xl mx-auto px-4">
-        <p className="text-xs font-mono text-zinc-400 tracking-wide">
+    <footer className="border-t border-white/6 bg-[#050505] py-8 px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto flex items-center justify-center">
+        <p className="text-[11px] font-mono text-zinc-600 text-center">
           {t.footer.copyright}
-        </p>
-        <p className="text-[11px] font-mono text-zinc-500">
-          {t.footer.tagline}
         </p>
       </div>
     </footer>
