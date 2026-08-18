@@ -149,16 +149,23 @@ const TerminalMockup: React.FC = () => (
   </div>
 );
 
-/* ── High-Res Image Mapping for Independent Projects ────────── */
+/* ── High-Res Image Mapping for Projects ────────────────────── */
+
+const CLIENT_IMAGES: Record<string, string> = {
+  g2odonto: '/img/lentesdecontatodental.png',
+  tualupa71: '/img/devsclub-store.png',
+  'ac-joias': '/img/LuPhellipo.png',
+};
 
 const INDEPENDENT_IMAGES: Record<string, string> = {
-  brl2go: '/img/Conversor de Moedas em tempo real.png',
+  brl2go: '/img/BRL2GO.png',
   'fried-chicken': '/img/Fried-chicken.png',
   'hestus-ai': '/img/hestus.png',
   'devsclub-store': '/img/devsclub-store.png',
-  'lu-phellipo': '/img/projeto2.png',
-  'cebe-portal': '/img/projeto1.png',
-  promptbase: '/img/projeto3.png',
+  'lu-phellipo': '/img/LuPhellipo.png',
+  'cebe-portal': '/img/CEBEPortal.png',
+  promptbase: '/img/PromptBase.png',
+  sorrisoperfeito: '/img/sorrisoPerfeito.png',
 };
 
 /* ── Main Component ─────────────────────────────────────────── */
@@ -279,7 +286,22 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                 >
                   {/* Visual */}
                   <div className="p-5 pb-0">
-                    <Visual />
+                    {CLIENT_IMAGES[project.id] ? (
+                      <div className="w-full h-44 sm:h-52 rounded-2xl overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-500 border border-white/10 bg-black/40 shadow-inner">
+                        <img
+                          src={CLIENT_IMAGES[project.id]}
+                          alt={project.title}
+                          className="w-full h-full object-cover object-top"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
+                        <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-[10px] font-mono font-semibold text-[#FFC069]">
+                          CLIENT WORK
+                        </div>
+                      </div>
+                    ) : (
+                      <Visual />
+                    )}
                   </div>
 
                   {/* Content */}

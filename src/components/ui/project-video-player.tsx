@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Play, Pause, Volume2, VolumeX, Maximize2, Sparkles, Eye } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Maximize2, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface ProjectVideoPlayerProps {
@@ -74,7 +74,7 @@ export const ProjectVideoPlayer: React.FC<ProjectVideoPlayerProps> = ({
             muted={isMuted}
             playsInline
             onTimeUpdate={handleTimeUpdate}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain bg-[#060608]"
           />
         ) : (
           <div className="relative w-full h-full">
