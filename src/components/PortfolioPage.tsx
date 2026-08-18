@@ -289,7 +289,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                     <div className="space-y-3">
                       <div>
                         <span className="text-[10px] font-mono font-semibold text-[#FFC069] uppercase tracking-wider">
-                          Challenge —{' '}
+                          Challenge:{' '}
                         </span>
                         <span className="text-sm text-zinc-400 leading-relaxed">
                           {project.challenge}
@@ -297,7 +297,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                       </div>
                       <div>
                         <span className="text-[10px] font-mono font-semibold text-[#E8642F] uppercase tracking-wider">
-                          Solution —{' '}
+                          Solution:{' '}
                         </span>
                         <span className="text-sm text-zinc-300 leading-relaxed">
                           {project.solution}

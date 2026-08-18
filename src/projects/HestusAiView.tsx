@@ -41,7 +41,7 @@ export const HestusAiView: React.FC<ProjectViewProps> = ({ onClose }) => {
             AUTOMAÇÃO B2B PARA PMEs
           </div>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Hestus AI — Plataforma de Automação
+            Hestus AI · Plataforma de Automação
           </h1>
           <p className="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
             Solução de agentes de Inteligência Artificial para automação de atendimento, triagem de leads e fluxos de CRM.
@@ -68,8 +68,8 @@ export const HestusAiView: React.FC<ProjectViewProps> = ({ onClose }) => {
                 onChange={(e) => setBudget(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/10 text-white text-sm font-mono outline-none"
               >
-                <option value="1k-5k">R$ 1.000 — R$ 5.000</option>
-                <option value="5k-10k">R$ 5.000 — R$ 10.000</option>
+                <option value="1k-5k">R$ 1.000 a R$ 5.000</option>
+                <option value="5k-10k">R$ 5.000 a R$ 10.000</option>
                 <option value="10k+">Acima de R$ 10.000</option>
               </select>
             </div>

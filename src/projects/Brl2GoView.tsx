@@ -51,7 +51,7 @@ export const Brl2GoView: React.FC<ProjectViewProps> = ({ onClose }) => {
         {/* Hero Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            BRL2GO — Conversor de Moedas
+            BRL2GO · Conversor de Moedas
           </h1>
           <p className="text-zinc-400 text-sm sm:text-base">
             Aplicação em React para conversão de taxas de câmbio em tempo real com interface moderna e responsiva.

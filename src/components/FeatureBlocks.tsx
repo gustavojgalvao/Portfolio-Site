@@ -133,7 +133,7 @@ const CRMMockup: React.FC = () => (
     <div className="p-5 space-y-3">
       {[
         { from: 'lead', text: 'Hi, I need help with my dental clinic website.' },
-        { from: 'ai', text: '👋 Got it! What\'s your main goal — more patients, or a digital rebrand?' },
+        { from: 'ai', text: "👋 Got it! What's your main goal: more patients or a complete rebrand?" },
         { from: 'lead', text: 'Both, ideally. What does the plan include?' },
         { from: 'ai', text: '✅ Booking you in for a 15-min call with Gustavo.' },
       ].map(({ from, text }, i) => (

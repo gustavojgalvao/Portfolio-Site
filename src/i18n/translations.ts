@@ -24,12 +24,20 @@ export interface Translations {
   planOverview: {
     eyebrow: string;
     title: string;
-    groups: {
-      name: string;
-      items: {
-        title: string;
-        desc: string;
-      }[];
+    subtitle: string;
+    heroCard: {
+      tag: string;
+      title: string;
+      desc: string;
+      bullets: string[];
+      statLabel: string;
+      statValue: string;
+    };
+    bentoCards: {
+      tag: string;
+      title: string;
+      desc: string;
+      bullets: string[];
     }[];
     footnote: string;
     cta: string;
@@ -37,6 +45,7 @@ export interface Translations {
   comparison: {
     eyebrow: string;
     title: string;
+    subtitle: string;
     agencyTitle: string;
     gustavoTitle: string;
     rows: {
@@ -66,11 +75,7 @@ export interface Translations {
       num: string;
       timeframe: string;
       title: string;
-      subtitle: string;
-      desc: string;
-      deliverables: string[];
-      highlight: string;
-      tags: string[];
+      bullets: string[];
     }[];
   };
   about: {
@@ -132,6 +137,7 @@ export interface Translations {
 }
 
 export const translations: Record<Language, Translations> = {
+  // ─── ENGLISH ─────────────────────────────────────────────────
   en: {
     nav: {
       tagline: 'Web · AI · Marketing',
@@ -140,302 +146,304 @@ export const translations: Record<Language, Translations> = {
       langToggle: 'PT',
     },
     hero: {
-      eyebrow: 'ONE MONTHLY PLAN · MANAGED BY ME DIRECTLY',
-      titleStart: 'Your Business Growth,',
-      morphWords: ['React Systems', 'AI Automation', 'Growth Engines', 'AI-Powered CRM'],
-      titleEnd: 'Handled End-to-End.',
+      eyebrow: 'ONE FLAT MONTHLY PLAN. MANAGED DIRECTLY.',
+      titleStart: 'Complete digital growth.',
+      morphWords: ['React Systems', 'AI Automation', 'Growth Engines', 'AI CRM Setup'],
+      titleEnd: 'Built and managed by one person.',
       subtitle:
-        'I build and manage your website, SEO/GEO, Google Business Profile, social media, paid traffic, and a custom AI-powered CRM — as one monthly plan, run by me directly.',
-      primaryCta: 'Book a Call →',
+        'I build your site, run your Google presence, launch paid traffic, and deploy a custom AI CRM. All in one simple monthly plan with direct WhatsApp access.',
+      primaryCta: 'Book a Call on WhatsApp',
       secondaryCta: 'Explore Portfolio',
       trustStrip: [
-        { label: 'DIRECT ACCESS', desc: 'You talk to the person running it all — no account managers.' },
-        { label: 'ONE MONTHLY PLAN', desc: 'Every channel, every tool, managed under one roof.' },
-        { label: 'AI-NATIVE WORKFLOW', desc: 'Built with AI from day one — not bolted onto legacy tools.' },
+        { label: 'DIRECT ACCESS', desc: 'Direct WhatsApp communication with the builder.' },
+        { label: 'FIXED MONTHLY RATE', desc: 'Zero hidden fees. Clear monthly pricing.' },
+        { label: 'AI NATIVE STACK', desc: 'Automations wired in from day one.' },
       ],
-      techStack: ['React · Next.js', 'Tailwind CSS', 'GSAP', 'AI Agents & Automation', 'SEO / GEO'],
+      techStack: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'AI Agents', 'Google Ads', 'Local SEO'],
     },
     planOverview: {
-      eyebrow: 'WHAT\'S INCLUDED',
-      title: 'Everything your business needs to grow online, in one monthly plan.',
-      groups: [
+      eyebrow: "WHAT'S INCLUDED",
+      title: 'Everything you need to grow online.',
+      subtitle: 'One monthly plan. No agency overhead. No fragmented freelancers.',
+      heroCard: {
+        tag: 'CORE FOUNDATION',
+        title: 'Custom Website and Web Systems',
+        desc: 'A modern website coded from scratch. Ultra fast loading, optimized mobile UX, clean animations, and direct WhatsApp conversion pathways.',
+        bullets: [
+          'Hand-coded React and TypeScript architecture',
+          '95+ Google PageSpeed score and sub-second load times',
+          'Domain connection, SSL certification, and cloud hosting',
+          'Continuous code updates and maintenance included',
+        ],
+        statLabel: 'PERFORMANCE SCORE',
+        statValue: '99/100',
+      },
+      bentoCards: [
         {
-          name: 'Presence & Authority',
-          items: [
-            { title: 'Premium Website', desc: 'A high-conversion site, designed and built for you.' },
-            { title: 'Instagram', desc: 'Content and positioning that build real authority.' },
-            { title: 'Google Business Profile', desc: 'Optimized so local and search customers find you first.' },
+          tag: 'LOCAL & AI SEARCH',
+          title: 'SEO and Generative Search (GEO)',
+          desc: 'Get found where customers search. Google ranking and AI answer citations.',
+          bullets: [
+            'Google Business Profile setup and local ranking',
+            'Structuring data so ChatGPT and Perplexity recommend you',
+            'Keyword tracking and monthly search visibility updates',
           ],
         },
         {
-          name: 'Visibility & Growth',
-          items: [
-            { title: 'SEO & GEO', desc: 'Visibility on Google and on AI search/answer engines.' },
-            { title: 'Paid Traffic', desc: 'Campaigns managed for you, tied to real conversion goals.' },
-            { title: 'Organic Traffic', desc: 'Content and structure that keep earning visibility.' },
+          tag: 'AUTOMATION & PIPELINE',
+          title: 'Custom AI CRM and Lead Triage',
+          desc: 'Instant lead qualification on WhatsApp. No rented tool fees.',
+          bullets: [
+            'Automated 24/7 lead qualification and booking assistant',
+            'Direct WhatsApp notifications when a qualified lead arrives',
+            'Full database ownership with zero third-party software cost',
           ],
         },
         {
-          name: 'Operations & Intelligence',
-          items: [
-            { title: 'AI-Powered CRM', desc: 'My own proprietary tool — organizing leads and follow-ups.' },
-            { title: 'Performance Tracking', desc: 'One dashboard showing what\'s actually working.' },
+          tag: 'ACQUISITION',
+          title: 'Targeted Traffic and Content',
+          desc: 'Reaching active buyers through paid and organic channels.',
+          bullets: [
+            'Google Ads setup targeting high-intent local keywords',
+            'Meta Ads campaigns for brand authority and remarketing',
+            'Conversion tracking with Google Analytics 4 and Meta Pixel',
           ],
         },
       ],
-      footnote: 'No à la carte pricing, no add-on negotiations — one plan, everything managed by me.',
-      cta: 'Book a Call →',
+      footnote: 'No hourly billing. No surprise invoices. One flat plan managed directly.',
+      cta: 'Get Started with One Plan',
     },
     comparison: {
-      eyebrow: 'WHY WORK DIRECTLY WITH ME',
-      title: 'Traditional Agency vs. Gustavo — Direct',
+      eyebrow: 'WHY CHOOSE DIRECT',
+      title: 'Traditional Agencies vs. Working With Me',
+      subtitle: 'Compare speed, communication, and real engineering quality.',
       agencyTitle: 'Traditional Agency',
-      gustavoTitle: 'Gustavo — Direct',
+      gustavoTitle: 'Gustavo (Direct)',
       rows: [
         {
           feature: 'Execution',
-          agency: 'Passed through account teams',
-          gustavo: 'Built by the same person you talk to',
+          agency: 'Passed through account managers and juniors',
+          gustavo: 'Built by the exact same engineer you talk to',
         },
         {
           feature: 'Communication',
-          agency: 'Layers of handoffs and delays',
-          gustavo: 'Direct 1-on-1 via WhatsApp',
+          agency: 'Ticket queues, emails, and multi-day delays',
+          gustavo: 'Direct 1-on-1 access via WhatsApp',
         },
         {
-          feature: 'Pricing Structure',
-          agency: 'High retainers, hidden fees',
-          gustavo: 'One flat monthly plan, transparent',
+          feature: 'Pricing Model',
+          agency: 'High retainers, hourly rates, and add-on fees',
+          gustavo: 'One transparent monthly plan with zero surprises',
         },
         {
-          feature: 'Speed',
-          agency: 'Slowed by internal process',
-          gustavo: 'Lean by design — one person, no bottlenecks',
+          feature: 'Delivery Speed',
+          agency: 'Slowed down by internal approval meetings',
+          gustavo: 'Fast, iterative delivery without corporate bottlenecks',
         },
         {
-          feature: 'AI & Automation',
-          agency: 'Bolted onto legacy tools',
-          gustavo: 'Built AI-native from day one',
+          feature: 'AI and Automation',
+          agency: 'Glued on top of expensive legacy SaaS',
+          gustavo: 'Native AI agents and custom-built CRM included',
         },
       ],
     },
     featureBlocks: {
-      eyebrow: 'THE PLAN IN DETAIL',
+      eyebrow: 'IN-DEPTH LOOK',
       blocks: [
         {
-          title: 'A Premium Presence, Everywhere Clients Look',
-          copy: 'A high-conversion website, an Instagram that actually builds authority, and a Google Business Profile optimized so local customers find you first. Built around UI/UX, modern layouts, fluid animations, and frictionless checkout.',
-          visualAlt: 'Premium website interface mockup with modern UI blocks',
+          title: 'A High-End Presence on Every Channel',
+          copy: 'A bespoke website, an authority-building profile, and an optimized Google local presence. Built with fluid micro-interactions and frictionless checkout.',
+          visualAlt: 'Website interface mockup with modern UI blocks',
         },
         {
-          title: 'Growth Marketing — SEO, GEO & Full-Funnel Traffic',
-          copy: 'Visibility where buyers actually look — ranked on Google, referenced by AI search engines (GEO), and reached through both paid campaigns and organic content, all built around real conversion funnels.',
-          visualAlt: 'Analytics and growth chart dashboard mockup',
+          title: 'Search Ranking and AI Citations',
+          copy: 'Rank where your buyers search. Optimized for traditional Google results and referenced by AI tools like ChatGPT and Perplexity.',
+          visualAlt: 'Search and growth analytics interface mockup',
         },
         {
-          title: 'AI-Powered CRM & Performance Tracking',
-          copy: 'My own CRM, built in-house — not a rented tool. An AI agent handles lead triage, follow-ups, and client communication, while one dashboard tracks what\'s actually driving revenue — included in your plan at no extra cost.',
-          visualAlt: 'AI CRM dashboard interface mockup with chat automation flow',
+          title: 'Custom AI CRM and Automated Follow-Ups',
+          copy: 'My proprietary CRM built in-house. An AI agent qualifies leads 24/7 and coordinates appointments while you focus on operations.',
+          visualAlt: 'AI CRM dashboard interface mockup',
         },
       ],
     },
     portfolioTeaser: {
-      heading: 'Explore My Work',
-      subtitle: "A closer look at the platforms and systems I've shipped.",
-      cta: 'See the Portfolio →',
+      heading: 'Selected Work and Lab Projects',
+      subtitle: 'Explore the applications, systems, and platforms I have shipped.',
+      cta: 'View Portfolio',
     },
     process: {
       eyebrow: 'HOW IT WORKS',
-      title: 'From first call to continuous growth.',
-      subtitle: 'A structured, predictable 5-step process designed to launch fast and iterate continuously — handled directly by me with no middlemen.',
+      title: 'Five simple steps to continuous growth.',
+      subtitle: 'A lean, straightforward process from initial call to ongoing management.',
       steps: [
         {
           num: '01',
           timeframe: 'Days 1–3',
-          title: 'Discovery & Strategic Blueprint',
-          subtitle: 'Mapping bottlenecks & defining the exact technical architecture',
-          desc: 'We start with a comprehensive 1-on-1 strategic deep-dive. I evaluate your current digital assets, competitor landscape, and conversion bottlenecks to create a bespoke roadmap tailored to your specific market and revenue goals.',
-          deliverables: [
-            '30–45 min 1-on-1 strategic alignment session',
-            'Full audit of existing website, SEO & Google Business Profile',
-            'Competitor positioning & keyword discovery',
-            'Tailored technical architecture & CRM workflow blueprint',
+          title: 'Discovery and Strategy',
+          bullets: [
+            'Direct 30-minute alignment call to map your business needs',
+            'Audit of current website, local SEO, and conversion bottlenecks',
+            'Definition of target traffic channels and growth goals',
           ],
-          highlight: 'Deliverable: Strategic Growth Blueprint & Scope Map',
-          tags: ['Strategy', 'Audit', 'Architecture', '1-on-1 Call'],
         },
         {
           num: '02',
           timeframe: 'Days 4–5',
-          title: 'Agreement & Frictionless Onboarding',
-          subtitle: 'Clear scope, fixed transparent pricing, zero delays',
-          desc: 'Once we agree on the scope, we formalize the single monthly plan with complete price transparency. We set up our dedicated WhatsApp direct channel and gather your brand assets via a secure, streamlined checklist.',
-          deliverables: [
-            'Fixed-price agreement with no hidden retainers or surprise fees',
-            'Direct 1-on-1 WhatsApp communication hub established',
-            'Streamlined brand asset & credentials handover checklist',
-            'Dedicated workspace & tracking infrastructure initialized',
+          title: 'Onboarding and Setup',
+          bullets: [
+            'Agreement formalized with zero hidden fees',
+            'Direct WhatsApp workspace established',
+            'Simple checklist to gather brand assets and credentials',
           ],
-          highlight: 'Deliverable: Dedicated WhatsApp Hub & Initialized Workspace',
-          tags: ['Onboarding', 'Direct Access', 'Asset Gathering', 'Setup'],
         },
         {
           num: '03',
           timeframe: 'Weeks 2–3',
-          title: 'Custom Build & AI Integration',
-          subtitle: 'Clean-code development with AI automations & tracking from day one',
-          desc: 'I develop your high-converting website from the ground up using modern React and TypeScript. Simultaneously, I configure your custom AI CRM, wire lead triage webhooks, and implement comprehensive analytics instrumentation.',
-          deliverables: [
-            'Custom high-conversion website (90+ Lighthouse score, ultra-fast mobile)',
-            'Proprietary AI CRM configured with auto-qualification prompts',
-            'Generative Engine Optimization (GEO) & on-page technical SEO',
-            'Conversion tracking: Google Analytics 4, Meta Pixel & event triggers',
+          title: 'Build and AI Deployment',
+          bullets: [
+            'Coding the custom site with React and TypeScript',
+            'Setting up your AI CRM and automated lead triage',
+            'Wiring Google Analytics 4, Meta Pixel, and event tracking',
           ],
-          highlight: 'Deliverable: Staging Preview & Automated CRM Ready for Testing',
-          tags: ['React · TypeScript', 'AI CRM', 'SEO / GEO', 'GA4 & Pixels'],
         },
         {
           num: '04',
           timeframe: 'Week 4',
-          title: 'Launch & Full-Funnel Activation',
-          subtitle: 'Domain cutover, ad campaigns live, lead capture active',
-          desc: 'We conduct a seamless domain DNS cutover with zero downtime and SSL certification. The Google Business Profile is verified and optimized, paid ad campaigns go live, and real-time lead capture begins flowing directly into your CRM.',
-          deliverables: [
-            'Zero-downtime DNS deployment with global SSL/CDN acceleration',
-            'Google Business Profile overhaul & local search verification',
-            'Targeted paid traffic launch (Google Search & Meta remarketing)',
-            'End-to-end testing of WhatsApp triggers, forms & webhook alerts',
+          title: 'Launch and Traffic Activation',
+          bullets: [
+            'Zero-downtime domain switch and SSL deployment',
+            'Google Business Profile verification and launch',
+            'Paid ad campaigns activated and lead flow live',
           ],
-          highlight: 'Deliverable: Live Production Platform & Synchronized Campaigns',
-          tags: ['Zero-Downtime Launch', 'Google Business', 'Paid Ads', 'Live Leads'],
         },
         {
           num: '05',
-          timeframe: 'Ongoing · Monthly',
-          title: 'Ongoing Management & Iterative Growth',
-          subtitle: 'Continuous SEO/GEO tracking, traffic optimization, and CRM evolution',
-          desc: 'Your growth doesn\'t stop at launch. Every single month, I track search rankings, optimize ad spend to lower customer acquisition cost, update website content, and refine your AI agent — keeping your entire digital machine ahead of competitors.',
-          deliverables: [
-            'Continuous SEO & GEO monitoring for Google and AI answer engines',
-            'Weekly ad campaign budget & conversion rate optimization',
-            'AI CRM prompt updates and automated follow-up hygiene',
-            'Transparent monthly growth report & proactive strategy reviews',
+          timeframe: 'Monthly',
+          title: 'Continuous Management',
+          bullets: [
+            'Ongoing SEO and GEO search position monitoring',
+            'Weekly ad spend and conversion rate optimization',
+            'Continuous website updates and direct WhatsApp support',
           ],
-          highlight: 'Deliverable: Monthly Performance Reports & Proactive Iterations',
-          tags: ['Growth Loops', 'GEO Optimization', 'Ad Scaling', 'Direct Support'],
         },
       ],
     },
     about: {
       eyebrow: 'ABOUT ME',
-      title: 'Who\'s running the plan.',
-      bio: "I'm Gustavo — a full-stack developer and Computer Science student at Jorge Amado University, Brazil, working as a freelancer since 2025 building websites, landing pages, and AI-powered systems. Before that, I co-founded a marketing & technology venture where I handled client acquisition, SEO, Google Business Profile, and CRM setup for a real dental clinic client — so I've seen this from the business side, not just the code side. I build fast because I build AI-native, and I still personally handle every plan I take on.",
+      title: 'The engineer behind your plan.',
+      bio: "I am Gustavo, a full-stack developer and Computer Science student at Jorge Amado University, Brazil. I have been building websites and AI-powered automation systems as an independent engineer. Previously, I co-founded a marketing and tech operation where I ran client acquisition, local SEO, and CRM deployments for dental clinics. I build fast, write clean code, and personally manage every client plan.",
       facts: [
         { label: 'Location', value: 'Brazil (Global Remote)' },
-        { label: 'Languages', value: 'Portuguese (native) · English (intermediate/advanced)' },
+        { label: 'Languages', value: 'Portuguese (native) · English (fluent)' },
       ],
     },
     faq: {
-      eyebrow: 'FREQUENTLY ASKED QUESTIONS',
-      title: 'Straight answers.',
+      eyebrow: 'FAQ',
+      title: 'Straightforward answers.',
       items: [
         {
-          question: 'How does the plan work?',
-          answer: "It's one monthly plan covering your website, marketing, and CRM — agreed after a short call where I map your business needs and give you a fixed price. No hourly billing, no surprise invoices.",
+          question: 'How does the monthly plan work?',
+          answer:
+            'It is one fixed monthly rate covering your website, marketing, and custom AI CRM. We agree on the scope after a short discovery call. No hourly bills. No surprise add-on charges.',
         },
         {
-          question: 'Are you an agency or a solo developer?',
-          answer: 'I work solo, by design. You talk directly to the person building your plan — no account managers, no handoffs between teams.',
+          question: 'Are you an agency or a solo engineer?',
+          answer:
+            'I work solo by design. You communicate directly with the person writing your code and managing your growth. No account managers.',
         },
         {
-          question: 'Do you work with international, English-speaking clients?',
-          answer: "Yes — I build and communicate in English, and I'm currently expanding my work with clients in the US, Europe, and LatAm.",
+          question: 'Do you work with international clients?',
+          answer:
+            'Yes. I build and communicate fluently in English, working with clients across the US, Europe, and Latin America.',
         },
         {
           question: 'What is Generative Engine Optimization (GEO)?',
-          answer: "It's the practice of structuring your content so AI tools like ChatGPT and Perplexity reference and recommend your business, the same way SEO optimizes for Google.",
+          answer:
+            'It is the technical practice of structuring your website so AI platforms like ChatGPT and Perplexity cite and recommend your business, alongside standard Google SEO.',
         },
         {
-          question: 'What happens after I book a call?',
-          answer: 'We talk through your business and goals, I map out what the plan looks like for you specifically, and you get a clear proposal.',
+          question: 'What happens after I reach out?',
+          answer:
+            'We chat on WhatsApp, schedule a quick 20-minute call to understand your goals, and I provide a clear plan proposal.',
         },
       ],
     },
     finalCta: {
-      tagline: 'Take the short way.',
-      title: 'One plan. Everything\nyour business needs online.',
-      subtitle: "Book a short call to see if it's the right fit — no pressure, no long pitch, just a straight conversation about your business.",
-      cta: 'Book a Call on WhatsApp →',
+      tagline: 'DIRECT ENGINEERING.',
+      title: 'One plan. Everything your business needs online.',
+      subtitle: 'Send a message on WhatsApp. Let us talk through your goals without long pitches or sales pressure.',
+      cta: 'Chat on WhatsApp',
     },
     footer: {
-      copyright: '© 2026 Gustavo — Web Development, AI Automation & Digital Marketing.',
+      copyright: '© 2026 Gustavo. Web Development, AI Automation and Growth.',
     },
     portfolioPage: {
-      title: 'Selected Works',
-      subtitle: "A few of the systems I've designed, built, and put into production.",
+      title: 'Selected Work',
+      subtitle: 'Production systems, client platforms, and software experiments.',
       group1Label: 'Client Work',
-      group1Desc: 'Real freelance projects built for clients.',
+      group1Desc: 'Real freelance projects built for businesses.',
       group2Label: 'Independent Builds',
-      group2Desc: 'Personal and practice projects — not client deliverables.',
+      group2Desc: 'Personal software experiments and open lab projects.',
       clientProjects: [
         {
           id: 'g2odonto',
-          title: 'G2Odonto — AI Triage for Dental Clinics',
-          client: 'Dental / Aesthetic Clinic',
-          challenge: 'Optimize lead capture and qualification for aesthetic dental clinics.',
-          solution: 'An AI-driven automated triage system that cuts response time and filters for ideal patients before they ever reach the front desk.',
+          title: 'G2Odonto. AI Triage for Dental Clinics',
+          client: 'Aesthetic Dental Clinic',
+          challenge: 'Qualify and capture inbound patient leads automatically.',
+          solution: 'Custom AI triage system reducing front-desk response time to seconds.',
           tags: ['AI AUTOMATION', 'LEAD TRIAGE', 'WEBHOOKS'],
-          visualAlt: 'AI triage chat interface mockup with automated response flow',
+          visualAlt: 'AI triage interface mockup',
         },
         {
           id: 'tualupa71',
-          title: 'Tualupa71 — Sunglasses E-Commerce',
-          client: 'Sunglasses E-Commerce Brand',
-          challenge: 'Create a fast, frictionless shopping experience for a sunglasses brand.',
-          solution: 'A clean, focused interface with dynamic category filters and checkout routed straight to WhatsApp for immediate closing.',
-          tags: ['E-COMMERCE', 'UI/UX', 'CHECKOUT FLOW'],
-          visualAlt: 'E-commerce product grid interface mockup with category filters',
+          title: 'Tualupa71. Sunglasses E-Commerce',
+          client: 'Eyewear Brand',
+          challenge: 'Build a frictionless shopping catalog with immediate checkout.',
+          solution: 'Fast visual catalog with category filters and direct WhatsApp checkout.',
+          tags: ['E-COMMERCE', 'UI/UX', 'WHATSAPP CHECKOUT'],
+          visualAlt: 'E-commerce interface mockup',
         },
         {
           id: 'tech-ai-repo',
-          title: 'Tech & AI Repository — Internal Tool',
-          client: 'Private Internal Tool',
-          challenge: 'Organize data, AI prompts, and marketing copy in one secure environment.',
-          solution: 'A private web app built with core web technologies — fast, secure, instant access to CSV databases and AI guidelines.',
-          tags: ['WEB APP', 'DATA', 'SECURITY'],
-          visualAlt: 'Terminal and code interface mockup for internal data management tool',
+          title: 'Tech and AI Repository. Internal Tool',
+          client: 'Private Data Tool',
+          challenge: 'Centralize internal databases, prompts, and documentation securely.',
+          solution: 'Private web application with instant data access and AI guidelines.',
+          tags: ['WEB APP', 'DATA PLATFORM', 'SECURITY'],
+          visualAlt: 'Internal data platform interface mockup',
         },
       ],
       independentProjects: [
         {
           id: 'brl2go',
-          title: 'BRL2GO — Currency Converter',
-          desc: 'A real-time BRL currency converter with clean UI and instant calculations.',
-          tags: ['REACT', 'API', 'UI/UX'],
+          title: 'BRL2GO. Live Currency Converter',
+          desc: 'Real-time exchange rate calculation tool with clean, reactive UI.',
+          tags: ['REACT', 'REST API', 'FINTECH UI'],
           visualAlt: 'Currency converter interface mockup',
           url: 'https://gustavogalvao.vercel.app',
         },
         {
           id: 'fried-chicken',
-          title: 'Fried Chicken — Fictional Site',
-          desc: 'A fictional fast-food brand site exploring bold visual design and animation.',
-          tags: ['HTML', 'CSS', 'GSAP'],
-          visualAlt: 'Bold fictional fast-food brand website mockup',
+          title: 'Fried Chicken. Fast Food Brand Site',
+          desc: 'Experimental food brand site with bold typography and fluid GSAP transitions.',
+          tags: ['REACT', 'GSAP', 'MICRO-ANIMATIONS'],
+          visualAlt: 'Fast food brand website mockup',
           url: 'https://gustavogalvao.vercel.app',
         },
         {
           id: 'hestus-ai',
-          title: 'Hestus AI — Landing Page',
-          desc: 'A landing page concept for an AI SaaS product, dark theme with glassmorphism.',
-          tags: ['REACT', 'TAILWIND', 'LANDING PAGE'],
-          visualAlt: 'AI SaaS landing page mockup with dark glassmorphism design',
+          title: 'Hestus AI. SaaS Landing Concept',
+          desc: 'Dark glassmorphism landing page concept for an AI automation platform.',
+          tags: ['TAILWIND CSS', 'GLASSMORPHISM', 'REACT'],
+          visualAlt: 'Dark glassmorphism landing page mockup',
           url: 'https://gustavogalvao.vercel.app',
         },
       ],
       footerCta: {
-        heading: "Let's build your next project",
-        subtitle: "Ready when you are — let's talk about what you're building.",
-        cta: "Let's Talk on WhatsApp →",
+        heading: 'Ready to build your next project?',
+        subtitle: 'Let us discuss your goals and put together the right plan.',
+        cta: 'Talk on WhatsApp',
       },
     },
   },
@@ -445,306 +453,308 @@ export const translations: Record<Language, Translations> = {
     nav: {
       tagline: 'Web · IA · Marketing',
       portfolio: 'Portfólio',
-      cta: 'Agendar Conversa',
+      cta: 'Falar Comigo',
       langToggle: 'EN',
     },
     hero: {
-      eyebrow: 'UM PLANO MENSAL · GERENCIADO POR MIM DIRETAMENTE',
-      titleStart: 'O Crescimento do Seu Negócio,',
-      morphWords: ['Sistemas React', 'Automação com IA', 'Motores de Growth', 'CRM com IA Própria'],
-      titleEnd: 'De Ponta a Ponta.',
+      eyebrow: 'PLANO MENSAL ÚNICO. GERENCIADO DIRETO POR MIM.',
+      titleStart: 'Crescimento digital completo.',
+      morphWords: ['Sites em React', 'Automação com IA', 'Motores de Venda', 'CRM com IA Própria'],
+      titleEnd: 'Executado e gerenciado por uma única pessoa.',
       subtitle:
-        'Cuido do seu site, SEO/GEO, Google Meu Negócio, redes sociais, tráfego pago e um CRM com IA proprietário — tudo em um plano mensal, gerenciado por mim diretamente.',
-      primaryCta: 'Agendar Conversa →',
+        'Desenvolvo seu site, cuido do Google Meu Negócio, executo tráfego pago e implanto um CRM com IA exclusivo. Tudo em um único plano mensal com acesso direto pelo WhatsApp.',
+      primaryCta: 'Chamar no WhatsApp',
       secondaryCta: 'Ver Portfólio',
       trustStrip: [
-        { label: 'ACESSO DIRETO', desc: 'Você fala direto com quem executa — sem gerentes intermediários.' },
-        { label: 'UM PLANO MENSAL', desc: 'Todos os canais, todas as ferramentas, gerenciadas por uma pessoa.' },
-        { label: 'FLUXO IA-NATIVO', desc: 'Construído com IA desde o início — não adaptado sobre ferramentas antigas.' },
+        { label: 'ACESSO DIRETO', desc: 'Comunicação direta pelo WhatsApp com quem constrói.' },
+        { label: 'VALOR MENSAL FIXO', desc: 'Sem taxas ocultas. Preço mensal transparente.' },
+        { label: 'IA NATIVA', desc: 'Automações e CRM integrados desde o primeiro dia.' },
       ],
-      techStack: ['React · Next.js', 'Tailwind CSS', 'GSAP', 'Agentes de IA & Automação', 'SEO / GEO'],
+      techStack: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'Agentes IA', 'Google Ads', 'SEO Local'],
     },
     planOverview: {
-      eyebrow: 'O QUE ESTÁ INCLUÍDO',
-      title: 'Tudo que seu negócio precisa para crescer online, em um plano mensal.',
-      groups: [
+      eyebrow: 'O QUE ESTÁ INCLUSO',
+      title: 'Tudo o que seu negócio precisa para crescer online.',
+      subtitle: 'Um único plano mensal. Sem burocracia de agência. Sem freelancers desarticulados.',
+      heroCard: {
+        tag: 'BASE PRINCIPAL',
+        title: 'Site Exclusivo e Sistemas Web',
+        desc: 'Seu site desenvolvido do zero com código limpo. Carregamento ultra-rápido, experiência mobile perfeita, micro-animações e botões de conversão direta no WhatsApp.',
+        bullets: [
+          'Desenvolvimento em React e TypeScript de alta velocidade',
+          'Nota 95+ no Google PageSpeed com carregamento instantâneo',
+          'Configuração de domínio, certificado SSL e hospedagem em nuvem',
+          'Manutenção, melhorias visuais e atualizações de código inclusas',
+        ],
+        statLabel: 'PERFORMANCE PAGESPEED',
+        statValue: '99/100',
+      },
+      bentoCards: [
         {
-          name: 'Presença & Autoridade',
-          items: [
-            { title: 'Site Premium', desc: 'Um site de alta conversão, criado e desenvolvido para você.' },
-            { title: 'Instagram', desc: 'Conteúdo e posicionamento que constroem autoridade real.' },
-            { title: 'Google Meu Negócio', desc: 'Otimizado para que clientes locais e de busca te encontrem primeiro.' },
+          tag: 'BUSCA LOCAL E IA',
+          title: 'SEO e Otimização para IAs (GEO)',
+          desc: 'Seja encontrado onde os clientes buscam. Google e buscadores de inteligência artificial.',
+          bullets: [
+            'Google Meu Negócio otimizado para liderar buscas locais',
+            'Conteúdo estruturado para ser citado no ChatGPT e Perplexity',
+            'Monitoramento constante de posições e visibilidade',
           ],
         },
         {
-          name: 'Visibilidade & Crescimento',
-          items: [
-            { title: 'SEO & GEO', desc: 'Visibilidade no Google e em buscadores por IA.' },
-            { title: 'Tráfego Pago', desc: 'Campanhas gerenciadas por mim, com metas reais de conversão.' },
-            { title: 'Tráfego Orgânico', desc: 'Conteúdo e estrutura que continuam gerando visibilidade.' },
+          tag: 'AUTOMAÇÃO E VENDAS',
+          title: 'CRM Próprio com Agente de IA',
+          desc: 'Triagem de leads no WhatsApp 24 horas por dia. Sem mensalidade de software extra.',
+          bullets: [
+            'Assistente com IA que atende e qualifica leads no WhatsApp',
+            'Avisos imediatos quando um cliente pronto para comprar chega',
+            'Seus dados sob seu controle sem pagar mensalidades de terceiros',
           ],
         },
         {
-          name: 'Operações & Inteligência',
-          items: [
-            { title: 'CRM com IA Própria', desc: 'Minha ferramenta proprietária — organiza leads e follow-ups.' },
-            { title: 'Monitoramento de Performance', desc: 'Um painel mostrando o que está funcionando de verdade.' },
+          tag: 'AQUISIÇÃO DE CLIENTES',
+          title: 'Tráfego Pago e Conteúdo',
+          desc: 'Alcance compradores prontos através de anúncios no Google e redes sociais.',
+          bullets: [
+            'Campanhas no Google Ads focadas em palavras de compra imediata',
+            'Anúncios no Meta Ads para autoridade e remarketing de clientes',
+            'Rastreamento de conversão com Google Analytics 4 e Pixel',
           ],
         },
       ],
-      footnote: 'Sem cobrança avulsa, sem negociação de add-ons — um plano, tudo gerenciado por mim.',
-      cta: 'Agendar Conversa →',
+      footnote: 'Sem cobrança por hora. Sem faturas surpresa. Um plano mensal com tudo incluso.',
+      cta: 'Começar com Plano Único',
     },
     comparison: {
-      eyebrow: 'POR QUE TRABALHAR DIRETAMENTE COMIGO',
-      title: 'Agência Tradicional vs. Gustavo — Direto',
+      eyebrow: 'POR QUE TRABALHAR DIRETO',
+      title: 'Agência Tradicional vs. Gustavo Direto',
+      subtitle: 'Compare agilidade, comunicação e qualidade de engenharia.',
       agencyTitle: 'Agência Tradicional',
-      gustavoTitle: 'Gustavo — Direto',
+      gustavoTitle: 'Gustavo (Direto)',
       rows: [
         {
           feature: 'Execução',
-          agency: 'Repassada por equipes de contas',
-          gustavo: 'Feito pela mesma pessoa com quem você fala',
+          agency: 'Repassada para gerentes de conta e estagiários',
+          gustavo: 'Feita pela mesma pessoa com quem você conversa',
         },
         {
           feature: 'Comunicação',
-          agency: 'Camadas de repasses e atrasos',
-          gustavo: 'Direto 1-a-1 via WhatsApp',
+          agency: 'Filas de chamados, e-mails e dias de espera',
+          gustavo: 'Acesso direto 1-a-1 pelo WhatsApp',
         },
         {
-          feature: 'Estrutura de Preço',
-          agency: 'Mensalidades altas, taxas escondidas',
+          feature: 'Modelo de Preço',
+          agency: 'Mensalidades infladas, horas extras e taxas surpresa',
           gustavo: 'Um plano mensal fixo e transparente',
         },
         {
           feature: 'Velocidade',
-          agency: 'Travada por processos internos',
-          gustavo: 'Lean por natureza — uma pessoa, sem gargalos',
+          agency: 'Travada por reuniões internas e processos burocráticos',
+          gustavo: 'Entregas rápidas e diretas sem gargalos corporativos',
         },
         {
-          feature: 'IA & Automação',
-          agency: 'Adaptada sobre ferramentas antigas',
-          gustavo: 'Construído IA-nativo desde o primeiro dia',
+          feature: 'IA e Automação',
+          agency: 'Ferramentas antigas com plugins caros',
+          gustavo: 'CRM próprio e agentes de IA nativos inclusos no plano',
         },
       ],
     },
     featureBlocks: {
-      eyebrow: 'O PLANO EM DETALHE',
+      eyebrow: 'DETALHES DO PLANO',
       blocks: [
         {
-          title: 'Uma Presença Premium, Em Todo Lugar Onde Clientes Procuram',
-          copy: 'Um site de alta conversão, um Instagram que constrói autoridade de verdade e um Google Meu Negócio otimizado para que clientes locais te encontrem primeiro. Desenvolvido com foco em UI/UX, layouts modernos, animações fluidas e checkout sem fricção.',
-          visualAlt: 'Mockup de interface web premium com blocos de UI modernos',
+          title: 'Presença Digital de Alto Padrão',
+          copy: 'Site exclusivo, perfil de autoridade e Google Meu Negócio otimizado. Design fluído, carregamento instantâneo e caminhos diretos de venda.',
+          visualAlt: 'Mockup de interface web com design moderno',
         },
         {
-          title: 'Growth Marketing — SEO, GEO & Tráfego Full-Funil',
-          copy: 'Visibilidade onde os compradores realmente procuram — ranqueado no Google, referenciado por buscadores com IA (GEO) e alcançado por campanhas pagas e conteúdo orgânico, tudo construído em torno de funis reais de conversão.',
-          visualAlt: 'Mockup de dashboard de analytics e gráfico de crescimento',
+          title: 'Ranqueamento no Google e Citações em IA',
+          copy: 'Apareça onde seus compradores procuram. Otimizado para buscas tradicionais no Google e recomendado por assistentes de IA como ChatGPT e Perplexity.',
+          visualAlt: 'Mockup de painel de métricas de busca',
         },
         {
-          title: 'CRM com IA & Monitoramento de Performance',
-          copy: 'Meu próprio CRM, desenvolvido internamente — não uma ferramenta alugada. Um agente de IA cuida da triagem de leads, follow-ups e comunicação com clientes, enquanto um único painel mostra o que está gerando receita — incluído no seu plano sem custo extra.',
-          visualAlt: 'Mockup de interface CRM com fluxo de automação e chat de IA',
+          title: 'CRM com IA Próprio e Triagem Automática',
+          copy: 'Meu software de CRM desenvolvido internamente. Um agente de IA qualifica leads no WhatsApp e organiza seu funil sem cobranças extras.',
+          visualAlt: 'Mockup de dashboard do CRM com IA',
         },
       ],
     },
     portfolioTeaser: {
-      heading: 'Explore Meu Trabalho',
-      subtitle: 'Uma visão mais próxima das plataformas e sistemas que já entreguei.',
-      cta: 'Ver o Portfólio →',
+      heading: 'Trabalhos Recentes e Laboratório',
+      subtitle: 'Explore as plataformas, aplicações e sistemas que desenvolvi.',
+      cta: 'Ver Portfólio',
     },
     process: {
       eyebrow: 'COMO FUNCIONA',
-      title: 'Da primeira conversa ao crescimento contínuo.',
-      subtitle: 'Um processo estruturado e previsível em 5 etapas para lançar rápido e evoluir todo mês — executado diretamente por mim, sem intermediários.',
+      title: 'Cinco etapas simples para crescimento contínuo.',
+      subtitle: 'Um processo direto e sem enrolação, do primeiro contato à gestão diária.',
       steps: [
         {
           num: '01',
           timeframe: 'Dias 1–3',
-          title: 'Descoberta & Blueprint Estratégico',
-          subtitle: 'Mapeamento de gargalos e definição da arquitetura técnica exata',
-          desc: 'Iniciamos com uma imersão estratégica 1-a-1. Analiso seus canais atuais, concorrentes e gargalos de conversão para desenhar um plano sob medida alinhado aos seus objetivos de faturamento.',
-          deliverables: [
-            'Sessão estratégica de alinhamento 1-a-1 (30–45 min)',
-            'Auditoria completa do site atual, SEO e Google Meu Negócio',
-            'Análise de posicionamento da concorrência e palavras-chave',
-            'Blueprint da arquitetura técnica e fluxos do CRM com IA',
+          title: 'Alinhamento e Estratégia',
+          bullets: [
+            'Conversa direta de 30 minutos para mapear suas metas',
+            'Auditoria do site atual, posicionamento local e gargalos',
+            'Definição dos canais de tráfego e objetivos de venda',
           ],
-          highlight: 'Entregável: Blueprint Estratégico & Mapeamento de Escopo',
-          tags: ['Estratégia', 'Auditoria', 'Arquitetura', 'Call 1-a-1'],
         },
         {
           num: '02',
           timeframe: 'Dias 4–5',
-          title: 'Acordo & Onboarding Sem Fricção',
-          subtitle: 'Escopo claro, preço mensal fixo e transparente, zero burocracia',
-          desc: 'Alinhado o escopo, formalizamos o plano mensal único com total transparência. Criamos nosso canal direto no WhatsApp e coletamos acessos e arquivos de marca através de um checklist seguro e organizado.',
-          deliverables: [
-            'Acordo mensal fixo sem taxas surpresa ou contratos abusivos',
-            'Canal direto 1-a-1 no WhatsApp estabelecido para o dia a dia',
-            'Checklist seguro para envio de acessos e identidade visual',
-            'Ambiente de trabalho e infraestrutura de métricas configurados',
+          title: 'Onboarding e Acessos',
+          bullets: [
+            'Acordo formalizado sem taxas extras ou contratos abusivos',
+            'Criação do canal direto no WhatsApp',
+            'Checklist simples para envio de identidade e acessos',
           ],
-          highlight: 'Entregável: Canal no WhatsApp & Ambiente Inicializado',
-          tags: ['Onboarding', 'Acesso Direto', 'Coleta de Acessos', 'Setup'],
         },
         {
           num: '03',
           timeframe: 'Semanas 2–3',
-          title: 'Desenvolvimento & Integração com IA',
-          subtitle: 'Código limpo com automações de IA e rastreamento desde o primeiro dia',
-          desc: 'Desenvolvo seu site de alta conversão do zero com React e TypeScript moderno. Ao mesmo tempo, configuro o CRM com IA proprietário, integro webhooks de triagem de leads e configuro todas as ferramentas de analytics.',
-          deliverables: [
-            'Site de alta conversão customizado (Score 90+ Lighthouse, ultra-rápido no mobile)',
-            'CRM com IA proprietário configurado com prompts de triagem automática',
-            'Estruturação para SEO técnico e Generative Engine Optimization (GEO)',
-            'Rastreamento de conversão: Google Analytics 4, Meta Pixel e eventos',
+          title: 'Construção e Ativação de IA',
+          bullets: [
+            'Desenvolvimento do site com React e TypeScript',
+            'Configuração do CRM com IA e triagem no WhatsApp',
+            'Instalação de Google Analytics 4, Meta Pixel e eventos de conversão',
           ],
-          highlight: 'Entregável: Preview em Staging & CRM com IA Pronto para Testes',
-          tags: ['React · TypeScript', 'CRM com IA', 'SEO / GEO', 'GA4 & Pixels'],
         },
         {
           num: '04',
           timeframe: 'Semana 4',
-          title: 'Lançamento & Ativação de Tráfego',
-          subtitle: 'Virada de domínio, campanhas no ar e captura de leads ativa',
-          desc: 'Realizamos a virada de DNS com zero tempo de inatividade e certificado SSL. O Google Meu Negócio é validado, as campanhas de tráfego pago entram no ar e os primeiros leads começam a ser triados pelo CRM.',
-          deliverables: [
-            'Deploy seguro de DNS com zero downtime e aceleração CDN global',
-            'Otimização completa do Google Meu Negócio e validação local',
-            'Lançamento de campanhas pagas segmentadas (Google Ads e Meta Ads)',
-            'Testes de ponta a ponta em formulários, disparos no WhatsApp e webhooks',
+          title: 'Lançamento e Tráfego Ativo',
+          bullets: [
+            'Virada de domínio sem interrupção de serviço com SSL',
+            'Otimização e verificação do Google Meu Negócio',
+            'Ativação dos anúncios pagos e início da captura de leads',
           ],
-          highlight: 'Entregável: Plataforma Ativa em Produção & Campanhas no Ar',
-          tags: ['Lançamento Zero-Downtime', 'Google Negócios', 'Tráfego Pago', 'Leads Ativos'],
         },
         {
           num: '05',
-          timeframe: 'Contínuo · Mensal',
-          title: 'Gestão Contínua & Otimização Iterativa',
-          subtitle: 'Monitoramento contínuo de SEO/GEO, refinamento de tráfego e evolução do CRM',
-          desc: 'O crescimento não para no lançamento. Todo mês acompanho o ranqueamento no Google e IAs, otimizo o custo por lead nos anúncios, atualizo conteúdos e calibro o agente de IA para manter sua operação na frente do mercado.',
-          deliverables: [
-            'Acompanhamento contínuo de SEO e indexação em buscadores de IA (GEO)',
-            'Otimização semanal de orçamentos e taxas de conversão de anúncios',
-            'Atualização de prompts do CRM com IA e higienização do funil',
-            'Relatório mensal de desempenho transparente e reuniões de alinhamento',
+          timeframe: 'Mensal',
+          title: 'Gestão e Otimização',
+          bullets: [
+            'Acompanhamento contínuo de ranqueamento no Google e IAs',
+            'Otimização semanal de custo por lead nos anúncios',
+            'Atualizações no site e suporte prioritário no WhatsApp',
           ],
-          highlight: 'Entregável: Relatórios Mensais de Performance & Iterações Constantes',
-          tags: ['Growth Contínuo', 'Otimização GEO', 'Escala de Anúncios', 'Suporte Direto'],
         },
       ],
     },
     about: {
       eyebrow: 'SOBRE MIM',
-      title: 'Quem gerencia o plano.',
-      bio: 'Sou Gustavo — desenvolvedor full-stack e estudante de Ciência da Computação na Universidade Jorge Amado, Brasil, trabalhando como freelancer desde 2025 construindo sites, landing pages e sistemas com IA. Antes disso, co-fundei uma venture de marketing & tecnologia onde cuidei de captação de clientes, SEO, Google Meu Negócio e implantação de CRM para uma clínica odontológica real — então conheço esse mundo pelo lado do negócio, não só pelo código. Desenvolvo rápido porque desenvolvo IA-nativo, e ainda cuido pessoalmente de cada plano que assumo.',
+      title: 'Quem executa e cuida do seu plano.',
+      bio: 'Sou Gustavo, desenvolvedor full-stack e estudante de Ciência da Computação na Universidade Jorge Amado. Atuo de forma independente construindo sites e sistemas de automação com inteligência artificial. Antes disso, co-fundei uma operação de marketing e tecnologia cuidando de captação de clientes, SEO local e implantação de CRM para clínicas odontológicas. Desenvolvo com agilidade, código limpo e atendo pessoalmente cada cliente.',
       facts: [
         { label: 'Localização', value: 'Brasil (Remoto Global)' },
-        { label: 'Idiomas', value: 'Português (nativo) · Inglês (intermediário/avançado)' },
+        { label: 'Idiomas', value: 'Português (nativo) · Inglês (avançado)' },
       ],
     },
     faq: {
-      eyebrow: 'PERGUNTAS FREQUENTES',
+      eyebrow: 'DÚVIDAS FREQUENTES',
       title: 'Respostas diretas.',
       items: [
         {
-          question: 'Como funciona o plano?',
-          answer: 'É um plano mensal que cobre seu site, marketing e CRM — definido após uma conversa rápida onde mapeio as necessidades do seu negócio e apresento um preço fixo. Sem cobrança por hora, sem surpresas na fatura.',
+          question: 'Como funciona o plano mensal?',
+          answer:
+            'É um valor mensal fixo que inclui site, marketing, SEO e CRM com IA. Definimos o escopo após uma conversa rápida. Sem surpresas na fatura e sem cobranças por hora.',
         },
         {
-          question: 'Você é uma agência ou um desenvolvedor solo?',
-          answer: 'Trabalho solo, por escolha. Você fala diretamente com quem está construindo seu plano — sem gerentes de conta, sem repasses entre equipes.',
+          question: 'Você é uma agência ou desenvolvedor independente?',
+          answer:
+            'Trabalho de forma independente. Você conversa diretamente com quem programa e gerencia seu crescimento digital. Sem intermediários.',
         },
         {
-          question: 'Você atende clientes internacionais em inglês?',
-          answer: 'Sim — desenvolvimento e comunicação em inglês, e estou expandindo minha atuação com clientes nos EUA, Europa e LatAm.',
+          question: 'Você atende clientes fora do Brasil?',
+          answer:
+            'Sim. Desenvolvo e me comunico fluentemente em inglês com clientes nos Estados Unidos, Europa e América Latina.',
         },
         {
           question: 'O que é Generative Engine Optimization (GEO)?',
-          answer: 'É a prática de estruturar seu conteúdo para que ferramentas de IA como ChatGPT e Perplexity referenciem e recomendem seu negócio, da mesma forma que o SEO otimiza para o Google.',
+          answer:
+            'É a estruturação do seu site para que inteligências artificiais como ChatGPT e Perplexity citem e recomendem sua empresa nas respostas, além do Google tradicional.',
         },
         {
-          question: 'O que acontece depois que agendar a conversa?',
-          answer: 'Conversamos sobre seu negócio e objetivos, mapeo como o plano fica para o seu caso específico, e você recebe uma proposta clara.',
+          question: 'Como posso começar?',
+          answer:
+            'Basta me mandar uma mensagem no WhatsApp. Marcamos uma conversa de 20 minutos para entender sua empresa e eu apresento a proposta ideal.',
         },
       ],
     },
     finalCta: {
-      tagline: 'O caminho mais curto.',
-      title: 'Um plano. Tudo que\nseu negócio precisa online.',
-      subtitle: 'Agende uma conversa rápida para ver se faz sentido — sem pressão, sem pitch longo, só uma conversa direta sobre o seu negócio.',
-      cta: 'Agendar Conversa no WhatsApp →',
+      tagline: 'ENGENHARIA DIRETA.',
+      title: 'Um plano mensal. Tudo o que sua empresa precisa online.',
+      subtitle: 'Envie uma mensagem no WhatsApp. Vamos conversar sobre suas metas sem pressão e sem discurso pronto.',
+      cta: 'Conversar no WhatsApp',
     },
     footer: {
-      copyright: '© 2026 Gustavo — Desenvolvimento Web, Automação com IA & Marketing Digital.',
+      copyright: '© 2026 Gustavo. Desenvolvimento Web, IA e Marketing Digital.',
     },
     portfolioPage: {
       title: 'Trabalhos Selecionados',
-      subtitle: 'Alguns dos sistemas que projetei, desenvolvi e coloquei em produção.',
-      group1Label: 'Trabalhos para Clientes',
-      group1Desc: 'Projetos freelance reais entregues para clientes.',
-      group2Label: 'Projetos Independentes',
-      group2Desc: 'Projetos pessoais e de prática — não entregas para clientes.',
+      subtitle: 'Projetos em produção, plataformas de clientes e sistemas em laboratório.',
+      group1Label: 'Projetos para Clientes',
+      group1Desc: 'Sistemas reais desenvolvidos para empresas.',
+      group2Label: 'Projetos Autônomos',
+      group2Desc: 'Experimentos de software e desenvolvimentos independentes.',
       clientProjects: [
         {
           id: 'g2odonto',
-          title: 'G2Odonto — Triagem com IA para Clínicas',
-          client: 'Clínica Odontológica / Estética',
-          challenge: 'Otimizar a captação e qualificação de leads para clínicas odontológicas estéticas.',
-          solution: 'Um sistema automatizado de triagem com IA que reduz o tempo de resposta e filtra os pacientes ideais antes de chegarem à recepção.',
-          tags: ['AUTOMAÇÃO IA', 'TRIAGEM DE LEADS', 'WEBHOOKS'],
-          visualAlt: 'Mockup de interface de chat de triagem com IA e fluxo de resposta automatizado',
+          title: 'G2Odonto. Triagem com IA para Clínicas',
+          client: 'Clínica Odontológica Estética',
+          challenge: 'Qualificar e capturar pacientes de alto padrão automaticamente.',
+          solution: 'Sistema com IA que atende no WhatsApp e reduz o tempo de resposta a segundos.',
+          tags: ['AUTOMAÇÃO COM IA', 'TRIAGEM DE LEADS', 'WEBHOOKS'],
+          visualAlt: 'Mockup de interface de triagem com IA',
         },
         {
           id: 'tualupa71',
-          title: 'Tualupa71 — E-Commerce de Óculos',
+          title: 'Tualupa71. E-Commerce de Óculos',
           client: 'Marca de Óculos de Sol',
-          challenge: 'Criar uma experiência de compra rápida e sem fricção para uma marca de óculos.',
-          solution: 'Interface limpa com filtros dinâmicos de categoria e checkout direto pelo WhatsApp para fechamento imediato.',
-          tags: ['E-COMMERCE', 'UI/UX', 'FLUXO DE CHECKOUT'],
-          visualAlt: 'Mockup de grade de produtos de e-commerce com filtros de categoria',
+          challenge: 'Criar uma loja virtual rápida com fechamento ágil de pedidos.',
+          solution: 'Catálogo dinâmico com filtros visuais e checkout direto no WhatsApp.',
+          tags: ['E-COMMERCE', 'DESIGN UI/UX', 'CHECKOUT WHATSAPP'],
+          visualAlt: 'Mockup de interface de e-commerce',
         },
         {
           id: 'tech-ai-repo',
-          title: 'Repositório Tech & IA — Ferramenta Interna',
-          client: 'Ferramenta Interna Privada',
-          challenge: 'Organizar dados, prompts de IA e textos de marketing em um ambiente seguro.',
-          solution: 'Um web app privado com tecnologias web fundamentais — rápido, seguro e com acesso instantâneo a bancos CSV e diretrizes de IA.',
-          tags: ['WEB APP', 'DADOS', 'SEGURANÇA'],
-          visualAlt: 'Mockup de interface terminal e código para ferramenta interna de gestão de dados',
+          title: 'Repositório Tech e IA. Ferramenta Interna',
+          client: 'Plataforma Privada de Dados',
+          challenge: 'Centralizar bancos de dados, prompts e documentos com segurança.',
+          solution: 'Aplicação web segura com acesso instantâneo a planilhas e diretrizes de IA.',
+          tags: ['APLICAÇÃO WEB', 'BANCO DE DADOS', 'SEGURANÇA'],
+          visualAlt: 'Mockup de interface de plataforma de dados',
         },
       ],
       independentProjects: [
         {
           id: 'brl2go',
-          title: 'BRL2GO — Conversor de Moedas',
-          desc: 'Conversor de moedas BRL em tempo real com UI limpa e cálculos instantâneos.',
-          tags: ['REACT', 'API', 'UI/UX'],
-          visualAlt: 'Mockup de interface de conversor de moedas',
+          title: 'BRL2GO. Conversor de Moedas',
+          desc: 'Ferramenta de conversão cambial em tempo real com interface limpa e reativa.',
+          tags: ['REACT', 'API REST', 'INTERFACE FINTECH'],
+          visualAlt: 'Mockup de conversor de moedas',
           url: 'https://gustavogalvao.vercel.app',
         },
         {
           id: 'fried-chicken',
-          title: 'Fried Chicken — Site Fictício',
-          desc: 'Site de marca fictícia de fast-food explorando design visual arrojado e animações.',
-          tags: ['HTML', 'CSS', 'GSAP'],
-          visualAlt: 'Mockup de site fictício de fast-food com design visual marcante',
+          title: 'Fried Chicken. Site de Marca Fast Food',
+          desc: 'Conceito visual arrojado com tipografia marcante e animações fluidas em GSAP.',
+          tags: ['REACT', 'GSAP', 'MICRO-ANIMAÇÕES'],
+          visualAlt: 'Mockup de site de fast food',
           url: 'https://gustavogalvao.vercel.app',
         },
         {
           id: 'hestus-ai',
-          title: 'Hestus AI — Landing Page',
-          desc: 'Conceito de landing page para produto SaaS de IA, tema escuro com glassmorphism.',
-          tags: ['REACT', 'TAILWIND', 'LANDING PAGE'],
-          visualAlt: 'Mockup de landing page SaaS de IA com design glassmorphism escuro',
+          title: 'Hestus AI. Conceito SaaS',
+          desc: 'Landing page em tema escuro com glassmorphism para plataforma de automação.',
+          tags: ['TAILWIND CSS', 'GLASSMORPHISM', 'REACT'],
+          visualAlt: 'Mockup de landing page em glassmorphism',
           url: 'https://gustavogalvao.vercel.app',
         },
       ],
       footerCta: {
-        heading: 'Vamos construir seu próximo projeto',
-        subtitle: 'Pronto quando você estiver — vamos conversar sobre o que você está construindo.',
-        cta: 'Falar no WhatsApp →',
+        heading: 'Pronto para construir seu próximo projeto?',
+        subtitle: 'Vamos conversar sobre seus objetivos e estruturar o plano ideal.',
+        cta: 'Falar no WhatsApp',
       },
     },
   },

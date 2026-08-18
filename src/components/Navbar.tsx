@@ -26,17 +26,16 @@ export const Navbar: React.FC<NavbarProps> = ({
         : 'Olá Gustavo! Gostaria de agendar uma conversa sobre o plano.'
     );
 
-  // Scroll detection with hysteresis to prevent rapid flickering
+  // Scroll listener with hysteresis to avoid threshold bouncing
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const top = window.scrollY;
-          // Hysteresis window: triggers down at 45px, resets up at 15px
-          if (top > 45) {
+          if (top > 40) {
             setScrolled(true);
-          } else if (top < 15) {
+          } else if (top < 10) {
             setScrolled(false);
           }
           ticking = false;
@@ -46,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -81,20 +80,20 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="fixed top-0 inset-x-0 z-50 pointer-events-none flex justify-center w-full">
       {/* 
-        Dynamic Island Morph Container:
-        Uses GPU-accelerated cubic-bezier transitions for silky smooth 60-120fps morphing 
-        between full-width docked navbar and detached floating rounded pill.
+        Dynamic Island Morphing Capsule:
+        - At Top: 100% full viewport width, flat bottom border, docked to ceiling.
+        - On Scroll: Detaches down (mt-3.5), shrinks inward to max-w-6xl capsule, rounds to rounded-full with deep glass reflection.
       */}
       <div
-        className={`pointer-events-auto flex items-center justify-between w-full backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`pointer-events-auto backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           scrolled
-            ? 'mt-3 sm:mt-4 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-5xl lg:max-w-6xl rounded-full py-2 px-4 sm:px-6 bg-[#08080c]/85 border border-white/16 shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_30px_rgba(255,192,105,0.06),inset_0_1px_1px_rgba(255,255,255,0.15)]'
-            : 'mt-0 w-full max-w-none rounded-none py-4 px-5 sm:px-8 lg:px-12 bg-[#050505]/75 border-b border-white/8 border-t-0 border-x-0 shadow-none'
+            ? 'mt-3.5 sm:mt-4 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-5xl lg:max-w-6xl rounded-full py-2.5 px-5 sm:px-8 bg-[#08080c]/85 border border-white/16 shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_30px_rgba(255,192,105,0.06),inset_0_1px_1px_rgba(255,255,255,0.15)]'
+            : 'mt-0 w-full max-w-full rounded-none py-4 px-6 sm:px-10 lg:px-12 bg-[#050505]/75 border-b border-white/8 border-t-0 border-x-0 shadow-none'
         }`}
       >
-        <div className={`w-full flex items-center justify-between gap-3 sm:gap-6 ${!scrolled ? 'max-w-7xl mx-auto' : ''}`}>
+        <div className={`w-full flex items-center justify-between gap-4 sm:gap-6 ${!scrolled ? 'max-w-7xl mx-auto' : ''}`}>
           
-          {/* Left: Dynamic Island Brand + Active Sensor Indicator */}
+          {/* Left: Dynamic Island Brand Mark + Name */}
           <button
             onClick={handleNavHome}
             className="flex items-center gap-2.5 group cursor-pointer focus:outline-none shrink-0"
@@ -102,8 +101,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             {/* Dynamic Island Indicator Dot */}
             <div className="relative flex items-center justify-center w-5 h-5">
-              <span className="absolute w-3 h-3 rounded-full bg-[#FFC069]/35 animate-ping" />
-              <span className="relative w-2 h-2 rounded-full bg-[#FFC069] shadow-[0_0_8px_#FFC069]" />
+              <span className="absolute w-3.5 h-3.5 rounded-full bg-[#FFC069]/35 animate-ping" />
+              <span className="relative w-2.5 h-2.5 rounded-full bg-[#FFC069] shadow-[0_0_8px_#FFC069]" />
             </div>
 
             <div className="flex flex-col items-start text-left">
@@ -116,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </button>
 
-          {/* Center Navigation Links (desktop) */}
+          {/* Center Navigation Links (visible on desktop) */}
           <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2">
             {currentRoute === 'home' ? (
               <>

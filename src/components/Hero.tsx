@@ -130,18 +130,28 @@ export const Hero: React.FC = () => {
               </div>
             </div>
 
-            {/* RIGHT COLUMN: Portrait with tilt */}
+            {/* RIGHT COLUMN: Portrait with tilt and living ambient glow */}
             <div className="lg:col-span-5 relative flex justify-center items-center">
+              {/* Ambient Living Photo Glow */}
+              <div
+                className="absolute w-[320px] sm:w-[380px] h-[400px] sm:h-[460px] rounded-full blur-[85px] pointer-events-none animate-hero-glow z-0"
+                style={{
+                  background:
+                    'radial-gradient(circle, rgba(232, 100, 47, 0.45) 0%, rgba(255, 192, 105, 0.25) 45%, rgba(122, 22, 16, 0.15) 75%, transparent 100%)',
+                }}
+                aria-hidden="true"
+              />
+
               <div
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
                 style={tiltStyle}
-                className="relative w-full max-w-md aspect-[4/5] rounded-[32px] glass-card p-3 overflow-hidden border border-white/15 shadow-2xl cursor-pointer will-change-transform group"
+                className="relative z-10 w-full max-w-md aspect-[4/5] rounded-[32px] glass-card p-3 overflow-hidden border border-white/15 shadow-2xl cursor-pointer will-change-transform group"
               >
                 <div className="relative w-full h-full rounded-[24px] overflow-hidden bg-black/90">
                   <img
                     src="/fotoperfil.png"
-                    alt="Gustavo Galvão — full-stack developer and digital growth specialist"
+                    alt="Gustavo Galvao. Full-stack developer and digital growth specialist"
                     className="w-full h-full object-cover filter contrast-[1.02] pointer-events-none group-hover:scale-[1.03] transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
