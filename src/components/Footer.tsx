@@ -47,7 +47,11 @@ const LinkedinIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' 
   </svg>
 );
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigatePortfolio?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigatePortfolio }) => {
   const { language } = useLanguage();
 
   const scrollToTop = () => {
@@ -71,7 +75,10 @@ export const Footer: React.FC = () => {
   const navLinks = [
     { label: language === 'en' ? 'Home' : 'Início', href: '#hero' },
     { label: language === 'en' ? 'Plan Overview' : 'O que está incluso', href: '#plan' },
-    { label: language === 'en' ? 'Portfolio & Projects' : 'Portfólio de Projetos', href: '#portfolio-teaser' },
+    {
+      label: language === 'en' ? 'Portfolio & Projects' : 'Portfólio de Projetos',
+      onClick: onNavigatePortfolio,
+    },
     { label: language === 'en' ? 'Direct vs Agency' : 'Comparativo Direto', href: '#comparison' },
     { label: language === 'en' ? 'System Features' : 'Recursos & IA', href: '#features' },
     { label: language === 'en' ? 'Process & Steps' : 'Como Funciona', href: '#process' },
@@ -191,13 +198,23 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-sm">
               {navLinks.map((link, idx) => (
                 <li key={idx}>
-                  <a
-                    href={link.href}
-                    className="text-zinc-400 hover:text-[#FFC069] transition-colors flex items-center gap-1.5"
-                  >
-                    <span className="text-zinc-600 text-xs">›</span>
-                    <span>{link.label}</span>
-                  </a>
+                  {link.onClick ? (
+                    <button
+                      onClick={link.onClick}
+                      className="text-zinc-400 hover:text-[#FFC069] transition-colors flex items-center gap-1.5 cursor-pointer text-left"
+                    >
+                      <span className="text-zinc-600 text-xs">›</span>
+                      <span>{link.label}</span>
+                    </button>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-zinc-400 hover:text-[#FFC069] transition-colors flex items-center gap-1.5"
+                    >
+                      <span className="text-zinc-600 text-xs">›</span>
+                      <span>{link.label}</span>
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

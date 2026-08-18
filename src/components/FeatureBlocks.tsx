@@ -2,8 +2,6 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import GooeyLayer from './ui/GooeyLayer';
 import { useGsapReveal } from '../hooks/useGsapReveal';
-import { useProjectModal } from '../context/ProjectModalContext';
-import { ArrowUpRight } from 'lucide-react';
 
 /* ── Abstract UI Mockups ────────────────────────────────────── */
 
@@ -68,45 +66,44 @@ const AnalyticsMockup: React.FC = () => (
       <span className="text-[11px] font-mono text-zinc-400 font-semibold">PERFORMANCE</span>
       <div className="flex items-center gap-1.5">
         <div className="w-2 h-2 rounded-full bg-[#FFC069] animate-pulse" />
-        <span className="text-[10px] font-mono text-zinc-500">LIVE</span>
+        <span className="text-[10px] font-mono text-[#FFC069]">LIVE</span>
       </div>
     </div>
 
     <div className="p-5 space-y-4">
-      {/* Big metric */}
-      <div>
-        <div className="text-[28px] font-extrabold text-white" style={{ letterSpacing: '-0.03em' }}>
-          <span style={{ background: 'linear-gradient(135deg,#FFC069,#E8642F)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>+143%</span>
-        </div>
-        <div className="text-[11px] font-mono text-zinc-500 mt-0.5">Organic traffic · 30 days</div>
-      </div>
-
-      {/* Chart bars */}
-      <div className="flex items-end gap-1 h-20">
-        {[30, 45, 38, 55, 48, 70, 65, 80, 72, 90, 85, 100].map((h, i) => (
-          <div
-            key={i}
-            className="flex-1 rounded-sm"
-            style={{
-              height: `${h}%`,
-              background: i >= 9
-                ? 'linear-gradient(180deg, #FFC069 0%, #E8642F 100%)'
-                : 'rgba(255,255,255,0.08)',
-              opacity: i >= 9 ? 1 : 0.6 + i * 0.04,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Secondary metrics */}
+      {/* Metric row */}
       <div className="grid grid-cols-2 gap-3">
+        <div className="rounded-xl p-3.5" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
+          <div className="text-[10px] font-mono text-zinc-500 mb-1">LOCAL RANK</div>
+          <div className="text-xl font-bold font-mono text-white">#1 Top 3</div>
+          <div className="text-[10px] text-emerald-400 font-mono mt-0.5">+4 positions</div>
+        </div>
+        <div className="rounded-xl p-3.5" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
+          <div className="text-[10px] font-mono text-zinc-500 mb-1">GEO CITATIONS</div>
+          <div className="text-xl font-bold font-mono text-[#FFC069]">94%</div>
+          <div className="text-[10px] text-[#FFC069] font-mono mt-0.5">AI engine match</div>
+        </div>
+      </div>
+
+      {/* Mini bar chart */}
+      <div className="space-y-2 pt-1">
+        <div className="text-[10px] font-mono text-zinc-500">TRAFFIC / CHANNEL</div>
         {[
-          { label: 'Leads', val: '48', color: '#FFC069' },
-          { label: 'Conv. Rate', val: '8.4%', color: '#E8642F' },
-        ].map(({ label, val, color }) => (
-          <div key={label} className="p-3 rounded-xl" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
-            <div className="text-lg font-bold" style={{ color }}>{val}</div>
-            <div className="text-[10px] font-mono text-zinc-500">{label}</div>
+          { label: 'Google Search', w: '85%', color: '#FFC069' },
+          { label: 'AI Overviews / GEO', w: '68%', color: '#E8642F' },
+          { label: 'Instagram / Paid', w: '52%', color: '#7A1610' },
+        ].map((item, i) => (
+          <div key={i} className="space-y-1">
+            <div className="flex justify-between text-[10px] font-mono text-zinc-400">
+              <span>{item.label}</span>
+              <span style={{ color: item.color }}>{item.w}</span>
+            </div>
+            <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
+              <div
+                className="h-full rounded-full transition-all duration-700"
+                style={{ width: item.w, background: item.color }}
+              />
+            </div>
           </div>
         ))}
       </div>
@@ -114,49 +111,54 @@ const AnalyticsMockup: React.FC = () => (
   </div>
 );
 
-const CRMMockup: React.FC = () => (
+const TerminalMockup: React.FC = () => (
   <div
-    className="w-full max-w-sm mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
-    style={{ background: 'rgba(255,255,255,0.05)' }}
+    className="w-full max-w-sm mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl font-mono text-[11px]"
+    style={{ background: 'rgba(8,8,12,0.95)' }}
     aria-hidden="true"
   >
-    <div className="px-5 py-4 border-b border-white/8 flex items-center gap-3" style={{ background: 'rgba(255,255,255,0.03)' }}>
-      <div className="w-6 h-6 rounded-lg flex items-center justify-center text-[10px] font-black" style={{ background: 'linear-gradient(135deg,#FFC069,#7A1610)', color: '#050505' }}>
-        AI
+    {/* Terminal titlebar */}
+    <div className="px-4 py-3 border-b border-white/8 flex items-center justify-between" style={{ background: 'rgba(255,255,255,0.03)' }}>
+      <div className="flex items-center gap-2">
+        <div className="flex gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+        </div>
+        <span className="text-zinc-500 text-[10px]">crm-agent.ts</span>
       </div>
-      <span className="text-[11px] font-mono text-zinc-400 font-semibold">CRM AGENT</span>
-      <div className="ml-auto flex items-center gap-1.5">
-        <div className="w-2 h-2 rounded-full bg-[#FFC069] animate-pulse" />
-        <span className="text-[10px] font-mono text-zinc-500">ACTIVE</span>
-      </div>
+      <span className="text-[9px] text-[#FFC069] px-2 py-0.5 rounded-full bg-[#FFC069]/10 border border-[#FFC069]/20">
+        AI ENGINE
+      </span>
     </div>
 
-    {/* Chat flow */}
-    <div className="p-5 space-y-3">
-      {[
-        { from: 'lead', text: 'Hi, I need help with my dental clinic website.' },
-        { from: 'ai', text: "👋 Got it! What's your main goal: more patients or a complete rebrand?" },
-        { from: 'lead', text: 'Both, ideally. What does the plan include?' },
-        { from: 'ai', text: '✅ Booking you in for a 15-min call with Gustavo.' },
-      ].map(({ from, text }, i) => (
-        <div key={i} className={`flex ${from === 'lead' ? 'justify-end' : 'justify-start'}`}>
-          <div
-            className="max-w-[80%] rounded-2xl px-4 py-2.5 text-[12px] leading-relaxed"
-            style={
-              from === 'lead'
-                ? { background: 'rgba(255,192,105,0.15)', border: '1px solid rgba(255,192,105,0.2)', color: '#fde8c0' }
-                : { background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', color: '#d4d4d8' }
-            }
-          >
-            {text}
-          </div>
+    {/* Terminal body */}
+    <div className="p-4 space-y-2.5 text-zinc-400">
+      <div className="text-zinc-600">// WhatsApp lead arrived · 0.4s ago</div>
+      <div>
+        <span className="text-[#FFC069]">lead</span>
+        <span className="text-zinc-500">.</span>
+        <span className="text-white">source</span>
+        <span className="text-zinc-500"> = </span>
+        <span className="text-emerald-400">&apos;Google Maps (Local)&apos;</span>
+      </div>
+      <div>
+        <span className="text-[#FFC069]">lead</span>
+        <span className="text-zinc-500">.</span>
+        <span className="text-white">intent</span>
+        <span className="text-zinc-500"> = </span>
+        <span className="text-emerald-400">&apos;High Ticket Procedure&apos;</span>
+      </div>
+      <div className="pt-1 border-t border-white/5">
+        <span className="text-zinc-600">// AI score calculated</span>
+      </div>
+      <div className="rounded-lg p-2.5 space-y-1" style={{ background: 'rgba(255,192,105,0.06)', border: '1px solid rgba(255,192,105,0.15)' }}>
+        <div className="flex justify-between text-[10px]">
+          <span className="text-[#FFC069]">SCORE: 9.4 / 10</span>
+          <span className="text-emerald-400">QUALIFIED</span>
         </div>
-      ))}
-
-      {/* Status pill */}
-      <div className="flex justify-center pt-2">
-        <div className="px-4 py-1.5 rounded-full text-[10px] font-mono font-semibold" style={{ background: 'rgba(255,192,105,0.1)', border: '1px solid rgba(255,192,105,0.2)', color: '#FFC069' }}>
-          CALL SCHEDULED · CRM UPDATED
+        <div className="text-[10px] text-zinc-300">
+          Auto-routed to WhatsApp with draft response ready.
         </div>
       </div>
     </div>
@@ -165,16 +167,14 @@ const CRMMockup: React.FC = () => (
 
 /* ── Blocks config ──────────────────────────────────────────── */
 
-const VISUAL_COMPONENTS = [BrowserMockup, AnalyticsMockup, CRMMockup];
+const VISUAL_COMPONENTS = [BrowserMockup, AnalyticsMockup, TerminalMockup];
 const DOMINANT_COLORS: ('gold' | 'orange' | 'red')[] = ['gold', 'orange', 'red'];
-const BLOCK_PROJECT_MAP = ['fried-chicken', 'brl2go', 'hestus-ai'];
 
 /* ── Main Component ─────────────────────────────────────────── */
 
 export const FeatureBlocks: React.FC = () => {
-  const { language, t } = useLanguage();
-  const containerRef = useGsapReveal({ y: 50, duration: 1, stagger: 0.15 });
-  const { openProjectModal } = useProjectModal();
+  const { t } = useLanguage();
+  const containerRef = useGsapReveal({ y: 50, duration: 0.9, stagger: 0.2 });
 
   return (
     <section
@@ -193,7 +193,6 @@ export const FeatureBlocks: React.FC = () => {
         const Visual = VISUAL_COMPONENTS[i];
         const color = DOMINANT_COLORS[i];
         const isReversed = i % 2 === 1;
-        const targetProject = BLOCK_PROJECT_MAP[i];
 
         return (
           <div key={i} className="relative overflow-hidden py-20 sm:py-28">
@@ -230,27 +229,12 @@ export const FeatureBlocks: React.FC = () => {
                   <p className="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-md">
                     {block.copy}
                   </p>
-
-                  <button
-                    onClick={() => openProjectModal(targetProject)}
-                    className="inline-flex items-center gap-2 text-xs font-mono text-[#FFC069] hover:underline font-bold"
-                  >
-                    <span>{language === 'en' ? 'Explore this system demo' : 'Ver demonstração deste sistema'}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
                 </div>
 
                 {/* Visual side */}
                 <div className="flex-1 w-full gsap-child">
-                  <div
-                    onClick={() => openProjectModal(targetProject)}
-                    className="glass-feature p-6 sm:p-8 cursor-pointer group hover:border-[#FFC069]/40 hover:shadow-[0_20px_50px_rgba(255,192,105,0.12)] transition-all duration-500 rounded-3xl relative"
-                  >
+                  <div className="glass-feature p-6 sm:p-8 rounded-3xl relative">
                     <Visual />
-                    <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono text-zinc-500 group-hover:text-[#FFC069] transition-colors">
-                      <span>{language === 'en' ? 'Click to open live video & demo' : 'Clique para ver vídeo e detalhes'}</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </div>
                   </div>
                 </div>
               </div>

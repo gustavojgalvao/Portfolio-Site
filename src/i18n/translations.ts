@@ -417,11 +417,11 @@ export const translations: Record<Language, Translations> = {
       independentProjects: [
         {
           id: 'brl2go',
-          title: 'BRL2GO. Live Currency Converter',
-          desc: 'Real-time exchange rate calculation tool with clean, reactive UI.',
-          tags: ['REACT', 'REST API', 'FINTECH UI'],
+          title: 'BRL2GO. Real-Time Currency Converter',
+          desc: 'Minimalist, responsive web app focused on instant currency conversion via live financial APIs.',
+          tags: ['JAVASCRIPT', 'FETCH API', 'EDGE SERVERLESS'],
           visualAlt: 'Currency converter interface mockup',
-          url: 'https://gustavogalvao.vercel.app',
+          url: 'https://brl2go.vercel.app',
         },
         {
           id: 'fried-chicken',
@@ -760,11 +760,11 @@ export const translations: Record<Language, Translations> = {
       independentProjects: [
         {
           id: 'brl2go',
-          title: 'BRL2GO. Conversor de Moedas',
-          desc: 'Ferramenta de conversão cambial em tempo real com interface limpa e reativa.',
-          tags: ['REACT', 'API REST', 'INTERFACE FINTECH'],
+          title: 'BRL2GO. Conversor de Moedas em Tempo Real',
+          desc: 'Aplicação web minimalista e responsiva focada em conversão cambial instantânea via API financeira.',
+          tags: ['JAVASCRIPT', 'FETCH API', 'EDGE SERVERLESS'],
           visualAlt: 'Mockup de conversor de moedas',
-          url: 'https://gustavogalvao.vercel.app',
+          url: 'https://brl2go.vercel.app',
         },
         {
           id: 'fried-chicken',
