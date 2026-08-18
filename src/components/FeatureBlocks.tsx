@@ -2,6 +2,8 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import GooeyLayer from './ui/GooeyLayer';
 import { useGsapReveal } from '../hooks/useGsapReveal';
+import { useProjectModal } from '../context/ProjectModalContext';
+import { ArrowUpRight } from 'lucide-react';
 
 /* ── Abstract UI Mockups ────────────────────────────────────── */
 
@@ -165,12 +167,14 @@ const CRMMockup: React.FC = () => (
 
 const VISUAL_COMPONENTS = [BrowserMockup, AnalyticsMockup, CRMMockup];
 const DOMINANT_COLORS: ('gold' | 'orange' | 'red')[] = ['gold', 'orange', 'red'];
+const BLOCK_PROJECT_MAP = ['fried-chicken', 'brl2go', 'hestus-ai'];
 
 /* ── Main Component ─────────────────────────────────────────── */
 
 export const FeatureBlocks: React.FC = () => {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const containerRef = useGsapReveal({ y: 50, duration: 1, stagger: 0.15 });
+  const { openProjectModal } = useProjectModal();
 
   return (
     <section
@@ -189,6 +193,7 @@ export const FeatureBlocks: React.FC = () => {
         const Visual = VISUAL_COMPONENTS[i];
         const color = DOMINANT_COLORS[i];
         const isReversed = i % 2 === 1;
+        const targetProject = BLOCK_PROJECT_MAP[i];
 
         return (
           <div key={i} className="relative overflow-hidden py-20 sm:py-28">
@@ -225,12 +230,27 @@ export const FeatureBlocks: React.FC = () => {
                   <p className="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-md">
                     {block.copy}
                   </p>
+
+                  <button
+                    onClick={() => openProjectModal(targetProject)}
+                    className="inline-flex items-center gap-2 text-xs font-mono text-[#FFC069] hover:underline font-bold"
+                  >
+                    <span>{language === 'en' ? 'Explore this system demo' : 'Ver demonstração deste sistema'}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
 
                 {/* Visual side */}
                 <div className="flex-1 w-full gsap-child">
-                  <div className="glass-feature p-6 sm:p-8">
+                  <div
+                    onClick={() => openProjectModal(targetProject)}
+                    className="glass-feature p-6 sm:p-8 cursor-pointer group hover:border-[#FFC069]/40 hover:shadow-[0_20px_50px_rgba(255,192,105,0.12)] transition-all duration-500 rounded-3xl relative"
+                  >
                     <Visual />
+                    <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono text-zinc-500 group-hover:text-[#FFC069] transition-colors">
+                      <span>{language === 'en' ? 'Click to open live video & demo' : 'Clique para ver vídeo e detalhes'}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </div>
               </div>

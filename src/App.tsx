@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import { LoadingProvider, useLoading } from './context/LoadingContext';
+import { ProjectModalProvider } from './context/ProjectModalContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { PlanOverview } from './components/PlanOverview';
@@ -98,7 +99,9 @@ export const App: React.FC = () => {
   return (
     <LanguageProvider>
       <LoadingProvider>
-        <AppContent />
+        <ProjectModalProvider>
+          <AppContent />
+        </ProjectModalProvider>
       </LoadingProvider>
     </LanguageProvider>
   );

@@ -2,17 +2,18 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import GooeyLayer from './ui/GooeyLayer';
 import { useGsapReveal } from '../hooks/useGsapReveal';
-import { MessageSquare } from 'lucide-react';
+import { MessageSquare, ArrowUpRight, Sparkles } from 'lucide-react';
 import {
   ImagesScrollingAnimation,
   type ScrollingProjectItem,
 } from './ui/images-scrolling-animation';
+import { useProjectModal } from '../context/ProjectModalContext';
 
 /* ── Abstract visual mockups for Client Projects ───────────── */
 
 const ChatMockup: React.FC = () => (
   <div
-    className="w-full h-40 rounded-xl overflow-hidden relative"
+    className="w-full h-40 rounded-2xl overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-500"
     style={{
       background: 'rgba(255,255,255,0.04)',
       border: '1px solid rgba(255,255,255,0.08)',
@@ -64,7 +65,7 @@ const ChatMockup: React.FC = () => (
 
 const ShopMockup: React.FC = () => (
   <div
-    className="w-full h-40 rounded-xl overflow-hidden relative"
+    className="w-full h-40 rounded-2xl overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-500"
     style={{
       background: 'rgba(255,255,255,0.04)',
       border: '1px solid rgba(255,255,255,0.08)',
@@ -113,7 +114,7 @@ const ShopMockup: React.FC = () => (
 
 const TerminalMockup: React.FC = () => (
   <div
-    className="w-full h-40 rounded-xl overflow-hidden font-mono"
+    className="w-full h-40 rounded-2xl overflow-hidden font-mono group-hover:scale-[1.02] transition-transform duration-500"
     style={{
       background: 'rgba(10,10,14,0.9)',
       border: '1px solid rgba(255,255,255,0.08)',
@@ -151,12 +152,13 @@ const TerminalMockup: React.FC = () => (
 /* ── High-Res Image Mapping for Independent Projects ────────── */
 
 const INDEPENDENT_IMAGES: Record<string, string> = {
-  brl2go:
-    'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&auto=format&fit=crop&q=80',
-  'fried-chicken':
-    'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200&auto=format&fit=crop&q=80',
-  'hestus-ai':
-    'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80',
+  brl2go: '/img/Conversor de Moedas em tempo real.png',
+  'fried-chicken': '/img/Fried-chicken.png',
+  'hestus-ai': '/img/hestus.png',
+  'devsclub-store': '/img/devsclub-store.png',
+  'nexus-studio': '/img/projeto2.png',
+  'cloudpulse-metrics': '/img/projeto1.png',
+  'aura-design-system': '/img/projeto3.png',
 };
 
 /* ── Main Component ─────────────────────────────────────────── */
@@ -171,6 +173,12 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
   const { language, t } = useLanguage();
   const headerRef = useGsapReveal({ y: 40, duration: 0.9, stagger: 0.12 });
   const grid1Ref = useGsapReveal({ y: 50, duration: 0.9, stagger: 0.15 });
+
+  const { openProjectModal } = useProjectModal();
+
+  const handleOpenProject = (projectId: string) => {
+    openProjectModal(projectId);
+  };
 
   const whatsappUrl =
     'https://wa.me/WHATSAPP_NUMBER_PLACEHOLDER?text=' +
@@ -194,7 +202,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
       desc: project.desc,
       src:
         INDEPENDENT_IMAGES[project.id] ||
-        'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&auto=format&fit=crop&q=80',
+        '/img/Conversor de Moedas em tempo real.png',
       tags: project.tags,
       url: project.url || 'https://gustavogalvao.vercel.app',
     }));
@@ -204,9 +212,9 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
       {/* ── HEADER ─────────────────────────────────────────── */}
       <section
         ref={headerRef as React.RefObject<HTMLElement>}
-        className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
+        className="relative pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
-        {/* Gooey glow behind header only */}
+        {/* Gooey glow behind header */}
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none"
           aria-hidden="true"
@@ -221,10 +229,11 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
 
         <div className="max-w-5xl mx-auto relative z-10 text-center">
           <div className="section-badge inline-flex mb-4">
-            {language === 'en' ? 'PORTFOLIO & LAB' : 'PORTFÓLIO & EXPERIMENTOS'}
+            <Sparkles className="w-3.5 h-3.5 mr-1" />
+            <span>{language === 'en' ? 'PORTFOLIO & LAB' : 'PORTFÓLIO & EXPERIMENTOS'}</span>
           </div>
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-4 gsap-child"
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-4 gsap-child tracking-tight"
             style={{ letterSpacing: '-0.03em', lineHeight: 1.1 }}
           >
             {t.portfolioPage.title}
@@ -263,7 +272,8 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
               return (
                 <article
                   key={project.id}
-                  className={`glass-feature flex flex-col overflow-hidden gsap-child transition-all duration-300 hover:border-white/20 ${
+                  onClick={() => handleOpenProject(project.id)}
+                  className={`glass-feature group flex flex-col overflow-hidden gsap-child transition-all duration-500 hover:border-[#FFC069]/50 hover:shadow-[0_20px_50px_rgba(255,192,105,0.12)] cursor-pointer rounded-3xl ${
                     isFeatured ? 'md:col-span-2' : ''
                   }`}
                 >
@@ -274,22 +284,27 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
 
                   {/* Content */}
                   <div className="p-6 sm:p-7 flex-1 flex flex-col space-y-4">
-                    <div>
-                      <div className="text-[10px] font-mono text-zinc-500 mb-1.5 uppercase tracking-widest">
-                        {project.client}
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <div className="text-[10px] font-mono text-zinc-500 mb-1.5 uppercase tracking-widest">
+                          {project.client}
+                        </div>
+                        <h3
+                          className="text-xl font-bold text-white group-hover:text-[#FFC069] transition-colors"
+                          style={{ letterSpacing: '-0.02em' }}
+                        >
+                          {project.title}
+                        </h3>
                       </div>
-                      <h3
-                        className="text-xl font-bold text-white"
-                        style={{ letterSpacing: '-0.02em' }}
-                      >
-                        {project.title}
-                      </h3>
+                      <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 group-hover:bg-[#FFC069] group-hover:text-black transition-colors shrink-0">
+                        <ArrowUpRight className="w-4 h-4" />
+                      </div>
                     </div>
 
                     <div className="space-y-3">
                       <div>
                         <span className="text-[10px] font-mono font-semibold text-[#FFC069] uppercase tracking-wider">
-                          Challenge:{' '}
+                          {language === 'en' ? 'Challenge:' : 'Desafio:'}{' '}
                         </span>
                         <span className="text-sm text-zinc-400 leading-relaxed">
                           {project.challenge}
@@ -297,7 +312,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                       </div>
                       <div>
                         <span className="text-[10px] font-mono font-semibold text-[#E8642F] uppercase tracking-wider">
-                          Solution:{' '}
+                          {language === 'en' ? 'Solution:' : 'Solução:'}{' '}
                         </span>
                         <span className="text-sm text-zinc-300 leading-relaxed">
                           {project.solution}
@@ -305,21 +320,28 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                       </div>
                     </div>
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 pt-2 mt-auto">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-[10px] font-mono px-2.5 py-1 rounded-full"
-                          style={{
-                            background: 'rgba(255,192,105,0.08)',
-                            border: '1px solid rgba(255,192,105,0.18)',
-                            color: '#FFC069',
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                    {/* Tags & Action Link */}
+                    <div className="flex items-center justify-between pt-3 mt-auto border-t border-white/5">
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[10px] font-mono px-2.5 py-1 rounded-full"
+                            style={{
+                              background: 'rgba(255,192,105,0.08)',
+                              border: '1px solid rgba(255,192,105,0.18)',
+                              color: '#FFC069',
+                            }}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      <span className="text-xs font-mono text-[#FFC069] font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                        <span>{language === 'en' ? 'Details & Demo' : 'Detalhes & Vídeo'}</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </span>
                     </div>
                   </div>
                 </article>
@@ -345,9 +367,12 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
             </p>
           </div>
 
-          {/* Sticky Stacking Scrolling Animation */}
+          {/* Sticky Stacking Scrolling Animation with modal click handler */}
           <div className="w-full">
-            <ImagesScrollingAnimation items={scrollingProjects} />
+            <ImagesScrollingAnimation
+              items={scrollingProjects}
+              onSelectProject={handleOpenProject}
+            />
           </div>
         </div>
       </section>
@@ -366,7 +391,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
           }}
         />
         <div className="max-w-4xl mx-auto relative z-10">
-          <div className="glass-feature px-8 sm:px-12 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="glass-feature px-8 sm:px-12 py-12 flex flex-col sm:flex-row items-center justify-between gap-6 rounded-3xl border border-white/10">
             <div className="text-center sm:text-left space-y-2">
               <h2
                 className="text-2xl sm:text-3xl font-extrabold text-white"
@@ -385,7 +410,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
               className="btn-primary shrink-0"
             >
               <MessageSquare className="w-4 h-4" />
-              {t.portfolioPage.footerCta.cta}
+              <span>{t.portfolioPage.footerCta.cta}</span>
             </a>
           </div>
         </div>
