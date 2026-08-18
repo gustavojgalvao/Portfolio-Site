@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-gold-500: #FFC069;
+  --color-gold-400: #FFD28F;
+  --color-gold-300: #FFE0B0;
+  --color-orange-600: #c9521f;
+  --color-orange-500: #E8642F;
+  --color-orange-400: #f07848;
+  --color-orange-300: #f89070;
+  --color-red-800: #5a0f0a;
+  --color-red-700: #7A1610;
+  --color-red-600: #9a1f14;
+}
+
+@layer base {
+  :root {
+    --bg-black: #050505;
+    --card-bg: rgba(14, 14, 18, 0.7);
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --gold: #FFC069;
+    --orange: #E8642F;
+    --deep-red: #7A1610;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-black);
+    color: #f4f4f5;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #E8642F;
+    outline-offset: 2px;
+  }
+}
+
+/* ─── GLASS SYSTEM (Apple Premium Glassmorphism) ────────── */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 192, 105, 0.3);
+  box-shadow: 0 24px 60px -10px rgba(0, 0, 0, 0.8), 0 0 35px 0 rgba(232, 100, 47, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+/* Feature-block glass */
+.glass-feature {
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-feature:hover {
+  border-color: rgba(255, 192, 105, 0.2);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.75), 0 0 40px rgba(255, 192, 105, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+}
+
+/* Living Hero Photo Ambient Glow */
+@keyframes heroGlowOrganic {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.55;
+  }
+  33% {
+    transform: translate(-14px, 12px) scale(1.12);
+    opacity: 0.75;
+  }
+  66% {
+    transform: translate(12px, -10px) scale(0.96);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.55;
+  }
+}
+
+.animate-hero-glow {
+  animation: heroGlowOrganic 10s ease-in-out infinite;
+}
+
+.glass-panel {
+  background: rgba(14, 14, 18, 0.8);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.2);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.25s ease;
+}
+
+.glass-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(232, 100, 47, 0.4);
+}
+
+.glass-input {
+  background: rgba(15, 15, 20, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  transition: all 0.25s ease;
+}
+
+.glass-input:focus {
+  background: rgba(20, 20, 28, 0.8);
+  border-color: #E8642F;
+  box-shadow: 0 0 15px rgba(232, 100, 47, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  outline: none;
+}
+
+/* ─── GOOEY FILTER CONTAINER ────────────────────────────────── */
+
+.gooey-container {
+  filter: url(#gooey-filter);
+}
+
+/* Glow blobs — mix-blend-mode: screen so they work on black bg */
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.glow-blob-gold {
+  background: radial-gradient(circle at 40% 40%, #FFC069 0%, #E8642F 55%, transparent 80%);
+}
+
+.glow-blob-orange {
+  background: radial-gradient(circle at 50% 50%, #E8642F 0%, #FFC069 45%, transparent 78%);
+}
+
+.glow-blob-red {
+  background: radial-gradient(circle at 60% 45%, #7A1610 0%, #E8642F 60%, transparent 85%);
+}
+
+/* ─── TYPOGRAPHY ────────────────────────────────────────────── */
+
+.text-gradient-gold-orange {
+  background: linear-gradient(135deg, #FFC069 0%, #E8642F 60%, #c9521f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Keep legacy class for Hero compatibility */
+.text-gradient-orange-gold {
+  background: linear-gradient(135deg, #FFC069 0%, #E8642F 55%, #7A1610 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── BUTTONS ───────────────────────────────────────────────── */
+
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #FFC069 0%, #E8642F 100%);
+  color: #0a0a0a;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  box-shadow: 0 8px 24px rgba(232, 100, 47, 0.35), 0 2px 8px rgba(0,0,0,0.4);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(232, 100, 47, 0.5), 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s;
+}
+
+.btn-primary:hover::before {
+  left: 150%;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #e4e4e7;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 192, 105, 0.4);
+  color: #fff;
+}
+
+/* Legacy shine button for Hero */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s;
+}
+
+.btn-shine:hover::before {
+  left: 150%;
+}
+
+/* ─── SECTION BADGE ─────────────────────────────────────────── */
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 192, 105, 0.10);
+  border: 1px solid rgba(232, 100, 47, 0.30);
+  color: #FFC069;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ─── SECTION DIVIDER ───────────────────────────────────────── */
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(232, 100, 47, 0.2) 20%, rgba(255, 192, 105, 0.4) 50%, rgba(232, 100, 47, 0.2) 80%, transparent 100%);
+}
+
+/* ─── SCROLL PROGRESS ───────────────────────────────────────── */
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  z-index: 9999;
+  background: linear-gradient(90deg, #FFC069, #E8642F, #7A1610);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* ─── MARQUEE ───────────────────────────────────────────────── */
+
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ─── GSAP REVEAL DEFAULTS ──────────────────────────────────── */
+
+/* Ensures GSAP targets start invisible before JS sets fromTo */
+.gsap-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+/* ─── CUSTOM SCROLLBAR ──────────────────────────────────────── */
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #E8642F; }
+
+/* ─── PROCESS CONNECTOR LINE ────────────────────────────────── */
+
+.process-line {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255,192,105,0.5) 0%, rgba(232,100,47,0.2) 100%);
+}
+
+/* ─── REDUCED MOTION ────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}
