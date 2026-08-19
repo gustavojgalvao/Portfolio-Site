@@ -15,7 +15,7 @@ export const AboutMe: React.FC<AboutMeProps> = () => {
     <section
       id="about"
       ref={containerRef as React.RefObject<HTMLElement>}
-      className="relative py-28 px-4 sm:px-6 lg:px-8 bg-[#050505] overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 bg-[#050505] overflow-hidden"
     >
       {/* Ambient glow */}
       <div
@@ -42,7 +42,7 @@ export const AboutMe: React.FC<AboutMeProps> = () => {
         </div>
 
         {/* Glass bio card */}
-        <div className="glass-feature p-8 sm:p-10 space-y-6 gsap-child">
+        <div className="glass-feature p-5 sm:p-8 md:p-10 space-y-6 gsap-child">
           <p className="text-[16px] sm:text-[17px] text-zinc-300 leading-[1.75]">
             {t.about.bio}
           </p>

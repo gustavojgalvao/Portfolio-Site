@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Sparkles, CheckCircle2, MessageSquare } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, MessageSquare } from 'lucide-react';
 
 interface ProjectViewProps {
   onClose: () => void;
@@ -35,7 +35,7 @@ export const LenteContatoView: React.FC<ProjectViewProps> = ({ onClose }) => {
         <div className="glass-card p-8 sm:p-12 rounded-3xl border border-white/10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="space-y-4 max-w-xl text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold">
-              <Sparkles className="w-3.5 h-3.5" />
+
               ODONTOLOGIA ESTÉTICA PREMIUM
             </div>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">

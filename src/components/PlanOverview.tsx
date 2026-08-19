@@ -9,7 +9,6 @@ import {
   TrendingUp,
   Zap,
   ShieldCheck,
-  Sparkles,
 } from 'lucide-react';
 
 export const PlanOverview: React.FC = () => {
@@ -38,7 +37,7 @@ export const PlanOverview: React.FC = () => {
     <section
       id="plan"
       ref={containerRef as React.RefObject<HTMLElement>}
-      className="relative py-28 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#050505]"
+      className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#050505]"
     >
       {/* Ambient background glow */}
       <div
@@ -117,7 +116,6 @@ export const PlanOverview: React.FC = () => {
                     <span className="text-[10px] font-mono tracking-widest text-zinc-400 uppercase font-semibold">
                       {heroCard.statLabel}
                     </span>
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   </div>
 
                   <div className="flex items-baseline gap-2">
@@ -150,7 +148,7 @@ export const PlanOverview: React.FC = () => {
 
           {/* ── BOTTOM 3 ASYMMETRIC BENTO CARDS ───────────────── */}
           {bentoCards.map((card, idx) => {
-            const Icon = bentoIcons[idx] || Sparkles;
+            const Icon = bentoIcons[idx] || Check;
             const style = bentoGradients[idx] || bentoGradients[0];
 
             return (

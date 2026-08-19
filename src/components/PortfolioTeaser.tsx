@@ -1,14 +1,12 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useGsapReveal } from '../hooks/useGsapReveal';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, FolderGit2 } from 'lucide-react';
 
-interface PortfolioTeaserProps {
-  onNavigatePortfolio: () => void;
-}
-
-export const PortfolioTeaser: React.FC<PortfolioTeaserProps> = ({ onNavigatePortfolio }) => {
-  const { t } = useLanguage();
+export const PortfolioTeaser: React.FC<{ onNavigatePortfolio: () => void }> = ({
+  onNavigatePortfolio,
+}) => {
+  const { language, t } = useLanguage();
   const containerRef = useGsapReveal({ y: 40, duration: 0.9, stagger: 0.12 });
 
   return (
@@ -17,39 +15,52 @@ export const PortfolioTeaser: React.FC<PortfolioTeaserProps> = ({ onNavigatePort
       ref={containerRef as React.RefObject<HTMLElement>}
       className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[#050505] overflow-hidden"
     >
-      {/* Faint gooey glow peeking from edges */}
+      {/* Ambient glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
         style={{
           background: `
-            radial-gradient(ellipse 40% 60% at -5% 50%, rgba(232,100,47,0.08) 0%, transparent 70%),
-            radial-gradient(ellipse 40% 60% at 105% 50%, rgba(255,192,105,0.07) 0%, transparent 70%)
+            radial-gradient(ellipse 60% 60% at 50% 50%, rgba(255,192,105,0.07) 0%, transparent 70%)
           `,
         }}
       />
 
       <div className="max-w-5xl mx-auto relative z-10 gsap-child">
-        <div className="glass-feature px-8 sm:px-12 py-12 sm:py-14 flex flex-col sm:flex-row items-center justify-between gap-8">
-          <div className="text-center sm:text-left space-y-3">
+        {/* Main Glass Banner inviting the user to the dedicated Portfolio */}
+        <div className="glass-feature px-5 sm:px-10 md:px-14 py-10 sm:py-14 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8 rounded-[28px] sm:rounded-[36px] border border-white/15 bg-gradient-to-br from-white/[0.04] via-black/60 to-black/90 shadow-[0_25px_70px_rgba(0,0,0,0.8)]">
+          <div className="text-center md:text-left space-y-3 max-w-xl">
+            <div className="section-badge inline-flex">
+
+              <span>{language === 'en' ? 'PORTFOLIO & LAB' : 'PORTFÓLIO & LABORATÓRIO'}</span>
+            </div>
+
             <h2
-              className="text-3xl sm:text-4xl font-extrabold text-white"
+              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight"
               style={{ letterSpacing: '-0.025em' }}
             >
               {t.portfolioTeaser.heading}
             </h2>
-            <p className="text-base text-zinc-400 max-w-md">{t.portfolioTeaser.subtitle}</p>
+
+            <p className="text-sm sm:text-base text-zinc-300 font-normal leading-relaxed">
+              {t.portfolioTeaser.subtitle}
+            </p>
           </div>
 
-          <button
-            onClick={onNavigatePortfolio}
-            className="btn-primary shrink-0 text-sm sm:text-base group"
-          >
-            {t.portfolioTeaser.cta}
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+            <button
+              onClick={onNavigatePortfolio}
+              className="btn-shine inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#7A1610] via-[#E8642F] to-[#FFC069] text-white font-bold text-sm sm:text-base shadow-xl shadow-orange-500/25 hover:scale-105 transition-all"
+            >
+              <FolderGit2 className="w-5 h-5 text-white" />
+              <span>{t.portfolioTeaser.cta}</span>
+              <ArrowRight className="w-4 h-4 ml-1" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
   );
 };
+
+export default PortfolioTeaser;

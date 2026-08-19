@@ -34,7 +34,7 @@ export const FinalCTA: React.FC = () => {
 
         {/* Headline — two lines with whitespace-pre-wrap */}
         <h2
-          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white whitespace-pre-line"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white whitespace-pre-line"
           style={{ letterSpacing: '-0.03em', lineHeight: 1.1 }}
         >
           {t.finalCta.title}

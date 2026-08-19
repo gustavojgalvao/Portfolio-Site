@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { LanguageProvider } from './context/LanguageContext';
 import { LoadingProvider, useLoading } from './context/LoadingContext';
+import { ProjectModalProvider } from './context/ProjectModalContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { PlanOverview } from './components/PlanOverview';
 import { Comparison } from './components/Comparison';
 import { FeatureBlocks } from './components/FeatureBlocks';
-import { PortfolioTeaser } from './components/PortfolioTeaser';
 import { Process } from './components/Process';
 import { AboutMe } from './components/AboutMe';
 import { FAQ } from './components/FAQ';
@@ -31,18 +31,23 @@ export const AppContent: React.FC = () => {
     return () => window.removeEventListener('navigate-portfolio', handler);
   }, []);
 
+  // Show Splash Screen only once per session
+  useEffect(() => {
+    const hasSeenSplash = sessionStorage.getItem('splash_seen');
+    if (!hasSeenSplash) {
+      triggerLoading(undefined, 2500);
+      sessionStorage.setItem('splash_seen', 'true');
+    }
+  }, [triggerLoading]);
+
   const handleNavigatePortfolio = () => {
-    triggerLoading(() => {
-      setRoute('portfolio');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 2000);
+    setRoute('portfolio');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleNavigateHome = () => {
-    triggerLoading(() => {
-      setRoute('home');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 2000);
+    setRoute('home');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -57,31 +62,28 @@ export const AppContent: React.FC = () => {
       <main>
         {route === 'home' ? (
           <>
-            {/* 1. Hero — keeps existing structure, content updated */}
+            {/* 1. Hero */}
             <Hero />
 
-            {/* 2. Plan Overview — single-panel, one-plan framing */}
+            {/* 2. Plan Overview */}
             <PlanOverview />
 
-            {/* 3. Comparison — honest agency vs direct table */}
+            {/* 3. Comparison */}
             <Comparison />
 
-            {/* 4. Feature Blocks — 3 Raycast-style sections with gooey glow */}
+            {/* 4. Feature Blocks */}
             <FeatureBlocks />
 
-            {/* 5. Portfolio Teaser — glass banner CTA to /portfolio */}
-            <PortfolioTeaser onNavigatePortfolio={handleNavigatePortfolio} />
-
-            {/* 6. Process — 5-step numbered list, emphasizes ongoing plan */}
+            {/* 5. Process */}
             <Process />
 
-            {/* 7. About — honest first-person bio */}
+            {/* 6. About */}
             <AboutMe onNavigatePortfolio={handleNavigatePortfolio} />
 
-            {/* 8. FAQ — GEO-optimized, Schema.org markup */}
+            {/* 7. FAQ */}
             <FAQ />
 
-            {/* 9. Final CTA — full-bleed gooey glow closing section */}
+            {/* 8. Final CTA */}
             <FinalCTA />
           </>
         ) : (
@@ -89,7 +91,7 @@ export const AppContent: React.FC = () => {
         )}
       </main>
 
-      <Footer />
+      <Footer onNavigatePortfolio={handleNavigatePortfolio} />
     </div>
   );
 };
@@ -98,7 +100,9 @@ export const App: React.FC = () => {
   return (
     <LanguageProvider>
       <LoadingProvider>
-        <AppContent />
+        <ProjectModalProvider>
+          <AppContent />
+        </ProjectModalProvider>
       </LoadingProvider>
     </LanguageProvider>
   );
