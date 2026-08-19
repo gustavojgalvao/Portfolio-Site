@@ -114,7 +114,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
       <section
         id="client-work"
         ref={grid1Ref as React.RefObject<HTMLElement>}
-        className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-white/6"
+        className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-white/6 overflow-hidden"
       >
         <div className="max-w-5xl mx-auto gsap-child">
           <SelectedWorkList
@@ -167,10 +167,10 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
           }}
         />
         <div className="max-w-4xl mx-auto relative z-10">
-          <div className="glass-feature px-8 sm:px-12 py-12 flex flex-col sm:flex-row items-center justify-between gap-6 rounded-3xl border border-white/10">
+          <div className="glass-feature px-5 sm:px-8 md:px-12 py-8 sm:py-12 flex flex-col sm:flex-row items-center justify-between gap-6 rounded-3xl border border-white/10">
             <div className="text-center sm:text-left space-y-2">
               <h2
-                className="text-2xl sm:text-3xl font-extrabold text-white"
+                className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white"
                 style={{ letterSpacing: '-0.025em' }}
               >
                 {t.portfolioPage.footerCta.heading}
@@ -183,7 +183,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary shrink-0"
+              className="btn-primary shrink-0 w-full sm:w-auto justify-center"
             >
               <MessageSquare className="w-4 h-4" />
               <span>{t.portfolioPage.footerCta.cta}</span>

@@ -37,23 +37,23 @@ export const StickyCard: React.FC<StickyCardProps> = ({
   return (
     <div
       ref={container}
-      className="sticky top-20 sm:top-24 flex items-center justify-center px-4 sm:px-6 w-full"
+      className="sticky top-20 sm:top-24 flex items-center justify-center px-2 sm:px-6 w-full"
       style={{
-        marginBottom: i === total - 1 ? '0px' : '40px',
+        marginBottom: i === total - 1 ? '0px' : '28px',
         zIndex: i + 1,
       }}
     >
       <motion.div
         style={{
           scale,
-          top: `calc(${i * 24}px)`,
+          top: `calc(${i * 20}px)`,
         }}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
           onSelect?.(project.id);
         }}
-        className="group relative origin-top overflow-hidden rounded-[32px] border border-white/15 bg-[#0a0a0d] shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition-all duration-500 hover:border-[#FFC069]/50 hover:shadow-[0_25px_60px_rgba(255,192,105,0.2)] w-full max-w-2xl sm:max-w-3xl h-[340px] sm:h-[420px] md:h-[460px] cursor-pointer select-none"
+        className="group relative origin-top overflow-hidden rounded-[24px] sm:rounded-[32px] border border-white/15 bg-[#0a0a0d] shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition-all duration-500 hover:border-[#FFC069]/50 hover:shadow-[0_25px_60px_rgba(255,192,105,0.2)] w-full max-w-2xl sm:max-w-3xl h-[270px] sm:h-[380px] md:h-[460px] cursor-pointer select-none active:scale-[0.98]"
       >
         <div
           role="button"
@@ -69,40 +69,47 @@ export const StickyCard: React.FC<StickyCardProps> = ({
               onSelect?.(project.id);
             }
           }}
-          className="relative block w-full h-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#FFC069] rounded-[32px]"
+          className="relative block w-full h-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#FFC069] rounded-[24px] sm:rounded-[32px]"
           aria-label={`Ver detalhes e vídeo do projeto ${project.title}`}
         >
-          {/* Main project image - becomes frosted/blurred on hover */}
+          {/* Main project image */}
           <img
             src={project.src || "/placeholder.svg"}
             alt={project.title}
             loading="lazy"
-            className="h-full w-full object-cover transition-all duration-700 ease-out group-hover:scale-105 group-hover:blur-[8px] group-hover:brightness-[0.4] pointer-events-none"
+            className="h-full w-full object-cover transition-all duration-700 ease-out md:group-hover:scale-105 md:group-hover:blur-[8px] md:group-hover:brightness-[0.4] pointer-events-none"
           />
 
-          {/* Ambient gradient vignette (always visible for contrast) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+          {/* Gradient vignette */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
 
-          {/* Permanent bottom bar (visible when not hovered) */}
-          <div className="absolute bottom-0 inset-x-0 p-5 sm:p-7 flex items-end justify-between transition-opacity duration-300 group-hover:opacity-0 pointer-events-none">
-            <div className="space-y-1.5">
+          {/* Bottom bar — always visible, hidden on desktop hover */}
+          <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 flex items-end justify-between transition-opacity duration-300 md:group-hover:opacity-0 pointer-events-none">
+            <div className="space-y-1 sm:space-y-1.5 flex-1 min-w-0 pr-3">
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono font-bold tracking-widest text-[#FFC069] uppercase">
+                <span className="text-[9px] sm:text-[10px] font-mono font-bold tracking-widest text-[#FFC069] uppercase">
                   {project.subtitle || `PROJETO 0${i + 1}`}
                 </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              <h3 className="text-base sm:text-2xl font-bold text-white tracking-tight truncate">
                 {project.title}
               </h3>
+              {/* Mobile-only description */}
+              <p className="text-[11px] text-zinc-400 line-clamp-1 md:hidden leading-relaxed">
+                {project.desc}
+              </p>
             </div>
-            <div className="w-11 h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-xl group-hover:bg-[#FFC069] group-hover:text-black transition-colors">
-              <Play className="w-4 h-4 ml-0.5" />
+            <div className="flex flex-col items-center gap-1 shrink-0">
+              <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-xl transition-colors">
+                <Play className="w-3 h-3 sm:w-4 sm:h-4 ml-0.5" />
+              </div>
+              <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-wider md:hidden">Abrir</span>
             </div>
           </div>
 
-          {/* Frosted Glass Overlay (appears with blur & reveal on hover) */}
-          <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8 md:p-10 opacity-0 group-hover:opacity-100 backdrop-blur-md bg-black/45 transition-all duration-500 ease-out pointer-events-none">
+          {/* Frosted Glass Overlay — desktop hover only */}
+          <div className="absolute inset-0 flex-col justify-between p-6 sm:p-8 md:p-10 opacity-0 md:group-hover:opacity-100 backdrop-blur-md bg-black/45 transition-all duration-500 ease-out pointer-events-none hidden md:flex">
             {/* Top row of tags & Video Badge */}
             <div className="flex items-center justify-between gap-3">
               <div className="flex flex-wrap gap-2">
@@ -116,7 +123,7 @@ export const StickyCard: React.FC<StickyCardProps> = ({
                 ))}
               </div>
 
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFC069]/20 border border-[#FFC069]/40 text-xs font-mono font-bold text-[#FFC069]">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFC069]/20 border border-[#FFC069]/40 text-xs font-mono font-bold text-[#FFC069] shrink-0">
                 <Play className="w-3.5 h-3.5 fill-[#FFC069]" />
                 <span>VER DETALHES & VÍDEO</span>
               </div>
@@ -161,7 +168,7 @@ export const ImagesScrollingAnimation: React.FC<ImagesScrollingAnimationProps> =
   return (
     <div
       ref={container}
-      className="relative flex w-full flex-col items-center justify-center pb-[16vh] pt-[4vh]"
+      className="relative flex w-full flex-col items-center justify-center pb-[10vh] pt-[2vh]"
     >
       {items.map((project, i) => {
         const targetScale = Math.max(0.75, 1 - (items.length - i - 1) * 0.05);

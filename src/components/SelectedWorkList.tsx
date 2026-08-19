@@ -171,7 +171,7 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
               {/* Mobile In-line Preview (Only visible on touch / mobile screens) */}
               <div className="md:hidden mt-3 pt-2">
                 {images[project.id] && (
-                  <div className="w-full h-44 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative shadow-md">
+                  <div className="w-full h-48 sm:h-52 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative shadow-md">
                     <img
                       src={images[project.id]}
                       alt={project.title}
@@ -181,6 +181,17 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                   </div>
                 )}
+                {/* Tags row — always visible on mobile */}
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  {project.tags.slice(0, 3).map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-[#FFC069]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           );

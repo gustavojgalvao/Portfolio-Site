@@ -38,7 +38,7 @@ export const PlanOverview: React.FC = () => {
     <section
       id="plan"
       ref={containerRef as React.RefObject<HTMLElement>}
-      className="relative py-28 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#050505]"
+      className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#050505]"
     >
       {/* Ambient background glow */}
       <div

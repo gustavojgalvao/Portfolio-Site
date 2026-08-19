@@ -11,7 +11,7 @@ export const Comparison: React.FC = () => {
     <section
       id="comparison"
       ref={containerRef as React.RefObject<HTMLElement>}
-      className="relative py-28 px-4 sm:px-6 lg:px-8 bg-[#050505] overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 bg-[#050505] overflow-hidden"
     >
       {/* Ambient background glow */}
       <div
@@ -41,57 +41,84 @@ export const Comparison: React.FC = () => {
         </div>
 
         {/* ─── FOCAL CONTRAST TABLE ───────────────────────────── */}
-        <div className="glass-feature overflow-hidden rounded-3xl border border-white/10 gsap-child">
+
+        {/* ── MOBILE: stacked cards per row ──────────────────── */}
+        <div className="md:hidden glass-feature overflow-hidden rounded-3xl border border-white/10 gsap-child divide-y divide-white/6">
+          {t.comparison.rows.map((row, i) => (
+            <div key={i} className="p-4 space-y-3">
+              {/* Criterion label */}
+              <span className="text-[11px] font-mono font-semibold text-zinc-400 uppercase tracking-widest block">
+                {row.feature}
+              </span>
+              {/* Two comparison blocks */}
+              <div className="grid grid-cols-2 gap-2">
+                {/* Agency */}
+                <div className="p-3 rounded-xl bg-white/3 border border-white/6 opacity-60 space-y-1.5">
+                  <span className="text-[9px] font-mono font-bold tracking-widest text-zinc-500 uppercase block">
+                    {t.comparison.agencyTitle}
+                  </span>
+                  <div className="flex items-start gap-1.5">
+                    <X className="w-3.5 h-3.5 text-zinc-600 mt-0.5 shrink-0" />
+                    <span className="text-[11px] text-zinc-500 leading-relaxed">{row.agency}</span>
+                  </div>
+                </div>
+                {/* Gustavo */}
+                <div className="p-3 rounded-xl bg-[#FFC069]/5 border border-[#FFC069]/20 space-y-1.5">
+                  <span className="text-[9px] font-mono font-bold tracking-widest text-[#FFC069] uppercase block">
+                    {t.comparison.gustavoTitle}
+                  </span>
+                  <div className="flex items-start gap-1.5">
+                    <span className="w-3.5 h-3.5 rounded-full bg-[#FFC069]/20 flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-2 h-2 text-[#FFC069]" />
+                    </span>
+                    <span className="text-[11px] text-white leading-relaxed font-medium">{row.gustavo}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── DESKTOP: 3-column grid ──────────────────────────── */}
+        <div className="hidden md:block glass-feature overflow-hidden rounded-3xl border border-white/10 gsap-child">
           
           {/* Table Header */}
           <div className="grid grid-cols-12 border-b border-white/8">
-            <div className="col-span-4 sm:col-span-4 p-5 sm:p-6 flex items-center">
+            <div className="col-span-4 p-5 sm:p-6 flex items-center">
               <span className="text-[11px] font-mono font-bold tracking-widest text-zinc-500 uppercase">
                 Critério
               </span>
             </div>
-
-            {/* Traditional Agency (Dimmed Ghost Header) */}
-            <div className="col-span-4 sm:col-span-4 p-5 sm:p-6 border-l border-white/6 opacity-40 hover:opacity-75 transition-opacity flex items-center gap-2">
+            <div className="col-span-4 p-5 sm:p-6 border-l border-white/6 opacity-40 hover:opacity-75 transition-opacity flex items-center gap-2">
               <span className="text-[11px] font-mono font-semibold tracking-wider text-zinc-500 uppercase">
                 {t.comparison.agencyTitle}
               </span>
             </div>
-
-            {/* Gustavo Direct (Elevated Spotlight Header) */}
-            <div className="col-span-4 sm:col-span-4 p-5 sm:p-6 border-l border-[#FFC069]/30 bg-gradient-to-b from-[#FFC069]/10 to-[#E8642F]/[0.04] flex items-center justify-between">
+            <div className="col-span-4 p-5 sm:p-6 border-l border-[#FFC069]/30 bg-gradient-to-b from-[#FFC069]/10 to-[#E8642F]/[0.04] flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="text-xs sm:text-sm font-mono font-bold tracking-wider text-[#FFC069] uppercase">
                   {t.comparison.gustavoTitle}
                 </span>
               </div>
-              <Sparkles className="w-3.5 h-3.5 text-[#FFC069] hidden sm:block" />
+              <Sparkles className="w-3.5 h-3.5 text-[#FFC069]" />
             </div>
           </div>
 
           {/* Table Rows */}
           {t.comparison.rows.map((row, i) => (
-            <div
-              key={i}
-              className="grid grid-cols-12 border-b border-white/6 last:border-0 transition-colors"
-            >
-              {/* Feature Label */}
-              <div className="col-span-4 sm:col-span-4 p-5 sm:p-6 flex items-center">
+            <div key={i} className="grid grid-cols-12 border-b border-white/6 last:border-0 transition-colors">
+              <div className="col-span-4 p-5 sm:p-6 flex items-center">
                 <span className="text-xs sm:text-sm font-mono font-semibold text-zinc-400">
                   {row.feature}
                 </span>
               </div>
-
-              {/* Agency Column (Dimmed Ghost Cell) */}
-              <div className="col-span-4 sm:col-span-4 p-5 sm:p-6 border-l border-white/6 opacity-35 hover:opacity-70 transition-opacity flex items-start gap-2.5">
+              <div className="col-span-4 p-5 sm:p-6 border-l border-white/6 opacity-35 hover:opacity-70 transition-opacity flex items-start gap-2.5">
                 <X className="w-4 h-4 text-zinc-600 mt-0.5 shrink-0" />
                 <span className="text-xs sm:text-sm text-zinc-500 leading-relaxed font-normal">
                   {row.agency}
                 </span>
               </div>
-
-              {/* Gustavo Column (Spotlight Elevated Cell) */}
-              <div className="col-span-4 sm:col-span-4 p-5 sm:p-6 border-l border-[#FFC069]/25 bg-gradient-to-r from-[#FFC069]/[0.05] via-[#E8642F]/[0.02] to-transparent flex items-start gap-2.5">
+              <div className="col-span-4 p-5 sm:p-6 border-l border-[#FFC069]/25 bg-gradient-to-r from-[#FFC069]/[0.05] via-[#E8642F]/[0.02] to-transparent flex items-start gap-2.5">
                 <span className="mt-0.5 w-4 h-4 rounded-full bg-[#FFC069]/20 flex items-center justify-center shrink-0">
                   <Check className="w-2.5 h-2.5 text-[#FFC069] drop-shadow-[0_0_6px_#FFC069]" />
                 </span>

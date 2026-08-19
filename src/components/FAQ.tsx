@@ -12,7 +12,7 @@ export const FAQ: React.FC = () => {
     <section
       id="faq"
       ref={containerRef as React.RefObject<HTMLElement>}
-      className="relative py-28 px-4 sm:px-6 lg:px-8 bg-[#050505] overflow-hidden"
+      className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 bg-[#050505] overflow-hidden"
     >
       {/* Ambient glow */}
       <div

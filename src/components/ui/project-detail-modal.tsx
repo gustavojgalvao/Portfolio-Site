@@ -123,23 +123,23 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest block">
                   {project.subtitle}
                 </span>
-                <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                <h1 className="text-xl sm:text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
                   {project.title}
                 </h1>
-                <p className="text-base sm:text-lg text-zinc-300 max-w-3xl leading-relaxed">
+                <p className="text-sm sm:text-lg text-zinc-300 max-w-3xl leading-relaxed">
                   {project.desc}
                 </p>
 
                 {/* Primary Action Buttons */}
-                <div className="flex flex-wrap items-center gap-3 pt-2">
+                <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 pt-2">
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-shine inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-[#7A1610] via-[#E8642F] to-[#FFC069] hover:scale-[1.02] text-white font-bold text-sm shadow-xl shadow-orange-500/20 transition-all"
+                      className="btn-shine inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-full bg-gradient-to-r from-[#7A1610] via-[#E8642F] to-[#FFC069] hover:scale-[1.02] text-white font-bold text-sm shadow-xl shadow-orange-500/20 transition-all"
                     >
-                      <ExternalLink className="w-4 h-4" />
+                      <ExternalLink className="w-4 h-4 shrink-0" />
                       <span>{language === 'en' ? 'Visit Live Website' : 'Acessar Site no Ar'}</span>
                     </a>
                   )}
@@ -149,9 +149,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full glass-card hover:bg-white/10 text-white font-semibold text-sm border border-white/15 transition-all"
+                      className="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-full glass-card hover:bg-white/10 text-white font-semibold text-sm border border-white/15 transition-all"
                     >
-                      <GithubIcon className="w-4 h-4 text-[#FFC069]" />
+                      <GithubIcon className="w-4 h-4 text-[#FFC069] shrink-0" />
                       <span>{language === 'en' ? 'View Source on GitHub' : 'Ver Código no GitHub'}</span>
                     </a>
                   )}
@@ -160,9 +160,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full glass-card hover:bg-white/10 text-zinc-300 hover:text-white text-sm transition-all"
+                    className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full glass-card hover:bg-white/10 text-zinc-300 hover:text-white text-sm transition-all"
                   >
-                    <MessageSquare className="w-4 h-4 text-emerald-400" />
+                    <MessageSquare className="w-4 h-4 text-emerald-400 shrink-0" />
                     <span>{language === 'en' ? 'Discuss Similar Project' : 'Quero um projeto similar'}</span>
                   </a>
                 </div>
