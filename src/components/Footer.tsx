@@ -113,9 +113,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigatePortfolio }) => {
       <div className="border-b border-white/8 py-10 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4 text-center md:text-left">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#7A1610] via-[#E8642F] to-[#FFC069] flex items-center justify-center text-black font-black text-xl shadow-lg shadow-orange-500/20 shrink-0">
-              G
-            </div>
             <div>
               <div className="flex items-center justify-center md:justify-start gap-2">
                 <h3 className="text-xl font-bold text-white tracking-tight">Gustavo Galvão</h3>
