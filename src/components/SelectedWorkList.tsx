@@ -68,7 +68,6 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
       {/* Header Label */}
       <div className="flex items-center gap-2 mb-6 sm:mb-8">
         <span className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-zinc-500 flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#FFC069] animate-pulse" />
           {label}
         </span>
       </div>

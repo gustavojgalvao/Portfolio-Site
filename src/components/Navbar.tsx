@@ -130,9 +130,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="flex items-center gap-2.5 group cursor-pointer focus:outline-none shrink-0"
               aria-label="Voltar para início"
             >
-              <div className="relative flex items-center justify-center w-5 h-5">
-                <span className="absolute w-3.5 h-3.5 rounded-full bg-[#FFC069]/35 animate-ping" />
-                <span className="relative w-2.5 h-2.5 rounded-full bg-[#FFC069] shadow-[0_0_8px_#FFC069]" />
+              <div className="flex items-center justify-center pt-0.5">
+                <span className="text-[#FFC069] font-mono text-lg font-bold leading-none tracking-tighter">
+                  //
+                </span>
               </div>
               <div className="flex flex-col items-start text-left">
                 <span className="text-[14px] sm:text-[15px] font-extrabold tracking-tight text-white group-hover:text-[#FFC069] transition-colors duration-200">

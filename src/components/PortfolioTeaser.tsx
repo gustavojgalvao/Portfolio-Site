@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useGsapReveal } from '../hooks/useGsapReveal';
-import { ArrowRight, Sparkles, FolderGit2 } from 'lucide-react';
+import { ArrowRight, FolderGit2 } from 'lucide-react';
 
 export const PortfolioTeaser: React.FC<{ onNavigatePortfolio: () => void }> = ({
   onNavigatePortfolio,
@@ -31,7 +31,7 @@ export const PortfolioTeaser: React.FC<{ onNavigatePortfolio: () => void }> = ({
         <div className="glass-feature px-5 sm:px-10 md:px-14 py-10 sm:py-14 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8 rounded-[28px] sm:rounded-[36px] border border-white/15 bg-gradient-to-br from-white/[0.04] via-black/60 to-black/90 shadow-[0_25px_70px_rgba(0,0,0,0.8)]">
           <div className="text-center md:text-left space-y-3 max-w-xl">
             <div className="section-badge inline-flex">
-              <Sparkles className="w-3.5 h-3.5 mr-1" />
+
               <span>{language === 'en' ? 'PORTFOLIO & LAB' : 'PORTFÓLIO & LABORATÓRIO'}</span>
             </div>
 

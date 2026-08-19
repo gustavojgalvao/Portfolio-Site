@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import GooeyLayer from './ui/GooeyLayer';
 import { useGsapReveal } from '../hooks/useGsapReveal';
-import { MessageSquare, Sparkles } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 import {
   ImagesScrollingAnimation,
   type ScrollingProjectItem,
@@ -95,7 +95,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
 
         <div className="max-w-5xl mx-auto relative z-10 text-center">
           <div className="section-badge inline-flex mb-4">
-            <Sparkles className="w-3.5 h-3.5 mr-1" />
+
             <span>{language === 'en' ? 'PORTFOLIO & LAB' : 'PORTFÓLIO & EXPERIMENTOS'}</span>
           </div>
           <h1

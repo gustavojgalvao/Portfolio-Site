@@ -90,7 +90,6 @@ export const StickyCard: React.FC<StickyCardProps> = ({
                 <span className="text-[9px] sm:text-[10px] font-mono font-bold tracking-widest text-[#FFC069] uppercase">
                   {project.subtitle || `PROJETO 0${i + 1}`}
                 </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
               </div>
               <h3 className="text-base sm:text-2xl font-bold text-white tracking-tight truncate">
                 {project.title}

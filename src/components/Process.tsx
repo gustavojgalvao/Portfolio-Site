@@ -9,7 +9,6 @@ import {
   Rocket,
   RefreshCw,
   CheckCircle2,
-  Sparkles,
 } from 'lucide-react';
 
 /* ── Icon + color per step ─────────────────────────────── */
@@ -31,11 +30,10 @@ interface StepCardProps {
     bullets: string[];
   };
   index: number;
-  isLast: boolean;
 }
 
-const StepCard: React.FC<StepCardProps> = ({ step, index, isLast }) => {
-  const Icon = STEP_ICONS[index] || Sparkles;
+const StepCard: React.FC<StepCardProps> = ({ step, index }) => {
+  const Icon = STEP_ICONS[index] || CheckCircle2;
   const accent = STEP_ACCENTS[index] || STEP_ACCENTS[0];
 
   return (
@@ -68,12 +66,6 @@ const StepCard: React.FC<StepCardProps> = ({ step, index, isLast }) => {
               color: accent.text,
             }}
           >
-            {isLast && (
-              <span
-                className="w-1.5 h-1.5 rounded-full animate-pulse"
-                style={{ background: accent.text }}
-              />
-            )}
             {step.timeframe}
           </div>
         </div>
@@ -117,7 +109,6 @@ export const Process: React.FC = () => {
       <StepCard
         step={step}
         index={idx}
-        isLast={idx === t.process.steps.length - 1}
       />
     ),
   }));

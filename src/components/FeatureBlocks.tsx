@@ -62,11 +62,11 @@ const AnalyticsMockup: React.FC = () => (
     style={{ background: 'rgba(255,255,255,0.05)' }}
     aria-hidden="true"
   >
-    <div className="px-5 py-4 border-b border-white/8 flex items-center justify-between" style={{ background: 'rgba(255,255,255,0.03)' }}>
-      <span className="text-[11px] font-mono text-zinc-400 font-semibold">PERFORMANCE</span>
-      <div className="flex items-center gap-1.5">
-        <div className="w-2 h-2 rounded-full bg-[#FFC069] animate-pulse" />
-        <span className="text-[10px] font-mono text-[#FFC069]">LIVE</span>
+    <div className="p-3 sm:p-5 flex items-center justify-between border-b border-white/8 shrink-0 bg-black/40 backdrop-blur-md">
+      <div className="flex items-center gap-3">
+        <span className="text-xs font-mono font-bold tracking-widest text-[#FFC069] uppercase">
+          Live Metrics
+        </span>
       </div>
     </div>
 

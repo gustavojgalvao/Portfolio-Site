@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Play, Pause, Volume2, VolumeX, Maximize2, Sparkles } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Maximize2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface ProjectVideoPlayerProps {
@@ -157,7 +157,7 @@ export const ProjectVideoPlayer: React.FC<ProjectVideoPlayerProps> = ({
             </button>
 
             <div className="hidden sm:flex items-center gap-2 text-[11px] text-zinc-400">
-              <Sparkles className="w-3 h-3 text-[#FFC069]" />
+
               <span>{category}</span>
             </div>
           </div>

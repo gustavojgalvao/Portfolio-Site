@@ -100,7 +100,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
                 {project.isOnline && (
                   <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-mono font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                     <span>{language === 'en' ? 'LIVE ON VERCEL' : 'ONLINE EM PRODUÇÃO'}</span>
                   </span>
                 )}
@@ -185,7 +184,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   {/* Detailed Description */}
                   <div className="p-8 sm:p-10 space-y-3">
                     <div className="flex items-center gap-2 text-[#FFC069]">
-                      <Sparkles className="w-4 h-4" />
                       <h3 className="text-base font-mono font-bold uppercase tracking-wider">
                         {language === 'en' ? 'Project Overview' : 'Visão Geral do Projeto'}
                       </h3>

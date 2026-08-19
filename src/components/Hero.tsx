@@ -62,7 +62,6 @@ export const Hero: React.FC = () => {
 
               {/* Eyebrow */}
               <div className="section-badge">
-                <span className="w-2 h-2 rounded-full bg-[#FFC069] animate-pulse" />
                 <span>{t.hero.eyebrow}</span>
               </div>
 

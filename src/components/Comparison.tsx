@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useGsapReveal } from '../hooks/useGsapReveal';
-import { X, Check, Sparkles } from 'lucide-react';
+import { X, Check } from 'lucide-react';
 
 export const Comparison: React.FC = () => {
   const { t } = useLanguage();
@@ -100,7 +100,7 @@ export const Comparison: React.FC = () => {
                   {t.comparison.gustavoTitle}
                 </span>
               </div>
-              <Sparkles className="w-3.5 h-3.5 text-[#FFC069]" />
+
             </div>
           </div>
 
