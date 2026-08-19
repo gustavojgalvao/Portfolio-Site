@@ -64,7 +64,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
       ? `Hi Gustavo! I was looking at your project "${project.title}" and would like to build something similar.`
       : `Olá Gustavo! Estive olhando seu projeto "${project.title}" e gostaria de conversar sobre algo similar.`;
 
-  const whatsappUrl = `https://wa.me/WHATSAPP_NUMBER_PLACEHOLDER?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/5571992550509?text=${encodeURIComponent(
     whatsappMessage
   )}`;
 

@@ -49,7 +49,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
   };
 
   const whatsappUrl =
-    'https://wa.me/WHATSAPP_NUMBER_PLACEHOLDER?text=' +
+    'https://wa.me/5571992550509?text=' +
     encodeURIComponent(
       language === 'en'
         ? "Hi Gustavo! I'd like to talk about a project."

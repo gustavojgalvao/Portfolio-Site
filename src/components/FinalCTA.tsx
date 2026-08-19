@@ -7,7 +7,7 @@ export const FinalCTA: React.FC = () => {
   const { language, t } = useLanguage();
 
   const whatsappUrl =
-    'https://wa.me/WHATSAPP_NUMBER_PLACEHOLDER?text=' +
+    'https://wa.me/5571992550509?text=' +
     encodeURIComponent(
       language === 'en'
         ? "Hi Gustavo! I'd like to book a call to learn more about your plan."

@@ -36,7 +36,7 @@ export const Hero: React.FC = () => {
   };
 
   const whatsappUrl =
-    'https://wa.me/WHATSAPP_NUMBER_PLACEHOLDER?text=' +
+    'https://wa.me/5571992550509?text=' +
     encodeURIComponent(
       language === 'en'
         ? "Hi Gustavo! I'd like to book a call to talk about your plan."

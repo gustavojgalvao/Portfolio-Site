@@ -16,7 +16,7 @@ export const PlanOverview: React.FC = () => {
   const containerRef = useGsapReveal({ y: 35, duration: 0.85, stagger: 0.1 });
 
   const whatsappUrl =
-    'https://wa.me/WHATSAPP_NUMBER_PLACEHOLDER?text=' +
+    'https://wa.me/5571992550509?text=' +
     encodeURIComponent(
       language === 'en'
         ? "Hi Gustavo! I'd like to talk about getting started with the monthly plan."

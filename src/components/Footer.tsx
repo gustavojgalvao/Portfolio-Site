@@ -64,9 +64,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigatePortfolio }) => {
       : 'Olá Gustavo! Estive vendo seu site e gostaria de conversar sobre um projeto.';
 
   const whatsappUrl = `https://wa.me/5571992550509?text=${encodeURIComponent(whatsappMessage)}`;
-  const emailUrl = 'mailto:contato@gustavogalvao.com';
+  const emailUrl = 'mailto:gustavojezler@gmail.com';
   const githubUrl = 'https://github.com/gustavojgalvao';
-  const linkedinUrl = 'https://linkedin.com/in/gustavojgalvao';
+  const linkedinUrl = 'https://www.linkedin.com/in/gustavogalvaoo';
   const cvUrl =
     language === 'en'
       ? '/assets/resume-gustavogalvao.pdf'
