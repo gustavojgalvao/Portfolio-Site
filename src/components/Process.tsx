@@ -38,8 +38,7 @@ const StepCard: React.FC<StepCardProps> = ({ step, index }) => {
 
   return (
     <div className="pb-10 md:pb-4">
-      {/* Glass card container */}
-      <div className="rounded-3xl p-6 sm:p-7 space-y-5 max-w-2xl glass-card border border-white/8 hover:border-white/18 transition-all duration-300 text-left group">
+      <div className="rounded-3xl p-6 sm:p-7 space-y-5 max-w-2xl bg-white/[0.02] backdrop-blur-xl border border-white/5 hover:border-white/18 transition-all duration-300 text-left group">
         
         {/* Top bar: Icon + Timeframe badge */}
         <div className="flex items-center justify-between gap-4 flex-wrap">

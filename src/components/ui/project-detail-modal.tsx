@@ -181,7 +181,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 {/* Left Col (8 cols): Deep Description, Challenge & Solution, Features */}
                 <div className="lg:col-span-8 space-y-6">
                   {/* Detailed Description */}
-                  <div className="p-8 sm:p-10 space-y-3">
+                  <div className="p-8 sm:px-12 md:px-14 sm:py-8 space-y-3">
                     <div className="flex items-center gap-2 text-[#FFC069]">
                       <h3 className="text-base font-mono font-bold uppercase tracking-wider">
                         {language === 'en' ? 'Project Overview' : 'Visão Geral do Projeto'}
@@ -194,7 +194,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
                   {/* Challenge & Solution */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="p-8 sm:p-10 space-y-2">
+                    <div className="p-8 sm:px-12 md:px-14 sm:py-8 space-y-2">
                       <span className="text-xs font-mono font-bold text-[#E8642F] uppercase tracking-wider block">
                         {language === 'en' ? 'The Challenge' : 'O Desafio'}
                       </span>
@@ -203,7 +203,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                       </p>
                     </div>
 
-                    <div className="p-8 sm:p-10 space-y-2">
+                    <div className="p-8 sm:px-12 md:px-14 sm:py-8 space-y-2">
                       <span className="text-xs font-mono font-bold text-[#FFC069] uppercase tracking-wider block">
                         {language === 'en' ? 'The Engineering Solution' : 'A Solução de Engenharia'}
                       </span>
@@ -214,7 +214,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   </div>
 
                   {/* Key Features Checklist */}
-                  <div className="p-8 sm:p-10 space-y-4">
+                  <div className="p-8 sm:px-12 md:px-14 sm:py-8 space-y-4">
                     <div className="flex items-center gap-2 text-white">
                       <Layers className="w-4 h-4 text-[#FFC069]" />
                       <h3 className="text-base font-bold tracking-tight">
@@ -236,7 +236,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 {/* Right Col (4 cols): Metrics, Stack, Links */}
                 <div className="lg:col-span-4 space-y-6">
                   {/* Metrics & Performance Box */}
-                  <div className="p-8 sm:p-10 space-y-4">
+                  <div className="p-8 sm:px-12 md:px-14 sm:py-8 space-y-4">
                     <div className="flex items-center gap-2 text-white">
                       <BarChart3 className="w-4 h-4 text-[#FFC069]" />
                       <h3 className="text-sm font-mono font-bold uppercase tracking-wider">

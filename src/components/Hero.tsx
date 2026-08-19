@@ -133,10 +133,10 @@ export const Hero: React.FC = () => {
             <div className="lg:col-span-5 relative flex justify-center items-center">
               {/* Ambient Living Photo Glow */}
               <div
-                className="absolute w-[320px] sm:w-[380px] h-[400px] sm:h-[460px] rounded-full blur-[85px] pointer-events-none animate-hero-glow z-0"
+                className="absolute w-[320px] sm:w-[380px] h-[400px] sm:h-[460px] rounded-full blur-[100px] pointer-events-none animate-hero-glow z-0"
                 style={{
                   background:
-                    'radial-gradient(circle, rgba(232, 100, 47, 0.45) 0%, rgba(255, 192, 105, 0.25) 45%, rgba(122, 22, 16, 0.15) 75%, transparent 100%)',
+                    'radial-gradient(circle, rgba(232, 100, 47, 0.15) 0%, rgba(255, 192, 105, 0.08) 45%, transparent 100%)',
                 }}
                 aria-hidden="true"
               />

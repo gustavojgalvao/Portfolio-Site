@@ -12,9 +12,9 @@ interface LoadingScreenProps {
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
   const { language } = useLanguage();
 
-  const prefix = language === 'en' ? 'I am a' : 'Eu sou';
+  const prefix = language === 'en' ? 'I am' : 'Eu sou';
   const words = language === 'en'
-    ? ['developer', 'engineer', 'designer', 'AI architect']
+    ? ['a developer', 'an engineer', 'a designer', 'an AI architect']
     : ['desenvolvedor', 'engenheiro', 'designer', 'arquiteto de IA'];
 
   return (
