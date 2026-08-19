@@ -35,7 +35,7 @@ en_old = """    contact: {
       whatsappMessage: "Hi Gustavo, I'd like to talk about a project."
     },"""
 
-en_new = """    contactModal: {
+en_new = """           contactModal: {
       title: "Let's work together",
       subtitle: "Tell me a bit about you and your project.",
       nameLabel: "Your Name",

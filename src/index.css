@@ -79,6 +79,10 @@
     outline: 2px solid #E8642F;
     outline-offset: 2px;
   }
+
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
 }
 
 /* ─── GLASS SYSTEM (Apple Premium Glassmorphism) ────────── */

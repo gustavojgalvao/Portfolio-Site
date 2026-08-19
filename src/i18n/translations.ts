@@ -8,6 +8,7 @@ export interface Translations {
     langToggle: string;
     services: string;
     work: string;
+    plan: string;
     process: string;
     about: string;
     backHome: string;
@@ -166,6 +167,7 @@ export const translations: Record<Language, Translations> = {
       langToggle: 'PT',
       services: 'Services',
       work: 'Work',
+      plan: 'Solution',
       process: 'Process',
       about: 'About',
       backHome: 'Back Home',
@@ -538,6 +540,7 @@ export const translations: Record<Language, Translations> = {
       langToggle: 'EN',
       services: 'Serviços',
       work: 'Trabalhos',
+      plan: 'Solução',
       process: 'Processo',
       about: 'Sobre',
       backHome: 'Voltar ao início',
