@@ -21,7 +21,7 @@ export const MobileStickyCtA: React.FC = () => {
       initial={{ y: 80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed bottom-0 left-0 right-0 z-[150] md:hidden pb-safe"
+      className="fixed bottom-0 left-0 right-0 z-[90] md:hidden pb-safe"
     >
       <div className="bg-[#0a0a0d]/95 backdrop-blur-2xl border-t border-white/8 px-4 py-3 flex items-center gap-3">
         {/* Pulse indicator */}

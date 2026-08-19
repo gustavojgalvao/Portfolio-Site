@@ -97,7 +97,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <>
-      <nav
+      <motion.nav
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
             ? 'bg-black/80 backdrop-blur-2xl border-b border-white/8 shadow-[0_1px_0_0_rgba(255,255,255,0.04)]'
@@ -210,7 +213,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile Full-Screen Overlay Menu */}
       <AnimatePresence>

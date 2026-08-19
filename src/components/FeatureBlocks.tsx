@@ -3,162 +3,151 @@ import { useLanguage } from '../context/LanguageContext';
 import GooeyLayer from './ui/GooeyLayer';
 import { useGsapReveal } from '../hooks/useGsapReveal';
 
-/* ── Abstract UI Mockups ────────────────────────────────────── */
-
+/* ── Site Speed / Core Web Vitals mockup ────────────────────── */
 const BrowserMockup: React.FC = () => (
   <div
-    className="w-full max-w-sm mx-auto rounded-2xl overflow-hidden border border-white/12 shadow-2xl"
-    style={{ background: 'rgba(255,255,255,0.05)' }}
+    className="w-full max-w-sm mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl font-mono text-[11px]"
+    style={{ background: 'rgba(8,8,12,0.95)' }}
     aria-hidden="true"
   >
-    {/* Browser chrome */}
-    <div className="flex items-center gap-2 px-4 py-3 border-b border-white/8" style={{ background: 'rgba(255,255,255,0.04)' }}>
+    {/* Header bar */}
+    <div className="px-4 py-3 border-b border-white/8 flex items-center gap-3" style={{ background: 'rgba(255,255,255,0.03)' }}>
       <div className="flex gap-1.5">
-        {['#7A1610', '#E8642F', '#FFC069'].map((c) => (
-          <div key={c} className="w-2.5 h-2.5 rounded-full" style={{ background: c }} />
-        ))}
+        <div className="w-2.5 h-2.5 rounded-full bg-[#7A1610]/80" />
+        <div className="w-2.5 h-2.5 rounded-full bg-[#E8642F]/70" />
+        <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
       </div>
-      <div className="flex-1 mx-3 h-5 rounded-full" style={{ background: 'rgba(255,255,255,0.07)' }} />
+      <div className="flex-1 h-5 rounded-full flex items-center px-3" style={{ background: 'rgba(255,255,255,0.05)' }}>
+        <span className="text-zinc-500 text-[10px] truncate">gustavogalvao.dev</span>
+      </div>
     </div>
 
-    {/* Page body */}
+    {/* Lighthouse scores */}
     <div className="p-5 space-y-4">
-      {/* Hero hero area */}
-      <div className="rounded-xl h-28 relative overflow-hidden" style={{ background: 'rgba(255,192,105,0.08)', border: '1px solid rgba(255,192,105,0.15)' }}>
-        <div className="absolute inset-0 flex flex-col justify-end p-4 space-y-2">
-          <div className="w-2/3 h-3 rounded-full" style={{ background: 'rgba(255,192,105,0.5)' }} />
-          <div className="w-1/2 h-2 rounded-full" style={{ background: 'rgba(255,255,255,0.2)' }} />
-          <div className="flex gap-2 mt-1">
-            <div className="w-16 h-5 rounded-full" style={{ background: 'rgba(255,192,105,0.4)' }} />
-            <div className="w-12 h-5 rounded-full" style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }} />
+      <div className="text-[10px] text-zinc-600 uppercase tracking-widest mb-3">Lighthouse · Production</div>
+      {[
+        { label: 'Performance', score: 99, color: '#4ade80' },
+        { label: 'Accessibility', score: 97, color: '#4ade80' },
+        { label: 'Best Practices', score: 100, color: '#4ade80' },
+        { label: 'SEO', score: 100, color: '#4ade80' },
+      ].map((item) => (
+        <div key={item.label} className="flex items-center gap-3">
+          <div
+            className="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0"
+            style={{ border: `2px solid ${item.color}`, color: item.color }}
+          >
+            {item.score}
+          </div>
+          <div className="flex-1 space-y-1">
+            <div className="text-zinc-400 text-[10px]">{item.label}</div>
+            <div className="h-1 rounded-full bg-white/5 overflow-hidden">
+              <div className="h-full rounded-full" style={{ width: `${item.score}%`, background: item.color, opacity: 0.4 }} />
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Feature cards */}
-      <div className="grid grid-cols-3 gap-2">
-        {[0.7, 0.5, 0.6].map((o, i) => (
-          <div key={i} className="rounded-lg p-3 space-y-1.5" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-            <div className="w-5 h-5 rounded-md" style={{ background: `rgba(255,192,105,${o * 0.3})` }} />
-            <div className="w-full h-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.15)' }} />
-            <div className="w-3/4 h-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.08)' }} />
-          </div>
-        ))}
-      </div>
-
-      {/* Nav links */}
-      <div className="flex gap-3 pt-1">
-        {[60, 40, 55, 45].map((w, i) => (
-          <div key={i} className="h-1.5 rounded-full" style={{ width: w, background: 'rgba(255,255,255,0.1)' }} />
-        ))}
-      </div>
+      ))}
     </div>
   </div>
 );
 
+/* ── SEO / GEO metrics mockup ───────────────────────────────── */
 const AnalyticsMockup: React.FC = () => (
   <div
     className="w-full max-w-sm mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
-    style={{ background: 'rgba(255,255,255,0.05)' }}
+    style={{ background: 'rgba(8,8,12,0.95)' }}
     aria-hidden="true"
   >
-    <div className="p-3 sm:p-5 flex items-center justify-between border-b border-white/8 shrink-0 bg-black/40 backdrop-blur-md">
-      <div className="flex items-center gap-3">
-        <span className="text-xs font-mono font-bold tracking-widest text-[#FFC069] uppercase">
-          Live Metrics
-        </span>
-      </div>
+    <div className="p-4 border-b border-white/8 flex items-center justify-between bg-black/40">
+      <span className="text-[10px] font-mono font-bold tracking-widest text-[#FFC069] uppercase">Search Console · 90d</span>
+      <span className="text-[10px] font-mono text-emerald-400">● Live</span>
     </div>
 
-    <div className="p-5 space-y-4">
-      {/* Metric row */}
+    <div className="p-5 space-y-5">
+      {/* KPIs */}
       <div className="grid grid-cols-2 gap-3">
-        <div className="rounded-xl p-3.5" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
-          <div className="text-[10px] font-mono text-zinc-500 mb-1">LOCAL RANK</div>
-          <div className="text-xl font-bold font-mono text-white">#1 Top 3</div>
-          <div className="text-[10px] text-emerald-400 font-mono mt-0.5">+4 positions</div>
-        </div>
-        <div className="rounded-xl p-3.5" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
-          <div className="text-[10px] font-mono text-zinc-500 mb-1">GEO CITATIONS</div>
-          <div className="text-xl font-bold font-mono text-[#FFC069]">94%</div>
-          <div className="text-[10px] text-[#FFC069] font-mono mt-0.5">AI engine match</div>
-        </div>
-      </div>
-
-      {/* Mini bar chart */}
-      <div className="space-y-2 pt-1">
-        <div className="text-[10px] font-mono text-zinc-500">TRAFFIC / CHANNEL</div>
         {[
-          { label: 'Google Search', w: '85%', color: '#FFC069' },
-          { label: 'AI Overviews / GEO', w: '68%', color: '#E8642F' },
-          { label: 'Instagram / Paid', w: '52%', color: '#7A1610' },
-        ].map((item, i) => (
-          <div key={i} className="space-y-1">
-            <div className="flex justify-between text-[10px] font-mono text-zinc-400">
-              <span>{item.label}</span>
-              <span style={{ color: item.color }}>{item.w}</span>
-            </div>
-            <div className="h-1.5 rounded-full bg-white/5 overflow-hidden">
-              <div
-                className="h-full rounded-full transition-all duration-700"
-                style={{ width: item.w, background: item.color }}
-              />
-            </div>
+          { label: 'Impressões', value: '28.4k', delta: '+312%', up: true },
+          { label: 'Cliques', value: '1.9k', delta: '+204%', up: true },
+          { label: 'Posição Média', value: '#3.2', delta: '-5.8', up: true },
+          { label: 'CTR', value: '6.7%', delta: '+2.1pp', up: true },
+        ].map((m) => (
+          <div key={m.label} className="rounded-xl p-3" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+            <div className="text-[9px] font-mono text-zinc-600 uppercase tracking-wider mb-1">{m.label}</div>
+            <div className="text-base font-bold text-white font-mono">{m.value}</div>
+            <div className="text-[9px] font-mono text-emerald-400 mt-0.5">{m.delta} vs anterior</div>
           </div>
         ))}
+      </div>
+
+      {/* Top keyword */}
+      <div className="rounded-xl p-3 space-y-1.5" style={{ background: 'rgba(255,192,105,0.04)', border: '1px solid rgba(255,192,105,0.12)' }}>
+        <div className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Top Keyword</div>
+        <div className="text-xs text-white font-mono">"dentista salvador centro"</div>
+        <div className="flex items-center gap-2 text-[10px] font-mono">
+          <span className="text-[#FFC069]">Pos. #1</span>
+          <span className="text-zinc-700">·</span>
+          <span className="text-zinc-400">AI Overview citado</span>
+        </div>
       </div>
     </div>
   </div>
 );
 
+/* ── CRM Agent terminal mockup ──────────────────────────────── */
 const TerminalMockup: React.FC = () => (
   <div
     className="w-full max-w-sm mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl font-mono text-[11px]"
     style={{ background: 'rgba(8,8,12,0.95)' }}
     aria-hidden="true"
   >
-    {/* Terminal titlebar */}
     <div className="px-4 py-3 border-b border-white/8 flex items-center justify-between" style={{ background: 'rgba(255,255,255,0.03)' }}>
       <div className="flex items-center gap-2">
         <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#7A1610]/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#E8642F]/70" />
           <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
         </div>
-        <span className="text-zinc-500 text-[10px]">crm-agent.ts</span>
+        <span className="text-zinc-600 text-[10px] ml-1">crm-agent.ts</span>
       </div>
-      <span className="text-[9px] text-[#FFC069] px-2 py-0.5 rounded-full bg-[#FFC069]/10 border border-[#FFC069]/20">
+      <span className="text-[9px] text-[#FFC069] px-2 py-0.5 rounded-full" style={{ background: 'rgba(255,192,105,0.08)', border: '1px solid rgba(255,192,105,0.2)' }}>
         AI ENGINE
       </span>
     </div>
 
-    {/* Terminal body */}
-    <div className="p-4 space-y-2.5 text-zinc-400">
-      <div className="text-zinc-600">// WhatsApp lead arrived · 0.4s ago</div>
+    <div className="p-4 space-y-2 text-zinc-400 leading-relaxed">
+      <div className="text-zinc-700">{'// lead via WhatsApp · Δ 0.4s'}</div>
       <div>
         <span className="text-[#FFC069]">lead</span>
-        <span className="text-zinc-500">.</span>
+        <span className="text-zinc-600">.</span>
         <span className="text-white">source</span>
-        <span className="text-zinc-500"> = </span>
-        <span className="text-emerald-400">&apos;Google Maps (Local)&apos;</span>
+        <span className="text-zinc-600"> = </span>
+        <span className="text-emerald-400">'Google Maps'</span>
       </div>
       <div>
         <span className="text-[#FFC069]">lead</span>
-        <span className="text-zinc-500">.</span>
+        <span className="text-zinc-600">.</span>
         <span className="text-white">intent</span>
-        <span className="text-zinc-500"> = </span>
-        <span className="text-emerald-400">&apos;High Ticket Procedure&apos;</span>
+        <span className="text-zinc-600"> = </span>
+        <span className="text-emerald-400">'High Ticket Procedure'</span>
       </div>
-      <div className="pt-1 border-t border-white/5">
-        <span className="text-zinc-600">// AI score calculated</span>
+      <div>
+        <span className="text-[#FFC069]">lead</span>
+        <span className="text-zinc-600">.</span>
+        <span className="text-white">budget</span>
+        <span className="text-zinc-600"> = </span>
+        <span className="text-emerald-400">'R$3.200+'</span>
       </div>
-      <div className="rounded-lg p-2.5 space-y-1" style={{ background: 'rgba(255,192,105,0.06)', border: '1px solid rgba(255,192,105,0.15)' }}>
-        <div className="flex justify-between text-[10px]">
-          <span className="text-[#FFC069]">SCORE: 9.4 / 10</span>
-          <span className="text-emerald-400">QUALIFIED</span>
+
+      <div className="pt-2 border-t border-white/5 text-zinc-700">{'// score calculado pelo modelo'}</div>
+
+      <div className="rounded-xl p-3 space-y-2" style={{ background: 'rgba(255,192,105,0.05)', border: '1px solid rgba(255,192,105,0.15)' }}>
+        <div className="flex items-center justify-between">
+          <span className="text-[#FFC069] font-bold">SCORE 9.4 / 10</span>
+          <span className="text-emerald-400 text-[10px] font-bold">QUALIFIED ✓</span>
         </div>
-        <div className="text-[10px] text-zinc-300">
-          Auto-routed to WhatsApp with draft response ready.
+        <div className="text-[10px] text-zinc-400">
+          Draft enviado ao WhatsApp em 0.8s.<br />
+          Aguardando confirmação humana.
         </div>
       </div>
     </div>

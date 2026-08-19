@@ -53,7 +53,7 @@ export const Hero: React.FC = () => {
     <section id="hero" ref={containerRef as React.RefObject<HTMLElement>} className="relative w-full bg-black flex flex-col justify-between overflow-hidden pt-0 pb-0">
 
       {/* FULL-VIEWPORT HERO WITH KINETIC GRID BACKGROUND */}
-      <KineticGrid className="w-full min-h-screen flex flex-col justify-center pt-6 sm:pt-8 pb-8 sm:pb-10">
+      <KineticGrid className="w-full min-h-screen flex flex-col justify-center pt-20 sm:pt-24 pb-8 sm:pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
@@ -67,8 +67,8 @@ export const Hero: React.FC = () => {
 
               {/* H1 — one per page, keep structure with morphing orange word */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]" style={{ letterSpacing: '-0.02em' }}>
-                <span>{t.hero.titleStart} </span>
-                <span className="block mt-1 sm:inline-block">
+                <span className="block">{t.hero.titleStart}</span>
+                <span className="block mt-1 min-h-[1.2em]">
                   <TextMorph
                     words={t.hero.morphWords}
                     interval={2800}

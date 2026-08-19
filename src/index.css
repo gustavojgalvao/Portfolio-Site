@@ -14,6 +14,32 @@
   --color-red-600: #9a1f14;
 }
 
+@theme {
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-card: rgba(10, 10, 13, 0.6);
+  --color-card-foreground: #ffffff;
+  --color-muted-foreground: #a1a1aa;
+}
+
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee var(--duration) linear infinite;
+  }
+}
+
 @layer base {
   :root {
     --bg-black: #050505;
