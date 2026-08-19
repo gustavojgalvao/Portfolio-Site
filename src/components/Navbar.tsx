@@ -89,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   const navLinks = [
-    { label: t.nav.services, id: 'plano' },
+    { label: t.nav.services, id: 'plan' },
     { label: t.nav.work, id: 'portfolio-teaser' },
     { label: t.nav.process, id: 'process' },
     { label: t.nav.about, id: 'about' },

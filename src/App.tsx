@@ -10,6 +10,7 @@ import { PlanOverview } from './components/PlanOverview';
 import { Comparison } from './components/Comparison';
 import { FeatureBlocks } from './components/FeatureBlocks';
 import { Process } from './components/Process';
+import { PortfolioTeaser } from './components/PortfolioTeaser';
 import { AboutMe } from './components/AboutMe';
 import { FAQ } from './components/FAQ';
 import { FinalCTA } from './components/FinalCTA';
@@ -36,6 +37,7 @@ const HomePage: React.FC<{ onNavigatePortfolio: () => void }> = ({ onNavigatePor
     <Comparison />
     <FeatureBlocks />
     <Process />
+    <PortfolioTeaser onNavigatePortfolio={onNavigatePortfolio} />
     <Testimonials />
     <AboutMe onNavigatePortfolio={onNavigatePortfolio} />
     <FAQ />

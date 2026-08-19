@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import GooeyLayer from './ui/GooeyLayer';
-import { MessageSquare } from 'lucide-react';
+import { MessageSquare, Clock } from 'lucide-react';
 
 export const FinalCTA: React.FC = () => {
   const { language, t } = useLanguage();
@@ -57,10 +57,13 @@ export const FinalCTA: React.FC = () => {
         </a>
 
         {/* Response promise */}
-        <p className="text-xs font-mono text-zinc-600 tracking-wider">
-          {language === 'en'
-            ? '⚡ Direct response in under 2 hours during business hours'
-            : '⚡ Resposta direta em até 2 horas em horário comercial'}
+        <p className="text-xs font-mono text-zinc-600 tracking-wider flex items-center justify-center gap-1.5">
+          <Clock className="w-3.5 h-3.5 text-zinc-500" />
+          <span>
+            {language === 'en'
+              ? 'Direct response in under 2 hours during business hours'
+              : 'Resposta direta em até 2 horas em horário comercial'}
+          </span>
         </p>
       </div>
     </section>
