@@ -31,18 +31,23 @@ export const AppContent: React.FC = () => {
     return () => window.removeEventListener('navigate-portfolio', handler);
   }, []);
 
+  // Show Splash Screen only once per session
+  useEffect(() => {
+    const hasSeenSplash = sessionStorage.getItem('splash_seen');
+    if (!hasSeenSplash) {
+      triggerLoading(undefined, 2500);
+      sessionStorage.setItem('splash_seen', 'true');
+    }
+  }, [triggerLoading]);
+
   const handleNavigatePortfolio = () => {
-    triggerLoading(() => {
-      setRoute('portfolio');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 2000);
+    setRoute('portfolio');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleNavigateHome = () => {
-    triggerLoading(() => {
-      setRoute('home');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 2000);
+    setRoute('home');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (

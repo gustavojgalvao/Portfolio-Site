@@ -73,10 +73,10 @@ export const Hero: React.FC = () => {
                   <TextMorph
                     words={t.hero.morphWords}
                     interval={2800}
-                    className="text-gradient-orange-gold font-black inline-flex"
+                    className="text-[#E8642F] font-black inline-flex"
                   />
                 </span>
-                <span className="block mt-1 text-zinc-300">{t.hero.titleEnd}</span>
+                <span className="block mt-1 text-white">{t.hero.titleEnd}</span>
               </h1>
 
               {/* Subtitle */}

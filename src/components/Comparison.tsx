@@ -63,7 +63,7 @@ export const Comparison: React.FC = () => {
                   </div>
                 </div>
                 {/* Gustavo */}
-                <div className="p-3 rounded-xl bg-[#FFC069]/5 border border-[#FFC069]/20 space-y-1.5">
+                <div className="p-3 rounded-xl bg-[#FFC069]/5 border-[1px] border-solid border-[#E8642F] drop-shadow-[0_0_10px_rgba(232,100,47,0.3)] space-y-1.5">
                   <span className="text-[9px] font-mono font-bold tracking-widest text-[#FFC069] uppercase block">
                     {t.comparison.gustavoTitle}
                   </span>
@@ -94,7 +94,7 @@ export const Comparison: React.FC = () => {
                 {t.comparison.agencyTitle}
               </span>
             </div>
-            <div className="col-span-4 p-5 sm:p-6 border-l border-[#FFC069]/30 bg-gradient-to-b from-[#FFC069]/10 to-[#E8642F]/[0.04] flex items-center justify-between">
+            <div className="col-span-4 p-5 sm:p-6 border-l-[1px] border-solid border-[#E8642F] drop-shadow-[0_0_15px_rgba(232,100,47,0.3)] bg-gradient-to-b from-[#FFC069]/10 to-[#E8642F]/[0.04] flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="text-xs sm:text-sm font-mono font-bold tracking-wider text-[#FFC069] uppercase">
                   {t.comparison.gustavoTitle}
@@ -108,17 +108,16 @@ export const Comparison: React.FC = () => {
           {t.comparison.rows.map((row, i) => (
             <div key={i} className="grid grid-cols-12 border-b border-white/6 last:border-0 transition-colors">
               <div className="col-span-4 p-5 sm:p-6 flex items-center">
-                <span className="text-xs sm:text-sm font-mono font-semibold text-zinc-400">
+                <span className="text-xs sm:text-sm text-zinc-300 font-medium">
                   {row.feature}
                 </span>
               </div>
-              <div className="col-span-4 p-5 sm:p-6 border-l border-white/6 opacity-35 hover:opacity-70 transition-opacity flex items-start gap-2.5">
-                <X className="w-4 h-4 text-zinc-600 mt-0.5 shrink-0" />
-                <span className="text-xs sm:text-sm text-zinc-500 leading-relaxed font-normal">
+              <div className="col-span-4 p-5 sm:p-6 border-l border-white/6 opacity-40 hover:opacity-75 transition-opacity flex items-start gap-2">
+                <span className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-medium">
                   {row.agency}
                 </span>
               </div>
-              <div className="col-span-4 p-5 sm:p-6 border-l border-[#FFC069]/25 bg-gradient-to-r from-[#FFC069]/[0.05] via-[#E8642F]/[0.02] to-transparent flex items-start gap-2.5">
+              <div className="col-span-4 p-5 sm:p-6 border-l-[1px] border-solid border-[#E8642F] drop-shadow-[0_0_15px_rgba(232,100,47,0.3)] bg-gradient-to-r from-[#FFC069]/[0.05] via-[#E8642F]/[0.02] to-transparent flex items-start gap-2.5">
                 <span className="mt-0.5 w-4 h-4 rounded-full bg-[#FFC069]/20 flex items-center justify-center shrink-0">
                   <Check className="w-2.5 h-2.5 text-[#FFC069] drop-shadow-[0_0_6px_#FFC069]" />
                 </span>

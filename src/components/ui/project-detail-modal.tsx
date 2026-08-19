@@ -183,7 +183,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 {/* Left Col (8 cols): Deep Description, Challenge & Solution, Features */}
                 <div className="lg:col-span-8 space-y-6">
                   {/* Detailed Description */}
-                  <div className="glass-card p-6 sm:p-8 rounded-3xl border border-white/10 space-y-3">
+                  <div className="p-8 sm:p-10 space-y-3">
                     <div className="flex items-center gap-2 text-[#FFC069]">
                       <Sparkles className="w-4 h-4" />
                       <h3 className="text-base font-mono font-bold uppercase tracking-wider">
@@ -197,7 +197,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
                   {/* Challenge & Solution */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="glass-card p-6 rounded-2xl border border-white/10 space-y-2">
+                    <div className="p-8 sm:p-10 space-y-2">
                       <span className="text-xs font-mono font-bold text-[#E8642F] uppercase tracking-wider block">
                         {language === 'en' ? 'The Challenge' : 'O Desafio'}
                       </span>
@@ -206,7 +206,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                       </p>
                     </div>
 
-                    <div className="glass-card p-6 rounded-2xl border border-white/10 space-y-2">
+                    <div className="p-8 sm:p-10 space-y-2">
                       <span className="text-xs font-mono font-bold text-[#FFC069] uppercase tracking-wider block">
                         {language === 'en' ? 'The Engineering Solution' : 'A Solução de Engenharia'}
                       </span>
@@ -217,7 +217,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   </div>
 
                   {/* Key Features Checklist */}
-                  <div className="glass-card p-6 sm:p-8 rounded-3xl border border-white/10 space-y-4">
+                  <div className="p-8 sm:p-10 space-y-4">
                     <div className="flex items-center gap-2 text-white">
                       <Layers className="w-4 h-4 text-[#FFC069]" />
                       <h3 className="text-base font-bold tracking-tight">
@@ -239,7 +239,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 {/* Right Col (4 cols): Metrics, Stack, Links */}
                 <div className="lg:col-span-4 space-y-6">
                   {/* Metrics & Performance Box */}
-                  <div className="glass-card p-6 rounded-3xl border border-white/10 space-y-4">
+                  <div className="p-8 sm:p-10 space-y-4">
                     <div className="flex items-center gap-2 text-white">
                       <BarChart3 className="w-4 h-4 text-[#FFC069]" />
                       <h3 className="text-sm font-mono font-bold uppercase tracking-wider">
@@ -249,7 +249,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
                     <div className="grid grid-cols-2 gap-3">
                       {project.metrics.map((m, idx) => (
-                        <div key={idx} className="p-3 rounded-xl bg-white/5 border border-white/5 space-y-1">
+                        <div key={idx} className="p-4 space-y-1">
                           <span className="text-lg font-extrabold text-[#FFC069] font-mono block">
                             {m.value}
                           </span>
@@ -262,7 +262,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   </div>
 
                   {/* Tech Stack Pills */}
-                  <div className="glass-card p-6 rounded-3xl border border-white/10 space-y-3">
+                  <div className="p-8 sm:p-10 space-y-3">
                     <span className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider block">
                       {language === 'en' ? 'Technologies Used' : 'Tecnologias Utilizadas'}
                     </span>

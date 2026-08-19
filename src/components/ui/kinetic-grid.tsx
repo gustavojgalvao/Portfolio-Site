@@ -26,7 +26,7 @@ const MAX_WARP = 24;
 const DOT_SPACING = 28;
 const LERP_SPEED = 0.08;
 
-const LINE_BASE = { r: 255, g: 255, b: 255, a: 0.12 };
+const LINE_BASE = { r: 255, g: 255, b: 255, a: 0.06 };
 const NODE_BASE_RADIUS = 1.8;
 const NODE_ACTIVE_RADIUS = 3.2;
 
@@ -180,7 +180,7 @@ export default function KineticGrid({
       }
 
       // Static background dot texture
-      ctx.fillStyle = "rgba(255,255,255,0.04)";
+      ctx.fillStyle = "rgba(255,255,255,0.02)";
       for (let x = DOT_SPACING / 2; x < W; x += DOT_SPACING) {
         for (let y = DOT_SPACING / 2; y < H; y += DOT_SPACING) {
           ctx.beginPath();
@@ -289,7 +289,7 @@ export default function KineticGrid({
           ctx.beginPath();
           ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
           ctx.fillStyle = lerpColor(
-            { r: 255, g: 255, b: 255, a: 0.2 },
+            { r: 255, g: 255, b: 255, a: 0.1 },
             theme.nodeActive,
             t,
           );
