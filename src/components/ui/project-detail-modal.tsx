@@ -5,7 +5,6 @@ import {
   ExternalLink,
   MessageSquare,
   CheckCircle2,
-  Sparkles,
   Layers,
   BarChart3,
   ArrowRight,
