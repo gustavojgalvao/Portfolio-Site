@@ -38,30 +38,6 @@ const testimonials: { pt: Testimonial[]; en: Testimonial[] } = {
       rating: 5,
       profile: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80',
     },
-    {
-      name: 'Rafael Costa',
-      role: 'Sócio-Diretor',
-      company: 'RC Advocacia',
-      text: 'A automação de atendimento via WhatsApp que ele criou economiza horas da nossa equipe todos os dias. A triagem de clientes ficou muito mais rápida e eficiente.',
-      rating: 5,
-      profile: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80',
-    },
-    {
-      name: 'Mariana Silva',
-      role: 'Gerente de E-commerce',
-      company: 'Bella Store',
-      text: 'O redesign do nosso e-commerce não só ficou visualmente incrível, mas também melhorou muito a conversão. O carregamento ultra-rápido fez toda a diferença.',
-      rating: 5,
-      profile: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
-    },
-    {
-      name: 'Roberto Mendes',
-      role: 'Fundador',
-      company: 'TechSolutions BR',
-      text: 'Profissionalismo ímpar. O foco dele em SEO técnico nos colocou na primeira página do Google para nossas principais palavras-chave em menos de 3 meses.',
-      rating: 5,
-      profile: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
-    },
   ],
   en: [
     {
@@ -87,30 +63,6 @@ const testimonials: { pt: Testimonial[]; en: Testimonial[] } = {
       text: 'My online portfolio looks stunning and professional. Gustavo was very attentive in understanding my style and translating it into the design. I got international commissions for the first time!',
       rating: 5,
       profile: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80',
-    },
-    {
-      name: 'Rafael Costa',
-      role: 'Managing Partner',
-      company: 'RC Advocacia',
-      text: 'The WhatsApp automation he built saves our team hours every day. Lead triage is now incredibly fast and efficient.',
-      rating: 5,
-      profile: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80',
-    },
-    {
-      name: 'Mariana Silva',
-      role: 'E-commerce Manager',
-      company: 'Bella Store',
-      text: 'The redesign of our e-commerce site not only looks visually amazing but also significantly improved our conversion rate. The ultra-fast loading made all the difference.',
-      rating: 5,
-      profile: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
-    },
-    {
-      name: 'Roberto Mendes',
-      role: 'Founder',
-      company: 'TechSolutions BR',
-      text: 'Unmatched professionalism. His focus on technical SEO put us on the first page of Google for our main keywords in less than 3 months.',
-      rating: 5,
-      profile: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80',
     },
   ],
 };
@@ -140,21 +92,21 @@ const ReviewCard = ({
   rating,
 }: Testimonial) => {
   return (
-    <Card className="relative h-full w-80 cursor-pointer overflow-hidden border-white/5 bg-white/[0.02] backdrop-blur-xl shadow-none p-5 hover:border-white/12 transition-all duration-300">
+    <Card className="relative h-full w-[350px] md:w-[400px] cursor-pointer overflow-hidden border-white/5 bg-white/[0.02] backdrop-blur-xl shadow-none p-6 hover:border-white/12 transition-all duration-300">
       <CardContent className="p-0 flex flex-col gap-4">
         <StarRating rating={rating} />
         
-        <p className="text-sm leading-relaxed text-zinc-300">"{text}"</p>
+        <p className="text-sm md:text-base leading-relaxed text-zinc-300">"{text}"</p>
         
-        <div className="flex flex-row items-center gap-3 pt-2 mt-auto border-t border-white/5">
+        <div className="flex flex-row items-center gap-4 pt-4 mt-auto border-t border-white/5">
           <img
-            className="rounded-full object-cover w-10 h-10 border border-white/10"
+            className="rounded-full object-cover w-12 h-12 border border-white/10"
             alt={name}
             src={profile}
           />
           <div className="flex flex-col">
-            <p className="text-sm font-semibold text-white">{name}</p>
-            <p className="text-xs font-medium text-zinc-500">
+            <p className="text-sm md:text-base font-semibold text-white">{name}</p>
+            <p className="text-xs md:text-sm font-medium text-zinc-500">
               {role} · {company}
             </p>
           </div>
@@ -167,9 +119,6 @@ const ReviewCard = ({
 export const Testimonials: React.FC = () => {
   const { language } = useLanguage();
   const items = testimonials[language];
-  
-  const firstRow = items.slice(0, Math.ceil(items.length / 2));
-  const secondRow = items.slice(Math.ceil(items.length / 2));
 
   return (
     <section
@@ -209,21 +158,18 @@ export const Testimonials: React.FC = () => {
       </div>
 
       {/* Marquee component */}
-      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-        <Marquee pauseOnHover className="[--duration:40s]">
-          {firstRow.map((review) => (
+      <div 
+        className="relative flex w-full max-w-[1400px] mx-auto flex-col items-center justify-center overflow-hidden pb-8"
+        style={{
+          maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+        }}
+      >
+        <Marquee pauseOnHover className="[--duration:50s]">
+          {items.map((review) => (
             <ReviewCard key={review.name} {...review} />
           ))}
         </Marquee>
-        <Marquee reverse pauseOnHover className="[--duration:40s]">
-          {secondRow.map((review) => (
-            <ReviewCard key={review.name} {...review} />
-          ))}
-        </Marquee>
-        
-        {/* Gradients for fading effect */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-[#050505] to-transparent"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-[#050505] to-transparent"></div>
       </div>
     </section>
   );

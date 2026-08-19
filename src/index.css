@@ -38,6 +38,10 @@
   .animate-marquee {
     animation: marquee var(--duration) linear infinite;
   }
+  
+  .pause-on-hover:hover > div {
+    animation-play-state: paused !important;
+  }
 }
 
 @layer base {
