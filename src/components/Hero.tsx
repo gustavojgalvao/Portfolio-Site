@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { TextMorph } from './ui/text-morph';
 import KineticGrid from './ui/kinetic-grid';
-import { MessageSquare, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useGsapReveal } from '../hooks/useGsapReveal';
+import { ContactOptions } from './ui/ContactOptions';
 
 export const Hero: React.FC = () => {
   const { language, t } = useLanguage();
@@ -35,13 +36,6 @@ export const Hero: React.FC = () => {
     });
   };
 
-  const whatsappUrl =
-    'https://wa.me/5571992550509?text=' +
-    encodeURIComponent(
-      language === 'en'
-        ? "Hi Gustavo! I'd like to book a call to talk about your plan."
-        : 'Olá Gustavo! Gostaria de agendar uma conversa sobre o plano.'
-    );
 
   const scrollToPortfolio = () => {
     // Handled by App — portfolio navigation
@@ -84,16 +78,8 @@ export const Hero: React.FC = () => {
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary text-sm sm:text-base"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  {t.hero.primaryCta}
-                </a>
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 pt-2">
+                <ContactOptions variant="compact" />
 
                 <button
                   onClick={scrollToPortfolio}

@@ -1,0 +1,29 @@
+import React from 'react';
+import { useLanguage } from '../../context/LanguageContext';
+import { useContactModal } from '../../context/ContactModalContext';
+import { MessageSquare } from 'lucide-react';
+
+interface ContactOptionsProps {
+  variant: 'full' | 'compact';
+  className?: string;
+}
+
+export const ContactOptions: React.FC<ContactOptionsProps> = ({ variant, className = '' }) => {
+  const { language } = useLanguage();
+  const { openContactModal } = useContactModal();
+
+  const buttonText = language === 'en' ? 'Start a Project' : 'Iniciar Projeto';
+
+  const paddingClass = variant === 'compact' ? 'px-6 py-2.5 text-sm' : 'px-8 py-3.5 text-base';
+
+  return (
+    <button
+      onClick={openContactModal}
+      className={`btn-shine inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#7A1610] via-[#E8642F] to-[#FFC069] text-white font-bold shadow-lg shadow-orange-500/20 hover:scale-105 transition-transform w-full sm:w-auto ${paddingClass} ${className}`}
+      aria-label={buttonText}
+    >
+      <MessageSquare className={variant === 'compact' ? 'w-4 h-4' : 'w-5 h-5'} />
+      <span>{buttonText}</span>
+    </button>
+  );
+};

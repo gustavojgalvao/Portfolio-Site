@@ -116,6 +116,19 @@ export interface Translations {
     group1Desc: string;
     group2Label: string;
     group2Desc: string;
+    contactModal: {
+      title: string;
+      subtitle: string;
+      nameLabel: string;
+      namePlaceholder: string;
+      detailsLabel: string;
+      detailsPlaceholder: string;
+      proceedLabel: string;
+      btnWhatsapp: string;
+      btnEmail: string;
+      btnMeeting: string;
+      whatsappMessagePrefix: string;
+    };
     clientProjects: {
       id: string;
       title: string;

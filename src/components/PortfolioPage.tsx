@@ -2,11 +2,11 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import GooeyLayer from './ui/GooeyLayer';
 import { useGsapReveal } from '../hooks/useGsapReveal';
-import { MessageSquare } from 'lucide-react';
 import {
   ImagesScrollingAnimation,
   type ScrollingProjectItem,
 } from './ui/images-scrolling-animation';
+import { ContactOptions } from './ui/ContactOptions';
 import { useProjectModal } from '../context/ProjectModalContext';
 import { SelectedWorkList } from './SelectedWorkList';
 
@@ -48,13 +48,6 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
     openProjectModal(projectId);
   };
 
-  const whatsappUrl =
-    'https://wa.me/5571992550509?text=' +
-    encodeURIComponent(
-      language === 'en'
-        ? "Hi Gustavo! I'd like to talk about a project."
-        : 'Olá Gustavo! Gostaria de conversar sobre um projeto.'
-    );
 
   /* Prepare scrolling items for Independent Builds with high-res assets */
   const scrollingProjects: ScrollingProjectItem[] =
@@ -179,15 +172,9 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
                 {t.portfolioPage.footerCta.subtitle}
               </p>
             </div>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary shrink-0 w-full sm:w-auto justify-center"
-            >
-              <MessageSquare className="w-4 h-4" />
-              <span>{t.portfolioPage.footerCta.cta}</span>
-            </a>
+            <div className="shrink-0 w-full sm:w-auto mt-4 sm:mt-0">
+              <ContactOptions variant="full" />
+            </div>
           </div>
         </div>
       </section>

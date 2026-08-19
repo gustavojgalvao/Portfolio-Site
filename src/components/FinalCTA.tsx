@@ -1,18 +1,12 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import GooeyLayer from './ui/GooeyLayer';
-import { MessageSquare, Clock } from 'lucide-react';
+import { Clock } from 'lucide-react';
+import { ContactOptions } from './ui/ContactOptions';
 
 export const FinalCTA: React.FC = () => {
   const { language, t } = useLanguage();
 
-  const whatsappUrl =
-    'https://wa.me/5571992550509?text=' +
-    encodeURIComponent(
-      language === 'en'
-        ? "Hi Gustavo! I'd like to book a call to learn more about your plan."
-        : 'Olá Gustavo! Gostaria de agendar uma conversa para saber mais sobre o plano.'
-    );
 
   return (
     <section
@@ -46,15 +40,9 @@ export const FinalCTA: React.FC = () => {
         </p>
 
         {/* CTA */}
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-primary text-base inline-flex mx-auto"
-        >
-          <MessageSquare className="w-4 h-4" />
-          {t.finalCta.cta}
-        </a>
+        <div className="pt-2">
+          <ContactOptions variant="full" />
+        </div>
 
         {/* Response promise */}
         <p className="text-xs font-mono text-zinc-600 tracking-wider flex items-center justify-center gap-1.5">

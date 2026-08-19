@@ -2,7 +2,6 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useGsapReveal } from '../hooks/useGsapReveal';
 import {
-  MessageSquare,
   Check,
   Globe,
   Bot,
@@ -10,18 +9,12 @@ import {
   Zap,
   ShieldCheck,
 } from 'lucide-react';
+import { ContactOptions } from './ui/ContactOptions';
 
 export const PlanOverview: React.FC = () => {
   const { language, t } = useLanguage();
   const containerRef = useGsapReveal({ y: 35, duration: 0.85, stagger: 0.1 });
 
-  const whatsappUrl =
-    'https://wa.me/5571992550509?text=' +
-    encodeURIComponent(
-      language === 'en'
-        ? "Hi Gustavo! I'd like to talk about getting started with the monthly plan."
-        : 'Olá Gustavo! Gostaria de conversar sobre o plano mensal.'
-    );
 
   const heroCard = t.planOverview.heroCard;
   const bentoCards = t.planOverview.bentoCards;
@@ -211,19 +204,11 @@ export const PlanOverview: React.FC = () => {
         </div>
 
         {/* Footnote & Primary Plan CTA */}
-        <div className="mt-12 p-6 rounded-2xl glass-card border border-white/8 flex flex-col sm:flex-row items-center justify-between gap-5 gsap-child">
-          <p className="text-xs sm:text-sm text-zinc-400 text-center sm:text-left max-w-lg">
+        <div className="mt-12 p-6 rounded-2xl glass-card border border-white/8 flex flex-col xl:flex-row items-center justify-between gap-5 gsap-child">
+          <p className="text-xs sm:text-sm text-zinc-400 text-center xl:text-left max-w-lg">
             {t.planOverview.footnote}
           </p>
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary text-xs sm:text-sm py-2.5 px-6 shrink-0 shadow-lg shadow-orange-500/20"
-          >
-            <MessageSquare className="w-4 h-4" />
-            <span>{t.planOverview.cta}</span>
-          </a>
+          <ContactOptions variant="full" className="shrink-0" />
         </div>
       </div>
     </section>

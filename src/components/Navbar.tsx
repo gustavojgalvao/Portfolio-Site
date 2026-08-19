@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
-import { MessageSquare, Globe, ArrowUpRight, X } from 'lucide-react';
+import { Globe, ArrowUpRight, X } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { ContactOptions } from './ui/ContactOptions';
 
 interface NavbarProps {
   currentRoute?: 'home' | 'portfolio';
@@ -20,14 +21,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navigate = useNavigate();
   const location = useLocation();
   const currentRoute = location.pathname === '/portfolio' ? 'portfolio' : 'home';
-
-  const whatsappUrl =
-    'https://wa.me/5571992550509?text=' +
-    encodeURIComponent(
-      language === 'en'
-        ? "Hi Gustavo! I'd like to book a call to talk about your plan."
-        : 'Olá Gustavo! Gostaria de agendar uma conversa sobre o plano.'
-    );
 
   // Lock body scroll when menu is open on mobile
   useEffect(() => {
@@ -178,15 +171,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
 
               {/* CTA */}
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary text-[13px] py-2 px-5"
-              >
-                <MessageSquare className="w-3.5 h-3.5" />
-                {t.nav.cta}
-              </a>
+              <ContactOptions variant="compact" />
             </div>
 
             {/* Mobile: Language + Hamburger */}
@@ -287,16 +272,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               {/* Bottom CTA */}
               <div className="p-6 border-t border-white/8 space-y-3">
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMenuOpen(false)}
-                  className="btn-primary w-full justify-center text-base"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  {t.nav.cta}
-                </a>
+                <ContactOptions variant="compact" className="w-full [&>div]:w-full [&_a]:w-full" />
                 <a
                   href="https://www.linkedin.com/in/gustavogalvaoo"
                   target="_blank"

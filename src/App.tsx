@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './context/LanguageContext';
 import { LoadingProvider, useLoading } from './context/LoadingContext';
 import { ProjectModalProvider } from './context/ProjectModalContext';
+import { ContactModalProvider } from './context/ContactModalContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { PlanOverview } from './components/PlanOverview';
@@ -24,6 +25,7 @@ import { TermsOfServicePage } from './pages/TermsOfServicePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { ThankYouPage } from './pages/ThankYouPage';
 import { SEOHead } from './components/SEOHead';
+import { ContactModal } from './components/ui/ContactModal';
 
 const HomePage: React.FC<{ onNavigatePortfolio: () => void }> = ({ onNavigatePortfolio }) => (
   <>
@@ -103,6 +105,7 @@ export const AppContent: React.FC = () => {
       {/* Global UI Overlays */}
       <CookieBanner />
       <MobileStickyCtA />
+      <ContactModal />
     </div>
   );
 };
@@ -114,7 +117,9 @@ export const App: React.FC = () => {
         <LanguageProvider>
           <LoadingProvider>
             <ProjectModalProvider>
-              <AppContent />
+              <ContactModalProvider>
+                <AppContent />
+              </ContactModalProvider>
             </ProjectModalProvider>
           </LoadingProvider>
         </LanguageProvider>
