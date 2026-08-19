@@ -352,8 +352,8 @@ export const projectsData: Record<'pt' | 'en', Record<string, ProjectDetail>> = 
       subtitle: 'PROJETO PARA CLIENTE',
       category: 'E-Commerce & Alta Joalheria (Nuvemshop)',
       type: 'client',
-      image: '/img/LuPhellipo.png',
-      videoPoster: '/img/LuPhellipo.png',
+      image: '/img/arianacarla.png',
+      videoPoster: '/img/arianacarla.png',
       desc: 'Loja virtual completa de alta joalheria desenvolvida na plataforma Nuvemshop, especializada em peças banhadas a Ouro 18K, Prata e Ródio com pedras nobres (Moissanite, Zircônia, Esmeraldas e Pérolas), com navegação mobile-first e checkout transparente.',
       fullDescription:
         'Desenvolvido para a marca de joias e semijoias finas Ariane Carla (AC Joias). O projeto consistiu na criação e personalização de um e-commerce completo na plataforma Nuvemshop, estruturado para transmitir o requinte e a sofisticação de peças inspiradas nas grandes grifes internacionais. A loja foi configurada com catálogo categorizado (anéis, colares, brincos, pulseiras), integração com gateways de pagamento (Nuvem Pago com PIX e parcelamento no cartão), cálculo dinâmico de frete e conexão direta com WhatsApp para suporte VIP.',
@@ -706,8 +706,8 @@ export const projectsData: Record<'pt' | 'en', Record<string, ProjectDetail>> = 
       subtitle: 'CLIENT PROJECT',
       category: 'E-Commerce & Fine Jewelry (Nuvemshop)',
       type: 'client',
-      image: '/img/LuPhellipo.png',
-      videoPoster: '/img/LuPhellipo.png',
+      image: '/img/arianacarla.png',
+      videoPoster: '/img/arianacarla.png',
       desc: 'Full-scale luxury jewelry e-commerce developed on the Nuvemshop platform, showcasing fine pieces plated in 18K Gold, Silver, and Rhodium with precious gemstones (Moissanite, Zirconia, Emeralds, and Pearls), featuring mobile-first UX and frictionless transparent checkout.',
       fullDescription:
         'Engineered for the fine jewelry brand Ariane Carla (AC Joias). The project delivered a full-featured e-commerce storefront customized on the Nuvemshop platform, designed to convey luxury aesthetics inspired by international jewelry houses. Configured with categorized collections (rings, necklaces, earrings, bracelets), transparent payment gateways (Nuvem Pago with instant PIX discounts and card installment plans), real-time shipping calculation, and direct WhatsApp VIP sales integration.',

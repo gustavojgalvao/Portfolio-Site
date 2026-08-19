@@ -15,7 +15,7 @@ import { SelectedWorkList } from './SelectedWorkList';
 const CLIENT_IMAGES: Record<string, string> = {
   g2odonto: '/img/lentesdecontatodental.png',
   tualupa71: '/img/devsclub-store.png',
-  'ac-joias': '/img/LuPhellipo.png',
+  'ac-joias': '/img/arianacarla.png',
 };
 
 const INDEPENDENT_IMAGES: Record<string, string> = {
