@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './context/LanguageContext';
 import { LoadingProvider, useLoading } from './context/LoadingContext';
 import { ProjectModalProvider } from './context/ProjectModalContext';
@@ -13,25 +15,39 @@ import { FAQ } from './components/FAQ';
 import { FinalCTA } from './components/FinalCTA';
 import { PortfolioPage } from './components/PortfolioPage';
 import { Footer } from './components/Footer';
+import { Testimonials } from './components/Testimonials';
+import { CookieBanner } from './components/CookieBanner';
+import { MobileStickyCtA } from './components/MobileStickyCtA';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { TermsOfServicePage } from './pages/TermsOfServicePage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { ThankYouPage } from './pages/ThankYouPage';
+import { SEOHead } from './components/SEOHead';
+
+const HomePage: React.FC<{ onNavigatePortfolio: () => void }> = ({ onNavigatePortfolio }) => (
+  <>
+    <SEOHead
+      title="Desenvolvimento Web, Automação com IA & Growth Marketing"
+      description="Site em React do zero, SEO/GEO, Google Meu Negócio, tráfego pago e CRM com IA — tudo em um plano mensal. Gustavo Galvão, desenvolvedor React e especialista em automação."
+      ogUrl="https://gustavogalvao.dev"
+    />
+    <Hero />
+    <PlanOverview />
+    <Comparison />
+    <FeatureBlocks />
+    <Process />
+    <Testimonials />
+    <AboutMe onNavigatePortfolio={onNavigatePortfolio} />
+    <FAQ />
+    <FinalCTA />
+  </>
+);
 
 export const AppContent: React.FC = () => {
-  const [route, setRoute] = useState<'home' | 'portfolio'>('home');
   const { triggerLoading } = useLoading();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  useEffect(() => {
-    if (window.location.pathname === '/portfolio') {
-      setRoute('portfolio');
-    }
-  }, []);
-
-  // Listen for the custom event dispatched from Hero
-  useEffect(() => {
-    const handler = () => handleNavigatePortfolio();
-    window.addEventListener('navigate-portfolio', handler);
-    return () => window.removeEventListener('navigate-portfolio', handler);
-  }, []);
-
-  // Show Splash Screen only once per session
   useEffect(() => {
     const hasSeenSplash = sessionStorage.getItem('splash_seen');
     if (!hasSeenSplash) {
@@ -41,70 +57,67 @@ export const AppContent: React.FC = () => {
   }, [triggerLoading]);
 
   const handleNavigatePortfolio = () => {
-    setRoute('portfolio');
+    navigate('/portfolio');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleNavigateHome = () => {
-    setRoute('home');
+    navigate('/');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const isLegalPage = ['/privacy-policy', '/terms', '/thank-you'].includes(location.pathname);
+
   return (
     <div className="min-h-screen bg-[#050505] text-zinc-100 relative selection:bg-[#FFC069] selection:text-black">
-      {/* Navbar on both routes */}
       <Navbar
-        currentRoute={route}
         onNavigatePortfolio={handleNavigatePortfolio}
         onNavigateHome={handleNavigateHome}
       />
 
       <main>
-        {route === 'home' ? (
-          <>
-            {/* 1. Hero */}
-            <Hero />
-
-            {/* 2. Plan Overview */}
-            <PlanOverview />
-
-            {/* 3. Comparison */}
-            <Comparison />
-
-            {/* 4. Feature Blocks */}
-            <FeatureBlocks />
-
-            {/* 5. Process */}
-            <Process />
-
-            {/* 6. About */}
-            <AboutMe onNavigatePortfolio={handleNavigatePortfolio} />
-
-            {/* 7. FAQ */}
-            <FAQ />
-
-            {/* 8. Final CTA */}
-            <FinalCTA />
-          </>
-        ) : (
-          <PortfolioPage onBackHome={handleNavigateHome} />
-        )}
+        <Routes>
+          <Route path="/" element={<HomePage onNavigatePortfolio={handleNavigatePortfolio} />} />
+          <Route path="/portfolio" element={
+            <>
+              <SEOHead
+                title="Portfólio — Projetos em React, IA & Web Design"
+                description="Veja os projetos desenvolvidos por Gustavo Galvão: sites em React, sistemas com IA, e-commerce e landing pages de alta conversão para empresas reais."
+                ogUrl="https://gustavogalvao.dev/portfolio"
+              />
+              <PortfolioPage onBackHome={handleNavigateHome} />
+            </>
+          } />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsOfServicePage />} />
+          <Route path="/thank-you" element={<ThankYouPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       </main>
 
-      <Footer onNavigatePortfolio={handleNavigatePortfolio} />
+      {!isLegalPage && <Footer onNavigatePortfolio={handleNavigatePortfolio} />}
+      {isLegalPage && <Footer onNavigatePortfolio={handleNavigatePortfolio} />}
+
+      {/* Global UI Overlays */}
+      <CookieBanner />
+      <MobileStickyCtA />
     </div>
   );
 };
 
 export const App: React.FC = () => {
   return (
-    <LanguageProvider>
-      <LoadingProvider>
-        <ProjectModalProvider>
-          <AppContent />
-        </ProjectModalProvider>
-      </LoadingProvider>
-    </LanguageProvider>
+    <HelmetProvider>
+      <BrowserRouter>
+        <LanguageProvider>
+          <LoadingProvider>
+            <ProjectModalProvider>
+              <AppContent />
+            </ProjectModalProvider>
+          </LoadingProvider>
+        </LanguageProvider>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 };
 

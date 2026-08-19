@@ -6,6 +6,11 @@ export interface Translations {
     portfolio: string;
     cta: string;
     langToggle: string;
+    services: string;
+    work: string;
+    process: string;
+    about: string;
+    backHome: string;
   };
   hero: {
     eyebrow: string;
@@ -145,6 +150,11 @@ export const translations: Record<Language, Translations> = {
       portfolio: 'Portfolio',
       cta: 'Book a Call',
       langToggle: 'PT',
+      services: 'Services',
+      work: 'Work',
+      process: 'Process',
+      about: 'About',
+      backHome: 'Back Home',
     },
     hero: {
       eyebrow: 'ONE FLAT MONTHLY PLAN. MANAGED DIRECTLY.',
@@ -499,6 +509,11 @@ export const translations: Record<Language, Translations> = {
       portfolio: 'Portfólio',
       cta: 'Falar Comigo',
       langToggle: 'EN',
+      services: 'Serviços',
+      work: 'Trabalhos',
+      process: 'Processo',
+      about: 'Sobre',
+      backHome: 'Voltar ao início',
     },
     hero: {
       eyebrow: 'PLANO MENSAL ÚNICO. GERENCIADO DIRETO POR MIM.',

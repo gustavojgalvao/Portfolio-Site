@@ -292,7 +292,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigatePortfolio }) => {
           </p>
 
           <div className="flex items-center gap-6">
-            <span className="text-zinc-600 hidden md:inline">
+            <a href="/privacy-policy" className="hover:text-zinc-400 transition-colors">
+              {language === 'en' ? 'Privacy Policy' : 'Privacidade'}
+            </a>
+            <a href="/terms" className="hover:text-zinc-400 transition-colors">
+              {language === 'en' ? 'Terms' : 'Termos'}
+            </a>
+            <span className="text-zinc-700 hidden md:inline">
               React 19 · TypeScript · Tailwind CSS
             </span>
 

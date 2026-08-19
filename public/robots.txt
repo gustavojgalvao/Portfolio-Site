@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Allow: /portfolio
+Disallow: /thank-you
+Disallow: /privacy-policy
+Disallow: /terms
+
+# AI Crawlers
+User-agent: GPTBot
+Allow: /
+Allow: /portfolio
+
+User-agent: anthropic-ai
+Allow: /
+Allow: /portfolio
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://gustavogalvao.dev/sitemap.xml

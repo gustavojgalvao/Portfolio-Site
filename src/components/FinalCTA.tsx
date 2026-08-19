@@ -55,6 +55,13 @@ export const FinalCTA: React.FC = () => {
           <MessageSquare className="w-4 h-4" />
           {t.finalCta.cta}
         </a>
+
+        {/* Response promise */}
+        <p className="text-xs font-mono text-zinc-600 tracking-wider">
+          {language === 'en'
+            ? '⚡ Direct response in under 2 hours during business hours'
+            : '⚡ Resposta direta em até 2 horas em horário comercial'}
+        </p>
       </div>
     </section>
   );

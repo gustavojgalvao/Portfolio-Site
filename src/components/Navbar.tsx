@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { MessageSquare, Globe, ArrowUpRight, X } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 interface NavbarProps {
   currentRoute?: 'home' | 'portfolio';
@@ -10,13 +11,15 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  currentRoute = 'home',
   onNavigatePortfolio,
   onNavigateHome,
 }) => {
   const { language, toggleLanguage, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentRoute = location.pathname === '/portfolio' ? 'portfolio' : 'home';
 
   const whatsappUrl =
     'https://wa.me/5571992550509?text=' +
@@ -55,78 +58,60 @@ export const Navbar: React.FC<NavbarProps> = ({
         ticking = true;
       }
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavHome = () => {
-    if (currentRoute === 'portfolio' && onNavigateHome) {
-      onNavigateHome();
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+  const handleNavigatePortfolio = () => {
     setMenuOpen(false);
-  };
-
-  const handleNavPortfolio = () => {
     if (onNavigatePortfolio) onNavigatePortfolio();
-    setMenuOpen(false);
+    navigate('/portfolio');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const scrollTo = (id: string) => {
-    if (currentRoute === 'portfolio' && onNavigateHome) {
-      onNavigateHome();
+  const handleNavigateHome = () => {
+    setMenuOpen(false);
+    if (onNavigateHome) onNavigateHome();
+    navigate('/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollToSection = (id: string) => {
+    setMenuOpen(false);
+    if (currentRoute !== 'home') {
+      navigate('/');
       setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
     } else {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }
-    setMenuOpen(false);
   };
 
-  // Items for the mobile menu
-  const mobileNavItems =
-    currentRoute === 'home'
-      ? [
-          { label: language === 'en' ? 'The Plan' : 'O Plano', action: () => scrollTo('plan') },
-          { label: language === 'en' ? 'Features' : 'Recursos', action: () => scrollTo('features') },
-          { label: language === 'en' ? 'How it Works' : 'Como Funciona', action: () => scrollTo('process') },
-          { label: language === 'en' ? 'About' : 'Sobre', action: () => scrollTo('about') },
-          { label: 'FAQ', action: () => scrollTo('faq') },
-        ]
-      : [
-          {
-            label: `← ${language === 'en' ? 'Back to Landing Page' : 'Voltar para Início'}`,
-            action: handleNavHome,
-          },
-        ];
+  const navLinks = [
+    { label: t.nav.services, id: 'plano' },
+    { label: t.nav.work, id: 'portfolio-teaser' },
+    { label: t.nav.process, id: 'process' },
+    { label: t.nav.about, id: 'about' },
+  ];
 
   return (
     <>
-      {/* ── NAVBAR BAR ──────────────────────────────────────────── */}
-      <header className="fixed top-0 inset-x-0 z-50 pointer-events-none flex justify-center w-full">
-        {/*
-          Dynamic Island Morphing Capsule:
-          - At Top: 100% full viewport width, flat bottom border, docked to ceiling.
-          - On Scroll: Detaches, shrinks to capsule, rounds to rounded-full.
-        */}
-        <div
-          className={`pointer-events-auto backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-            scrolled
-              ? 'mt-3.5 sm:mt-4 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-5xl lg:max-w-6xl rounded-full py-2.5 px-5 sm:px-8 bg-[#08080c]/85 border border-white/16 shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_30px_rgba(255,192,105,0.06),inset_0_1px_1px_rgba(255,255,255,0.15)]'
-              : 'mt-0 w-full max-w-full rounded-none py-4 px-6 sm:px-10 lg:px-12 bg-[#050505]/75 border-b border-white/8 border-t-0 border-x-0 shadow-none'
-          }`}
-        >
-          <div className={`w-full flex items-center justify-between gap-4 sm:gap-6 ${!scrolled ? 'max-w-7xl mx-auto' : ''}`}>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? 'bg-black/80 backdrop-blur-2xl border-b border-white/8 shadow-[0_1px_0_0_rgba(255,255,255,0.04)]'
+            : 'bg-transparent'
+        }`}
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-[70px]">
 
-            {/* Left: Brand */}
+            {/* Brand / Logo */}
             <button
-              onClick={handleNavHome}
+              onClick={handleNavigateHome}
               className="flex items-center gap-2.5 group cursor-pointer focus:outline-none shrink-0"
               aria-label="Voltar para início"
             >
@@ -145,171 +130,184 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             </button>
 
-            {/* Center: Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2">
-              {currentRoute === 'home' ? (
-                <>
-                  <button onClick={() => scrollTo('plan')} className="text-xs xl:text-[13px] font-medium text-zinc-400 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors cursor-pointer">
-                    {language === 'en' ? 'The Plan' : 'O Plano'}
-                  </button>
-                  <button onClick={() => scrollTo('features')} className="text-xs xl:text-[13px] font-medium text-zinc-400 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors cursor-pointer">
-                    {language === 'en' ? 'Features' : 'Recursos'}
-                  </button>
-                  <button onClick={() => scrollTo('process')} className="text-xs xl:text-[13px] font-medium text-zinc-400 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors cursor-pointer">
-                    {language === 'en' ? 'How it Works' : 'Como Funciona'}
-                  </button>
-                  <button onClick={() => scrollTo('about')} className="text-xs xl:text-[13px] font-medium text-zinc-400 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors cursor-pointer">
-                    {language === 'en' ? 'About' : 'Sobre'}
-                  </button>
-                  <button onClick={() => scrollTo('faq')} className="text-xs xl:text-[13px] font-medium text-zinc-400 hover:text-white px-3 py-1.5 rounded-full hover:bg-white/5 transition-colors cursor-pointer">
-                    FAQ
-                  </button>
-                </>
-              ) : (
-                <button onClick={handleNavHome} className="text-xs xl:text-[13px] font-mono text-zinc-400 hover:text-[#FFC069] px-3.5 py-1.5 rounded-full hover:bg-white/5 transition-colors cursor-pointer">
-                  ← {language === 'en' ? 'Back to Landing Page' : 'Voltar para Início'}
+            {/* Desktop Nav Links */}
+            <div className="hidden md:flex items-center gap-1">
+              {currentRoute === 'portfolio' ? (
+                <button
+                  onClick={handleNavigateHome}
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] font-medium text-zinc-400 hover:text-white hover:bg-white/6 transition-all duration-200"
+                >
+                  ← {t.nav.backHome}
                 </button>
+              ) : (
+                navLinks.map((link) => (
+                  <button
+                    key={link.id}
+                    onClick={() => scrollToSection(link.id)}
+                    className="px-4 py-2 rounded-full text-[13px] font-medium text-zinc-400 hover:text-white hover:bg-white/6 transition-all duration-200"
+                  >
+                    {link.label}
+                  </button>
+                ))
               )}
-            </nav>
-
-            {/* Right: Actions */}
-            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-              {/* Portfolio Button — hidden on mobile */}
               <button
-                onClick={handleNavPortfolio}
-                className={`hidden sm:inline-flex items-center gap-1 text-xs xl:text-[13px] font-semibold px-3.5 py-1.5 rounded-full transition-all duration-200 cursor-pointer ${
+                onClick={handleNavigatePortfolio}
+                className={`px-4 py-2 rounded-full text-[13px] font-medium transition-all duration-200 ${
                   currentRoute === 'portfolio'
-                    ? 'bg-[#FFC069]/15 border border-[#FFC069]/30 text-[#FFC069]'
-                    : 'text-zinc-300 hover:text-white hover:bg-white/5'
+                    ? 'text-white bg-white/10'
+                    : 'text-zinc-400 hover:text-white hover:bg-white/6'
                 }`}
               >
-                <span>{t.nav.portfolio}</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#FFC069]" />
+                {t.nav.portfolio}
               </button>
+            </div>
 
-              {/* Language Switcher */}
+            {/* Desktop Right Actions */}
+            <div className="hidden md:flex items-center gap-3">
+              {/* Language Toggle */}
               <button
                 onClick={toggleLanguage}
-                className="inline-flex items-center gap-1.5 text-[11px] xl:text-xs font-mono font-semibold px-2.5 sm:px-3 py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white transition-all duration-200 cursor-pointer"
-                aria-label="Alterar idioma"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-mono font-bold text-zinc-500 hover:text-white border border-white/10 hover:border-white/25 bg-white/4 hover:bg-white/8 transition-all duration-200"
+                aria-label="Toggle language"
               >
-                <Globe className="w-3.5 h-3.5 text-[#FFC069]" />
-                <span>{t.nav.langToggle}</span>
+                <Globe className="w-3 h-3" />
+                {language === 'en' ? 'PT' : 'EN'}
               </button>
 
-              {/* Primary CTA */}
+              {/* CTA */}
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary text-xs xl:text-[13px] py-2 px-3 sm:px-5 gap-1.5 rounded-full shadow-lg shadow-orange-500/15 hover:shadow-orange-500/30"
+                className="btn-primary text-[13px] py-2 px-5"
               >
-                <MessageSquare className="w-3.5 h-3.5 shrink-0" />
-                <span className="hidden sm:inline">{t.nav.cta}</span>
+                <MessageSquare className="w-3.5 h-3.5" />
+                {t.nav.cta}
               </a>
+            </div>
 
-              {/* Hamburger — mobile only (< lg) */}
+            {/* Mobile: Language + Hamburger */}
+            <div className="md:hidden flex items-center gap-3">
               <button
-                className="lg:hidden flex flex-col items-center justify-center w-9 h-9 rounded-full bg-white/5 border border-white/10 cursor-pointer transition-colors hover:bg-white/10"
-                onClick={() => setMenuOpen((o) => !o)}
-                aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+                onClick={toggleLanguage}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-[11px] font-mono font-bold text-zinc-500 hover:text-white border border-white/10 bg-white/4 transition-all duration-200"
+                aria-label="Toggle language"
+              >
+                <Globe className="w-3 h-3" />
+                {language === 'en' ? 'PT' : 'EN'}
+              </button>
+
+              <button
+                onClick={() => setMenuOpen(true)}
+                className="relative flex flex-col items-center justify-center w-9 h-9 gap-1.5 rounded-lg text-zinc-300 hover:text-white transition-colors"
+                aria-label="Open menu"
                 aria-expanded={menuOpen}
               >
-                <div className="flex flex-col gap-[5px] w-[14px]">
-                  <span className={`block h-0.5 w-full bg-zinc-300 rounded-full transition-all duration-300 origin-center ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
-                  <span className={`block h-0.5 w-full bg-zinc-300 rounded-full transition-all duration-300 ${menuOpen ? 'opacity-0 scale-x-0' : ''}`} />
-                  <span className={`block h-0.5 w-full bg-zinc-300 rounded-full transition-all duration-300 origin-center ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
-                </div>
+                <span className="block w-5 h-[1.5px] bg-current rounded-full" />
+                <span className="block w-4 h-[1.5px] bg-current rounded-full ml-auto" />
+                <span className="block w-5 h-[1.5px] bg-current rounded-full" />
               </button>
             </div>
           </div>
         </div>
-      </header>
+      </nav>
 
-      {/* ── MOBILE FULL-SCREEN OVERLAY MENU ─────────────────────── */}
-      {/* Rendered OUTSIDE the header so it's not clipped by it */}
+      {/* Mobile Full-Screen Overlay Menu */}
       <AnimatePresence>
         {menuOpen && (
-          <>
-            {/* Dark backdrop — clicking it closes menu */}
-            <motion.div
-              key="mobile-backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="lg:hidden fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[99] md:hidden"
+          >
+            {/* Backdrop */}
+            <div
+              className="absolute inset-0 bg-black/90 backdrop-blur-2xl"
               onClick={() => setMenuOpen(false)}
             />
 
-            {/* Menu panel — slides down from top */}
+            {/* Panel */}
             <motion.div
-              key="mobile-panel"
-              initial={{ opacity: 0, y: -24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -24 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:hidden fixed top-0 left-0 right-0 z-[70] bg-[#09090e] border-b border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.95)] px-5 pt-[72px] pb-6"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              className="absolute right-0 top-0 h-full w-full max-w-sm bg-[#0a0a0d]/95 border-l border-white/8 flex flex-col"
             >
-              {/* X close button */}
-              <button
-                onClick={() => setMenuOpen(false)}
-                className="absolute top-[14px] right-4 w-9 h-9 rounded-full bg-white/6 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/12 transition-colors cursor-pointer"
-                aria-label="Fechar menu"
-              >
-                <X className="w-4 h-4" />
-              </button>
-
-              {/* Navigation items */}
-              <nav className="flex flex-col">
-                {mobileNavItems.map((item, idx) => (
-                  <motion.button
-                    key={idx}
-                    initial={{ opacity: 0, x: -12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.04 + 0.06, duration: 0.22 }}
-                    onClick={item.action}
-                    className="text-left w-full text-[17px] font-semibold text-zinc-200 hover:text-white py-3.5 px-3 rounded-xl hover:bg-white/5 transition-all duration-150 cursor-pointer"
-                  >
-                    {item.label}
-                  </motion.button>
-                ))}
-
-                <div className="my-3 h-px bg-white/8" />
-
-                {/* Portfolio link */}
-                <motion.button
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: mobileNavItems.length * 0.04 + 0.06, duration: 0.22 }}
-                  onClick={handleNavPortfolio}
-                  className="text-left w-full text-[17px] font-semibold text-[#FFC069] py-3.5 px-3 rounded-xl hover:bg-[#FFC069]/8 transition-all duration-150 cursor-pointer flex items-center justify-between"
+              {/* Header */}
+              <div className="flex items-center justify-between p-5 border-b border-white/8">
+                <span className="text-sm font-mono text-zinc-400 tracking-widest uppercase">Menu</span>
+                <button
+                  onClick={() => setMenuOpen(false)}
+                  className="p-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/8 transition-colors"
+                  aria-label="Close menu"
                 >
-                  <span>{t.nav.portfolio}</span>
-                  <ArrowUpRight className="w-5 h-5 shrink-0" />
-                </motion.button>
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
 
-                {/* WhatsApp CTA button */}
-                <motion.a
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: (mobileNavItems.length + 1) * 0.04 + 0.06, duration: 0.22 }}
+              {/* Nav Links */}
+              <div className="flex-1 flex flex-col justify-center px-8 space-y-1">
+                {currentRoute === 'portfolio' && (
+                  <button
+                    onClick={handleNavigateHome}
+                    className="w-full text-left py-4 text-2xl font-bold text-zinc-400 hover:text-white transition-colors border-b border-white/6"
+                  >
+                    ← {t.nav.backHome}
+                  </button>
+                )}
+                {navLinks.map((link) => (
+                  <button
+                    key={link.id}
+                    onClick={() => scrollToSection(link.id)}
+                    className="w-full text-left py-4 text-2xl font-bold text-zinc-300 hover:text-white transition-colors border-b border-white/6"
+                  >
+                    {link.label}
+                  </button>
+                ))}
+                <button
+                  onClick={handleNavigatePortfolio}
+                  className="w-full text-left py-4 text-2xl font-bold text-zinc-300 hover:text-white transition-colors border-b border-white/6"
+                >
+                  {t.nav.portfolio}
+                </button>
+                <Link
+                  to="/privacy-policy"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full text-left py-4 text-xl font-medium text-zinc-500 hover:text-zinc-300 transition-colors border-b border-white/6"
+                >
+                  {language === 'en' ? 'Privacy Policy' : 'Política de Privacidade'}
+                </Link>
+              </div>
+
+              {/* Bottom CTA */}
+              <div className="p-6 border-t border-white/8 space-y-3">
+                <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMenuOpen(false)}
-                  className="mt-4 btn-primary w-full justify-center text-sm py-3.5 rounded-2xl shadow-xl shadow-orange-500/20"
+                  className="btn-primary w-full justify-center text-base"
                 >
-                  <MessageSquare className="w-4 h-4 shrink-0" />
-                  <span>{t.nav.cta}</span>
-                </motion.a>
-              </nav>
+                  <MessageSquare className="w-4 h-4" />
+                  {t.nav.cta}
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/gustavogalvaoo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl text-sm text-zinc-400 hover:text-white border border-white/10 hover:border-white/20 transition-all"
+                >
+                  LinkedIn
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
   );
 };
-
-export default Navbar;
