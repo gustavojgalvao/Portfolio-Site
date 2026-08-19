@@ -114,6 +114,7 @@ export interface Translations {
     clientProjects: {
       id: string;
       title: string;
+      year?: string;
       client: string;
       challenge: string;
       solution: string;
@@ -388,28 +389,31 @@ export const translations: Record<Language, Translations> = {
       clientProjects: [
         {
           id: 'g2odonto',
-          title: 'G2Odonto. AI Triage for Dental Clinics',
+          title: 'G2Odonto',
+          year: '2026',
           client: 'Aesthetic Dental Clinic',
           challenge: 'Qualify and capture inbound patient leads automatically.',
-          solution: 'Custom AI triage system reducing front-desk response time to seconds.',
+          solution: 'AI-powered lead qualification and instant triage for aesthetic dental clinics.',
           tags: ['AI AUTOMATION', 'LEAD TRIAGE', 'WEBHOOKS'],
           visualAlt: 'AI triage interface mockup',
         },
         {
           id: 'tualupa71',
-          title: 'Tualupa71. Sunglasses E-Commerce',
+          title: 'Tualupa71',
+          year: '2026',
           client: 'Eyewear Brand',
           challenge: 'Build a frictionless shopping catalog with immediate checkout.',
-          solution: 'Fast visual catalog with category filters and direct WhatsApp checkout.',
+          solution: 'Fast visual eyewear catalog with dynamic filters and direct WhatsApp checkout.',
           tags: ['E-COMMERCE', 'UI/UX', 'WHATSAPP CHECKOUT'],
           visualAlt: 'E-commerce interface mockup',
         },
         {
           id: 'ac-joias',
-          title: 'Ariane Carla Joias. Fine Jewelry E-Commerce',
+          title: 'Ariane Carla Joias',
+          year: '2025',
           client: 'Luxury Jewelry Brand',
           challenge: 'Deliver a high-converting luxury storefront with transparent checkout on Nuvemshop.',
-          solution: 'Customized Nuvemshop e-commerce with PIX incentives, live freight APIs, and mobile-first UX.',
+          solution: 'Luxury fine jewelry e-commerce with transparent checkout and live logistics on Nuvemshop.',
           tags: ['NUVEMSHOP', 'E-COMMERCE', 'FINE JEWELRY'],
           visualAlt: 'Ariane Carla Joias luxury e-commerce mockup',
         },
@@ -739,28 +743,31 @@ export const translations: Record<Language, Translations> = {
       clientProjects: [
         {
           id: 'g2odonto',
-          title: 'G2Odonto. Triagem com IA para Clínicas',
+          title: 'G2Odonto',
+          year: '2026',
           client: 'Clínica Odontológica Estética',
           challenge: 'Qualificar e capturar pacientes de alto padrão automaticamente.',
-          solution: 'Sistema com IA que atende no WhatsApp e reduz o tempo de resposta a segundos.',
+          solution: 'Triagem inteligente com IA e qualificação automática de pacientes para clínicas.',
           tags: ['AUTOMAÇÃO COM IA', 'TRIAGEM DE LEADS', 'WEBHOOKS'],
           visualAlt: 'Mockup de interface de triagem com IA',
         },
         {
           id: 'tualupa71',
-          title: 'Tualupa71. E-Commerce de Óculos',
+          title: 'Tualupa71',
+          year: '2026',
           client: 'Marca de Óculos de Sol',
           challenge: 'Criar uma loja virtual rápida com fechamento ágil de pedidos.',
-          solution: 'Catálogo dinâmico com filtros visuais e checkout direto no WhatsApp.',
+          solution: 'Catálogo visual de eyewear de alta velocidade com checkout direto no WhatsApp.',
           tags: ['E-COMMERCE', 'DESIGN UI/UX', 'CHECKOUT WHATSAPP'],
           visualAlt: 'Mockup de interface de e-commerce',
         },
         {
           id: 'ac-joias',
-          title: 'Ariane Carla Joias. E-Commerce de Alta Joalheria',
+          title: 'Ariane Carla Joias',
+          year: '2025',
           client: 'Marca de Alta Joalheria & Semijoias',
           challenge: 'Entregar um e-commerce de luxo com alta conversão e checkout transparente na Nuvemshop.',
-          solution: 'Loja Nuvemshop personalizada com desconto no PIX, frete em tempo real e UX mobile refinada.',
+          solution: 'E-commerce de alta joalheria na Nuvemshop com checkout transparente e frete dinâmico.',
           tags: ['NUVEMSHOP', 'E-COMMERCE', 'ALTA JOALHERIA'],
           visualAlt: 'Mockup da loja virtual Ariane Carla Joias',
         },

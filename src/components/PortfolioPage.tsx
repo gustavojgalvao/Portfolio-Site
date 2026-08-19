@@ -2,152 +2,13 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import GooeyLayer from './ui/GooeyLayer';
 import { useGsapReveal } from '../hooks/useGsapReveal';
-import { MessageSquare, ArrowUpRight, Sparkles } from 'lucide-react';
+import { MessageSquare, Sparkles } from 'lucide-react';
 import {
   ImagesScrollingAnimation,
   type ScrollingProjectItem,
 } from './ui/images-scrolling-animation';
 import { useProjectModal } from '../context/ProjectModalContext';
-
-/* ── Abstract visual mockups for Client Projects ───────────── */
-
-const ChatMockup: React.FC = () => (
-  <div
-    className="w-full h-40 rounded-2xl overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-500"
-    style={{
-      background: 'rgba(255,255,255,0.04)',
-      border: '1px solid rgba(255,255,255,0.08)',
-    }}
-    aria-hidden="true"
-  >
-    <div className="absolute top-3 left-3 flex items-center gap-2">
-      <div
-        className="w-5 h-5 rounded-md flex items-center justify-center text-[9px] font-black"
-        style={{
-          background: 'linear-gradient(135deg,#FFC069,#7A1610)',
-          color: '#050505',
-        }}
-      >
-        AI
-      </div>
-      <span className="text-[10px] font-mono text-zinc-500">TRIAGE AGENT</span>
-    </div>
-    <div className="absolute inset-0 flex flex-col justify-end p-3 gap-2">
-      {[
-        { right: false, text: 'Preciso agendar uma avaliação estética.' },
-        { right: true, text: '✅ Encaminhando para agenda disponível...' },
-      ].map((m, i) => (
-        <div
-          key={i}
-          className={`flex ${m.right ? 'justify-end' : 'justify-start'}`}
-        >
-          <div
-            className="max-w-[70%] px-3 py-1.5 rounded-xl text-[10px] leading-relaxed"
-            style={
-              m.right
-                ? {
-                    background: 'rgba(255,192,105,0.15)',
-                    color: '#fde8c0',
-                  }
-                : {
-                    background: 'rgba(255,255,255,0.06)',
-                    color: '#d4d4d8',
-                  }
-            }
-          >
-            {m.text}
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const ShopMockup: React.FC = () => (
-  <div
-    className="w-full h-40 rounded-2xl overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-500"
-    style={{
-      background: 'rgba(255,255,255,0.04)',
-      border: '1px solid rgba(255,255,255,0.08)',
-    }}
-    aria-hidden="true"
-  >
-    <div className="absolute top-3 left-3 right-3 flex items-center gap-2">
-      <div
-        className="flex-1 h-5 rounded-lg"
-        style={{ background: 'rgba(255,255,255,0.06)' }}
-      />
-      <div
-        className="w-14 h-5 rounded-full"
-        style={{ background: 'rgba(255,192,105,0.2)' }}
-      />
-    </div>
-    <div className="absolute inset-0 top-10 p-3 grid grid-cols-3 gap-2">
-      {[0.9, 0.6, 0.75, 0.5, 0.8, 0.65].map((o, i) => (
-        <div
-          key={i}
-          className="rounded-lg"
-          style={{
-            background: `rgba(255,192,105,${o * 0.12})`,
-            border: '1px solid rgba(255,192,105,0.1)',
-          }}
-        >
-          <div
-            className="w-full h-8 rounded-t-lg"
-            style={{ background: `rgba(255,192,105,${o * 0.15})` }}
-          />
-          <div className="p-1.5 space-y-1">
-            <div
-              className="w-full h-1 rounded-full"
-              style={{ background: 'rgba(255,255,255,0.15)' }}
-            />
-            <div
-              className="w-2/3 h-1 rounded-full"
-              style={{ background: 'rgba(255,255,255,0.08)' }}
-            />
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const TerminalMockup: React.FC = () => (
-  <div
-    className="w-full h-40 rounded-2xl overflow-hidden font-mono group-hover:scale-[1.02] transition-transform duration-500"
-    style={{
-      background: 'rgba(10,10,14,0.9)',
-      border: '1px solid rgba(255,255,255,0.08)',
-    }}
-    aria-hidden="true"
-  >
-    <div className="flex items-center gap-1.5 px-3 py-2 border-b border-white/6">
-      {['#7A1610', '#E8642F', '#FFC069'].map((c) => (
-        <div
-          key={c}
-          className="w-2 h-2 rounded-full"
-          style={{ background: c }}
-        />
-      ))}
-      <span className="ml-2 text-[9px] text-zinc-600">tech-ai-repo ~ admin</span>
-    </div>
-    <div className="p-3 space-y-1.5">
-      {[
-        { prompt: '$ ', cmd: 'load database leads_q1.csv', color: '#FFC069' },
-        { prompt: '→ ', cmd: '847 records loaded', color: '#d4d4d8' },
-        { prompt: '$ ', cmd: 'ai summarize --context=marketing', color: '#FFC069' },
-        { prompt: '→ ', cmd: 'Generating insights...', color: '#E8642F' },
-      ].map((l, i) => (
-        <div key={i} className="text-[10px] leading-relaxed">
-          <span style={{ color: l.color }}>{l.prompt}</span>
-          <span style={{ color: l.color === '#FFC069' ? '#a8a8b3' : l.color }}>
-            {l.cmd}
-          </span>
-        </div>
-      ))}
-    </div>
-  </div>
-);
+import { SelectedWorkList } from './SelectedWorkList';
 
 /* ── High-Res Image Mapping for Projects ────────────────────── */
 
@@ -194,8 +55,6 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
         ? "Hi Gustavo! I'd like to talk about a project."
         : 'Olá Gustavo! Gostaria de conversar sobre um projeto.'
     );
-
-  const ClientVisuals = [ChatMockup, ShopMockup, TerminalMockup];
 
   /* Prepare scrolling items for Independent Builds with high-res assets */
   const scrollingProjects: ScrollingProjectItem[] =
@@ -251,125 +110,20 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
         </div>
       </section>
 
-      {/* ── GROUP 1: CLIENT WORK ──────────────────────────── */}
+      {/* ── GROUP 1: SELECTED WORK LIST ───────────────────── */}
       <section
         id="client-work"
         ref={grid1Ref as React.RefObject<HTMLElement>}
-        className="py-16 px-4 sm:px-6 lg:px-8 border-b border-white/6"
+        className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-white/6"
       >
-        <div className="max-w-5xl mx-auto">
-          {/* Group label */}
-          <div className="mb-10 gsap-child">
-            <h2
-              className="text-2xl font-extrabold text-white mb-1.5"
-              style={{ letterSpacing: '-0.02em' }}
-            >
-              {t.portfolioPage.group1Label}
-            </h2>
-            <p className="text-xs font-mono text-zinc-500">
-              {t.portfolioPage.group1Desc}
-            </p>
-          </div>
-
-          {/* Asymmetric grid: one featured card (col-span-2) + two narrower */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {t.portfolioPage.clientProjects.map((project, i) => {
-              const Visual = ClientVisuals[i];
-              const isFeatured = i === 0;
-              return (
-                <article
-                  key={project.id}
-                  onClick={() => handleOpenProject(project.id)}
-                  className={`glass-feature group flex flex-col overflow-hidden gsap-child transition-all duration-500 hover:border-[#FFC069]/50 hover:shadow-[0_20px_50px_rgba(255,192,105,0.12)] cursor-pointer rounded-3xl ${
-                    isFeatured ? 'md:col-span-2' : ''
-                  }`}
-                >
-                  {/* Visual */}
-                  <div className="p-5 pb-0">
-                    {CLIENT_IMAGES[project.id] ? (
-                      <div className="w-full h-44 sm:h-52 rounded-2xl overflow-hidden relative group-hover:scale-[1.02] transition-transform duration-500 border border-white/10 bg-black/40 shadow-inner">
-                        <img
-                          src={CLIENT_IMAGES[project.id]}
-                          alt={project.title}
-                          className="w-full h-full object-cover object-top"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
-                        <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-[10px] font-mono font-semibold text-[#FFC069]">
-                          CLIENT WORK
-                        </div>
-                      </div>
-                    ) : (
-                      <Visual />
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6 sm:p-7 flex-1 flex flex-col space-y-4">
-                    <div className="flex items-start justify-between gap-2">
-                      <div>
-                        <div className="text-[10px] font-mono text-zinc-500 mb-1.5 uppercase tracking-widest">
-                          {project.client}
-                        </div>
-                        <h3
-                          className="text-xl font-bold text-white group-hover:text-[#FFC069] transition-colors"
-                          style={{ letterSpacing: '-0.02em' }}
-                        >
-                          {project.title}
-                        </h3>
-                      </div>
-                      <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 group-hover:bg-[#FFC069] group-hover:text-black transition-colors shrink-0">
-                        <ArrowUpRight className="w-4 h-4" />
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div>
-                        <span className="text-[10px] font-mono font-semibold text-[#FFC069] uppercase tracking-wider">
-                          {language === 'en' ? 'Challenge:' : 'Desafio:'}{' '}
-                        </span>
-                        <span className="text-sm text-zinc-400 leading-relaxed">
-                          {project.challenge}
-                        </span>
-                      </div>
-                      <div>
-                        <span className="text-[10px] font-mono font-semibold text-[#E8642F] uppercase tracking-wider">
-                          {language === 'en' ? 'Solution:' : 'Solução:'}{' '}
-                        </span>
-                        <span className="text-sm text-zinc-300 leading-relaxed">
-                          {project.solution}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Tags & Action Link */}
-                    <div className="flex items-center justify-between pt-3 mt-auto border-t border-white/5">
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-[10px] font-mono px-2.5 py-1 rounded-full"
-                            style={{
-                              background: 'rgba(255,192,105,0.08)',
-                              border: '1px solid rgba(255,192,105,0.18)',
-                              color: '#FFC069',
-                            }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <span className="text-xs font-mono text-[#FFC069] font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-                        <span>{language === 'en' ? 'Details & Demo' : 'Detalhes & Vídeo'}</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </span>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
+        <div className="max-w-5xl mx-auto gsap-child">
+          <SelectedWorkList
+            projects={t.portfolioPage.clientProjects}
+            images={CLIENT_IMAGES}
+            onSelectProject={handleOpenProject}
+            label={language === 'en' ? 'SELECTED WORK' : 'TRABALHOS SELECIONADOS'}
+            language={language}
+          />
         </div>
       </section>
 
