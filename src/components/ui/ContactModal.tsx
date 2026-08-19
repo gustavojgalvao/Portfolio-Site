@@ -47,7 +47,7 @@ export const ContactModal: React.FC = () => {
 
   const handleMeeting = () => {
     // Calendly or other meeting link
-    const url = '#calendly-placeholder';
+    const url = 'https://calendly.com/';
     window.open(url, '_blank');
   };
 

@@ -7,7 +7,7 @@ import { useGsapReveal } from '../hooks/useGsapReveal';
 import { ContactOptions } from './ui/ContactOptions';
 
 export const Hero: React.FC = () => {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   const containerRef = useGsapReveal({ y: 30, duration: 0.8, stagger: 0.15 });
 
   const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({

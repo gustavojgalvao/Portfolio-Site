@@ -12,7 +12,7 @@ import {
 import { ContactOptions } from './ui/ContactOptions';
 
 export const PlanOverview: React.FC = () => {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   const containerRef = useGsapReveal({ y: 35, duration: 0.85, stagger: 0.1 });
 
 

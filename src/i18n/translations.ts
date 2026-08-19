@@ -109,6 +109,19 @@ export interface Translations {
   footer: {
     copyright: string;
   };
+  contactModal: {
+    title: string;
+    subtitle: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    detailsLabel: string;
+    detailsPlaceholder: string;
+    proceedLabel: string;
+    btnWhatsapp: string;
+    btnEmail: string;
+    btnMeeting: string;
+    whatsappMessagePrefix: string;
+  };
   portfolioPage: {
     title: string;
     subtitle: string;
@@ -116,19 +129,7 @@ export interface Translations {
     group1Desc: string;
     group2Label: string;
     group2Desc: string;
-    contactModal: {
-      title: string;
-      subtitle: string;
-      nameLabel: string;
-      namePlaceholder: string;
-      detailsLabel: string;
-      detailsPlaceholder: string;
-      proceedLabel: string;
-      btnWhatsapp: string;
-      btnEmail: string;
-      btnMeeting: string;
-      whatsappMessagePrefix: string;
-    };
+
     clientProjects: {
       id: string;
       title: string;
@@ -401,6 +402,19 @@ export const translations: Record<Language, Translations> = {
     },
     footer: {
       copyright: '© 2026 Gustavo. Web Development, AI Automation and Growth.',
+    },
+    contactModal: {
+      title: "Let's work together",
+      subtitle: "Tell me a bit about you and your project.",
+      nameLabel: "Your Name",
+      namePlaceholder: "John Doe",
+      detailsLabel: "Project Details",
+      detailsPlaceholder: "I want to build a...",
+      proceedLabel: "How would you like to proceed?",
+      btnWhatsapp: "Send via WhatsApp",
+      btnEmail: "Send via Email",
+      btnMeeting: "Book a Meeting",
+      whatsappMessagePrefix: "Hi Gustavo, my name is {name}. I'd like to talk about a project: {details}"
     },
     portfolioPage: {
       title: 'Selected Work',
@@ -760,6 +774,19 @@ export const translations: Record<Language, Translations> = {
     },
     footer: {
       copyright: '© 2026 Gustavo. Desenvolvimento Web, IA e Marketing Digital.',
+    },
+    contactModal: {
+      title: "Vamos trabalhar juntos",
+      subtitle: "Me conte um pouco sobre você e seu projeto.",
+      nameLabel: "Seu Nome",
+      namePlaceholder: "João Silva",
+      detailsLabel: "Detalhes do Projeto",
+      detailsPlaceholder: "Gostaria de criar um...",
+      proceedLabel: "Como prefere continuar?",
+      btnWhatsapp: "Enviar por WhatsApp",
+      btnEmail: "Enviar por E-mail",
+      btnMeeting: "Agendar Reunião",
+      whatsappMessagePrefix: "Olá Gustavo, meu nome é {name}. Gostaria de falar sobre um projeto: {details}"
     },
     portfolioPage: {
       title: 'Trabalhos Selecionados',
