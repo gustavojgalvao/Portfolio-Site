@@ -135,7 +135,7 @@ export const Hero: React.FC = () => {
               >
                 <div className="relative w-full h-full rounded-[24px] overflow-hidden bg-black/90">
                   <img
-                    src="/fotoperfil.png"
+                    src="/fotoperfil.webp"
                     alt="Gustavo Galvao. Full-stack developer and digital growth specialist"
                     className="w-full h-full object-cover filter contrast-[1.02] pointer-events-none group-hover:scale-[1.03] transition-transform duration-500"
                   />
