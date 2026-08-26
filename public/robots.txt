@@ -17,4 +17,4 @@ Allow: /portfolio
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://gustavogalvao.dev/sitemap.xml
+Sitemap: https://jezlercodes.dev/sitemap.xml

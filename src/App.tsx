@@ -36,7 +36,7 @@ const HomePage: React.FC<{ onNavigatePortfolio: () => void }> = ({ onNavigatePor
     <SEOHead
       title="Desenvolvimento Web, Automação com IA & Growth Marketing"
       description="Site em React do zero, SEO/GEO, Google Meu Negócio, tráfego pago e CRM com IA — tudo em um plano mensal. Gustavo Galvão, desenvolvedor React e especialista em automação."
-      ogUrl="https://gustavogalvao.dev"
+      ogUrl="https://jezlercodes.dev"
     />
     <Hero />
     <PlanOverview />
@@ -105,7 +105,7 @@ export const AppContent: React.FC = () => {
               <SEOHead
                 title="Portfólio — Projetos em React, IA & Web Design"
                 description="Veja os projetos desenvolvidos por Gustavo Galvão: sites em React, sistemas com IA, e-commerce e landing pages de alta conversão para empresas reais."
-                ogUrl="https://gustavogalvao.dev/portfolio"
+                ogUrl="https://jezlercodes.dev/portfolio"
               />
               <PortfolioPage onBackHome={handleNavigateHome} />
             </>

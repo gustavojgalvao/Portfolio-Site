@@ -18,7 +18,7 @@ const BrowserMockup: React.FC = () => (
         <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
       </div>
       <div className="flex-1 h-5 rounded-full flex items-center px-3" style={{ background: 'rgba(255,255,255,0.05)' }}>
-        <span className="text-zinc-500 text-[10px] truncate">gustavogalvao.dev</span>
+        <span className="text-zinc-500 text-[10px] truncate">jezlercodes.dev</span>
       </div>
     </div>
 

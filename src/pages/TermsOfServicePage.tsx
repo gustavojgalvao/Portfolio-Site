@@ -30,7 +30,7 @@ export const TermsOfServicePage: React.FC = () => {
         description={isEn
           ? 'Terms of Service for web development and digital marketing services provided by Gustavo Galvão.'
           : 'Termos de Uso para serviços de desenvolvimento web e marketing digital prestados por Gustavo Galvão.'}
-        ogUrl="https://gustavogalvao.dev/terms"
+        ogUrl="https://jezlercodes.dev/terms"
         noIndex
       />
       <div className="min-h-screen bg-[#050505] pt-28 pb-20 px-4 sm:px-6 lg:px-8">

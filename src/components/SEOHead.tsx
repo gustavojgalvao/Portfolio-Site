@@ -10,8 +10,8 @@ interface SEOHeadProps {
 }
 
 const SITE_NAME = 'Gustavo Galvão';
-const DEFAULT_OG_IMAGE = 'https://gustavogalvao.dev/og-image.png';
-const DEFAULT_URL = 'https://gustavogalvao.dev';
+const DEFAULT_OG_IMAGE = 'https://jezlercodes.dev/og-image.png';
+const DEFAULT_URL = 'https://jezlercodes.dev';
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
   title,

@@ -64,7 +64,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
         INDEPENDENT_IMAGES[project.id] ||
         '/img/Conversor de Moedas em tempo real.png',
       tags: project.tags,
-      url: project.url || 'https://gustavogalvao.vercel.app',
+      url: project.url || 'https://jezlercodes.vercel.app',
     }));
 
   return (

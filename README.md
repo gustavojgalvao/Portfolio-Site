@@ -73,6 +73,6 @@ This project avoids generic template structures. Every element is designed to fe
 - **Gooey Filters:** SVG filters applied to CSS blobs to create liquid-like background ambient lighting.
 
 ## 🤝 Contact
-- **Website:** [gustavogalvao.dev](https://gustavogalvao.dev)
+- **Website:** [jezlercodes.dev](https://jezlercodes.dev)
 - **LinkedIn:** [gustavojgalvaoo](https://www.linkedin.com/in/gustavojgalvaoo/)
 - **Email:** gustavojezler@gmail.com

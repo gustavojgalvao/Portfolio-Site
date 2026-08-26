@@ -133,7 +133,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigatePortfolio }) => {
               </li>
               <li>
                 <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
-                  <span>Instagram (@jezlercodes)</span>
+                  <span>Instagram</span>
                   <ArrowUp className="w-3 h-3 rotate-45 opacity-50" />
                 </a>
               </li>

@@ -28,9 +28,9 @@ export const PrivacyPolicyPage: React.FC = () => {
       <SEOHead
         title={isEn ? 'Privacy Policy' : 'Política de Privacidade'}
         description={isEn
-          ? 'Privacy Policy for gustavogalvao.dev — how we collect and use your data.'
-          : 'Política de Privacidade do site gustavogalvao.dev — como coletamos e usamos seus dados.'}
-        ogUrl="https://gustavogalvao.dev/privacy-policy"
+          ? 'Privacy Policy for jezlercodes.dev — how we collect and use your data.'
+          : 'Política de Privacidade do site jezlercodes.dev — como coletamos e usamos seus dados.'}
+        ogUrl="https://jezlercodes.dev/privacy-policy"
         noIndex
       />
       <div className="min-h-screen bg-[#050505] pt-28 pb-20 px-4 sm:px-6 lg:px-8">
