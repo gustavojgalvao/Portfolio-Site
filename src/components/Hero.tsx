@@ -80,7 +80,7 @@ export const Hero: React.FC = () => {
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 pt-2">
-                <ContactOptions variant="compact" />
+                <ContactOptions variant="hero" />
 
                 <button
                   onClick={scrollToPortfolio}

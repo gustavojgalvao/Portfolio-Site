@@ -4,7 +4,7 @@ import { useContactModal } from '../../context/ContactModalContext';
 import { MessageSquare } from 'lucide-react';
 
 interface ContactOptionsProps {
-  variant: 'full' | 'compact';
+  variant: 'full' | 'compact' | 'hero';
   className?: string;
 }
 
@@ -14,7 +14,14 @@ export const ContactOptions: React.FC<ContactOptionsProps> = ({ variant, classNa
 
   const buttonText = language === 'en' ? 'Start a Project' : 'Iniciar Projeto';
 
-  const paddingClass = variant === 'compact' ? 'px-6 py-2.5 text-sm' : 'px-8 py-3.5 text-base';
+  let paddingClass = '';
+  if (variant === 'compact') {
+    paddingClass = 'px-6 py-2.5 text-sm';
+  } else if (variant === 'hero') {
+    paddingClass = 'px-[28px] py-[12px] text-[14px]';
+  } else {
+    paddingClass = 'px-8 py-3.5 text-base';
+  }
 
   return (
     <button

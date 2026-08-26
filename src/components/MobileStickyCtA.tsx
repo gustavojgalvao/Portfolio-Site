@@ -2,19 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useContactModal } from '../context/ContactModalContext';
 
 export const MobileStickyCtA: React.FC = () => {
   const { language } = useLanguage();
+  const { openContactModal } = useContactModal();
 
-  const whatsappUrl =
-    'https://wa.me/5571992550509?text=' +
-    encodeURIComponent(
-      language === 'en'
-        ? "Hi Gustavo! I'd like to book a call to talk about your plan."
-        : 'Olá Gustavo! Gostaria de agendar uma conversa sobre o plano.'
-    );
-
-  const label = language === 'en' ? 'Book a Call' : 'Falar no WhatsApp';
+  const label = language === 'en' ? 'Start Project' : 'Iniciar Projeto';
 
   return (
     <motion.div
@@ -34,15 +28,13 @@ export const MobileStickyCtA: React.FC = () => {
           {language === 'en' ? 'Response in under 2h' : 'Resposta em até 2h'}
         </p>
 
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={openContactModal}
           className="shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FFC069] text-black text-sm font-bold hover:bg-[#ffcf85] transition-colors active:scale-95"
         >
           <MessageSquare className="w-3.5 h-3.5" />
           {label}
-        </a>
+        </button>
       </div>
     </motion.div>
   );
