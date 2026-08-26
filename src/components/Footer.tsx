@@ -25,6 +25,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigatePortfolio }) => {
   const emailUrl = 'mailto:gustavojezler@gmail.com';
   const githubUrl = 'https://github.com/gustavojgalvao';
   const linkedinUrl = 'https://www.linkedin.com/in/gustavogalvaoo';
+  const instagramUrl = 'https://instagram.com/jezlercodes';
   const cvUrl =
     language === 'en'
       ? '/assets/resume-gustavogalvao.pdf'
@@ -127,6 +128,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigatePortfolio }) => {
               <li>
                 <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
                   <span>LinkedIn</span>
+                  <ArrowUp className="w-3 h-3 rotate-45 opacity-50" />
+                </a>
+              </li>
+              <li>
+                <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
+                  <span>Instagram (@jezlercodes)</span>
                   <ArrowUp className="w-3 h-3 rotate-45 opacity-50" />
                 </a>
               </li>
