@@ -20,6 +20,21 @@ interface GooeyLayerProps {
  *   cursorChase   — one blob chases the cursor via GSAP quickTo
  *   className     — extra classes on the wrapper (use for sizing/positioning)
  */
+// Blob size and initial positions
+const BLOB_CONFIGS = [
+  { size: 480, x: '25%', y: '30%' },
+  { size: 420, x: '65%', y: '55%' },
+  { size: 380, x: '45%', y: '70%' },
+  { size: 350, x: '15%', y: '65%' },
+];
+
+// Pick colors based on dominantColor
+const COLOR_MAP = {
+  gold:   ['glow-blob-gold', 'glow-blob-orange', 'glow-blob-gold',   'glow-blob-orange'],
+  orange: ['glow-blob-orange', 'glow-blob-gold',  'glow-blob-orange', 'glow-blob-red'],
+  red:    ['glow-blob-red',    'glow-blob-orange', 'glow-blob-red',   'glow-blob-orange'],
+};
+
 const GooeyLayer: React.FC<GooeyLayerProps> = ({
   dominantColor = 'gold',
   cursorChase = false,
@@ -31,21 +46,8 @@ const GooeyLayer: React.FC<GooeyLayerProps> = ({
   const chaseBlobRef = useRef<HTMLDivElement>(null);
   const driftRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Blob size and initial positions by count
-  const blobConfigs = [
-    { size: 480, x: '25%', y: '30%' },
-    { size: 420, x: '65%', y: '55%' },
-    { size: 380, x: '45%', y: '70%' },
-    { size: 350, x: '15%', y: '65%' },
-  ].slice(0, blobCount);
-
-  // Pick colors based on dominantColor
-  const colorMap = {
-    gold:   ['glow-blob-gold', 'glow-blob-orange', 'glow-blob-gold',   'glow-blob-orange'],
-    orange: ['glow-blob-orange', 'glow-blob-gold',  'glow-blob-orange', 'glow-blob-red'],
-    red:    ['glow-blob-red',    'glow-blob-orange', 'glow-blob-red',   'glow-blob-orange'],
-  };
-  const colors = colorMap[dominantColor];
+  const activeBlobConfigs = BLOB_CONFIGS.slice(0, blobCount);
+  const colors = COLOR_MAP[dominantColor];
 
   useEffect(() => {
     const container = containerRef.current;
@@ -161,7 +163,7 @@ const GooeyLayer: React.FC<GooeyLayerProps> = ({
         style={{ filter: `url(#${filterId})` }}
         aria-hidden="true"
       >
-        {blobConfigs.map((cfg, i) => {
+        {activeBlobConfigs.map((cfg, i) => {
           const isChase = i === 0 && cursorChase;
           return (
             <div
