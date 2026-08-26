@@ -18,17 +18,17 @@ const testimonials: { pt: Testimonial[]; en: Testimonial[] } = {
       name: 'Ariana Carla',
       role: 'Proprietária',
       company: 'AC Jóias',
-      text: 'O Gustavo entregou exatamente o que prometeu: um site moderno, rápido e que transmite a identidade da minha marca. Clientes comentam o quanto o site é bonito. Recomendo demais.',
+      text: 'O Gustavo entregou um site moderno e rápido que transmite perfeitamente a identidade da minha marca. Meus clientes sempre comentam o quanto o site ficou bonito. Recomendo demais.',
       rating: 5,
       profile: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
     },
     {
-      name: 'Dr. Eduardo Souza',
-      role: 'Cirurgião-Dentista',
-      company: 'Sorriso Perfeito Clínica',
-      text: 'Desde que o site foi lançado, o número de novos pacientes que chegam pelo Google aumentou visivelmente. A integração com o WhatsApp ficou perfeita para o nosso fluxo de atendimento.',
+      name: 'Anna Luíza',
+      role: 'Professora de Inglês',
+      company: 'Speak Flow',
+      text: 'O Gustavo entregou exatamente o que eu precisava. Um site que finalmente representa meu trabalho da forma que ele merece. Fiquei muito feliz com o resultado final.',
       rating: 5,
-      profile: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80',
+      profile: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80',
     },
     {
       name: 'Luciana Phellipo',
@@ -44,17 +44,17 @@ const testimonials: { pt: Testimonial[]; en: Testimonial[] } = {
       name: 'Ariana Carla',
       role: 'Owner',
       company: 'AC Jóias',
-      text: 'Gustavo delivered exactly what he promised: a modern, fast website that conveys my brand identity perfectly. Clients constantly comment on how beautiful it looks.',
+      text: 'Gustavo delivered a modern and fast website that perfectly conveys my brand identity. My clients constantly comment on how beautiful it looks.',
       rating: 5,
       profile: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80',
     },
     {
-      name: 'Dr. Eduardo Souza',
-      role: 'Dental Surgeon',
-      company: 'Sorriso Perfeito Clinic',
-      text: 'Since the site launched, the number of new patients coming through Google has visibly increased. The WhatsApp integration fits perfectly into our intake workflow.',
+      name: 'Anna Luíza',
+      role: 'English Teacher',
+      company: 'Speak Flow',
+      text: "Gustavo delivered exactly what I needed. A website that finally represents my work the way it deserves. I'm really happy with the final result.",
       rating: 5,
-      profile: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80',
+      profile: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80',
     },
     {
       name: 'Luciana Phellipo',
@@ -84,7 +84,6 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => (
 );
 
 const ReviewCard = ({
-  profile,
   name,
   role,
   company,
@@ -99,11 +98,6 @@ const ReviewCard = ({
         <p className="text-sm md:text-base leading-relaxed text-zinc-300">"{text}"</p>
         
         <div className="flex flex-row items-center gap-4 pt-4 mt-auto border-t border-white/5">
-          <img
-            className="rounded-full object-cover w-12 h-12 border border-white/10"
-            alt={name}
-            src={profile}
-          />
           <div className="flex flex-col">
             <p className="text-sm md:text-base font-semibold text-white">{name}</p>
             <p className="text-xs md:text-sm font-medium text-zinc-500">
