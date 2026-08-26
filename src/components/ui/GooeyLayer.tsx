@@ -53,6 +53,8 @@ const GooeyLayer: React.FC<GooeyLayerProps> = ({
 
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isTouchDevice = window.matchMedia('(hover: none)').matches;
+    
+    let onMove: ((e: MouseEvent) => void) | null = null;
 
     const ctx = gsap.context(() => {
       // Autonomous drift for all non-chase blobs
@@ -83,25 +85,54 @@ const GooeyLayer: React.FC<GooeyLayerProps> = ({
         });
       });
 
-      // Cursor-chase for first blob (only on pointer devices, only when cursorChase=true)
+      // Setup Cursor-chase functions
       if (cursorChase && chaseBlobRef.current && !isTouchDevice && !prefersReduced) {
         const chaseX = gsap.quickTo(chaseBlobRef.current, 'x', { duration: 1.0, ease: 'power3.out' });
         const chaseY = gsap.quickTo(chaseBlobRef.current, 'y', { duration: 1.0, ease: 'power3.out' });
 
-        const onMove = (e: MouseEvent) => {
+        onMove = (e: MouseEvent) => {
           const rect = container.getBoundingClientRect();
           const relX = e.clientX - rect.left - (chaseBlobRef.current?.offsetWidth ?? 0) / 2;
           const relY = e.clientY - rect.top - (chaseBlobRef.current?.offsetHeight ?? 0) / 2;
           chaseX(relX);
           chaseY(relY);
         };
-
-        container.addEventListener('mousemove', onMove);
-        return () => container.removeEventListener('mousemove', onMove);
       }
     }, container);
 
-    return () => ctx.revert();
+    const observer = new IntersectionObserver((entries) => {
+      const isIntersecting = entries[0].isIntersecting;
+      
+      if (isIntersecting) {
+        // Resume drift animations
+        ctx.data.forEach((anim: any) => anim.play && anim.play());
+        
+        // Add will-change to active blobs
+        driftRefs.current.forEach(b => { if (b) b.style.willChange = 'transform'; });
+        if (chaseBlobRef.current) chaseBlobRef.current.style.willChange = 'transform';
+
+        // Reattach mousemove if needed
+        if (onMove) container.addEventListener('mousemove', onMove);
+      } else {
+        // Pause drift animations
+        ctx.data.forEach((anim: any) => anim.pause && anim.pause());
+        
+        // Remove will-change to free GPU memory
+        driftRefs.current.forEach(b => { if (b) b.style.willChange = 'auto'; });
+        if (chaseBlobRef.current) chaseBlobRef.current.style.willChange = 'auto';
+
+        // Remove mousemove
+        if (onMove) container.removeEventListener('mousemove', onMove);
+      }
+    }, { rootMargin: '100px 0px' });
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+      if (onMove) container.removeEventListener('mousemove', onMove);
+      ctx.revert();
+    };
   }, [cursorChase]);
 
   const filterId = `gooey-${dominantColor}-${cursorChase ? 'chase' : 'drift'}`;
