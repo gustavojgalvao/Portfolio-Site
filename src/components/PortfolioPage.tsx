@@ -13,21 +13,21 @@ import { SelectedWorkList } from './SelectedWorkList';
 /* ── High-Res Image Mapping for Projects ────────────────────── */
 
 const CLIENT_IMAGES: Record<string, string> = {
-  g2odonto: '/img/lentesdecontatodental.png',
+  g2odonto: '/img/lentesdecontatodental.webp',
   'speak-flow': '/img/speakflow.webp',
-  tualupa71: '/img/devsclub-store.png',
-  'ac-joias': '/img/arianacarla.png',
+  tualupa71: '/img/devsclub-store.webp',
+  'ac-joias': '/img/arianacarla.webp',
 };
 
 const INDEPENDENT_IMAGES: Record<string, string> = {
-  brl2go: '/img/BRL2GO.png',
-  'fried-chicken': '/img/Fried-chicken.png',
-  'hestus-ai': '/img/hestus.png',
-  'devsclub-store': '/img/devsclub-store.png',
-  'lu-phellipo': '/img/LuPhellipo.png',
-  'cebe-portal': '/img/CEBEPortal.png',
-  promptbase: '/img/PromptBase.png',
-  sorrisoperfeito: '/img/sorrisoPerfeito.png',
+  brl2go: '/img/BRL2GO.webp',
+  'fried-chicken': '/img/Fried-chicken.webp',
+  'hestus-ai': '/img/hestus.webp',
+  'devsclub-store': '/img/devsclub-store.webp',
+  'lu-phellipo': '/img/LuPhellipo.webp',
+  'cebe-portal': '/img/CEBEPortal.webp',
+  promptbase: '/img/PromptBase.webp',
+  sorrisoperfeito: '/img/sorrisoPerfeito.webp',
 };
 
 /* ── Main Component ─────────────────────────────────────────── */
