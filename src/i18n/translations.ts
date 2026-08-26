@@ -117,10 +117,11 @@ export interface Translations {
     namePlaceholder: string;
     detailsLabel: string;
     detailsPlaceholder: string;
-    proceedLabel: string;
-    btnWhatsapp: string;
-    btnEmail: string;
-    btnMeeting: string;
+    methodLabel: string;
+    methodWhatsapp: string;
+    methodEmail: string;
+    methodMeeting: string;
+    submitBtn: string;
     whatsappMessagePrefix: string;
   };
   portfolioPage: {
@@ -175,10 +176,10 @@ export const translations: Record<Language, Translations> = {
     hero: {
       eyebrow: 'ONE FLAT MONTHLY PLAN. MANAGED DIRECTLY.',
       titleStart: 'Complete digital growth.',
-      morphWords: ['React Systems', 'AI Automation', 'Growth Engines', 'AI CRM Setup'],
+      morphWords: ['High-Performance Sites', 'Sales Systems', 'AI Automation', 'Custom CRM Setup'],
       titleEnd: 'Built and managed by one person.',
       subtitle:
-        'I build your site, run your Google presence, launch paid traffic, and deploy a custom AI CRM. All in one simple monthly plan with direct WhatsApp access.',
+        'I build your site, optimize your Google presence, manage your ads, and deploy a custom CRM. All in one simple monthly plan with direct WhatsApp access.',
       primaryCta: 'Book a Call on WhatsApp',
       secondaryCta: 'Explore Portfolio',
       trustStrip: [
@@ -186,7 +187,7 @@ export const translations: Record<Language, Translations> = {
         { label: 'FIXED MONTHLY RATE', desc: 'Zero hidden fees. Clear monthly pricing.' },
         { label: 'AI NATIVE STACK', desc: 'Automations wired in from day one.' },
       ],
-      techStack: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'AI Agents', 'Google Ads', 'Local SEO'],
+      techStack: ['Web Development', 'UI/UX Design', 'Landing Pages', 'AI Agents', 'Google Ads', 'Local SEO'],
     },
     planOverview: {
       eyebrow: "WHAT'S INCLUDED",
@@ -197,7 +198,7 @@ export const translations: Record<Language, Translations> = {
         title: 'Custom Website and Web Systems',
         desc: 'A modern website coded from scratch. Ultra fast loading, optimized mobile UX, clean animations, and direct WhatsApp conversion pathways.',
         bullets: [
-          'Hand-coded React and TypeScript architecture',
+          'Hand-coded custom architecture tailored to your business',
           '95+ Google PageSpeed score and sub-second load times',
           'Domain connection, SSL certification, and cloud hosting',
           'Continuous code updates and maintenance included',
@@ -245,7 +246,7 @@ export const translations: Record<Language, Translations> = {
       title: 'Traditional Agencies vs. Working With Me',
       subtitle: 'Compare speed, communication, and real engineering quality.',
       agencyTitle: 'Traditional Agency',
-      gustavoTitle: 'Gustavo (Direct)',
+      gustavoTitle: 'Independent Expert',
       rows: [
         {
           feature: 'Execution',
@@ -326,10 +327,10 @@ export const translations: Record<Language, Translations> = {
         },
         {
           num: '03',
-          timeframe: 'Weeks 2–3',
-          title: 'Build and AI Deployment',
+          timeframe: 'Weeks 1–3',
+          title: 'Build & Integration',
           bullets: [
-            'Coding the custom site with React and TypeScript',
+            'Developing the custom digital architecture',
             'Setting up your AI CRM and automated lead triage',
             'Wiring Google Analytics 4, Meta Pixel, and event tracking',
           ],
@@ -412,10 +413,11 @@ export const translations: Record<Language, Translations> = {
       namePlaceholder: "John Doe",
       detailsLabel: "Project Details",
       detailsPlaceholder: "I want to build a...",
-      proceedLabel: "How would you like to proceed?",
-      btnWhatsapp: "Send via WhatsApp",
-      btnEmail: "Send via Email",
-      btnMeeting: "Book a Meeting",
+      methodLabel: "Preferred contact method",
+      methodWhatsapp: "WhatsApp",
+      methodEmail: "Email",
+      methodMeeting: "Schedule Meeting",
+      submitBtn: "Send Message",
       whatsappMessagePrefix: "Hi Gustavo, my name is {name}. I'd like to talk about a project: {details}"
     },
     portfolioPage: {
@@ -546,34 +548,34 @@ export const translations: Record<Language, Translations> = {
       backHome: 'Voltar ao início',
     },
     hero: {
-      eyebrow: 'PLANO MENSAL ÚNICO. GERENCIADO DIRETO POR MIM.',
-      titleStart: 'Crescimento digital completo.',
-      morphWords: ['Sites em React', 'Automação com IA', 'Motores de Venda', 'CRM com IA Própria'],
-      titleEnd: 'Executado e gerenciado por uma única pessoa.',
+      eyebrow: 'PLANO MENSAL ÚNICO. DIRETO COMIGO.',
+      titleStart: 'Crescimento digital de ponta a ponta.',
+      morphWords: ['Sites Premium', 'Sistemas de Vendas', 'Automação com IA', 'CRM Personalizado'],
+      titleEnd: 'Tudo gerenciado por um único especialista.',
       subtitle:
-        'Desenvolvo seu site, cuido do Google Meu Negócio, executo tráfego pago e implanto um CRM com IA exclusivo. Tudo em um único plano mensal com acesso direto pelo WhatsApp.',
-      primaryCta: 'Chamar no WhatsApp',
+        'Crio seu site, otimizo seu Google, gerencio seus anúncios e configuro um CRM completo com IA. Tudo em uma única assinatura mensal, com atendimento direto pelo WhatsApp.',
+      primaryCta: 'Falar pelo WhatsApp',
       secondaryCta: 'Ver Portfólio',
       trustStrip: [
-        { label: 'ACESSO DIRETO', desc: 'Comunicação direta pelo WhatsApp com quem constrói.' },
-        { label: 'VALOR MENSAL FIXO', desc: 'Sem taxas ocultas. Preço mensal transparente.' },
-        { label: 'IA NATIVA', desc: 'Automações e CRM integrados desde o primeiro dia.' },
+        { label: 'ACESSO DIRETO', desc: 'Fale diretamente no WhatsApp com quem constrói as soluções.' },
+        { label: 'VALOR MENSAL FIXO', desc: 'Sem taxas ocultas ou comissões. Preço transparente.' },
+        { label: 'TECNOLOGIA E IA', desc: 'Automações e integrações modernas desde o início.' },
       ],
-      techStack: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'Agentes IA', 'Google Ads', 'SEO Local'],
+      techStack: ['Desenvolvimento Web', 'UX/UI Design', 'Landing Pages', 'Agentes de IA', 'Google Ads', 'SEO Local'],
     },
     planOverview: {
       eyebrow: 'O QUE ESTÁ INCLUSO',
       title: 'Tudo o que seu negócio precisa para crescer online.',
-      subtitle: 'Um único plano mensal. Sem burocracia de agência. Sem freelancers desarticulados.',
+      subtitle: 'Uma solução unificada. Sem burocracia de agência. Sem freelancers desarticulados.',
       heroCard: {
         tag: 'BASE PRINCIPAL',
-        title: 'Site Exclusivo e Sistemas Web',
-        desc: 'Seu site desenvolvido do zero com código limpo. Carregamento ultra-rápido, experiência mobile perfeita, micro-animações e botões de conversão direta no WhatsApp.',
+        title: 'Site Personalizado e Sistemas Web',
+        desc: 'Site feito sob medida, focado em velocidade extrema e navegação mobile. Projetado para gerar vendas e converter clientes diretamente no WhatsApp.',
         bullets: [
-          'Desenvolvimento em React e TypeScript de alta velocidade',
+          'Desenvolvimento web moderno voltado para conversão e performance',
           'Nota 95+ no Google PageSpeed com carregamento instantâneo',
-          'Configuração de domínio, certificado SSL e hospedagem em nuvem',
-          'Manutenção, melhorias visuais e atualizações de código inclusas',
+          'Configuração de domínio, certificado SSL e hospedagem premium',
+          'Manutenção, melhorias visuais e atualizações técnicas inclusas',
         ],
         statLabel: 'PERFORMANCE PAGESPEED',
         statValue: '99/100',
@@ -581,150 +583,150 @@ export const translations: Record<Language, Translations> = {
       bentoCards: [
         {
           tag: 'BUSCA LOCAL E IA',
-          title: 'SEO e Otimização para IAs (GEO)',
-          desc: 'Seja encontrado onde os clientes buscam. Google e buscadores de inteligência artificial.',
+          title: 'SEO e Otimização Local',
+          desc: 'Seja encontrado no Google e recomendado pelas novas inteligências artificiais.',
           bullets: [
-            'Google Meu Negócio otimizado para liderar buscas locais',
-            'Conteúdo estruturado para ser citado no ChatGPT e Perplexity',
-            'Monitoramento constante de posições e visibilidade',
+            'Perfil do Google Meu Negócio otimizado para dominar as buscas locais',
+            'Conteúdo ajustado para aparecer no ChatGPT e Perplexity',
+            'Monitoramento constante para manter sua empresa em destaque',
           ],
         },
         {
           tag: 'AUTOMAÇÃO E VENDAS',
-          title: 'CRM Próprio com Agente de IA',
-          desc: 'Triagem de leads no WhatsApp 24 horas por dia. Sem mensalidade de software extra.',
+          title: 'Atendimento Inteligente e CRM',
+          desc: 'Responda clientes automaticamente no WhatsApp e organize seus contatos sem pagar ferramentas extras.',
           bullets: [
-            'Assistente com IA que atende e qualifica leads no WhatsApp',
-            'Avisos imediatos quando um cliente pronto para comprar chega',
-            'Seus dados sob seu controle sem pagar mensalidades de terceiros',
+            'Assistente com IA que atende e qualifica leads 24h por dia',
+            'Avisos imediatos no seu celular quando um cliente está pronto para fechar',
+            'Seus dados protegidos, sem mensalidades abusivas de terceiros',
           ],
         },
         {
           tag: 'AQUISIÇÃO DE CLIENTES',
-          title: 'Tráfego Pago e Conteúdo',
-          desc: 'Alcance compradores prontos através de anúncios no Google e redes sociais.',
+          title: 'Anúncios e Tráfego Pago',
+          desc: 'Atraia clientes prontos para comprar através de anúncios no Google Ads e redes sociais.',
           bullets: [
-            'Campanhas no Google Ads focadas em palavras de compra imediata',
-            'Anúncios no Meta Ads para autoridade e remarketing de clientes',
-            'Rastreamento de conversão com Google Analytics 4 e Pixel',
+            'Campanhas no Google Ads focadas em palavras com alta intenção de compra',
+            'Anúncios no Meta (Instagram/FB) focados em atração e conversão',
+            'Rastreamento completo de resultados com Google Analytics e Pixel',
           ],
         },
       ],
-      footnote: 'Sem cobrança por hora. Sem faturas surpresa. Um plano mensal com tudo incluso.',
-      cta: 'Começar com Plano Único',
+      footnote: 'Sem cobrança por hora. Sem faturas surpresa. Um investimento transparente.',
+      cta: 'Começar Agora',
     },
     comparison: {
       eyebrow: 'POR QUE TRABALHAR DIRETO',
-      title: 'Agência Tradicional vs. Gustavo Direto',
-      subtitle: 'Compare agilidade, comunicação e qualidade de engenharia.',
+      title: 'Agência Tradicional vs. Especialista Independente',
+      subtitle: 'Compare a comunicação, a agilidade e o custo-benefício.',
       agencyTitle: 'Agência Tradicional',
-      gustavoTitle: 'Gustavo (Direto)',
+      gustavoTitle: 'Especialista Independente',
       rows: [
         {
           feature: 'Execução',
-          agency: 'Repassada para gerentes de conta e estagiários',
-          gustavo: 'Feita pela mesma pessoa com quem você conversa',
+          agency: 'Terceirizada para estagiários ou equipes rotativas',
+          gustavo: 'Executada diretamente por mim, o especialista',
         },
         {
           feature: 'Comunicação',
-          agency: 'Filas de chamados, e-mails e dias de espera',
-          gustavo: 'Acesso direto 1-a-1 pelo WhatsApp',
+          agency: 'Dias de espera e abertura de tickets de suporte',
+          gustavo: 'Acesso direto e imediato comigo no WhatsApp',
         },
         {
           feature: 'Modelo de Preço',
-          agency: 'Mensalidades infladas, horas extras e taxas surpresa',
-          gustavo: 'Um plano mensal fixo e transparente',
+          agency: 'Custos ocultos, horas extras e taxas surpresa',
+          gustavo: 'Um investimento mensal fixo e transparente',
         },
         {
           feature: 'Velocidade',
-          agency: 'Travada por reuniões internas e processos burocráticos',
-          gustavo: 'Entregas rápidas e diretas sem gargalos corporativos',
+          agency: 'Burocracia, contratos complexos e excesso de reuniões',
+          gustavo: 'Entregas diretas e ágeis, focadas no que traz resultado',
         },
         {
           feature: 'IA e Automação',
-          agency: 'Ferramentas antigas com plugins caros',
-          gustavo: 'CRM próprio e agentes de IA nativos inclusos no plano',
+          agency: 'Soluções desatualizadas ou que exigem sistemas caros',
+          gustavo: 'Integrações modernas com IA já inclusas no pacote',
         },
       ],
     },
     featureBlocks: {
-      eyebrow: 'DETALHES DO PLANO',
+      eyebrow: 'DETALHES DA SOLUÇÃO',
       blocks: [
         {
-          title: 'Presença Digital de Alto Padrão',
-          copy: 'Site exclusivo, perfil de autoridade e Google Meu Negócio otimizado. Design fluído, carregamento instantâneo e caminhos diretos de venda.',
+          title: 'Presença Digital de Alto Nível',
+          copy: 'Site otimizado, perfil de autoridade e Google Meu Negócio profissional. Focado em carregamento instantâneo, design atrativo e geração direta de conversões.',
           visualAlt: 'Mockup de interface web com design moderno',
         },
         {
-          title: 'Ranqueamento no Google e Citações em IA',
-          copy: 'Apareça onde seus compradores procuram. Otimizado para buscas tradicionais no Google e recomendado por assistentes de IA como ChatGPT e Perplexity.',
+          title: 'Busca no Google e Destaque em IAs',
+          copy: 'Otimização avançada para que você apareça tanto nas buscas locais do Google quanto nas respostas de assistentes modernos de Inteligência Artificial, como o ChatGPT.',
           visualAlt: 'Mockup de painel de métricas de busca',
         },
         {
-          title: 'CRM com IA Próprio e Triagem Automática',
-          copy: 'Meu software de CRM desenvolvido internamente. Um agente de IA qualifica leads no WhatsApp e organiza seu funil sem cobranças extras.',
+          title: 'Organização de Leads e Atendimento',
+          copy: 'Tenha seus leads atendidos e organizados 24 horas por dia no WhatsApp por uma inteligência artificial criada sob medida. Tudo integrado, sem pagar mensalidades de terceiros.',
           visualAlt: 'Mockup de dashboard do CRM com IA',
         },
       ],
     },
     portfolioTeaser: {
-      heading: 'Trabalhos Recentes e Laboratório',
-      subtitle: 'Explore as plataformas, aplicações e sistemas que desenvolvi.',
+      heading: 'Meus Projetos Recentes',
+      subtitle: 'Explore plataformas, páginas de vendas e sistemas que desenvolvi.',
       cta: 'Ver Portfólio',
     },
     process: {
       eyebrow: 'COMO FUNCIONA',
-      title: 'Cinco etapas simples para crescimento contínuo.',
-      subtitle: 'Um processo direto e sem enrolação, do primeiro contato à gestão diária.',
+      title: 'Um processo direto e transparente.',
+      subtitle: 'Sem enrolação: do nosso primeiro contato até a entrega final.',
       steps: [
         {
           num: '01',
-          timeframe: 'Dias 1–3',
-          title: 'Alinhamento e Estratégia',
+          timeframe: 'Início',
+          title: 'Estratégia e Alinhamento',
           bullets: [
-            'Conversa direta de 30 minutos para mapear suas metas',
-            'Auditoria do site atual, posicionamento local e gargalos',
-            'Definição dos canais de tráfego e objetivos de venda',
+            'Conversa direta para entender as metas do seu negócio',
+            'Auditoria da sua presença digital atual e mapeamento de gargalos',
+            'Definição clara dos objetivos de venda e canais de tráfego',
           ],
         },
         {
           num: '02',
-          timeframe: 'Dias 4–5',
-          title: 'Onboarding e Acessos',
+          timeframe: 'Preparação',
+          title: 'Acessos e Onboarding',
           bullets: [
-            'Acordo formalizado sem taxas extras ou contratos abusivos',
-            'Criação do canal direto no WhatsApp',
-            'Checklist simples para envio de identidade e acessos',
+            'Sem taxas ocultas ou contratos amarrados, tudo às claras',
+            'Canal de comunicação direta criado no WhatsApp',
+            'Envio rápido dos seus materiais (fotos, identidade visual, etc)',
           ],
         },
         {
           num: '03',
-          timeframe: 'Semanas 2–3',
-          title: 'Construção e Ativação de IA',
+          timeframe: 'Semanas 1–3',
+          title: 'Desenvolvimento e Integrações',
           bullets: [
-            'Desenvolvimento do site com React e TypeScript',
-            'Configuração do CRM com IA e triagem no WhatsApp',
-            'Instalação de Google Analytics 4, Meta Pixel e eventos de conversão',
+            'Criação de toda a sua infraestrutura web sob medida',
+            'Revisões estruturadas para garantir que tudo fique do seu jeito',
+            'Testes de velocidade, navegação e conversão',
           ],
         },
         {
           num: '04',
           timeframe: 'Semana 4',
-          title: 'Lançamento e Tráfego Ativo',
+          title: 'Lançamento e Campanhas',
           bullets: [
-            'Virada de domínio sem interrupção de serviço com SSL',
-            'Otimização e verificação do Google Meu Negócio',
-            'Ativação dos anúncios pagos e início da captura de leads',
+            'Colocamos tudo no ar com certificado de segurança',
+            'Ativação das campanhas iniciais no Google e redes sociais',
+            'A IA começa a rodar para captar e organizar contatos',
           ],
         },
         {
           num: '05',
-          timeframe: 'Mensal',
-          title: 'Gestão e Otimização',
+          timeframe: 'Contínuo',
+          title: 'Manutenção e Otimização',
           bullets: [
-            'Acompanhamento contínuo de ranqueamento no Google e IAs',
-            'Otimização semanal de custo por lead nos anúncios',
-            'Atualizações no site e suporte prioritário no WhatsApp',
+            'Acompanhamento diário para otimizar anúncios e resultados',
+            'Atualizações tecnológicas e suporte garantido',
+            'Evolução constante baseada no comportamento do seu cliente',
           ],
         },
       ],
@@ -732,7 +734,7 @@ export const translations: Record<Language, Translations> = {
     about: {
       eyebrow: 'SOBRE MIM',
       title: 'Quem executa e cuida do seu plano.',
-      bio: 'Sou Gustavo, desenvolvedor full-stack e estudante de Ciência da Computação na Universidade Jorge Amado. Atuo de forma independente construindo sites e sistemas de automação com inteligência artificial. Antes disso, co-fundei uma operação de marketing e tecnologia cuidando de captação de clientes, SEO local e implantação de CRM para clínicas odontológicas. Desenvolvo com agilidade, código limpo e atendo pessoalmente cada cliente.',
+      bio: 'Sou Gustavo, desenvolvedor full-stack e estudante de Ciência da Computação na Universidade Jorge Amado. Atuo de forma independente construindo sites e sistemas de automação com inteligência artificial. Antes disso, co-fundei uma operação de marketing e tecnologia gerenciando a captação de clientes, SEO local e implantação de CRM para clínicas odontológicas. Desenvolvo com agilidade, código limpo e atendo pessoalmente cada cliente.',
       facts: [
         { label: 'Localização', value: 'Brasil (Remoto Global)' },
         { label: 'Idiomas', value: 'Português (nativo) · Inglês (avançado)' },
@@ -785,10 +787,11 @@ export const translations: Record<Language, Translations> = {
       namePlaceholder: "João Silva",
       detailsLabel: "Detalhes do Projeto",
       detailsPlaceholder: "Gostaria de criar um...",
-      proceedLabel: "Como prefere continuar?",
-      btnWhatsapp: "Enviar por WhatsApp",
-      btnEmail: "Enviar por E-mail",
-      btnMeeting: "Agendar Reunião",
+      methodLabel: "Como prefere ser contatado?",
+      methodWhatsapp: "WhatsApp",
+      methodEmail: "E-mail",
+      methodMeeting: "Agendar Reunião",
+      submitBtn: "Enviar Mensagem",
       whatsappMessagePrefix: "Olá Gustavo, meu nome é {name}. Gostaria de falar sobre um projeto: {details}"
     },
     portfolioPage: {

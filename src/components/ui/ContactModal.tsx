@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { X, MessageSquare, Mail, Calendar } from 'lucide-react';
+import { X, ChevronDown } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useContactModal } from '../../context/ContactModalContext';
 
@@ -10,6 +10,7 @@ export const ContactModal: React.FC = () => {
 
   const [name, setName] = useState('');
   const [details, setDetails] = useState('');
+  const [method, setMethod] = useState<'whatsapp' | 'email' | 'meeting'>('whatsapp');
 
   // Lock body scroll
   useEffect(() => {
@@ -21,6 +22,7 @@ export const ContactModal: React.FC = () => {
       setTimeout(() => {
         setName('');
         setDetails('');
+        setMethod('whatsapp');
       }, 300);
     }
     return () => {
@@ -30,25 +32,22 @@ export const ContactModal: React.FC = () => {
 
   if (!isContactModalOpen) return null;
 
-  const handleWhatsApp = () => {
-    const text = t.contactModal.whatsappMessagePrefix
-      .replace('{name}', name || 'um futuro cliente')
-      .replace('{details}', details || 'Gostaria de saber mais.');
-    const url = 'https://wa.me/5571992550509?text=' + encodeURIComponent(text);
-    window.open(url, '_blank');
-  };
-
-  const handleEmail = () => {
-    const subject = encodeURIComponent(`New Project Inquiry from ${name || 'Website Visitor'}`);
-    const body = encodeURIComponent(`Name: ${name}\n\nProject Details:\n${details}`);
-    const url = `mailto:gustavojezler@gmail.com?subject=${subject}&body=${body}`;
-    window.open(url, '_blank');
-  };
-
-  const handleMeeting = () => {
-    // Calendly or other meeting link
-    const url = 'https://calendly.com/';
-    window.open(url, '_blank');
+  const handleSubmit = () => {
+    if (method === 'whatsapp') {
+      const text = t.contactModal.whatsappMessagePrefix
+        .replace('{name}', name || 'um futuro cliente')
+        .replace('{details}', details || 'Gostaria de saber mais.');
+      const url = 'https://wa.me/5571992550509?text=' + encodeURIComponent(text);
+      window.open(url, '_blank');
+    } else if (method === 'email') {
+      const subject = encodeURIComponent(`New Project Inquiry from ${name || 'Website Visitor'}`);
+      const body = encodeURIComponent(`Name: ${name}\n\nProject Details:\n${details}`);
+      const url = `mailto:gustavojezler@gmail.com?subject=${subject}&body=${body}`;
+      window.open(url, '_blank');
+    } else if (method === 'meeting') {
+      const url = 'https://calendly.com/';
+      window.open(url, '_blank');
+    }
   };
 
   return (
@@ -119,38 +118,37 @@ export const ContactModal: React.FC = () => {
                 className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-[#FFC069]/50 focus:ring-1 focus:ring-[#FFC069]/50 transition-all resize-none"
               />
             </div>
+
+            <div className="space-y-1.5">
+              <label htmlFor="contact-method" className="text-sm font-medium text-zinc-300">
+                {t.contactModal.methodLabel}
+              </label>
+              <div className="relative">
+                <select
+                  id="contact-method"
+                  value={method}
+                  onChange={(e) => setMethod(e.target.value as any)}
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-[#FFC069]/50 focus:ring-1 focus:ring-[#FFC069]/50 transition-all appearance-none cursor-pointer"
+                >
+                  <option value="whatsapp" className="bg-[#0a0a0d] text-white">{t.contactModal.methodWhatsapp}</option>
+                  <option value="email" className="bg-[#0a0a0d] text-white">{t.contactModal.methodEmail}</option>
+                  <option value="meeting" className="bg-[#0a0a0d] text-white">{t.contactModal.methodMeeting}</option>
+                </select>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-400">
+                  <ChevronDown className="w-5 h-5" />
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Actions */}
-          <div className="p-6 bg-white/[0.02] border-t border-white/10 space-y-4">
-            <p className="text-xs font-mono tracking-widest text-zinc-500 uppercase text-center">
-              {t.contactModal.proceedLabel}
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <button
-                onClick={handleWhatsApp}
-                className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white/5 border border-white/10 hover:border-[#FFC069]/50 hover:bg-[#FFC069]/10 text-zinc-300 hover:text-white transition-all group"
-              >
-                <MessageSquare className="w-5 h-5 text-zinc-400 group-hover:text-[#FFC069]" />
-                <span className="text-xs font-medium">{t.contactModal.btnWhatsapp}</span>
-              </button>
-
-              <button
-                onClick={handleEmail}
-                className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 text-zinc-300 hover:text-white transition-all group"
-              >
-                <Mail className="w-5 h-5 text-zinc-400 group-hover:text-white" />
-                <span className="text-xs font-medium">{t.contactModal.btnEmail}</span>
-              </button>
-
-              <button
-                onClick={handleMeeting}
-                className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 text-zinc-300 hover:text-white transition-all group"
-              >
-                <Calendar className="w-5 h-5 text-zinc-400 group-hover:text-white" />
-                <span className="text-xs font-medium">{t.contactModal.btnMeeting}</span>
-              </button>
-            </div>
+          <div className="p-6 bg-white/[0.02] border-t border-white/10">
+            <button
+              onClick={handleSubmit}
+              className="w-full btn-shine flex items-center justify-center gap-2 p-3.5 rounded-xl bg-gradient-to-r from-[#7A1610] via-[#E8642F] to-[#FFC069] text-white font-bold hover:scale-[1.02] transition-transform shadow-lg shadow-orange-500/20"
+            >
+              <span>{t.contactModal.submitBtn}</span>
+            </button>
           </div>
         </motion.div>
       </motion.div>

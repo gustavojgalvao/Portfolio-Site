@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { TextMorph } from './ui/text-morph';
 import KineticGrid from './ui/kinetic-grid';
@@ -8,6 +9,7 @@ import { ContactOptions } from './ui/ContactOptions';
 
 export const Hero: React.FC = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const containerRef = useGsapReveal({ y: 30, duration: 0.8, stagger: 0.15 });
 
   const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({
@@ -38,9 +40,8 @@ export const Hero: React.FC = () => {
 
 
   const scrollToPortfolio = () => {
-    // Handled by App — portfolio navigation
-    const ev = new CustomEvent('navigate-portfolio');
-    window.dispatchEvent(ev);
+    navigate('/portfolio');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (

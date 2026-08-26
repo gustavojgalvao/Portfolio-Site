@@ -70,8 +70,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigatePortfolio }) => {
             </div>
             <p className="text-sm leading-relaxed max-w-sm">
               {language === 'en'
-                ? 'High-performance React systems and AI automations. Direct partnership without agency intermediaries.'
-                : 'Sistemas React de alta performance e automações com IA. Parceria direta sem intermediários de agência.'}
+                ? 'High-performance web systems and AI automations. Direct partnership with no agency middlemen.'
+                : 'Sistemas web de alta performance e automações com IA. Parceria direta sem intermediários de agência.'}
             </p>
             <div className="space-y-2.5 pt-2">
               <div className="flex items-center gap-2.5 text-xs font-mono">
