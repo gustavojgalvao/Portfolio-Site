@@ -8,6 +8,7 @@ export interface ScrollingProjectItem {
   subtitle?: string;
   desc: string;
   src: string;
+  videoSrc?: string;
   tags: string[];
   url?: string;
 }
@@ -101,7 +102,11 @@ export const StickyCard: React.FC<StickyCardProps> = ({
             </div>
             <div className="flex flex-col items-center gap-1 shrink-0">
               <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-xl transition-colors">
-                <Play className="w-3 h-3 sm:w-4 sm:h-4 ml-0.5" />
+                {project.videoSrc ? (
+                  <Play className="w-3 h-3 sm:w-4 sm:h-4 ml-0.5" />
+                ) : (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                )}
               </div>
               <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-wider md:hidden">Abrir</span>
             </div>
@@ -123,8 +128,8 @@ export const StickyCard: React.FC<StickyCardProps> = ({
               </div>
 
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFC069]/20 border border-[#FFC069]/40 text-xs font-mono font-bold text-[#FFC069] shrink-0">
-                <Play className="w-3.5 h-3.5 fill-[#FFC069]" />
-                <span>VER DETALHES & VÍDEO</span>
+                {project.videoSrc && <Play className="w-3.5 h-3.5 fill-[#FFC069]" />}
+                <span>{project.videoSrc ? 'VER DETALHES & VÍDEO' : 'VER DETALHES'}</span>
               </div>
             </div>
 

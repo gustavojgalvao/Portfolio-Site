@@ -14,7 +14,7 @@ import { SelectedWorkList } from './SelectedWorkList';
 
 const CLIENT_IMAGES: Record<string, string> = {
   g2odonto: '/img/lentesdecontatodental.png',
-  'speak-flow': '/img/SpeakFlow.png',
+  'speak-flow': '/img/speakflow.webp',
   tualupa71: '/img/devsclub-store.png',
   'ac-joias': '/img/arianacarla.png',
 };

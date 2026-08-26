@@ -244,13 +244,13 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                       </h3>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="flex flex-col gap-4">
                       {project.metrics.map((m, idx) => (
-                        <div key={idx} className="p-4 space-y-1">
-                          <span className="text-lg font-extrabold text-[#FFC069] font-mono block">
+                        <div key={idx} className="space-y-1">
+                          <span className="text-base sm:text-lg font-extrabold text-[#FFC069] block leading-tight">
                             {m.value}
                           </span>
-                          <span className="text-[10px] text-zinc-400 font-mono leading-tight block">
+                          <span className="text-[11px] text-zinc-400 font-mono uppercase tracking-wider block">
                             {m.label}
                           </span>
                         </div>
