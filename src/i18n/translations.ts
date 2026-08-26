@@ -440,13 +440,13 @@ export const translations: Record<Language, Translations> = {
       clientProjects: [
         {
           id: 'g2odonto',
-          title: 'G2Odonto',
+          title: 'Lentes de Contato Dental',
           year: '2026',
-          client: 'Aesthetic Dental Clinic',
-          challenge: 'Qualify and capture inbound patient leads automatically.',
-          solution: 'AI-powered lead qualification and instant triage for aesthetic dental clinics.',
-          tags: ['AI AUTOMATION', 'LEAD TRIAGE', 'WEBHOOKS'],
-          visualAlt: 'AI triage interface mockup',
+          client: 'Aesthetic Dentists Catalog',
+          challenge: 'Build a centralized high-ranking catalog for aesthetic dentists across Brazil.',
+          solution: 'A specialized directory focused purely on SEO, GEO (Generative Engine Optimization), and Google My Business integration.',
+          tags: ['SEO / GEO', 'DIRECTORY', 'GOOGLE MY BUSINESS'],
+          visualAlt: 'Dental contact lenses catalog mockup',
         },
         {
           id: 'speak-flow',
@@ -820,13 +820,13 @@ export const translations: Record<Language, Translations> = {
       clientProjects: [
         {
           id: 'g2odonto',
-          title: 'G2Odonto',
+          title: 'Lentes de Contato Dental',
           year: '2026',
-          client: 'Clínica Odontológica Estética',
-          challenge: 'Qualificar e capturar pacientes de alto padrão automaticamente.',
-          solution: 'Triagem inteligente com IA e qualificação automática de pacientes para clínicas.',
-          tags: ['AUTOMAÇÃO COM IA', 'TRIAGEM DE LEADS', 'WEBHOOKS'],
-          visualAlt: 'Mockup de interface de triagem com IA',
+          client: 'Catálogo de Dentistas Estéticos',
+          challenge: 'Criar um catálogo centralizado com alto ranqueamento para dentistas de estética no Brasil.',
+          solution: 'Um diretório especializado com foco puramente em SEO, GEO (Otimização para IAs) e integração com o Google Meu Negócio.',
+          tags: ['SEO / GEO', 'DIRETÓRIO', 'GOOGLE MEU NEGÓCIO'],
+          visualAlt: 'Mockup de catálogo de lentes de contato dental',
         },
         {
           id: 'speak-flow',
