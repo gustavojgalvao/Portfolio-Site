@@ -34,6 +34,7 @@ export const projectsData: Record<'pt' | 'en', Record<string, ProjectDetail>> = 
       type: 'independent',
       image: '/img/BRL2GO.png',
       videoPoster: '/img/BRL2GO.png',
+      videoSrc: '/assets/videoBRL2GO.webm',
       desc: 'Uma aplicação web minimalista, responsiva e focada em conversão cambial instantânea. Desenvolvida para fornecer cotações fidedignas e em tempo real através de consumo de APIs financeiras, garantindo uma experiência de usuário (UX) fluida e livre de atritos.',
       fullDescription:
         'O BRL2GO foi concebido para oferecer uma experiência de conversão cambial limpa, ultra-rápida e sem distrações. Consome endpoints REST de cotações financeiras em tempo real, atualizando pares comerciais como USD, EUR, GBP, CAD e BRL com precisão de milissegundos e alternância bidirecional instantânea.',
@@ -66,6 +67,7 @@ export const projectsData: Record<'pt' | 'en', Record<string, ProjectDetail>> = 
       type: 'independent',
       image: '/img/Fried-chicken.png',
       videoPoster: '/img/Fried-chicken.png',
+      videoSrc: '/assets/videoFriedChicken.webm',
       desc: 'Uma aplicação web interativa desenvolvida para digitalizar e otimizar o fluxo de pedidos de um restaurante especializado em frango frito. O projeto atua como um cardápio digital dinâmico, permitindo aos usuários navegar visualmente pelos produtos, gerenciar um carrinho de compras em tempo real e finalizar pedidos de forma contínua e sem fricção.',
       fullDescription:
         'Uma aplicação web interativa desenvolvida para digitalizar e otimizar o fluxo de pedidos de um restaurante especializado em frango frito. O projeto atua como um cardápio digital dinâmico, permitindo aos usuários navegar visualmente pelos produtos, gerenciar um carrinho de compras em tempo real e finalizar pedidos de forma contínua e sem fricção.',
@@ -161,6 +163,7 @@ export const projectsData: Record<'pt' | 'en', Record<string, ProjectDetail>> = 
       type: 'independent',
       image: '/img/LuPhellipo.png',
       videoPoster: '/img/LuPhellipo.png',
+      videoSrc: '/assets/videoLuPhellipo.webm',
       desc: 'Uma vitrine virtual e portfólio digital desenvolvido para a artista plástica Luciana Phellipo. O projeto foi projetado para exibir mandalas exclusivas e 100% artesanais, transmitindo a essência espiritual da arte enquanto facilita o contato e a geração de encomendas diretas.',
       fullDescription:
         'Uma vitrine virtual e portfólio digital desenvolvido para a artista plástica Luciana Phellipo. O projeto foi projetado para exibir mandalas exclusivas e 100% artesanais, transmitindo a essência espiritual da arte enquanto facilita o contato e a geração de encomendas diretas. O site conta a história da artista inspirada no autoconhecimento e em conceitos de Carl Jung, destacando cada obra com galerias imersivas e integração direta ao canal de vendas.',
@@ -193,7 +196,7 @@ export const projectsData: Record<'pt' | 'en', Record<string, ProjectDetail>> = 
       type: 'independent',
       image: '/img/CEBEPortal.png',
       videoPoster: '/img/CEBEPortal.png',
-      videoSrc: '/img/videoCEBE.webm',
+      videoSrc: '/assets/videoCEBE.webm',
       desc: 'Plataforma acadêmica completa (Portal do Aluno) para o Centro de Educação e Bem-Estar, construída como um monorepo que integra um frontend responsivo e semântico a uma API REST robusta em Java com Spring Boot.',
       fullDescription:
         'Desenvolvido em equipe (com Fernando Bartilotti, Pietro Lorenzo e Rafael Navarro) para a disciplina de Laboratório de Desenvolvimento de Software com o Professor Igor, o CEBE-Portal visa a transformação digital de uma escola profissionalizante de bairro. O sistema substitui processos físicos, permitindo que os alunos façam login (via CPF e data de nascimento), realizem matrículas em novas turmas, consultem notas, boletos e abram chamados de atendimento. Administradores possuem um painel próprio para gerenciar cursos, turmas e responder aos alunos.',
@@ -388,6 +391,7 @@ export const projectsData: Record<'pt' | 'en', Record<string, ProjectDetail>> = 
       type: 'independent',
       image: '/img/BRL2GO.png',
       videoPoster: '/img/BRL2GO.png',
+      videoSrc: '/assets/videoBRL2GO.webm',
       desc: 'A minimalist, responsive web application focused on instantaneous currency conversion. Engineered to provide reliable real-time rates via financial REST APIs with a friction-free UX.',
       fullDescription:
         'BRL2GO delivers a clean, distraction-free currency conversion interface. It consumes live financial REST APIs to update commercial exchange pairs like USD, EUR, GBP, CAD, and BRL with sub-second accuracy and bidirectional instant swapping.',
@@ -420,6 +424,7 @@ export const projectsData: Record<'pt' | 'en', Record<string, ProjectDetail>> = 
       type: 'independent',
       image: '/img/Fried-chicken.png',
       videoPoster: '/img/Fried-chicken.png',
+      videoSrc: '/assets/videoFriedChicken.webm',
       desc: 'An interactive web app engineered to streamline and digitize the ordering flow for a fast-food brand. Features dynamic category browsing, reactive cart state, and frictionless direct WhatsApp checkout.',
       fullDescription:
         'An interactive web application developed to digitize and optimize the ordering workflow for a fried chicken food brand. The platform serves as a dynamic digital menu allowing customers to visually explore menu items, manage an active shopping cart in real time, and complete orders with zero friction.',
@@ -515,6 +520,7 @@ export const projectsData: Record<'pt' | 'en', Record<string, ProjectDetail>> = 
       type: 'independent',
       image: '/img/LuPhellipo.png',
       videoPoster: '/img/LuPhellipo.png',
+      videoSrc: '/assets/videoLuPhellipo.webm',
       desc: 'A virtual showcase and digital portfolio engineered for visual artist Luciana Phellipo. Designed to display exclusive handcrafted mandalas while facilitating direct commissioned inquiries.',
       fullDescription:
         'A digital showcase and portfolio developed for fine artist Luciana Phellipo to present 100% handcrafted mandalas, conveying the spiritual essence of the artwork while enabling effortless contact and custom art commissions. Inspired by self-discovery and Carl Jung archetypes, the platform blends visual storytelling with conversion-focused UX.',
@@ -547,7 +553,7 @@ export const projectsData: Record<'pt' | 'en', Record<string, ProjectDetail>> = 
       type: 'independent',
       image: '/img/CEBEPortal.png',
       videoPoster: '/img/CEBEPortal.png',
-      videoSrc: '/img/videoCEBE.webm',
+      videoSrc: '/assets/videoCEBE.webm',
       desc: 'Complete academic platform (Student Portal) engineered for Centro de Educação e Bem-Estar, built as a monorepo integrating a responsive semantic frontend with a robust Java & Spring Boot REST API.',
       fullDescription:
         'Developed collaboratively with Fernando Bartilotti, Pietro Lorenzo, and Rafael Navarro for the Software Development Laboratory course under Prof. Igor. CEBE-Portal drives the digital transformation of a community vocational institute, replacing legacy paper processes with modern web services: secure CPF login, automated class enrollment, grade and invoice access, and real-time support ticketing.',
