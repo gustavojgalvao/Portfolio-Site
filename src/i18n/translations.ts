@@ -122,6 +122,10 @@ export interface Translations {
     methodEmail: string;
     methodMeeting: string;
     submitBtn: string;
+    emailFallbackTitle: string;
+    emailFallbackDesc: string;
+    emailFallbackCopyBtn: string;
+    emailFallbackCopiedBtn: string;
     whatsappMessagePrefix: string;
   };
   portfolioPage: {
@@ -179,11 +183,11 @@ export const translations: Record<Language, Translations> = {
       morphWords: ['High-Performance Sites', 'Sales Systems', 'AI Automation', 'Custom CRM Setup'],
       titleEnd: 'Built and managed by one person.',
       subtitle:
-        'I build your site, optimize your Google presence, manage your ads, and deploy a custom CRM. All in one simple monthly plan with direct WhatsApp access.',
-      primaryCta: 'Book a Call on WhatsApp',
+        'I build your site, optimize your Google presence, manage your ads, and deploy a custom CRM. All in one simple monthly plan with direct and personalized support.',
+      primaryCta: 'Get in Touch',
       secondaryCta: 'Explore Portfolio',
       trustStrip: [
-        { label: 'DIRECT ACCESS', desc: 'Direct WhatsApp communication with the builder.' },
+        { label: 'DIRECT ACCESS', desc: 'Direct communication with the builder.' },
         { label: 'FIXED MONTHLY RATE', desc: 'Zero hidden fees. Clear monthly pricing.' },
         { label: 'AI NATIVE STACK', desc: 'Automations wired in from day one.' },
       ],
@@ -256,7 +260,7 @@ export const translations: Record<Language, Translations> = {
         {
           feature: 'Communication',
           agency: 'Ticket queues, emails, and multi-day delays',
-          gustavo: 'Direct 1-on-1 access via WhatsApp',
+          gustavo: 'Direct 1-on-1 access and priority support',
         },
         {
           feature: 'Pricing Model',
@@ -321,7 +325,7 @@ export const translations: Record<Language, Translations> = {
           title: 'Onboarding and Setup',
           bullets: [
             'Agreement formalized with zero hidden fees',
-            'Direct WhatsApp workspace established',
+            'Direct communication channel established',
             'Simple checklist to gather brand assets and credentials',
           ],
         },
@@ -352,7 +356,7 @@ export const translations: Record<Language, Translations> = {
           bullets: [
             'Ongoing SEO and GEO search position monitoring',
             'Weekly ad spend and conversion rate optimization',
-            'Continuous website updates and direct WhatsApp support',
+            'Continuous website updates and direct support',
           ],
         },
       ],
@@ -393,15 +397,15 @@ export const translations: Record<Language, Translations> = {
         {
           question: 'What happens after I reach out?',
           answer:
-            'We chat on WhatsApp, schedule a quick 20-minute call to understand your goals, and I provide a clear plan proposal.',
+            'We have a quick chat, schedule a 20-minute call to understand your goals, and I provide a clear plan proposal.',
         },
       ],
     },
     finalCta: {
       tagline: 'DIRECT ENGINEERING.',
       title: 'One plan. Everything your business needs online.',
-      subtitle: 'Send a message on WhatsApp. Let us talk through your goals without long pitches or sales pressure.',
-      cta: 'Chat on WhatsApp',
+      subtitle: 'Send me a message. Let us talk through your goals without long pitches or sales pressure.',
+      cta: 'Get in Touch',
     },
     footer: {
       copyright: '© 2026 Gustavo. Web Development, AI Automation and Growth.',
@@ -418,6 +422,10 @@ export const translations: Record<Language, Translations> = {
       methodEmail: "Email",
       methodMeeting: "Schedule Meeting",
       submitBtn: "Send Message",
+      emailFallbackTitle: "Redirecting to your email...",
+      emailFallbackDesc: "If your email app doesn't open automatically, you can reach me directly at:",
+      emailFallbackCopyBtn: "Copy Email",
+      emailFallbackCopiedBtn: "Copied!",
       whatsappMessagePrefix: "Hi Gustavo, my name is {name}. I'd like to talk about a project: {details}"
     },
     portfolioPage: {
@@ -528,7 +536,7 @@ export const translations: Record<Language, Translations> = {
       footerCta: {
         heading: 'Ready to build your next project?',
         subtitle: 'Let us discuss your goals and put together the right plan.',
-        cta: 'Talk on WhatsApp',
+        cta: 'Get in Touch',
       },
     },
   },
@@ -553,11 +561,11 @@ export const translations: Record<Language, Translations> = {
       morphWords: ['Sites Premium', 'Sistemas de Vendas', 'Automação com IA', 'CRM Personalizado'],
       titleEnd: 'Tudo gerenciado por um único especialista.',
       subtitle:
-        'Crio seu site, otimizo seu Google, gerencio seus anúncios e configuro um CRM completo com IA. Tudo em uma única assinatura mensal, com atendimento direto pelo WhatsApp.',
-      primaryCta: 'Falar pelo WhatsApp',
+        'Crio seu site, otimizo seu Google, gerencio seus anúncios e configuro um CRM completo com IA. Tudo em uma única assinatura mensal, com atendimento direto e personalizado.',
+      primaryCta: 'Entrar em Contato',
       secondaryCta: 'Ver Portfólio',
       trustStrip: [
-        { label: 'ACESSO DIRETO', desc: 'Fale diretamente no WhatsApp com quem constrói as soluções.' },
+        { label: 'ACESSO DIRETO', desc: 'Fale diretamente com quem constrói as soluções.' },
         { label: 'VALOR MENSAL FIXO', desc: 'Sem taxas ocultas ou comissões. Preço transparente.' },
         { label: 'TECNOLOGIA E IA', desc: 'Automações e integrações modernas desde o início.' },
       ],
@@ -630,7 +638,7 @@ export const translations: Record<Language, Translations> = {
         {
           feature: 'Comunicação',
           agency: 'Dias de espera e abertura de tickets de suporte',
-          gustavo: 'Acesso direto e imediato comigo no WhatsApp',
+          gustavo: 'Acesso direto e imediato comigo',
         },
         {
           feature: 'Modelo de Preço',
@@ -695,7 +703,7 @@ export const translations: Record<Language, Translations> = {
           title: 'Acessos e Onboarding',
           bullets: [
             'Sem taxas ocultas ou contratos amarrados, tudo às claras',
-            'Canal de comunicação direta criado no WhatsApp',
+            'Canal de comunicação direta estabelecido',
             'Envio rápido dos seus materiais (fotos, identidade visual, etc)',
           ],
         },
@@ -767,15 +775,15 @@ export const translations: Record<Language, Translations> = {
         {
           question: 'Como posso começar?',
           answer:
-            'Basta me mandar uma mensagem no WhatsApp. Marcamos uma conversa de 20 minutos para entender sua empresa e eu apresento a proposta ideal.',
+            'Basta me mandar uma mensagem. Marcamos uma conversa de 20 minutos para entender sua empresa e eu apresento a proposta ideal.',
         },
       ],
     },
     finalCta: {
       tagline: 'ENGENHARIA DIRETA.',
       title: 'Um plano mensal. Tudo o que sua empresa precisa online.',
-      subtitle: 'Envie uma mensagem no WhatsApp. Vamos conversar sobre suas metas sem pressão e sem discurso pronto.',
-      cta: 'Conversar no WhatsApp',
+      subtitle: 'Envie uma mensagem. Vamos conversar sobre suas metas sem pressão e sem discurso pronto.',
+      cta: 'Entrar em Contato',
     },
     footer: {
       copyright: '© 2026 Gustavo. Desenvolvimento Web, IA e Marketing Digital.',
@@ -792,6 +800,10 @@ export const translations: Record<Language, Translations> = {
       methodEmail: "E-mail",
       methodMeeting: "Agendar Reunião",
       submitBtn: "Enviar Mensagem",
+      emailFallbackTitle: "Abrindo seu aplicativo de e-mail...",
+      emailFallbackDesc: "Se nada acontecer, você pode enviar o e-mail diretamente para:",
+      emailFallbackCopyBtn: "Copiar E-mail",
+      emailFallbackCopiedBtn: "Copiado!",
       whatsappMessagePrefix: "Olá Gustavo, meu nome é {name}. Gostaria de falar sobre um projeto: {details}"
     },
     portfolioPage: {
@@ -902,7 +914,7 @@ export const translations: Record<Language, Translations> = {
       footerCta: {
         heading: 'Pronto para construir seu próximo projeto?',
         subtitle: 'Vamos conversar sobre seus objetivos e estruturar o plano ideal.',
-        cta: 'Falar no WhatsApp',
+        cta: 'Entrar em Contato',
       },
     },
   },

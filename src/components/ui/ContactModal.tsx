@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { X, ChevronDown } from 'lucide-react';
+import { X, ChevronDown, Mail, Copy, Check } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { useContactModal } from '../../context/ContactModalContext';
 
@@ -11,6 +11,8 @@ export const ContactModal: React.FC = () => {
   const [name, setName] = useState('');
   const [details, setDetails] = useState('');
   const [method, setMethod] = useState<'whatsapp' | 'email' | 'meeting'>('whatsapp');
+  const [showEmailFallback, setShowEmailFallback] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   // Lock body scroll
   useEffect(() => {
@@ -23,6 +25,8 @@ export const ContactModal: React.FC = () => {
         setName('');
         setDetails('');
         setMethod('whatsapp');
+        setShowEmailFallback(false);
+        setCopied(false);
       }, 300);
     }
     return () => {
@@ -38,16 +42,24 @@ export const ContactModal: React.FC = () => {
         .replace('{name}', name || 'um futuro cliente')
         .replace('{details}', details || 'Gostaria de saber mais.');
       const url = 'https://wa.me/5571992550509?text=' + encodeURIComponent(text);
-      window.open(url, '_blank');
+      window.open(url, '_blank', 'noopener,noreferrer');
     } else if (method === 'email') {
       const subject = encodeURIComponent(`New Project Inquiry from ${name || 'Website Visitor'}`);
       const body = encodeURIComponent(`Name: ${name}\n\nProject Details:\n${details}`);
       const url = `mailto:gustavojezler@gmail.com?subject=${subject}&body=${body}`;
-      window.open(url, '_blank');
+      window.location.href = url;
+      setShowEmailFallback(true);
     } else if (method === 'meeting') {
-      const url = 'https://calendly.com/';
-      window.open(url, '_blank');
+      // Replace with your actual Calendly link, e.g., https://calendly.com/your-username
+      const url = 'https://calendly.com/gustavojezler';
+      window.open(url, '_blank', 'noopener,noreferrer');
     }
+  };
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('gustavojezler@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -89,67 +101,94 @@ export const ContactModal: React.FC = () => {
             </button>
           </div>
 
-          {/* Body */}
-          <div className="p-6 overflow-y-auto space-y-5 custom-scrollbar">
-            <div className="space-y-1.5">
-              <label htmlFor="contact-name" className="text-sm font-medium text-zinc-300">
-                {t.contactModal.nameLabel}
-              </label>
-              <input
-                id="contact-name"
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder={t.contactModal.namePlaceholder}
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-[#FFC069]/50 focus:ring-1 focus:ring-[#FFC069]/50 transition-all"
-              />
-            </div>
-
-            <div className="space-y-1.5">
-              <label htmlFor="contact-details" className="text-sm font-medium text-zinc-300">
-                {t.contactModal.detailsLabel}
-              </label>
-              <textarea
-                id="contact-details"
-                value={details}
-                onChange={(e) => setDetails(e.target.value)}
-                placeholder={t.contactModal.detailsPlaceholder}
-                rows={4}
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-[#FFC069]/50 focus:ring-1 focus:ring-[#FFC069]/50 transition-all resize-none"
-              />
-            </div>
-
-            <div className="space-y-1.5">
-              <label htmlFor="contact-method" className="text-sm font-medium text-zinc-300">
-                {t.contactModal.methodLabel}
-              </label>
-              <div className="relative">
-                <select
-                  id="contact-method"
-                  value={method}
-                  onChange={(e) => setMethod(e.target.value as any)}
-                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-[#FFC069]/50 focus:ring-1 focus:ring-[#FFC069]/50 transition-all appearance-none cursor-pointer"
-                >
-                  <option value="whatsapp" className="bg-[#0a0a0d] text-white">{t.contactModal.methodWhatsapp}</option>
-                  <option value="email" className="bg-[#0a0a0d] text-white">{t.contactModal.methodEmail}</option>
-                  <option value="meeting" className="bg-[#0a0a0d] text-white">{t.contactModal.methodMeeting}</option>
-                </select>
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-400">
-                  <ChevronDown className="w-5 h-5" />
+          {showEmailFallback ? (
+            <div className="p-8 text-center flex flex-col items-center justify-center min-h-[300px]">
+              <div className="w-16 h-16 rounded-full bg-[#FFC069]/10 flex items-center justify-center mb-6">
+                <Mail className="w-8 h-8 text-[#FFC069]" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">{t.contactModal.emailFallbackTitle}</h3>
+              <p className="text-zinc-400 text-sm mb-8 max-w-sm mx-auto">
+                {t.contactModal.emailFallbackDesc}
+              </p>
+              
+              <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl p-2 max-w-xs w-full mx-auto">
+                <div className="flex-1 text-zinc-300 text-sm font-medium truncate px-2">
+                  gustavojezler@gmail.com
                 </div>
+                <button
+                  onClick={handleCopyEmail}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-medium transition-colors shrink-0"
+                >
+                  {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                  {copied ? t.contactModal.emailFallbackCopiedBtn : t.contactModal.emailFallbackCopyBtn}
+                </button>
               </div>
             </div>
-          </div>
+          ) : (
+            <>
+              {/* Body */}
+              <div className="p-6 overflow-y-auto space-y-5 custom-scrollbar">
+                <div className="space-y-1.5">
+                  <label htmlFor="contact-name" className="text-sm font-medium text-zinc-300">
+                    {t.contactModal.nameLabel}
+                  </label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder={t.contactModal.namePlaceholder}
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-[#FFC069]/50 focus:ring-1 focus:ring-[#FFC069]/50 transition-all"
+                  />
+                </div>
 
-          {/* Actions */}
-          <div className="p-6 bg-white/[0.02] border-t border-white/10">
-            <button
-              onClick={handleSubmit}
-              className="w-full btn-shine flex items-center justify-center gap-2 p-3.5 rounded-xl bg-gradient-to-r from-[#7A1610] via-[#E8642F] to-[#FFC069] text-white font-bold hover:scale-[1.02] transition-transform shadow-lg shadow-orange-500/20"
-            >
-              <span>{t.contactModal.submitBtn}</span>
-            </button>
-          </div>
+                <div className="space-y-1.5">
+                  <label htmlFor="contact-details" className="text-sm font-medium text-zinc-300">
+                    {t.contactModal.detailsLabel}
+                  </label>
+                  <textarea
+                    id="contact-details"
+                    value={details}
+                    onChange={(e) => setDetails(e.target.value)}
+                    placeholder={t.contactModal.detailsPlaceholder}
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-[#FFC069]/50 focus:ring-1 focus:ring-[#FFC069]/50 transition-all resize-none"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="contact-method" className="text-sm font-medium text-zinc-300">
+                    {t.contactModal.methodLabel}
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="contact-method"
+                      value={method}
+                      onChange={(e) => setMethod(e.target.value as any)}
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-[#FFC069]/50 focus:ring-1 focus:ring-[#FFC069]/50 transition-all appearance-none cursor-pointer"
+                    >
+                      <option value="whatsapp" className="bg-[#0a0a0d] text-white">{t.contactModal.methodWhatsapp}</option>
+                      <option value="email" className="bg-[#0a0a0d] text-white">{t.contactModal.methodEmail}</option>
+                      <option value="meeting" className="bg-[#0a0a0d] text-white">{t.contactModal.methodMeeting}</option>
+                    </select>
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-400">
+                      <ChevronDown className="w-5 h-5" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Actions */}
+              <div className="p-6 bg-white/[0.02] border-t border-white/10">
+                <button
+                  onClick={handleSubmit}
+                  className="w-full btn-shine flex items-center justify-center gap-2 p-3.5 rounded-xl bg-gradient-to-r from-[#7A1610] via-[#E8642F] to-[#FFC069] text-white font-bold hover:scale-[1.02] transition-transform shadow-lg shadow-orange-500/20"
+                >
+                  <span>{t.contactModal.submitBtn}</span>
+                </button>
+              </div>
+            </>
+          )}
         </motion.div>
       </motion.div>
     </AnimatePresence>
