@@ -167,14 +167,16 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
               </div>
 
               {/* ── VIDEO / MEDIA PRESENTATION ────────────────────── */}
-              <div className="w-full">
-                <ProjectVideoPlayer
-                  poster={project.image}
-                  videoSrc={project.videoSrc}
-                  title={project.title}
-                  category={project.category}
-                />
-              </div>
+              {project.videoSrc && (
+                <div className="w-full">
+                  <ProjectVideoPlayer
+                    poster={project.image}
+                    videoSrc={project.videoSrc}
+                    title={project.title}
+                    category={project.category}
+                  />
+                </div>
+              )}
 
               {/* ── CONTENT GRID: DETAILS, METRICS, TECH ──────────── */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-4">

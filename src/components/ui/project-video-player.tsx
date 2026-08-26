@@ -74,7 +74,7 @@ export const ProjectVideoPlayer: React.FC<ProjectVideoPlayerProps> = ({
             muted={isMuted}
             playsInline
             onTimeUpdate={handleTimeUpdate}
-            className="w-full h-full object-contain bg-[#060608]"
+            className="w-full h-full object-cover bg-[#060608]"
           />
         ) : (
           <div className="relative w-full h-full">

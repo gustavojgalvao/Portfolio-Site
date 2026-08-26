@@ -6,6 +6,7 @@ import KineticGrid from './ui/kinetic-grid';
 import { ArrowRight } from 'lucide-react';
 import { useGsapReveal } from '../hooks/useGsapReveal';
 import { ContactOptions } from './ui/ContactOptions';
+import { Marquee } from './ui/marquee';
 
 export const Hero: React.FC = () => {
   const { t } = useLanguage();
@@ -154,18 +155,8 @@ export const Hero: React.FC = () => {
         <div className="absolute inset-y-0 left-0 w-24 sm:w-40 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent z-30 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-24 sm:w-40 bg-gradient-to-l from-[#050505] via-[#050505]/80 to-transparent z-30 pointer-events-none" />
 
-        <div className="animate-marquee flex items-center gap-10">
+        <Marquee className="[--duration:30s] [--gap:2.5rem]" repeat={4}>
           {[
-            'React · Next.js',
-            'Tailwind CSS',
-            'GSAP & Framer Motion',
-            'TypeScript',
-            'AI Agents & Automation',
-            'SEO / GEO',
-            'Google Ads',
-            'WhatsApp API',
-            'Proprietary AI CRM',
-            'Webhooks & Integrations',
             'React · Next.js',
             'Tailwind CSS',
             'GSAP & Framer Motion',
@@ -179,13 +170,13 @@ export const Hero: React.FC = () => {
           ].map((item, idx) => (
             <span
               key={idx}
-              className="shrink-0 text-[13px] font-mono font-medium text-zinc-400 hover:text-[#FFC069] transition-colors"
+              className="shrink-0 text-[13px] font-mono font-medium text-zinc-400 hover:text-[#FFC069] transition-colors flex items-center"
             >
               {item}
-              {idx % 10 !== 9 && <span className="ml-10 text-zinc-700">·</span>}
+              <span className="ml-10 text-zinc-700">·</span>
             </span>
           ))}
-        </div>
+        </Marquee>
       </div>
     </section>
   );
