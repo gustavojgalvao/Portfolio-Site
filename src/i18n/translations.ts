@@ -126,6 +126,7 @@ export interface Translations {
     emailFallbackDesc: string;
     emailFallbackCopyBtn: string;
     emailFallbackCopiedBtn: string;
+    emailFallbackGmailBtn: string;
     whatsappMessagePrefix: string;
   };
   portfolioPage: {
@@ -426,6 +427,7 @@ export const translations: Record<Language, Translations> = {
       emailFallbackDesc: "If your email app doesn't open automatically, you can reach me directly at:",
       emailFallbackCopyBtn: "Copy Email",
       emailFallbackCopiedBtn: "Copied!",
+      emailFallbackGmailBtn: "Open in Gmail",
       whatsappMessagePrefix: "Hi Gustavo, my name is {name}. I'd like to talk about a project: {details}"
     },
     portfolioPage: {
@@ -804,6 +806,7 @@ export const translations: Record<Language, Translations> = {
       emailFallbackDesc: "Se nada acontecer, você pode enviar o e-mail diretamente para:",
       emailFallbackCopyBtn: "Copiar E-mail",
       emailFallbackCopiedBtn: "Copiado!",
+      emailFallbackGmailBtn: "Abrir no Gmail",
       whatsappMessagePrefix: "Olá Gustavo, meu nome é {name}. Gostaria de falar sobre um projeto: {details}"
     },
     portfolioPage: {
