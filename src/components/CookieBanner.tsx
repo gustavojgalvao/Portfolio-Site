@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import { initGA4 } from '../utils/analytics';
+
+const GA_TRACKING_ID = 'G-9J623EKFXT';
 
 export const CookieBanner: React.FC = () => {
   const { language } = useLanguage();
@@ -18,6 +21,7 @@ export const CookieBanner: React.FC = () => {
 
   const accept = () => {
     localStorage.setItem('cookie_consent', 'accepted');
+    initGA4(GA_TRACKING_ID);
     setVisible(false);
   };
 

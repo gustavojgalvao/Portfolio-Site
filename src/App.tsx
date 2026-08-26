@@ -26,6 +26,10 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { ThankYouPage } from './pages/ThankYouPage';
 import { SEOHead } from './components/SEOHead';
 import { ContactModal } from './components/ui/ContactModal';
+import { Analytics } from '@vercel/analytics/react';
+import { initGA4, pageViewGA4 } from './utils/analytics';
+
+const GA_TRACKING_ID = 'G-9J623EKFXT';
 
 const HomePage: React.FC<{ onNavigatePortfolio: () => void }> = ({ onNavigatePortfolio }) => (
   <>
@@ -59,6 +63,20 @@ export const AppContent: React.FC = () => {
       sessionStorage.setItem('splash_seen', 'true');
     }
   }, [triggerLoading]);
+
+  // Init GA4 if consent was already granted
+  useEffect(() => {
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+      initGA4(GA_TRACKING_ID);
+    }
+  }, []);
+
+  // Track page views on route change
+  useEffect(() => {
+    if (localStorage.getItem('cookie_consent') === 'accepted') {
+      pageViewGA4(GA_TRACKING_ID, location.pathname);
+    }
+  }, [location.pathname]);
 
   const handleNavigatePortfolio = () => {
     navigate('/portfolio');
@@ -119,6 +137,7 @@ export const App: React.FC = () => {
             <ProjectModalProvider>
               <ContactModalProvider>
                 <AppContent />
+                <Analytics />
               </ContactModalProvider>
             </ProjectModalProvider>
           </LoadingProvider>
