@@ -353,22 +353,7 @@
   transform: scaleX(0);
 }
 
-/* ─── MARQUEE ───────────────────────────────────────────────── */
 
-@keyframes marquee {
-  0%   { transform: translateX(0%); }
-  100% { transform: translateX(calc(-100% - var(--gap, 1rem))); }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee var(--duration, 28s) linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
 
 /* ─── GSAP REVEAL DEFAULTS ──────────────────────────────────── */
 
