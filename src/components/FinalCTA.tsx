@@ -16,9 +16,10 @@ export const FinalCTA: React.FC = () => {
       <GooeyLayer
         dominantColor="gold"
         cursorChase={false}
-        className="absolute inset-0"
+        className="absolute inset-0 opacity-80"
         blobCount={4}
       />
+      <div className="absolute inset-0 bg-black/60 z-[5]" />
 
       <div className="relative z-10 text-center px-4 sm:px-6 max-w-3xl mx-auto py-24 space-y-8">
         {/* Tagline */}
