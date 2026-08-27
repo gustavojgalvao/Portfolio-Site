@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   Layers,
   BarChart3,
-  ArrowRight,
 } from 'lucide-react';
 import type { ProjectDetail } from '../../data/projectsData';
 import { ProjectVideoPlayer } from './project-video-player';
