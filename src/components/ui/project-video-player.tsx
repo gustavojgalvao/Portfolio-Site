@@ -58,7 +58,7 @@ export const ProjectVideoPlayer: React.FC<ProjectVideoPlayerProps> = ({
   };
 
   return (
-    <div className="relative w-full rounded-3xl overflow-hidden glass-panel border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.8)] group">
+    <div className="relative w-full rounded-[24px] overflow-hidden glass-card shadow-xl">
       {/* Subtle top ambient glow */}
       <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-[#FFC069]/10 to-transparent pointer-events-none z-10" />
 
@@ -108,10 +108,10 @@ export const ProjectVideoPlayer: React.FC<ProjectVideoPlayerProps> = ({
           </div>
         )}
 
-        {/* Big Center Play/Pause button on hover */}
+        {/* Big Center Play/Pause button (Visible only when paused) */}
         <button
           onClick={togglePlay}
-          className="absolute inset-0 m-auto w-16 h-16 rounded-full bg-black/60 backdrop-blur-xl border border-white/20 text-white flex items-center justify-center shadow-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110 hover:border-[#FFC069]/60 hover:text-[#FFC069] z-20"
+          className={`absolute inset-0 m-auto w-16 h-16 rounded-full bg-black/60 backdrop-blur-xl border border-white/20 text-white flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 hover:border-[#FFC069]/60 hover:text-[#FFC069] z-20 ${isPlaying ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
           aria-label={isPlaying ? 'Pausar vídeo' : 'Reproduzir vídeo'}
         >
           {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-1" />}
@@ -119,7 +119,7 @@ export const ProjectVideoPlayer: React.FC<ProjectVideoPlayerProps> = ({
       </div>
 
       {/* Glass Video Controls Bar */}
-      <div className="p-4 sm:p-5 bg-black/70 backdrop-blur-xl border-t border-white/10 flex flex-col gap-3 relative z-20">
+      <div className="p-4 sm:p-5 bg-[#050505]/80 backdrop-blur-xl border-t border-white/5 flex flex-col gap-3 relative z-20">
         {/* Progress Scrubber Bar */}
         <div
           onClick={(e) => {
@@ -132,7 +132,7 @@ export const ProjectVideoPlayer: React.FC<ProjectVideoPlayerProps> = ({
           className="w-full h-1.5 bg-white/10 hover:h-2 rounded-full overflow-hidden cursor-pointer transition-all relative"
         >
           <motion.div
-            className="h-full bg-gradient-to-r from-[#7A1610] via-[#E8642F] to-[#FFC069]"
+            className="h-full bg-[#FFC069]"
             style={{ width: `${progress || (isPlaying ? 65 : 0)}%` }}
           />
         </div>
