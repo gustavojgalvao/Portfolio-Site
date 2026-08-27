@@ -98,11 +98,11 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
               {isHovered && (
                 <motion.div
                   layoutId="selectedWorkHoverBackground"
-                  className="absolute inset-0 bg-[#161618]/90 border border-white/10 rounded-2xl shadow-xl shadow-black/50 pointer-events-none -mx-4 sm:-mx-6 px-4 sm:px-6"
+                  className="absolute inset-0 glass-card rounded-2xl shadow-xl shadow-black/50 pointer-events-none -mx-4 sm:-mx-6 px-4 sm:px-6"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                  transition={{ type: 'spring', stiffness: 450, damping: 40 }}
                 />
               )}
 
@@ -114,7 +114,7 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
                     <h3
                       className={`text-xl sm:text-2xl font-bold tracking-tight transition-all duration-300 ${
                         isHovered
-                          ? 'text-white underline decoration-white/30 decoration-2 underline-offset-4'
+                          ? 'text-[#FFC069]'
                           : 'text-zinc-200 group-hover:text-white'
                       }`}
                     >
@@ -170,7 +170,7 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
               {/* Mobile In-line Preview (Only visible on touch / mobile screens) */}
               <div className="md:hidden mt-3 pt-2">
                 {images[project.id] && (
-                  <div className="w-full h-48 sm:h-52 rounded-xl overflow-hidden border border-white/10 bg-black/40 relative shadow-md">
+                  <div className="w-full h-48 sm:h-52 rounded-xl overflow-hidden glass-card relative shadow-md">
                     <img
                       src={images[project.id]}
                       alt={project.title}
@@ -213,7 +213,7 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
               animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
               exit={{ opacity: 0, scale: 0.85, filter: 'blur(10px)' }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute w-72 sm:w-80 lg:w-96 aspect-[16/10] rounded-2xl overflow-hidden border border-white/20 bg-zinc-950 shadow-[0_30px_90px_rgba(0,0,0,0.85)] pointer-events-none"
+              className="absolute w-72 sm:w-80 lg:w-96 aspect-[16/10] rounded-2xl overflow-hidden glass-card border-white/15 shadow-[0_30px_90px_rgba(0,0,0,0.85)] pointer-events-none"
             >
               {/* Inner Image Container with Rich Blur Crossfade Transition */}
               <div className="relative w-full h-full overflow-hidden">
@@ -221,10 +221,10 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
                   {activeImage && (
                     <motion.div
                       key={activeProject.id}
-                      initial={{ opacity: 0, filter: 'blur(10px)', scale: 1.06 }}
+                      initial={{ opacity: 0, filter: 'blur(8px)', scale: 1.04 }}
                       animate={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}
-                      exit={{ opacity: 0, filter: 'blur(10px)', scale: 0.96 }}
-                      transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+                      exit={{ opacity: 0, filter: 'blur(8px)', scale: 0.96 }}
+                      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                       className="absolute inset-0 w-full h-full"
                     >
                       <img

@@ -2,217 +2,203 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useGsapReveal } from '../hooks/useGsapReveal';
 import {
-  Check,
-  Globe,
-  Bot,
-  TrendingUp,
-  Zap,
-  ShieldCheck,
+    Globe,
+    Bot,
+    Zap,
+    ShieldCheck,
+    TrendingUp,
 } from 'lucide-react';
 import { ContactOptions } from './ui/ContactOptions';
+import { Card, CardContent } from './ui/card';
 
 export const PlanOverview: React.FC = () => {
-  const { t } = useLanguage();
-  const containerRef = useGsapReveal({ y: 35, duration: 0.85, stagger: 0.1 });
+    const { t, language } = useLanguage();
+    const containerRef = useGsapReveal({ y: 35, duration: 0.85, stagger: 0.1 });
 
 
-  const heroCard = t.planOverview.heroCard;
-  const bentoCards = t.planOverview.bentoCards;
+    const heroCard = t.planOverview.heroCard;
+    const bentoCards = t.planOverview.bentoCards;
 
-  const bentoIcons = [Globe, Bot, TrendingUp];
-  const bentoGradients = [
-    { text: '#FFC069', border: 'rgba(255, 192, 105, 0.25)', bg: 'rgba(255, 192, 105, 0.06)' },
-    { text: '#E8642F', border: 'rgba(232, 100, 47, 0.25)', bg: 'rgba(232, 100, 47, 0.06)' },
-    { text: '#c9a05a', border: 'rgba(201, 160, 90, 0.25)', bg: 'rgba(201, 160, 90, 0.06)' },
-  ];
-
-  return (
-    <section
-      id="plan"
-      ref={containerRef as React.RefObject<HTMLElement>}
-      className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#050505]"
-    >
-      {/* Ambient background glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden="true"
-        style={{
-          background:
-            'radial-gradient(ellipse 70% 50% at 50% 40%, rgba(232,100,47,0.05) 0%, rgba(255,192,105,0.03) 40%, transparent 70%)',
-        }}
-      />
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-14 gsap-child">
-          <div className="section-badge inline-flex mb-4">
-            {t.planOverview.eyebrow}
-          </div>
-          <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white max-w-3xl mx-auto tracking-tight leading-[1.15]"
-            style={{ letterSpacing: '-0.025em' }}
-          >
-            {t.planOverview.title}
-          </h2>
-          <p className="text-sm sm:text-base text-zinc-400 mt-4 max-w-xl mx-auto">
-            {t.planOverview.subtitle}
-          </p>
-        </div>
-
-        {/* ─── ASYMMETRIC BENTO GRID ──────────────────────────── */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 gsap-child">
-          
-          {/* ── TOP HERO CARD (Spans full 3 columns) ───────────── */}
-          <div className="lg:col-span-3 rounded-3xl p-6 sm:p-10 glass-feature border border-white/10 relative overflow-hidden group">
-            {/* Ambient inner rim glow */}
+    return (
+        <section
+            id="plan"
+            ref={containerRef as React.RefObject<HTMLElement>}
+            className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#050505]"
+        >
+            {/* Ambient background glow */}
             <div
-              className="absolute -right-20 -top-20 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity duration-700"
-              style={{
-                background: 'radial-gradient(circle, rgba(255,192,105,0.2) 0%, rgba(232,100,47,0.1) 60%, transparent 80%)',
-              }}
+                className="absolute inset-0 pointer-events-none"
+                aria-hidden="true"
+                style={{
+                    background:
+                        'radial-gradient(ellipse 70% 50% at 50% 40%, rgba(232,100,47,0.05) 0%, rgba(255,192,105,0.03) 40%, transparent 70%)',
+                }}
             />
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* Left Details */}
-              <div className="lg:col-span-7 space-y-4 text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase bg-[#FFC069]/10 border border-[#FFC069]/25 text-[#FFC069]">
-                  <Zap className="w-3 h-3" />
-                  <span>{heroCard.tag}</span>
-                </div>
-
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                  {heroCard.title}
-                </h3>
-
-                <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal">
-                  {heroCard.desc}
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  {heroCard.bullets.map((bullet, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5">
-                      <span className="mt-0.5 w-4 h-4 rounded-full bg-[#FFC069]/15 flex items-center justify-center shrink-0">
-                        <Check className="w-2.5 h-2.5 text-[#FFC069]" />
-                      </span>
-                      <span className="text-xs sm:text-sm text-zinc-400 leading-snug">
-                        {bullet}
-                      </span>
+            <div className="max-w-6xl mx-auto relative z-10">
+                {/* Section Header */}
+                <div className="text-center mb-14 gsap-child">
+                    <div className="section-badge inline-flex mb-4">
+                        {t.planOverview.eyebrow}
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right Visual Highlight Metric */}
-              <div className="lg:col-span-5 flex justify-center lg:justify-end">
-                <div className="w-full max-w-xs rounded-2xl p-5 glass-card border border-white/12 space-y-4 text-left">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono tracking-widest text-zinc-400 uppercase font-semibold">
-                      {heroCard.statLabel}
-                    </span>
-                  </div>
-
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-4xl sm:text-5xl font-black text-white tracking-tight">
-                      {heroCard.statValue}
-                    </span>
-                    <span className="text-xs font-mono text-emerald-400 font-bold uppercase">
-                      Instant Load
-                    </span>
-                  </div>
-
-                  <div className="space-y-2 pt-2 border-t border-white/8 text-[11px] font-mono text-zinc-400">
-                    <div className="flex justify-between">
-                      <span>Time to Interactive</span>
-                      <span className="text-white font-semibold">0.4s</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Core Web Vitals</span>
-                      <span className="text-emerald-400 font-semibold">Passed</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Architecture</span>
-                      <span className="text-[#FFC069] font-semibold">React + TypeScript</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* ── BOTTOM 3 ASYMMETRIC BENTO CARDS ───────────────── */}
-          {bentoCards.map((card, idx) => {
-            const Icon = bentoIcons[idx] || Check;
-            const style = bentoGradients[idx] || bentoGradients[0];
-
-            return (
-              <div
-                key={idx}
-                className="rounded-3xl p-6 sm:p-7 glass-card border border-white/8 flex flex-col justify-between space-y-6 hover:border-white/20 transition-all duration-300 text-left group"
-              >
-                <div className="space-y-4">
-                  {/* Top Icon & Tag */}
-                  <div className="flex items-center justify-between">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center"
-                      style={{ background: style.bg, border: `1px solid ${style.border}` }}
+                    <h2
+                        className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white max-w-3xl mx-auto tracking-tight leading-[1.15]"
+                        style={{ letterSpacing: '-0.025em' }}
                     >
-                      <Icon className="w-5 h-5" style={{ color: style.text }} />
-                    </div>
-
-                    <span
-                      className="text-[10px] font-mono font-bold tracking-widest uppercase px-2.5 py-1 rounded-full"
-                      style={{ background: style.bg, color: style.text }}
-                    >
-                      {card.tag}
-                    </span>
-                  </div>
-
-                  {/* Title & Desc */}
-                  <div>
-                    <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight">
-                      {card.title}
-                    </h4>
-                    <p className="text-xs sm:text-sm text-zinc-400 mt-1.5 leading-relaxed">
-                      {card.desc}
+                        {t.planOverview.title}
+                    </h2>
+                    <p className="text-sm sm:text-base text-zinc-400 mt-4 max-w-xl mx-auto">
+                        {t.planOverview.subtitle}
                     </p>
-                  </div>
-
-                  {/* Bullets */}
-                  <ul className="space-y-2.5 pt-2 border-t border-white/6">
-                    {card.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-2 text-xs sm:text-sm text-zinc-300">
-                        <span
-                          className="mt-0.5 w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0"
-                          style={{ background: style.bg }}
-                        >
-                          <Check className="w-2.5 h-2.5" style={{ color: style.text }} />
-                        </span>
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
 
-                {/* Card subtle bottom badge */}
-                <div className="pt-2 border-t border-white/6 flex items-center gap-1.5 text-[11px] font-mono text-zinc-400">
-                  <ShieldCheck className="w-3.5 h-3.5 text-zinc-400" />
-                  <span>Incluso no plano mensal</span>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+                {/* ─── ASYMMETRIC BENTO GRID ──────────────────────────── */}
+                <div className="relative z-10 grid grid-cols-6 gap-3 gsap-child">
 
-        {/* Footnote & Primary Plan CTA */}
-        <div className="mt-12 p-6 rounded-2xl glass-card border border-white/8 flex flex-col xl:flex-row items-center justify-between gap-5 gsap-child">
-          <p className="text-xs sm:text-sm text-zinc-400 text-center xl:text-left max-w-lg">
-            {t.planOverview.footnote}
-          </p>
-          <ContactOptions variant="full" className="shrink-0" />
-        </div>
-      </div>
-    </section>
-  );
+                    {/* Card 1: Site Personalizado (100% SVG) */}
+                    <Card className="relative col-span-full flex flex-col overflow-hidden lg:col-span-2 border-white/8 bg-white/[0.02] backdrop-blur-xl">
+                        <CardContent className="relative flex flex-col items-center justify-center m-auto w-full pt-6">
+                            <div className="relative flex h-24 w-56 items-center justify-center">
+                                <svg className="text-zinc-600 absolute inset-0 size-full" viewBox="0 0 254 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M112.891 97.7022C140.366 97.0802 171.004 94.6715 201.087 87.5116C210.43 85.2881 219.615 82.6412 228.284 78.2473C232.198 76.3179 235.905 73.9942 239.348 71.3124C241.85 69.2557 243.954 66.7571 245.555 63.9408C249.34 57.3235 248.281 50.5341 242.498 45.6109C239.033 42.7237 235.228 40.2703 231.169 38.3054C219.443 32.7209 207.141 28.4382 194.482 25.534C184.013 23.1927 173.358 21.7755 162.64 21.2989C161.376 21.3512 160.113 21.181 158.908 20.796C158.034 20.399 156.857 19.1682 156.962 18.4535C157.115 17.8927 157.381 17.3689 157.743 16.9139C158.104 16.4588 158.555 16.0821 159.067 15.8066C160.14 15.4683 161.274 15.3733 162.389 15.5286C179.805 15.3566 196.626 18.8373 212.998 24.462C220.978 27.2494 228.798 30.4747 236.423 34.1232C240.476 36.1159 244.202 38.7131 247.474 41.8258C254.342 48.2578 255.745 56.9397 251.841 65.4892C249.793 69.8582 246.736 73.6777 242.921 76.6327C236.224 82.0192 228.522 85.4602 220.502 88.2924C205.017 93.7847 188.964 96.9081 172.738 99.2109C153.442 101.949 133.993 103.478 114.506 103.79C91.1468 104.161 67.9334 102.97 45.1169 97.5831C36.0094 95.5616 27.2626 92.1655 19.1771 87.5116C13.839 84.5746 9.1557 80.5802 5.41318 75.7725C-0.54238 67.7259 -1.13794 59.1763 3.25594 50.2827C5.82447 45.3918 9.29572 41.0315 13.4863 37.4319C24.2989 27.5721 37.0438 20.9681 50.5431 15.7272C68.1451 8.8849 86.4883 5.1395 105.175 2.83669C129.045 0.0992292 153.151 0.134761 177.013 2.94256C197.672 5.23215 218.04 9.01724 237.588 16.3889C240.089 17.3418 242.498 18.5197 244.933 19.6446C246.627 20.4387 247.725 21.6695 246.997 23.615C246.455 25.1105 244.814 25.5605 242.63 24.5811C230.322 18.9961 217.233 16.1904 204.117 13.4376C188.761 10.3438 173.2 8.36665 157.558 7.52174C129.914 5.70776 102.154 8.06792 75.2124 14.5228C60.6177 17.8788 46.5758 23.2977 33.5102 30.6161C26.6595 34.3329 20.4123 39.0673 14.9818 44.658C12.9433 46.8071 11.1336 49.1622 9.58207 51.6855C4.87056 59.5336 5.61172 67.2494 11.9246 73.7608C15.2064 77.0494 18.8775 79.925 22.8564 82.3236C31.6176 87.7101 41.3848 90.5291 51.3902 92.5804C70.6068 96.5773 90.0219 97.7419 112.891 97.7022Z" fill="currentColor" />
+                                </svg>
+                                <span className="mx-auto block w-fit text-5xl font-semibold text-white">100%</span>
+                            </div>
+                            <h2 className="mt-6 text-center text-xl font-semibold text-white">{heroCard.title}</h2>
+                            <p className="text-center text-zinc-400 mt-2 text-sm">{heroCard.desc.substring(0, 100)}...</p>
+                        </CardContent>
+                    </Card>
+
+                    {/* Card 2: Hospedagem (SEO by default SVG) */}
+                    <Card className="relative col-span-full overflow-hidden sm:col-span-3 lg:col-span-2 border-white/8 bg-white/[0.02] backdrop-blur-xl">
+                        <CardContent className="pt-6">
+                            <div className="relative mx-auto flex aspect-square size-32 rounded-full border border-white/10 before:absolute before:-inset-2 before:rounded-full before:border before:border-white/5">
+                                <TrendingUp className="m-auto size-16 text-zinc-400" strokeWidth={1.5} />
+                            </div>
+                            <div className="relative z-10 mt-6 space-y-2 text-center">
+                                <h2 className="text-lg font-medium text-white">{bentoCards[0]?.title}</h2>
+                                <p className="text-zinc-400 text-sm">{bentoCards[0]?.desc}</p>
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    {/* Card 3: SEO (Speed/Graph SVG) */}
+                    <Card className="relative col-span-full overflow-hidden sm:col-span-3 lg:col-span-2 border-white/8 bg-white/[0.02] backdrop-blur-xl">
+                        <CardContent className="pt-6">
+                            <div className="mt-6 px-2 lg:px-6 h-[123px] flex items-center justify-center">
+                                {/* Chat Interface Mockup */}
+                                <div className="w-full max-w-[280px] flex flex-col gap-2.5 group-hover:-translate-y-1 transition-transform duration-500">
+
+                                    {/* Message 1: Received */}
+                                    <div className="self-start flex flex-col gap-1 max-w-[85%] animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                                        <div className="bg-white/10 backdrop-blur-md text-zinc-300 text-[10.5px] font-medium px-3.5 py-2.5 rounded-2xl rounded-tl-sm border border-white/5 shadow-sm leading-relaxed">
+                                            Preciso de um site com urgência.
+                                        </div>
+                                    </div>
+
+                                    {/* Message 2: Sent (AI) */}
+                                    <div className="self-end flex flex-col gap-1 max-w-[85%] animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+                                        <div className="bg-[#E8642F]/15 backdrop-blur-md text-[#FFC069] text-[10.5px] font-medium px-3.5 py-2.5 rounded-2xl rounded-tr-sm border border-[#E8642F]/30 shadow-[0_4px_12px_rgba(232,100,47,0.1)] leading-relaxed">
+                                            <span className="font-bold flex items-center gap-1.5 mb-1 text-[#FFC069]/90">
+                                                <Bot className="w-3.5 h-3.5" /> IA Agent
+                                            </span>
+                                            Olá! Vamos começar. Qual é o seu nicho de atuação?
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div className="relative z-10 mt-14 space-y-2 text-center">
+                                <h2 className="text-lg font-medium text-white">{bentoCards[1]?.title}</h2>
+                                <p className="text-zinc-400 text-sm">{bentoCards[1]?.desc}</p>
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    {/* Card 4: CRM (Shield abstract SVG) */}
+                    <Card className="relative col-span-full overflow-hidden lg:col-span-3 border-white/8 bg-white/[0.02] backdrop-blur-xl">
+                        <CardContent className="grid h-full pt-6 sm:grid-cols-2">
+                            <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
+                                <div className="relative flex aspect-square size-12 rounded-full border border-white/10 before:absolute before:-inset-2 before:rounded-full before:border before:border-white/5">
+                                    <ShieldCheck className="m-auto size-5 text-[#E8642F]" strokeWidth={1.5} />
+                                </div>
+                                <div className="space-y-2">
+                                    <h2 className="text-lg font-medium text-white">{bentoCards[2]?.title}</h2>
+                                    <p className="text-zinc-400 text-sm">{bentoCards[2]?.desc}</p>
+                                </div>
+                            </div>
+                            <div className="rounded-tl-2xl relative -mb-6 -mr-6 mt-6 h-fit border-l border-t border-white/10 p-6 py-6 sm:ml-6 bg-white/[0.01]">
+                                <div className="absolute left-3 top-2 flex gap-1">
+                                    <span className="block size-2 rounded-full border border-white/10 bg-white/10"></span>
+                                    <span className="block size-2 rounded-full border border-white/10 bg-white/10"></span>
+                                    <span className="block size-2 rounded-full border border-white/10 bg-white/10"></span>
+                                </div>
+                                <svg className="w-full sm:w-[150%] text-zinc-600" viewBox="0 0 366 231" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M0.148438 231V179.394L1.92188 180.322L2.94482 177.73L4.05663 183.933L6.77197 178.991L7.42505 184.284L9.42944 187.985L11.1128 191.306V155.455L13.6438 153.03V145.122L14.2197 142.829V150.454V154.842L15.5923 160.829L17.0793 172.215H19.2031V158.182L20.7441 153.03L22.426 148.111V142.407L24.7471 146.86V128.414L26.7725 129.918V120.916L28.1492 118.521L28.4653 127.438L29.1801 123.822L31.0426 120.525V130.26L32.3559 134.71L34.406 145.122V137.548L35.8982 130.26L37.1871 126.049L38.6578 134.71L40.659 138.977V130.26V126.049L43.7557 130.26V123.822L45.972 112.407L47.3391 103.407V92.4726L49.2133 98.4651V106.053L52.5797 89.7556L54.4559 82.7747L56.1181 87.9656L58.9383 89.7556V98.4651L60.7617 103.407L62.0545 123.822L63.8789 118.066L65.631 122.082L68.5479 114.229L70.299 109.729L71.8899 118.066L73.5785 123.822V130.26L74.9446 134.861L76.9243 127.87L78.352 134.71V138.977L80.0787 142.407V152.613L83.0415 142.407V130.26L86.791 123.822L89.0121 116.645V122.082L90.6059 127.87L92.3541 131.77L93.7104 123.822L95.4635 118.066L96.7553 122.082V137.548L99.7094 140.988V131.77L101.711 120.525L103.036 116.645V133.348L104.893 136.218L106.951 140.988L108.933 134.71L110.797 130.26L112.856 140.988V148.111L115.711 152.613L117.941 145.122L119.999 140.988V148.111L123.4 152.613L125.401 158.182L130.547 150.454V156.566L131.578 155.455L134.143 158.182L135.594 168.136L138.329 158.182L140.612 160.829L144.681 169.5L147.011 155.455L148.478 151.787L151.02 152.613L154.886 145.122L158 143.412L159.406 140.637L159.496 133.348L162.295 127.87V122.082L163.855 116.645V109.729L164.83 104.407L166.894 109.729L176.249 98.4651L178.254 106.169L180.77 98.4651V81.045L182.906 69.1641L184.8 56.8669L186.477 62.8428L187.848 79.7483L188.849 106.169L191.351 79.7483L193.485 75.645V98.4651L196.622 94.4523L198.623 87.4228V79.7483L200.717 75.645L202.276 81.045V89.3966L203.638 113.023L205.334 99.8037L207.164 94.4523L208.982 98.4651V102.176L211.267 107.64L212.788 81.045L214.437 66.0083L216.19 62.8428L217.941 56.8669V73.676V79.7483L220.28 75.645L222.516 66.0083V73.676H226.174V84.8662L228.566 98.4651L230.316 75.645L233.61 94.4523V104.25L236.882 102.176L239.543 113.023L241.057 98.4651L243.604 94.4523L244.975 106.169L245.975 87.4228L247.272 89.3966L250.732 84.8662L251.733 96.7549L254.644 94.4523L257.452 99.8037L259.853 91.3111L261.193 84.8662L264.162 75.645L265.808 87.4228L267.247 58.4895L269.757 66.0083L276.625 13.5146L273.33 58.4895L276.25 67.6563L282.377 20.1968L281.37 58.4895V66.0083L283.579 75.645L286.033 56.8669L287.436 73.676L290.628 77.6636L292.414 84.8662L294.214 61.3904L296.215 18.9623L300.826 0.947876L297.531 56.8669L299.973 62.8428L305.548 22.0598L299.755 114.956L301.907 105.378L304.192 112.688V94.9932L308.009 80.0829L310.003 94.9932L311.004 102.127L312.386 105.378L315.007 112.688L316.853 98.004L318.895 105.378L321.257 94.9932L324.349 100.81L325.032 80.0829L327.604 61.5733L329.308 82.3223L333.525 52.7986L334.097 52.145L334.735 55.6812L337.369 59.8108V73.676L340.743 87.9656L343.843 96.3728L348.594 82.7747L349.607 81.045L351 89.7556L352.611 96.3728L355.149 94.9932L356.688 102.176L359.396 108.784L360.684 111.757L365 95.7607V231H148.478H0.148438Z" fill="url(#paint0_linear_0_705)" />
+                                    <path className="text-[#E8642F]" d="M1 179.796L4.05663 172.195V183.933L7.20122 174.398L8.45592 183.933L10.0546 186.948V155.455L12.6353 152.613V145.122L15.3021 134.71V149.804V155.455L16.6916 160.829L18.1222 172.195V158.182L19.8001 152.613L21.4105 148.111V137.548L23.6863 142.407V126.049L25.7658 127.87V120.525L27.2755 118.066L29.1801 112.407V123.822L31.0426 120.525V130.26L32.3559 134.71L34.406 145.122V137.548L35.8982 130.26L37.1871 126.049L38.6578 134.71L40.659 138.977V130.26V126.049L43.7557 130.26V123.822L45.972 112.407L47.3391 103.407V92.4726L49.2133 98.4651V106.053L52.5797 89.7556L54.4559 82.7747L56.1181 87.9656L58.9383 89.7556V98.4651L60.7617 103.407L62.0545 123.822L63.8789 118.066L65.631 122.082L68.5479 114.229L70.299 109.729L71.8899 118.066L73.5785 123.822V130.26L74.9446 134.861L76.9243 127.87L78.352 134.71V138.977L80.0787 142.407V152.613L83.0415 142.407V130.26L86.791 123.822L89.0121 116.645V122.082L90.6059 127.87L92.3541 131.77L93.7104 123.822L95.4635 118.066L96.7553 122.082V137.548L99.7094 140.988V131.77L101.711 120.525L103.036 116.645V133.348L104.893 136.218L106.951 140.988L108.933 134.71L110.797 130.26L112.856 140.988V148.111L115.711 152.613L117.941 145.122L119.999 140.988L121.501 148.111L123.4 152.613L125.401 158.182L127.992 152.613L131.578 146.76V155.455L134.143 158.182L135.818 164.629L138.329 158.182L140.612 160.829L144.117 166.757L146.118 155.455L147.823 149.804L151.02 152.613L154.886 145.122L158.496 140.988V133.348L161.295 127.87V122.082L162.855 116.645V109.729L164.83 103.407L166.894 109.729L176.249 98.4651L178.254 106.169L180.77 98.4651V81.045L182.906 69.1641L184.8 56.8669L186.477 62.8428L187.848 79.7483L188.849 106.169L191.351 79.7483L193.485 75.645V98.4651L196.622 94.4523L198.623 87.4228V79.7483L200.717 75.645L202.276 81.045V89.3966L203.638 113.023L205.334 99.8037L207.164 94.4523L208.982 98.4651V102.176L211.267 107.64L212.788 81.045L214.437 66.0083L216.19 62.8428L217.941 56.8669V73.676V79.7483L220.28 75.645L222.516 66.0083V73.676H226.174V84.8662L228.566 98.4651L230.316 75.645L233.61 94.4523V104.25L236.882 102.176L239.543 113.023L241.057 98.4651L243.604 94.4523L244.975 106.169L245.975 87.4228L247.272 89.3966L250.732 84.8662L251.733 96.7549L254.644 94.4523L257.452 99.8037L259.853 91.3111L261.193 84.8662L264.162 75.645L265.808 87.4228L267.247 58.4895L269.757 66.0083L276.625 13.5146L273.33 58.4895L276.25 67.6563L282.377 20.1968L281.37 58.4895V66.0083L283.579 75.645L286.033 56.8669L287.436 73.676L290.628 77.6636L292.414 84.8662L294.214 61.3904L296.215 18.9623L300.826 0.947876L297.531 56.8669L299.973 62.8428L305.548 22.0598L299.755 114.956L301.907 105.378L304.192 112.688V94.9932L308.009 80.0829L310.003 94.9932L311.004 102.127L312.386 105.378L315.007 112.688L316.853 98.004L318.895 105.378L321.257 94.9932L324.349 100.81L325.032 80.0829L327.604 61.5733L329.357 74.9864L332.611 52.6565L334.352 48.5552L335.785 55.2637L338.377 59.5888V73.426L341.699 87.5181L343.843 93.4347L347.714 82.1171L350.229 78.6821L351.974 89.7556L353.323 94.9932L355.821 93.4347L357.799 102.127L360.684 108.794L363.219 98.004L365 89.7556" stroke="currentColor" strokeWidth="2" />
+                                    <defs>
+                                        <linearGradient id="paint0_linear_0_705" x1="0.85108" y1="0.947876" x2="0.85108" y2="230.114" gradientUnits="userSpaceOnUse">
+                                            <stop className="text-[#E8642F]/30" stopColor="currentColor" />
+                                            <stop className="text-transparent" offset="1" stopColor="currentColor" stopOpacity="0.01" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    {/* Card 5: Suporte / Avatars (Users SVG) */}
+                    <Card className="relative col-span-full overflow-hidden lg:col-span-3 border-white/8 bg-white/[0.02] backdrop-blur-xl">
+                        <CardContent className="grid h-full pt-6 sm:grid-cols-2">
+                            <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
+                                <div className="relative flex aspect-square size-12 rounded-full border border-white/10 before:absolute before:-inset-2 before:rounded-full before:border before:border-white/5">
+                                    <Bot className="m-auto size-5 text-emerald-400" strokeWidth={1.5} />
+                                </div>
+                                <div className="space-y-2">
+                                    <h2 className="text-lg font-medium text-white">{language === 'en' ? 'Direct Support & Maintenance' : 'Suporte e Manutenção Inclusa'}</h2>
+                                    <p className="text-zinc-400 text-sm">
+                                        {language === 'en'
+                                            ? 'Continuous technical updates and visual improvements included. Talk directly to me via WhatsApp, no middlemen.'
+                                            : 'Atualizações técnicas contínuas e suporte incluso. Fale direto comigo no WhatsApp, sem intermediários.'}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="before:bg-white/10 relative mt-6 before:absolute before:inset-0 before:mx-auto before:w-px sm:-my-6 sm:-mr-6">
+                                <div className="relative flex h-full flex-col justify-center space-y-6 py-6">
+                                    <div className="relative flex w-[calc(50%+0.875rem)] items-center justify-end gap-2">
+                                        <span className="block h-fit rounded border border-white/10 bg-white/5 px-2 py-1 text-[10px] text-zinc-300 shadow-sm uppercase font-mono">Performance</span>
+                                        <div className="ring-black size-7 ring-4 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                            <Zap className="w-4 h-4" />
+                                        </div>
+                                    </div>
+                                    <div className="relative ml-[calc(50%-1rem)] flex items-center gap-2">
+                                        <div className="ring-black size-8 ring-4 rounded-full bg-[#FFC069]/20 flex items-center justify-center text-[#FFC069]">
+                                            <Globe className="w-4 h-4" />
+                                        </div>
+                                        <span className="block h-fit rounded border border-white/10 bg-white/5 px-2 py-1 text-[10px] text-zinc-300 shadow-sm uppercase font-mono">Web Vitals</span>
+                                    </div>
+                                    <div className="relative flex w-[calc(50%+0.875rem)] items-center justify-end gap-2">
+                                        <span className="block h-fit rounded border border-white/10 bg-white/5 px-2 py-1 text-[10px] text-zinc-300 shadow-sm uppercase font-mono">Support</span>
+                                        <div className="ring-black size-7 ring-4 rounded-full overflow-hidden">
+                                            <img className="size-full object-cover" src="/fotoperfil.webp" alt="Gustavo" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </div>
+
+                {/* Footnote & Primary Plan CTA */}
+                <div className="mt-12 p-6 rounded-2xl glass-card border border-white/8 flex flex-col xl:flex-row items-center justify-between gap-5 gsap-child">
+                    <p className="text-xs sm:text-sm text-zinc-400 text-center xl:text-left max-w-lg">
+                        {t.planOverview.footnote}
+                    </p>
+                    <ContactOptions variant="full" className="shrink-0" />
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default PlanOverview;

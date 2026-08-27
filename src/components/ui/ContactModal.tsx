@@ -84,7 +84,7 @@ export const ContactModal: React.FC = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-lg bg-[#0a0a0d] border border-white/10 rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
+          className="relative w-full max-w-lg glass-card rounded-3xl overflow-hidden flex flex-col max-h-[90vh]"
         >
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-white/10">
@@ -120,7 +120,7 @@ export const ContactModal: React.FC = () => {
                   href={gmailUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 w-full flex justify-center items-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white text-sm font-bold transition-colors shadow-lg shadow-red-500/20"
+                  className="flex-1 w-full flex justify-center items-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-[#E8642F] to-[#FFC069] text-[#0a0a0d] text-sm font-bold transition-transform hover:scale-[1.02] shadow-lg shadow-orange-500/20"
                 >
                   <Mail className="w-4 h-4" />
                   {t.contactModal.emailFallbackGmailBtn}
@@ -198,7 +198,7 @@ export const ContactModal: React.FC = () => {
               <div className="p-6 bg-white/[0.02] border-t border-white/10">
                 <button
                   onClick={handleSubmit}
-                  className="w-full btn-shine flex items-center justify-center gap-2 p-3.5 rounded-xl bg-gradient-to-r from-[#7A1610] via-[#E8642F] to-[#FFC069] text-white font-bold hover:scale-[1.02] transition-transform shadow-lg shadow-orange-500/20"
+                  className="w-full btn-primary flex items-center justify-center gap-2 p-3.5 rounded-xl font-bold"
                 >
                   <span>{t.contactModal.submitBtn}</span>
                 </button>

@@ -46,7 +46,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" ref={containerRef as React.RefObject<HTMLElement>} className="relative w-full bg-black flex flex-col justify-between overflow-hidden pt-0 pb-0">
+    <section id="hero" ref={containerRef as React.RefObject<HTMLElement>} className="relative w-full bg-[#050505] flex flex-col justify-between overflow-hidden pt-0 pb-0">
 
       {/* FULL-VIEWPORT HERO WITH KINETIC GRID BACKGROUND */}
       <KineticGrid className="w-full min-h-screen flex flex-col justify-center pt-20 sm:pt-24 pb-8 sm:pb-10">
@@ -68,7 +68,7 @@ export const Hero: React.FC = () => {
                   <TextMorph
                     words={t.hero.morphWords}
                     interval={2800}
-                    className="text-[#E8642F] font-black inline-flex"
+                    className="text-[#FFC069] font-black inline-flex"
                   />
                 </span>
                 <span className="block mt-1 text-white">{t.hero.titleEnd}</span>
@@ -85,7 +85,7 @@ export const Hero: React.FC = () => {
 
                 <button
                   onClick={scrollToPortfolio}
-                  className="btn-ghost text-sm sm:text-base group"
+                  className="btn-ghost w-full sm:w-auto justify-center group"
                 >
                   {t.hero.secondaryCta}
                   <ArrowRight className="w-4 h-4 text-[#FFC069] group-hover:translate-x-1 transition-transform" />

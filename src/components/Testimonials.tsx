@@ -91,7 +91,7 @@ const ReviewCard = ({
   rating,
 }: Testimonial) => {
   return (
-    <Card className="relative h-full w-[350px] md:w-[400px] cursor-pointer overflow-hidden border-white/5 bg-white/[0.02] backdrop-blur-xl shadow-none p-6 hover:border-white/12 transition-all duration-300">
+    <Card className="relative h-full w-[350px] md:w-[400px] cursor-pointer overflow-hidden border-white/10 bg-white/[0.02] backdrop-blur-xl shadow-none p-6 hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300">
       <CardContent className="p-0 flex flex-col gap-4">
         <StarRating rating={rating} />
         

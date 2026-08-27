@@ -88,10 +88,10 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94, y: 20 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-5xl rounded-[32px] glass-panel border border-white/15 bg-[#09090c]/95 shadow-[0_25px_80px_rgba(0,0,0,0.9)] overflow-hidden my-auto max-h-[92vh] flex flex-col z-10"
+            className="relative w-full max-w-6xl rounded-[32px] glass-card bg-[#050505]/95 shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col z-10"
           >
             {/* ── STICKY TOP HEADER ─────────────────────────────── */}
-            <div className="p-5 sm:p-6 border-b border-white/10 flex items-center justify-between bg-black/60 backdrop-blur-xl shrink-0">
+            <div className="p-5 sm:p-6 border-b border-white/5 flex items-center justify-between bg-[#050505]/80 backdrop-blur-2xl shrink-0">
               <div className="flex items-center gap-3">
                 <span className="px-3 py-1 rounded-full bg-[#FFC069]/15 border border-[#FFC069]/30 text-[#FFC069] text-xs font-mono font-bold uppercase tracking-wider">
                   {project.category}
@@ -129,13 +129,13 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 </p>
 
                 {/* Primary Action Buttons */}
-                <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2.5 pt-2">
+                <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-2">
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-shine inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-full bg-gradient-to-r from-[#7A1610] via-[#E8642F] to-[#FFC069] hover:scale-[1.02] text-white font-bold text-sm shadow-xl shadow-orange-500/20 transition-all"
+                      className="btn-primary w-full sm:w-auto !px-6 !py-3 !text-sm"
                     >
                       <ExternalLink className="w-4 h-4 shrink-0" />
                       <span>{language === 'en' ? 'Visit Live Website' : 'Acessar Site no Ar'}</span>
@@ -147,7 +147,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-full glass-card hover:bg-white/10 text-white font-semibold text-sm border border-white/15 transition-all"
+                      className="btn-ghost w-full sm:w-auto !px-6 !py-3 !text-sm"
                     >
                       <GithubIcon className="w-4 h-4 text-[#FFC069] shrink-0" />
                       <span>{language === 'en' ? 'View Source on GitHub' : 'Ver Código no GitHub'}</span>
@@ -158,7 +158,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full glass-card hover:bg-white/10 text-zinc-300 hover:text-white text-sm transition-all"
+                    className="btn-ghost w-full sm:w-auto !px-6 !py-3 !text-sm"
                   >
                     <MessageSquare className="w-4 h-4 text-emerald-400 shrink-0" />
                     <span>{language === 'en' ? 'Discuss Similar Project' : 'Quero um projeto similar'}</span>
@@ -178,14 +178,14 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 </div>
               )}
 
-              {/* ── CONTENT GRID: DETAILS, METRICS, TECH ──────────── */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-4">
+              {/* ── CONTENT GRID: DETAILS, METRICS, TECH (BENTO GRID) ──────────── */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 pt-4">
                 {/* Left Col (8 cols): Deep Description, Challenge & Solution, Features */}
-                <div className="lg:col-span-8 space-y-6">
+                <div className="lg:col-span-8 flex flex-col gap-4 sm:gap-6">
                   {/* Detailed Description */}
-                  <div className="p-8 sm:px-12 md:px-14 sm:py-8 space-y-3">
+                  <div className="glass-card rounded-[24px] p-6 sm:p-8 space-y-4">
                     <div className="flex items-center gap-2 text-[#FFC069]">
-                      <h3 className="text-base font-mono font-bold uppercase tracking-wider">
+                      <h3 className="text-sm font-mono font-bold uppercase tracking-wider">
                         {language === 'en' ? 'Project Overview' : 'Visão Geral do Projeto'}
                       </h3>
                     </div>
@@ -195,40 +195,40 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   </div>
 
                   {/* Challenge & Solution */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="p-8 sm:px-12 md:px-14 sm:py-8 space-y-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="glass-card rounded-[24px] p-6 sm:p-8 space-y-3">
                       <span className="text-xs font-mono font-bold text-[#E8642F] uppercase tracking-wider block">
                         {language === 'en' ? 'The Challenge' : 'O Desafio'}
                       </span>
-                      <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                      <p className="text-zinc-400 text-sm leading-relaxed">
                         {project.challenge}
                       </p>
                     </div>
 
-                    <div className="p-8 sm:px-12 md:px-14 sm:py-8 space-y-2">
+                    <div className="glass-card rounded-[24px] p-6 sm:p-8 space-y-3">
                       <span className="text-xs font-mono font-bold text-[#FFC069] uppercase tracking-wider block">
                         {language === 'en' ? 'The Engineering Solution' : 'A Solução de Engenharia'}
                       </span>
-                      <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+                      <p className="text-zinc-300 text-sm leading-relaxed">
                         {project.solution}
                       </p>
                     </div>
                   </div>
 
                   {/* Key Features Checklist */}
-                  <div className="p-8 sm:px-12 md:px-14 sm:py-8 space-y-4">
-                    <div className="flex items-center gap-2 text-white">
-                      <Layers className="w-4 h-4 text-[#FFC069]" />
-                      <h3 className="text-base font-bold tracking-tight">
+                  <div className="glass-card rounded-[24px] p-6 sm:p-8 space-y-5">
+                    <div className="flex items-center gap-2 text-white border-b border-white/5 pb-4">
+                      <Layers className="w-5 h-5 text-[#FFC069]" />
+                      <h3 className="text-lg font-bold tracking-tight">
                         {language === 'en' ? 'Key Features & Capabilities' : 'Recursos Principais & Capacidades'}
                       </h3>
                     </div>
 
-                    <ul className="space-y-3">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                       {project.features.map((feat, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-zinc-300">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                          <span>{feat}</span>
+                        <li key={idx} className="flex items-start gap-3 text-sm text-zinc-300 bg-white/[0.02] p-4 rounded-2xl border border-white/5">
+                          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                          <span className="leading-snug">{feat}</span>
                         </li>
                       ))}
                     </ul>
@@ -236,23 +236,23 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 </div>
 
                 {/* Right Col (4 cols): Metrics, Stack, Links */}
-                <div className="lg:col-span-4 space-y-6">
+                <div className="lg:col-span-4 flex flex-col gap-4 sm:gap-6">
                   {/* Metrics & Performance Box */}
-                  <div className="p-8 sm:px-12 md:px-14 sm:py-8 space-y-4">
+                  <div className="glass-card rounded-[24px] p-6 sm:p-8 space-y-6">
                     <div className="flex items-center gap-2 text-white">
-                      <BarChart3 className="w-4 h-4 text-[#FFC069]" />
+                      <BarChart3 className="w-5 h-5 text-[#FFC069]" />
                       <h3 className="text-sm font-mono font-bold uppercase tracking-wider">
                         {language === 'en' ? 'Key Metrics' : 'Métricas Principais'}
                       </h3>
                     </div>
 
-                    <div className="flex flex-col gap-4">
+                    <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
                       {project.metrics.map((m, idx) => (
-                        <div key={idx} className="space-y-1">
-                          <span className="text-base sm:text-lg font-extrabold text-[#FFC069] block leading-tight">
+                        <div key={idx} className="space-y-1 bg-white/[0.02] p-4 rounded-2xl border border-white/5">
+                          <span className="text-xl sm:text-2xl font-extrabold text-[#FFC069] block leading-none">
                             {m.value}
                           </span>
-                          <span className="text-[11px] text-zinc-400 font-mono uppercase tracking-wider block">
+                          <span className="text-[10px] text-zinc-400 font-mono uppercase tracking-wider block mt-1">
                             {m.label}
                           </span>
                         </div>
@@ -261,7 +261,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   </div>
 
                   {/* Tech Stack Pills */}
-                  <div className="p-8 sm:p-10 space-y-3">
+                  <div className="glass-card rounded-[24px] p-6 sm:p-8 space-y-4">
                     <span className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider block">
                       {language === 'en' ? 'Technologies Used' : 'Tecnologias Utilizadas'}
                     </span>
@@ -269,7 +269,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                       {project.techStack.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-zinc-300"
+                          className="px-3 py-1.5 rounded-xl text-xs font-mono bg-[#FFC069]/10 border border-[#FFC069]/20 text-[#FFC069]"
                         >
                           {tech}
                         </span>
@@ -278,25 +278,26 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   </div>
 
                   {/* WhatsApp Direct CTA Card */}
-                  <div className="p-6 rounded-3xl bg-gradient-to-br from-[#7A1610]/40 via-[#E8642F]/20 to-black border border-[#FFC069]/30 text-center space-y-4">
-                    <span className="text-xs font-mono text-[#FFC069] font-bold uppercase tracking-widest block">
-                      {language === 'en' ? 'NEED A SIMILAR SYSTEM?' : 'PRECISA DE UM PROJETO ASSIM?'}
-                    </span>
-                    <p className="text-xs text-zinc-300 leading-relaxed">
-                      {language === 'en'
-                        ? 'Direct 1-on-1 collaboration with the engineer. Fast delivery, custom code, and zero agency overhead.'
-                        : 'Desenvolvimento sob medida direto com o engenheiro. Entrega rápida, código limpo e sem intermediários.'}
-                    </p>
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-shine w-full inline-flex items-center justify-center gap-2 py-3 rounded-full bg-[#FFC069] text-black font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#FFC069]/20 hover:scale-105 transition-all"
-                    >
-                      <MessageSquare className="w-3.5 h-3.5" />
-                      <span>{language === 'en' ? 'Chat on WhatsApp' : 'Falar no WhatsApp'}</span>
-                      <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                    </a>
+                  <div className="glass-card rounded-[24px] p-6 sm:p-8 border-[#FFC069]/30 bg-gradient-to-br from-[#050505] to-[#FFC069]/5 text-center flex flex-col justify-center h-full min-h-[220px]">
+                    <div className="space-y-4">
+                      <span className="text-[10px] font-mono text-[#FFC069] font-bold uppercase tracking-widest block">
+                        {language === 'en' ? 'NEED A SIMILAR SYSTEM?' : 'PRECISA DE UM PROJETO ASSIM?'}
+                      </span>
+                      <p className="text-xs text-zinc-300 leading-relaxed max-w-[200px] mx-auto">
+                        {language === 'en'
+                          ? 'Direct collaboration. Custom code. Zero agency overhead.'
+                          : 'Desenvolvimento sob medida. Entrega rápida, sem intermediários.'}
+                      </p>
+                      <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary w-full !px-4 !py-3 !text-xs mt-2"
+                      >
+                        <MessageSquare className="w-3.5 h-3.5 shrink-0" />
+                        <span className="whitespace-nowrap">{language === 'en' ? 'Chat on WhatsApp' : 'Falar no WhatsApp'}</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>

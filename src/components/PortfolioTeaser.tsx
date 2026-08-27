@@ -28,7 +28,7 @@ export const PortfolioTeaser: React.FC<{ onNavigatePortfolio: () => void }> = ({
 
       <div className="max-w-5xl mx-auto relative z-10 gsap-child">
         {/* Main Glass Banner inviting the user to the dedicated Portfolio */}
-        <div className="glass-feature px-5 sm:px-10 md:px-14 py-10 sm:py-14 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8 rounded-[28px] sm:rounded-[36px] border border-white/15 bg-gradient-to-br from-white/[0.04] via-black/60 to-black/90 shadow-[0_25px_70px_rgba(0,0,0,0.8)]">
+        <div className="glass-feature px-5 sm:px-10 md:px-14 py-10 sm:py-14 md:py-16 flex flex-col md:flex-row items-center justify-between gap-8 rounded-3xl border border-white/15 bg-gradient-to-br from-white/[0.04] via-black/60 to-black/90 shadow-[0_25px_70px_rgba(0,0,0,0.8)]">
           <div className="text-center md:text-left space-y-3 max-w-xl">
             <div className="section-badge inline-flex">
 
@@ -50,9 +50,9 @@ export const PortfolioTeaser: React.FC<{ onNavigatePortfolio: () => void }> = ({
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
             <button
               onClick={onNavigatePortfolio}
-              className="btn-shine inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#7A1610] via-[#E8642F] to-[#FFC069] text-white font-bold text-sm sm:text-base shadow-xl shadow-orange-500/25 hover:scale-105 transition-all"
+              className="btn-primary"
             >
-              <FolderGit2 className="w-5 h-5 text-white" />
+              <FolderGit2 className="w-5 h-5" />
               <span>{t.portfolioTeaser.cta}</span>
               <ArrowRight className="w-4 h-4 ml-1" />
             </button>

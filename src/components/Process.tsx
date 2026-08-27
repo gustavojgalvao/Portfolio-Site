@@ -2,6 +2,7 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useGsapReveal } from '../hooks/useGsapReveal';
 import { Timeline } from './ui/timeline';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import {
   Search,
   FileCheck,
@@ -15,10 +16,10 @@ import {
 const STEP_ICONS = [Search, FileCheck, Code2, Rocket, RefreshCw];
 const STEP_ACCENTS = [
   { border: 'rgba(255,192,105,0.3)', bg: 'rgba(255,192,105,0.08)', text: '#FFC069' },
-  { border: 'rgba(232,160,64,0.3)', bg: 'rgba(232,160,64,0.08)', text: '#E8A040' },
-  { border: 'rgba(232,100,47,0.3)', bg: 'rgba(232,100,47,0.08)', text: '#E8642F' },
-  { border: 'rgba(204,74,26,0.3)', bg: 'rgba(204,74,26,0.08)', text: '#CC4A1A' },
-  { border: 'rgba(255,192,105,0.35)', bg: 'rgba(255,192,105,0.1)', text: '#FFC069' },
+  { border: 'rgba(255,192,105,0.3)', bg: 'rgba(255,192,105,0.08)', text: '#FFC069' },
+  { border: 'rgba(255,192,105,0.3)', bg: 'rgba(255,192,105,0.08)', text: '#FFC069' },
+  { border: 'rgba(255,192,105,0.3)', bg: 'rgba(255,192,105,0.08)', text: '#FFC069' },
+  { border: 'rgba(255,192,105,0.3)', bg: 'rgba(255,192,105,0.08)', text: '#FFC069' },
 ];
 
 /* ── Step card used as Timeline content ───────────────── */
@@ -37,28 +38,34 @@ const StepCard: React.FC<StepCardProps> = ({ step, index }) => {
   const accent = STEP_ACCENTS[index] || STEP_ACCENTS[0];
 
   return (
-    <div className="pb-10 md:pb-4">
-      <div className="rounded-3xl p-6 sm:p-7 space-y-5 max-w-2xl bg-white/[0.02] backdrop-blur-xl border border-white/5 hover:border-white/18 transition-all duration-300 text-left group">
-        
-        {/* Top bar: Icon + Timeframe badge */}
-        <div className="flex items-center justify-between gap-4 flex-wrap">
-          <div className="flex items-center gap-3">
-            <div
-              className="inline-flex items-center justify-center w-10 h-10 rounded-2xl"
-              style={{
-                background: accent.bg,
-                border: `1px solid ${accent.border}`,
-              }}
-            >
-              <Icon className="w-4 h-4" style={{ color: accent.text }} />
-            </div>
-            <span className="text-[11px] font-mono font-bold tracking-widest text-zinc-400 uppercase">
-              ETAPA {step.num}
-            </span>
-          </div>
+    <Card className="relative overflow-hidden border-white/10 bg-white/[0.02] backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/[0.03] group">
+      {/* Ambient glow on hover */}
+      <div 
+        className="absolute -right-20 -top-20 w-48 h-48 rounded-full blur-3xl pointer-events-none opacity-0 group-hover:opacity-40 transition-opacity duration-700"
+        style={{ background: `radial-gradient(circle, ${accent.text}40 0%, transparent 70%)` }} 
+      />
 
+      <CardHeader className="border-b border-white/5 pb-6">
+        <div className="flex items-center justify-between gap-2 mb-4">
           <div
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-semibold"
+            className="inline-flex items-center justify-center w-12 h-12 rounded-2xl"
+            style={{
+              background: accent.bg,
+              border: `1px solid ${accent.border}`,
+            }}
+          >
+            <Icon className="w-5 h-5" style={{ color: accent.text }} />
+          </div>
+          <span className="text-[10px] font-mono font-bold tracking-widest text-zinc-500 uppercase">
+            ETAPA {step.num}
+          </span>
+        </div>
+        
+        <CardTitle className="text-xl sm:text-2xl font-extrabold text-white tracking-tight" style={{ letterSpacing: '-0.02em' }}>
+          {step.title}
+        </CardTitle>
+        <div
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-mono font-semibold mt-3 w-fit"
             style={{
               background: accent.bg,
               border: `1px solid ${accent.border}`,
@@ -67,22 +74,14 @@ const StepCard: React.FC<StepCardProps> = ({ step, index }) => {
           >
             {step.timeframe}
           </div>
-        </div>
-
-        {/* Title */}
-        <h3
-          className="text-xl sm:text-2xl font-extrabold text-white tracking-tight"
-          style={{ letterSpacing: '-0.02em' }}
-        >
-          {step.title}
-        </h3>
-
-        {/* Bullets */}
-        <div className="space-y-2.5 pt-1 border-t border-white/6">
+      </CardHeader>
+      
+      <CardContent className="pt-6">
+        <div className="space-y-3">
           {step.bullets.map((item, dIdx) => (
             <div
               key={dIdx}
-              className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-300 leading-snug"
+              className="flex items-start gap-3 text-sm text-zinc-300 leading-relaxed"
             >
               <CheckCircle2
                 className="w-4 h-4 shrink-0 mt-0.5"
@@ -92,8 +91,8 @@ const StepCard: React.FC<StepCardProps> = ({ step, index }) => {
             </div>
           ))}
         </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 

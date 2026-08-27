@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import GooeyLayer from './ui/GooeyLayer';
 import { useGsapReveal } from '../hooks/useGsapReveal';
 import {
   ImagesScrollingAnimation,
@@ -74,18 +73,14 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
         ref={headerRef as React.RefObject<HTMLElement>}
         className="relative pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
-        {/* Gooey glow behind header */}
+        {/* Premium ambient glow behind header */}
         <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[500px] pointer-events-none"
           aria-hidden="true"
-        >
-          <GooeyLayer
-            dominantColor="gold"
-            cursorChase={false}
-            className="absolute inset-0"
-            blobCount={2}
-          />
-        </div>
+          style={{
+            background: 'radial-gradient(ellipse 70% 50% at 50% -20%, rgba(255,192,105,0.15) 0%, rgba(232,100,47,0.05) 50%, transparent 100%)'
+          }}
+        />
 
         <div className="max-w-5xl mx-auto relative z-10 text-center">
           <div className="section-badge inline-flex mb-4">

@@ -3,160 +3,217 @@ import { useLanguage } from '../context/LanguageContext';
 import GooeyLayer from './ui/GooeyLayer';
 import { useGsapReveal } from '../hooks/useGsapReveal';
 
-/* ── Site Speed / Core Web Vitals mockup ────────────────────── */
-const BrowserMockup: React.FC = () => (
-  <div
-    className="w-full max-w-sm mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl font-mono text-[11px]"
-    style={{ background: 'rgba(8,8,12,0.95)' }}
-    aria-hidden="true"
-  >
-    {/* Header bar */}
-    <div className="px-4 py-3 border-b border-white/8 flex items-center gap-3" style={{ background: 'rgba(255,255,255,0.03)' }}>
-      <div className="flex gap-1.5">
-        <div className="w-2.5 h-2.5 rounded-full bg-[#7A1610]/80" />
-        <div className="w-2.5 h-2.5 rounded-full bg-[#E8642F]/70" />
-        <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
-      </div>
-      <div className="flex-1 h-5 rounded-full flex items-center px-3" style={{ background: 'rgba(255,255,255,0.05)' }}>
-        <span className="text-zinc-400 text-[10px] truncate">jezlercodes.dev</span>
-      </div>
-    </div>
+/* ── Custom SVG Animations & Keyframes ───────────────────────── */
+const styles = `
+  @keyframes floatUp {
+    0% { transform: translateY(10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes pulseGlow {
+    0% { opacity: 0.4; filter: drop-shadow(0 0 10px rgba(255, 192, 105, 0.2)); }
+    50% { opacity: 1; filter: drop-shadow(0 0 25px rgba(255, 192, 105, 0.6)); }
+    100% { opacity: 0.4; filter: drop-shadow(0 0 10px rgba(255, 192, 105, 0.2)); }
+  }
+  @keyframes slideInRight {
+    0% { transform: translateX(20px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes slideInLeft {
+    0% { transform: translateX(-20px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes starPulse {
+    0%, 100% { transform: scale(1); fill: #FFC069; }
+    50% { transform: scale(1.2); fill: #fff; }
+  }
+`;
 
-    {/* Lighthouse scores */}
-    <div className="p-5 space-y-4">
-      <div className="text-[10px] text-zinc-400 uppercase tracking-widest mb-3">Lighthouse · Production</div>
-      {[
-        { label: 'Performance', score: 99, color: '#4ade80' },
-        { label: 'Accessibility', score: 97, color: '#4ade80' },
-        { label: 'Best Practices', score: 100, color: '#4ade80' },
-        { label: 'SEO', score: 100, color: '#4ade80' },
-      ].map((item) => (
-        <div key={item.label} className="flex items-center gap-3">
-          <div
-            className="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0"
-            style={{ border: `2px solid ${item.color}`, color: item.color }}
-          >
-            {item.score}
-          </div>
-          <div className="flex-1 space-y-1">
-            <div className="text-zinc-400 text-[10px]">{item.label}</div>
-            <div className="h-1 rounded-full bg-white/5 overflow-hidden">
-              <div className="h-full rounded-full" style={{ width: `${item.score}%`, background: item.color, opacity: 0.4 }} />
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
+/* ── Block 1: Digital Presence (Detailed Desktop & Mobile Wireframes) ─── */
+const PresenceGraphic: React.FC = () => (
+  <div className="w-full h-[350px] sm:h-[450px] flex justify-center items-center relative overflow-visible">
+    <style>{styles}</style>
+    <svg viewBox="0 0 600 450" className="w-full h-full max-w-[550px] overflow-visible" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Background Desktop Window (Muted Gray) */}
+      <g style={{ animation: 'floatUp 1.5s ease-out forwards', transformOrigin: 'center' }}>
+        <rect x="50" y="40" width="450" height="280" rx="12" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" strokeWidth="1" style={{ backdropFilter: 'blur(10px)' }} />
+        {/* Browser Top Bar */}
+        <path d="M 50 64 L 500 64" stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
+        <circle cx="70" cy="52" r="4" fill="rgba(255,255,255,0.05)" />
+        <circle cx="85" cy="52" r="4" fill="rgba(255,255,255,0.05)" />
+        <circle cx="100" cy="52" r="4" fill="rgba(255,255,255,0.05)" />
+        {/* Desktop Content Blocks */}
+        <rect x="80" y="85" width="200" height="120" rx="8" fill="rgba(255,255,255,0.02)" />
+        <rect x="300" y="85" width="160" height="50" rx="8" fill="rgba(255,255,255,0.02)" />
+        <rect x="300" y="145" width="160" height="60" rx="8" fill="rgba(255,255,255,0.02)" />
+        <rect x="80" y="220" width="120" height="40" rx="8" fill="rgba(255,255,255,0.02)" />
+        <rect x="210" y="220" width="120" height="40" rx="8" fill="rgba(255,255,255,0.02)" />
+        <rect x="340" y="220" width="120" height="40" rx="8" fill="rgba(255,255,255,0.02)" />
+      </g>
+
+      {/* Foreground Mobile Phone */}
+      <g style={{ animation: 'floatUp 1.2s ease-out 0.2s forwards', opacity: 0, transformOrigin: 'center' }}>
+        {/* Phone Body */}
+        <rect x="340" y="80" width="180" height="340" rx="28" fill="#09090b" stroke="rgba(255,255,255,0.1)" strokeWidth="2" style={{ filter: 'drop-shadow(-10px 20px 30px rgba(0,0,0,0.8))' }} />
+        {/* Notch */}
+        <rect x="400" y="90" width="60" height="12" rx="6" fill="#000" />
+        
+        {/* Mobile Header / Hero */}
+        <rect x="355" y="110" width="150" height="100" rx="12" fill="rgba(255,255,255,0.03)" />
+        <circle cx="430" cy="160" r="24" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <path d="M425 152 L438 160 L425 168 Z" fill="rgba(255,255,255,0.2)" />
+
+        {/* 5-Star Profile Section (HIGHLIGHTED) */}
+        <rect x="355" y="225" width="150" height="70" rx="12" fill="rgba(255,192,105,0.05)" stroke="rgba(255,192,105,0.2)" />
+        <rect x="370" y="240" width="60" height="8" rx="4" fill="#FFC069" />
+        <g transform="translate(370, 255)">
+          {/* Detailed Stars (Fixed Position) */}
+          {[0, 16, 32, 48, 64].map((offset, i) => (
+             <path 
+               key={i} 
+               d="M6 0L7.8 3.8L12 4.4L8.9 7.3L9.7 11.4L6 9.4L2.3 11.4L3.1 7.3L0 4.4L4.2 3.8L6 0Z" 
+               fill="#FFC069" 
+               style={i === 4 ? { animation: 'starPulse 2s infinite' } : {}}
+               transform={`translate(${offset}, 0)`}
+             />
+          ))}
+        </g>
+        <rect x="370" y="270" width="120" height="4" rx="2" fill="rgba(255,192,105,0.4)" />
+        <rect x="370" y="280" width="90" height="4" rx="2" fill="rgba(255,192,105,0.2)" />
+
+        {/* UI Cards on Mobile */}
+        <rect x="355" y="310" width="70" height="80" rx="12" fill="rgba(255,255,255,0.03)" />
+        <rect x="435" y="310" width="70" height="80" rx="12" fill="rgba(255,255,255,0.03)" />
+      </g>
+
+      {/* Floating Badges */}
+      <g style={{ animation: 'slideInRight 1.2s ease-out 0.8s forwards', opacity: 0 }}>
+        <rect x="180" y="180" width="130" height="40" rx="20" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" strokeWidth="1" style={{ backdropFilter: 'blur(12px)' }} />
+        <circle cx="205" cy="200" r="8" fill="rgba(255,255,255,0.2)" />
+        <rect x="225" y="197" width="60" height="6" rx="3" fill="rgba(255,255,255,0.2)" />
+      </g>
+    </svg>
   </div>
 );
 
-/* ── SEO / GEO metrics mockup ───────────────────────────────── */
-const AnalyticsMockup: React.FC = () => (
-  <div
-    className="w-full max-w-sm mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
-    style={{ background: 'rgba(8,8,12,0.95)' }}
-    aria-hidden="true"
-  >
-    <div className="p-4 border-b border-white/8 flex items-center justify-between bg-black/40">
-      <span className="text-[10px] font-mono font-bold tracking-widest text-[#FFC069] uppercase">Search Console · 90d</span>
-      <span className="text-[10px] font-mono text-emerald-400">● Live</span>
-    </div>
+/* ── Block 2: Search & AI Citations (Detailed Browser & AI UI) ────── */
+const SearchGraphic: React.FC = () => (
+  <div className="w-full h-[350px] sm:h-[450px] flex justify-center items-center relative overflow-visible">
+    <svg viewBox="0 0 600 450" className="w-full h-full max-w-[550px] overflow-visible" fill="none" xmlns="http://www.w3.org/2000/svg">
+      
+      {/* Background Search Engine Window (Grayed Out) */}
+      <rect x="40" y="60" width="400" height="320" rx="12" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" strokeWidth="1" style={{ animation: 'floatUp 1.2s ease-out forwards', backdropFilter: 'blur(8px)' }} />
+      <path d="M 40 90 L 440 90" stroke="rgba(255,255,255,0.03)" strokeWidth="1" style={{ animation: 'floatUp 1.2s ease-out forwards' }} />
+      
+      {/* Detailed Search Bar */}
+      <rect x="70" y="120" width="340" height="44" rx="22" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" strokeWidth="1" style={{ animation: 'floatUp 1s ease-out 0.2s forwards', opacity: 0 }} />
+      <circle cx="100" cy="142" r="8" stroke="rgba(255,255,255,0.2)" strokeWidth="2" style={{ animation: 'floatUp 1s ease-out 0.3s forwards', opacity: 0 }} />
+      <line x1="106" y1="148" x2="114" y2="156" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" style={{ animation: 'floatUp 1s ease-out 0.3s forwards', opacity: 0 }} />
+      
+      {/* Search Text (Simulated typing) - HIGHLIGHTED */}
+      <rect x="135" y="138" width="120" height="8" rx="4" fill="#FFC069" style={{ animation: 'floatUp 1s ease-out 0.5s forwards', opacity: 0 }} />
+      <line x1="265" y1="132" x2="265" y2="152" stroke="#FFC069" strokeWidth="2" style={{ animation: 'pulseGlow 1s infinite 0.5s', opacity: 0 }} />
 
-    <div className="p-5 space-y-5">
-      {/* KPIs */}
-      <div className="grid grid-cols-2 gap-3">
-        {[
-          { label: 'Impressões', value: '28.4k', delta: '+312%', up: true },
-          { label: 'Cliques', value: '1.9k', delta: '+204%', up: true },
-          { label: 'Posição Média', value: '#3.2', delta: '-5.8', up: true },
-          { label: 'CTR', value: '6.7%', delta: '+2.1pp', up: true },
-        ].map((m) => (
-          <div key={m.label} className="rounded-xl p-3" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
-            <div className="text-[9px] font-mono text-zinc-400 uppercase tracking-wider mb-1">{m.label}</div>
-            <div className="text-base font-bold text-white font-mono">{m.value}</div>
-            <div className="text-[9px] font-mono text-emerald-400 mt-0.5">{m.delta} vs anterior</div>
-          </div>
-        ))}
-      </div>
+      {/* Traditional Search Results (Muted) */}
+      <g style={{ animation: 'floatUp 1s ease-out 0.6s forwards', opacity: 0 }}>
+        <rect x="70" y="200" width="80" height="6" rx="3" fill="rgba(255,255,255,0.05)" />
+        <rect x="70" y="215" width="220" height="12" rx="6" fill="rgba(255,255,255,0.08)" />
+        <rect x="70" y="235" width="300" height="4" rx="2" fill="rgba(255,255,255,0.03)" />
+        <rect x="70" y="245" width="260" height="4" rx="2" fill="rgba(255,255,255,0.03)" />
+      </g>
 
-      {/* Top keyword */}
-      <div className="rounded-xl p-3 space-y-1.5" style={{ background: 'rgba(255,192,105,0.04)', border: '1px solid rgba(255,192,105,0.12)' }}>
-        <div className="text-[9px] font-mono text-zinc-400 uppercase tracking-widest">Top Keyword</div>
-        <div className="text-xs text-white font-mono">"dentista salvador centro"</div>
-        <div className="flex items-center gap-2 text-[10px] font-mono">
-          <span className="text-[#FFC069]">Pos. #1</span>
-          <span className="text-zinc-500">·</span>
-          <span className="text-zinc-400">AI Overview citado</span>
-        </div>
-      </div>
-    </div>
+      {/* Foreground Overlapping AI Chat/Overview Panel (HIGHLIGHTED) */}
+      <g style={{ animation: 'slideInRight 1.2s ease-out 0.8s forwards', opacity: 0 }}>
+        <rect x="220" y="170" width="340" height="200" rx="16" fill="#09090b" stroke="rgba(255,192,105,0.2)" strokeWidth="2" style={{ filter: 'drop-shadow(-15px 25px 35px rgba(0,0,0,0.6))' }} />
+        
+        {/* AI Header */}
+        <path d="M 220 220 L 560 220" stroke="rgba(255,192,105,0.1)" strokeWidth="1" />
+        
+        <rect x="245" y="192" width="100" height="10" rx="5" fill="rgba(255,255,255,0.2)" />
+
+        {/* AI Generated Text Blocks */}
+        <rect x="245" y="240" width="280" height="6" rx="3" fill="rgba(255,255,255,0.1)" />
+        <rect x="245" y="260" width="260" height="6" rx="3" fill="rgba(255,255,255,0.1)" />
+        <rect x="245" y="280" width="290" height="6" rx="3" fill="rgba(255,255,255,0.1)" />
+        <rect x="245" y="300" width="180" height="6" rx="3" fill="rgba(255,255,255,0.1)" />
+
+        {/* AI Citation Chip (HIGHLIGHTED) */}
+        <rect x="245" y="325" width="160" height="28" rx="14" fill="rgba(255,192,105,0.1)" stroke="#FFC069" strokeWidth="1" />
+        <circle cx="265" cy="339" r="6" fill="#FFC069" />
+        <path d="M262 342 L268 336 M264 336 L268 336 L268 340" stroke="#000" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="280" y="336" width="90" height="6" rx="3" fill="rgba(255,192,105,0.8)" />
+      </g>
+    </svg>
   </div>
 );
 
-/* ── CRM Agent terminal mockup ──────────────────────────────── */
-const TerminalMockup: React.FC = () => (
-  <div
-    className="w-full max-w-sm mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl font-mono text-[11px]"
-    style={{ background: 'rgba(8,8,12,0.95)' }}
-    aria-hidden="true"
-  >
-    <div className="px-4 py-3 border-b border-white/8 flex items-center justify-between" style={{ background: 'rgba(255,255,255,0.03)' }}>
-      <div className="flex items-center gap-2">
-        <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#7A1610]/80" />
-          <div className="w-2.5 h-2.5 rounded-full bg-[#E8642F]/70" />
-          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
-        </div>
-        <span className="text-zinc-400 text-[10px] ml-1">crm-agent.ts</span>
-      </div>
-      <span className="text-[9px] text-[#FFC069] px-2 py-0.5 rounded-full" style={{ background: 'rgba(255,192,105,0.08)', border: '1px solid rgba(255,192,105,0.2)' }}>
-        AI ENGINE
-      </span>
-    </div>
+/* ── Block 3: AI CRM (Detailed WhatsApp & AI Neural Processing) ───────── */
+const CRMChatGraphic: React.FC = () => (
+  <div className="w-full h-[350px] sm:h-[450px] flex justify-center items-center relative overflow-visible">
+    <svg viewBox="0 0 600 450" className="w-full h-full max-w-[550px] overflow-visible" fill="none" xmlns="http://www.w3.org/2000/svg">
+      
+      {/* Background Neural AI Nodes (Muted Gray) */}
+      <g style={{ animation: 'pulseGlow 4s infinite', opacity: 0.3 }}>
+        <path d="M100 200 L 250 250 L 150 350 Z" stroke="rgba(255,255,255,0.05)" strokeWidth="2" fill="none" />
+        <path d="M250 250 L 400 150 L 500 250 Z" stroke="rgba(255,255,255,0.05)" strokeWidth="2" fill="none" />
+        <circle cx="250" cy="250" r="40" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" strokeWidth="2" />
+        <circle cx="250" cy="250" r="10" fill="rgba(255,255,255,0.1)" />
+        <circle cx="400" cy="150" r="8" fill="rgba(255,255,255,0.1)" />
+        <circle cx="100" cy="200" r="6" fill="rgba(255,255,255,0.1)" />
+      </g>
 
-    <div className="p-4 space-y-2 text-zinc-400 leading-relaxed">
-      <div className="text-zinc-500">{'// lead via WhatsApp · Δ 0.4s'}</div>
-      <div>
-        <span className="text-[#FFC069]">lead</span>
-        <span className="text-zinc-400">.</span>
-        <span className="text-white">source</span>
-        <span className="text-zinc-400"> = </span>
-        <span className="text-emerald-400">'Google Maps'</span>
-      </div>
-      <div>
-        <span className="text-[#FFC069]">lead</span>
-        <span className="text-zinc-400">.</span>
-        <span className="text-white">intent</span>
-        <span className="text-zinc-400"> = </span>
-        <span className="text-emerald-400">'High Ticket Procedure'</span>
-      </div>
-      <div>
-        <span className="text-[#FFC069]">lead</span>
-        <span className="text-zinc-400">.</span>
-        <span className="text-white">budget</span>
-        <span className="text-zinc-400"> = </span>
-        <span className="text-emerald-400">'R$3.200+'</span>
-      </div>
+      {/* Mobile Chat Interface (Muted Gray) */}
+      <rect x="280" y="40" width="240" height="380" rx="32" fill="#09090b" stroke="rgba(255,255,255,0.1)" strokeWidth="2" style={{ animation: 'floatUp 1s ease-out forwards', backdropFilter: 'blur(15px)', filter: 'drop-shadow(0px 20px 40px rgba(0,0,0,0.6))' }} />
+      
+      {/* Chat Header */}
+      <rect x="280" y="40" width="240" height="70" rx="32" fill="rgba(255,255,255,0.02)" />
+      <rect x="280" y="90" width="240" height="20" fill="rgba(255,255,255,0.02)" />
+      <circle cx="325" cy="75" r="18" fill="rgba(255,255,255,0.05)" />
+      <path d="M320 75 Q325 65 330 75 Q325 85 320 75" fill="rgba(255,255,255,0.2)" />
+      <rect x="355" y="65" width="80" height="8" rx="4" fill="rgba(255,255,255,0.2)" />
+      <rect x="355" y="80" width="50" height="4" rx="2" fill="rgba(255,255,255,0.1)" />
+      <path d="M280 110 L520 110" stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
 
-      <div className="pt-2 border-t border-white/5 text-zinc-500">{'// score calculado pelo modelo'}</div>
+      {/* Chat Bubbles */}
+      <g style={{ animation: 'slideInLeft 0.8s ease-out 0.4s forwards', opacity: 0 }}>
+        {/* Incoming */}
+        <rect x="300" y="130" width="160" height="50" rx="12" fill="rgba(255,255,255,0.05)" />
+        <path d="M295 140 L305 135 L305 145 Z" fill="rgba(255,255,255,0.05)" />
+        <rect x="315" y="145" width="120" height="6" rx="3" fill="rgba(255,255,255,0.2)" />
+        <rect x="315" y="157" width="90" height="6" rx="3" fill="rgba(255,255,255,0.1)" />
+      </g>
 
-      <div className="rounded-xl p-3 space-y-2" style={{ background: 'rgba(255,192,105,0.05)', border: '1px solid rgba(255,192,105,0.15)' }}>
-        <div className="flex items-center justify-between">
-          <span className="text-[#FFC069] font-bold">SCORE 9.4 / 10</span>
-          <span className="text-emerald-400 text-[10px] font-bold">QUALIFIED ✓</span>
-        </div>
-        <div className="text-[10px] text-zinc-400">
-          Draft enviado ao WhatsApp em 0.8s.<br />
-          Aguardando confirmação humana.
-        </div>
-      </div>
-    </div>
+      {/* Floating AI Qualification Badge (HIGHLIGHTED) */}
+      <g style={{ animation: 'slideInRight 0.8s ease-out 0.8s forwards', opacity: 0 }}>
+        <rect x="180" y="180" width="180" height="44" rx="22" fill="rgba(255,192,105,0.1)" stroke="#FFC069" strokeWidth="1.5" style={{ backdropFilter: 'blur(10px)', filter: 'drop-shadow(-10px 10px 20px rgba(0,0,0,0.5))' }} />
+        <circle cx="210" cy="202" r="10" fill="#FFC069" style={{ animation: 'pulseGlow 2s infinite' }} />
+        <path d="M206 202 L209 206 L215 198" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <rect x="230" y="195" width="80" height="6" rx="3" fill="#FFC069" />
+        <rect x="230" y="207" width="110" height="4" rx="2" fill="rgba(255,192,105,0.7)" />
+      </g>
+
+      <g style={{ animation: 'slideInRight 0.8s ease-out 1.2s forwards', opacity: 0 }}>
+        {/* Outgoing (AI Response - Gray) */}
+        <rect x="340" y="240" width="160" height="70" rx="12" fill="rgba(255,255,255,0.05)" />
+        <path d="M505 250 L495 245 L495 255 Z" fill="rgba(255,255,255,0.05)" />
+        <rect x="355" y="255" width="130" height="6" rx="3" fill="rgba(255,255,255,0.2)" />
+        <rect x="355" y="270" width="100" height="6" rx="3" fill="rgba(255,255,255,0.15)" />
+        <rect x="355" y="285" width="115" height="6" rx="3" fill="rgba(255,255,255,0.1)" />
+      </g>
+
+      {/* Typing Indicator */}
+      <g style={{ animation: 'floatUp 0.8s ease-out 1.6s forwards', opacity: 0 }}>
+        <rect x="300" y="330" width="60" height="30" rx="15" fill="rgba(255,255,255,0.05)" />
+        <circle cx="315" cy="345" r="3" fill="rgba(255,255,255,0.2)" style={{ animation: 'pulseGlow 1s infinite' }} />
+        <circle cx="330" cy="345" r="3" fill="rgba(255,255,255,0.2)" style={{ animation: 'pulseGlow 1s infinite 0.2s' }} />
+        <circle cx="345" cy="345" r="3" fill="rgba(255,255,255,0.2)" style={{ animation: 'pulseGlow 1s infinite 0.4s' }} />
+      </g>
+    </svg>
   </div>
 );
 
 /* ── Blocks config ──────────────────────────────────────────── */
 
-const VISUAL_COMPONENTS = [BrowserMockup, AnalyticsMockup, TerminalMockup];
+const VISUAL_COMPONENTS = [PresenceGraphic, SearchGraphic, CRMChatGraphic];
 const DOMINANT_COLORS: ('gold' | 'orange' | 'red')[] = ['gold', 'orange', 'red'];
 
 /* ── Main Component ─────────────────────────────────────────── */
@@ -194,7 +251,7 @@ export const FeatureBlocks: React.FC = () => {
 
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
               <div
-                className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-16`}
+                className={`flex flex-col-reverse ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12 lg:gap-16`}
               >
                 {/* Text side */}
                 <div className="flex-1 space-y-6 gsap-child">
@@ -221,10 +278,8 @@ export const FeatureBlocks: React.FC = () => {
                 </div>
 
                 {/* Visual side */}
-                <div className="flex-1 w-full gsap-child">
-                  <div className="glass-feature p-6 sm:p-8 rounded-3xl relative">
-                    <Visual />
-                  </div>
+                <div className="flex-1 w-full gsap-child flex justify-center items-center">
+                  <Visual />
                 </div>
               </div>
             </div>

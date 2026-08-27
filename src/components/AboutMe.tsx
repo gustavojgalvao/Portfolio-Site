@@ -2,6 +2,7 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useGsapReveal } from '../hooks/useGsapReveal';
 import { MapPin, Languages } from 'lucide-react';
+import { Card, CardContent } from './ui/card';
 
 interface AboutMeProps {
   onNavigatePortfolio?: () => void;
@@ -41,29 +42,43 @@ export const AboutMe: React.FC<AboutMeProps> = () => {
           </h2>
         </div>
 
-        {/* Glass bio card */}
-        <div className="glass-feature p-5 sm:p-8 md:p-10 space-y-6 gsap-child">
-          <p className="text-[16px] sm:text-[17px] text-zinc-300 leading-[1.75]">
-            {t.about.bio}
-          </p>
+        {/* ─── BENTO GRID ──────────────────────────── */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 gsap-child">
+          
+          {/* Bio Card */}
+          <Card className="lg:col-span-2 relative overflow-hidden border-white/10 bg-white/[0.02] backdrop-blur-xl">
+            <CardContent className="p-6 sm:p-8 md:p-10">
+              <p className="text-[16px] sm:text-[17px] text-zinc-300 leading-[1.75]">
+                {t.about.bio}
+              </p>
+            </CardContent>
+          </Card>
 
-          {/* Facts row */}
-          <div className="pt-6 border-t border-white/8 flex flex-wrap gap-6">
+          {/* Facts Column */}
+          <div className="lg:col-span-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
             {t.about.facts.map((fact, i) => {
               const Icon = i === 0 ? MapPin : Languages;
               return (
-                <div key={i} className="flex items-start gap-3">
-                  <Icon className="w-4 h-4 text-[#FFC069] mt-0.5 shrink-0" />
-                  <div>
-                    <div className="text-[10px] font-mono font-semibold tracking-widest text-zinc-400 uppercase mb-0.5">
-                      {fact.label}
+                <Card key={i} className="relative overflow-hidden border-white/10 bg-white/[0.02] backdrop-blur-xl transition-all hover:border-white/20 hover:bg-white/[0.03] group">
+                  {/* Subtle hover glow */}
+                  <div className="absolute -right-8 -top-8 w-24 h-24 rounded-full blur-2xl pointer-events-none opacity-0 group-hover:opacity-40 transition-opacity duration-500" style={{ background: '#FFC069' }} />
+                  
+                  <CardContent className="p-6 sm:p-8 flex flex-col gap-3">
+                    <div className="w-10 h-10 rounded-2xl bg-[#FFC069]/10 border border-[#FFC069]/20 flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-[#FFC069]" />
                     </div>
-                    <div className="text-sm text-zinc-300">{fact.value}</div>
-                  </div>
-                </div>
+                    <div>
+                      <div className="text-[10px] font-mono font-semibold tracking-widest text-zinc-500 uppercase mb-1">
+                        {fact.label}
+                      </div>
+                      <div className="text-sm font-medium text-white">{fact.value}</div>
+                    </div>
+                  </CardContent>
+                </Card>
               );
             })}
           </div>
+
         </div>
       </div>
     </section>

@@ -54,7 +54,7 @@ export const StickyCard: React.FC<StickyCardProps> = ({
           e.stopPropagation();
           onSelect?.(project.id);
         }}
-        className="group relative origin-top overflow-hidden rounded-[24px] sm:rounded-[32px] border border-white/15 bg-[#0a0a0d] shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition-all duration-500 hover:border-[#FFC069]/50 hover:shadow-[0_25px_60px_rgba(255,192,105,0.2)] w-full max-w-2xl sm:max-w-3xl h-[270px] sm:h-[380px] md:h-[460px] cursor-pointer select-none active:scale-[0.98]"
+        className="group relative origin-top overflow-hidden rounded-[24px] sm:rounded-[32px] glass-card shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition-all duration-300 hover:border-[#FFC069]/50 hover:shadow-[0_25px_60px_rgba(255,192,105,0.2)] w-full max-w-2xl sm:max-w-3xl h-[270px] sm:h-[380px] md:h-[460px] cursor-pointer select-none active:scale-[0.98]"
       >
         <div
           role="button"
@@ -78,74 +78,81 @@ export const StickyCard: React.FC<StickyCardProps> = ({
             src={project.src || "/placeholder.svg"}
             alt={project.title}
             loading="lazy"
-            className="h-full w-full object-cover transition-all duration-700 ease-out md:group-hover:scale-105 md:group-hover:blur-[8px] md:group-hover:brightness-[0.4] pointer-events-none"
+            className="h-full w-full object-cover object-top transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:group-hover:scale-105 md:group-hover:brightness-[0.7] pointer-events-none"
           />
 
-          {/* Gradient vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
+          {/* Stronger gradient for text contrast */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/50 to-transparent opacity-80 md:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-          {/* Bottom bar — always visible, hidden on desktop hover */}
-          <div className="absolute bottom-0 inset-x-0 p-4 sm:p-6 flex items-end justify-between transition-opacity duration-300 md:group-hover:opacity-0 pointer-events-none">
-            <div className="space-y-1 sm:space-y-1.5 flex-1 min-w-0 pr-3">
-              <div className="flex items-center gap-2">
-                <span className="text-[9px] sm:text-[10px] font-mono font-bold tracking-widest text-[#FFC069] uppercase">
-                  {project.subtitle || `PROJETO 0${i + 1}`}
-                </span>
-              </div>
-              <h3 className="text-base sm:text-2xl font-bold text-white tracking-tight truncate">
-                {project.title}
-              </h3>
-              {/* Mobile-only description */}
-              <p className="text-[11px] text-zinc-400 line-clamp-1 md:hidden leading-relaxed">
-                {project.desc}
-              </p>
-            </div>
-            <div className="flex flex-col items-center gap-1 shrink-0">
-              <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-xl transition-colors">
-                {project.videoSrc ? (
-                  <Play className="w-3 h-3 sm:w-4 sm:h-4 ml-0.5" />
-                ) : (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                )}
-              </div>
-              <span className="text-[8px] font-mono text-zinc-400 uppercase tracking-wider md:hidden">Abrir</span>
-            </div>
-          </div>
-
-          {/* Frosted Glass Overlay — desktop hover only */}
-          <div className="absolute inset-0 flex-col justify-between p-6 sm:p-8 md:p-10 opacity-0 md:group-hover:opacity-100 backdrop-blur-md bg-black/45 transition-all duration-500 ease-out pointer-events-none hidden md:flex">
-            {/* Top row of tags & Video Badge */}
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag, tIdx) => (
-                  <span
-                    key={tIdx}
-                    className="text-[11px] font-mono font-semibold px-3 py-1 rounded-full bg-[#FFC069]/15 border border-[#FFC069]/30 text-[#FFC069] tracking-wider"
-                  >
-                    {tag}
-                  </span>
-                ))}
+          {/* Content Container */}
+          <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-8 md:p-10 pointer-events-none overflow-hidden">
+            
+            {/* Wrapper that translates up on hover */}
+            <div className="transform transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:translate-y-[130px] md:group-hover:translate-y-0">
+              
+              {/* HEADER ROW (Always visible) */}
+              <div className="flex items-end justify-between">
+                <div className="space-y-1 sm:space-y-2 flex-1 min-w-0 pr-4">
+                  <div className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-[#FFC069] uppercase transition-transform duration-500">
+                    {project.subtitle || `PROJETO 0${i + 1}`}
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight truncate md:whitespace-normal">
+                    {project.title}
+                  </h3>
+                </div>
+                
+                {/* Action Button */}
+                <div className="shrink-0 transition-transform duration-500">
+                  <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full glass-card border-white/20 flex items-center justify-center text-white shadow-xl md:group-hover:bg-[#FFC069] md:group-hover:text-[#050505] md:group-hover:border-[#FFC069] transition-all duration-300">
+                    {project.videoSrc ? (
+                      <Play className="w-4 h-4 sm:w-5 sm:h-5 ml-1 fill-current" />
+                    ) : (
+                      <ArrowUpRight className="w-5 h-5" />
+                    )}
+                  </div>
+                </div>
               </div>
 
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFC069]/20 border border-[#FFC069]/40 text-xs font-mono font-bold text-[#FFC069] shrink-0">
-                {project.videoSrc && <Play className="w-3.5 h-3.5 fill-[#FFC069]" />}
-                <span>{project.videoSrc ? 'VER DETALHES & VÍDEO' : 'VER DETALHES'}</span>
+              {/* REVEAL AREA (Desktop) */}
+              <div className="opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 delay-100 mt-5 hidden md:flex flex-col gap-5">
+                <p className="text-sm sm:text-base text-zinc-300 leading-relaxed max-w-xl font-normal line-clamp-2">
+                  {project.desc}
+                </p>
+                <div className="flex items-center justify-between gap-3 pt-5 border-t border-white/10">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="text-[10px] font-mono font-bold px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#FFC069] tracking-wider"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="text-xs font-bold text-[#FFC069] tracking-wide flex items-center gap-2">
+                    <span>{project.videoSrc ? 'Ver Vídeo & Detalhes' : 'Ver Detalhes'}</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </div>
+                </div>
               </div>
-            </div>
 
-            {/* Bottom info: Title, Desc, and CTA */}
-            <div className="space-y-3 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
-                {project.title}
-              </h3>
-              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed max-w-xl font-normal">
-                {project.desc}
-              </p>
-
-              <div className="pt-2 flex items-center gap-2 text-xs sm:text-sm font-bold text-[#FFC069] tracking-wide">
-                <span>Clique para abrir vídeo, código no GitHub e detalhes</span>
-                <ArrowUpRight className="w-4 h-4" />
+              {/* MOBILE REVEAL AREA (Always visible, simplified) */}
+              <div className="md:hidden mt-4 space-y-3">
+                <p className="text-[11px] text-zinc-400 line-clamp-2 leading-relaxed">
+                  {project.desc}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tags.slice(0,3).map((tag, tIdx) => (
+                    <span
+                      key={tIdx}
+                      className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[#FFC069]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
+
             </div>
           </div>
         </div>

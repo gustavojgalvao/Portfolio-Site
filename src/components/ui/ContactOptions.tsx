@@ -26,7 +26,7 @@ export const ContactOptions: React.FC<ContactOptionsProps> = ({ variant, classNa
   return (
     <button
       onClick={openContactModal}
-      className={`btn-shine inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#7A1610] via-[#E8642F] to-[#FFC069] text-white font-bold shadow-lg shadow-orange-500/20 hover:scale-105 transition-transform w-full sm:w-auto ${paddingClass} ${className}`}
+      className={`btn-primary w-full sm:w-auto ${paddingClass} ${className}`}
       aria-label={buttonText}
     >
       <MessageSquare className={variant === 'compact' ? 'w-4 h-4' : 'w-5 h-5'} />
