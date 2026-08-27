@@ -24,7 +24,7 @@ const BrowserMockup: React.FC = () => (
 
     {/* Lighthouse scores */}
     <div className="p-5 space-y-4">
-      <div className="text-[10px] text-zinc-600 uppercase tracking-widest mb-3">Lighthouse · Production</div>
+      <div className="text-[10px] text-zinc-400 uppercase tracking-widest mb-3">Lighthouse · Production</div>
       {[
         { label: 'Performance', score: 99, color: '#4ade80' },
         { label: 'Accessibility', score: 97, color: '#4ade80' },
@@ -72,7 +72,7 @@ const AnalyticsMockup: React.FC = () => (
           { label: 'CTR', value: '6.7%', delta: '+2.1pp', up: true },
         ].map((m) => (
           <div key={m.label} className="rounded-xl p-3" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
-            <div className="text-[9px] font-mono text-zinc-600 uppercase tracking-wider mb-1">{m.label}</div>
+            <div className="text-[9px] font-mono text-zinc-400 uppercase tracking-wider mb-1">{m.label}</div>
             <div className="text-base font-bold text-white font-mono">{m.value}</div>
             <div className="text-[9px] font-mono text-emerald-400 mt-0.5">{m.delta} vs anterior</div>
           </div>
@@ -85,7 +85,7 @@ const AnalyticsMockup: React.FC = () => (
         <div className="text-xs text-white font-mono">"dentista salvador centro"</div>
         <div className="flex items-center gap-2 text-[10px] font-mono">
           <span className="text-[#FFC069]">Pos. #1</span>
-          <span className="text-zinc-700">·</span>
+          <span className="text-zinc-500">·</span>
           <span className="text-zinc-400">AI Overview citado</span>
         </div>
       </div>
@@ -107,7 +107,7 @@ const TerminalMockup: React.FC = () => (
           <div className="w-2.5 h-2.5 rounded-full bg-[#E8642F]/70" />
           <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
         </div>
-        <span className="text-zinc-600 text-[10px] ml-1">crm-agent.ts</span>
+        <span className="text-zinc-400 text-[10px] ml-1">crm-agent.ts</span>
       </div>
       <span className="text-[9px] text-[#FFC069] px-2 py-0.5 rounded-full" style={{ background: 'rgba(255,192,105,0.08)', border: '1px solid rgba(255,192,105,0.2)' }}>
         AI ENGINE
@@ -115,30 +115,30 @@ const TerminalMockup: React.FC = () => (
     </div>
 
     <div className="p-4 space-y-2 text-zinc-400 leading-relaxed">
-      <div className="text-zinc-700">{'// lead via WhatsApp · Δ 0.4s'}</div>
+      <div className="text-zinc-500">{'// lead via WhatsApp · Δ 0.4s'}</div>
       <div>
         <span className="text-[#FFC069]">lead</span>
-        <span className="text-zinc-600">.</span>
+        <span className="text-zinc-400">.</span>
         <span className="text-white">source</span>
-        <span className="text-zinc-600"> = </span>
+        <span className="text-zinc-400"> = </span>
         <span className="text-emerald-400">'Google Maps'</span>
       </div>
       <div>
         <span className="text-[#FFC069]">lead</span>
-        <span className="text-zinc-600">.</span>
+        <span className="text-zinc-400">.</span>
         <span className="text-white">intent</span>
-        <span className="text-zinc-600"> = </span>
+        <span className="text-zinc-400"> = </span>
         <span className="text-emerald-400">'High Ticket Procedure'</span>
       </div>
       <div>
         <span className="text-[#FFC069]">lead</span>
-        <span className="text-zinc-600">.</span>
+        <span className="text-zinc-400">.</span>
         <span className="text-white">budget</span>
-        <span className="text-zinc-600"> = </span>
+        <span className="text-zinc-400"> = </span>
         <span className="text-emerald-400">'R$3.200+'</span>
       </div>
 
-      <div className="pt-2 border-t border-white/5 text-zinc-700">{'// score calculado pelo modelo'}</div>
+      <div className="pt-2 border-t border-white/5 text-zinc-500">{'// score calculado pelo modelo'}</div>
 
       <div className="rounded-xl p-3 space-y-2" style={{ background: 'rgba(255,192,105,0.05)', border: '1px solid rgba(255,192,105,0.15)' }}>
         <div className="flex items-center justify-between">

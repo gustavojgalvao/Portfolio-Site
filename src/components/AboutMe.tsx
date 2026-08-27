@@ -55,7 +55,7 @@ export const AboutMe: React.FC<AboutMeProps> = () => {
                 <div key={i} className="flex items-start gap-3">
                   <Icon className="w-4 h-4 text-[#FFC069] mt-0.5 shrink-0" />
                   <div>
-                    <div className="text-[10px] font-mono font-semibold tracking-widest text-zinc-600 uppercase mb-0.5">
+                    <div className="text-[10px] font-mono font-semibold tracking-widest text-zinc-400 uppercase mb-0.5">
                       {fact.label}
                     </div>
                     <div className="text-sm text-zinc-300">{fact.value}</div>

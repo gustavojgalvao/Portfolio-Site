@@ -62,7 +62,7 @@ export const CookieBanner: React.FC = () => {
               </p>
               <button
                 onClick={decline}
-                className="shrink-0 p-1 rounded-full text-zinc-600 hover:text-zinc-400 transition-colors"
+                className="shrink-0 p-1 rounded-full text-zinc-400 hover:text-zinc-400 transition-colors"
                 aria-label="Dismiss"
               >
                 <X className="w-4 h-4" />

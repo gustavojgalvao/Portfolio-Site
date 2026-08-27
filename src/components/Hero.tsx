@@ -173,7 +173,7 @@ export const Hero: React.FC = () => {
               className="shrink-0 text-[13px] font-mono font-medium text-zinc-400 hover:text-[#FFC069] transition-colors flex items-center"
             >
               {item}
-              <span className="ml-10 text-zinc-700">·</span>
+              <span className="ml-10 text-zinc-500">·</span>
             </span>
           ))}
         </Marquee>

@@ -170,7 +170,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigatePortfolio }) => {
         </div>
 
         {/* Bottom Copyright & Legal */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-600">
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-400">
           <p>
             © {new Date().getFullYear()} Gustavo Galvão. {language === 'en' ? 'All rights reserved.' : 'Todos os direitos reservados.'}
           </p>

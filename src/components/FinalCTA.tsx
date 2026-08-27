@@ -45,7 +45,7 @@ export const FinalCTA: React.FC = () => {
         </div>
 
         {/* Response promise */}
-        <p className="text-xs font-mono text-zinc-600 tracking-wider flex items-center justify-center gap-1.5">
+        <p className="text-xs font-mono text-zinc-400 tracking-wider flex items-center justify-center gap-1.5">
           <Clock className="w-3.5 h-3.5 text-zinc-400" />
           <span>
             {language === 'en'

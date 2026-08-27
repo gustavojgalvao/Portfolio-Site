@@ -132,7 +132,7 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
                   {/* Year / Metadata */}
                   <span
                     className={`text-xs sm:text-sm font-mono transition-colors duration-300 shrink-0 ${
-                      isHovered ? 'text-zinc-300 font-medium' : 'text-zinc-600'
+                      isHovered ? 'text-zinc-300 font-medium' : 'text-zinc-400'
                     }`}
                   >
                     {year}

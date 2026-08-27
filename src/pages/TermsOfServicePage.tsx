@@ -8,7 +8,7 @@ const Breadcrumb: React.FC<{ items: { label: string; href?: string }[] }> = ({ i
   <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-zinc-400 mb-8">
     {items.map((item, idx) => (
       <React.Fragment key={idx}>
-        {idx > 0 && <ChevronRight className="w-3 h-3 text-zinc-700" aria-hidden="true" />}
+        {idx > 0 && <ChevronRight className="w-3 h-3 text-zinc-500" aria-hidden="true" />}
         {item.href ? (
           <Link to={item.href} className="hover:text-zinc-300 transition-colors">{item.label}</Link>
         ) : (

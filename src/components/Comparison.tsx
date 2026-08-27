@@ -58,7 +58,7 @@ export const Comparison: React.FC = () => {
                     {t.comparison.agencyTitle}
                   </span>
                   <div className="flex items-start gap-1.5">
-                    <X className="w-3.5 h-3.5 text-zinc-600 mt-0.5 shrink-0" />
+                    <X className="w-3.5 h-3.5 text-zinc-400 mt-0.5 shrink-0" />
                     <span className="text-[11px] text-zinc-400 leading-relaxed">{row.agency}</span>
                   </div>
                 </div>
