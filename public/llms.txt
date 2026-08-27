@@ -32,11 +32,11 @@ Small and medium businesses in Brazil and internationally, especially:
 
 ## Contact & Links
 
-- **Website**: https://jezlercodes.dev
-- **WhatsApp**: https://wa.me/5571992550509
-- **LinkedIn**: https://www.linkedin.com/in/gustavogalvaoo
-- **Email**: gustavojezler@gmail.com
-- **Portfolio**: https://jezlercodes.dev/portfolio
+- [Website](https://gustavogalvao.vercel.app)
+- [WhatsApp](https://wa.me/5571992550509)
+- [LinkedIn](https://www.linkedin.com/in/gustavogalvaoo)
+- [Email](mailto:gustavojezler@gmail.com)
+- [Portfolio](https://gustavogalvao.vercel.app/portfolio)
 
 ## Keywords
 

@@ -68,7 +68,7 @@ const testimonials: { pt: Testimonial[]; en: Testimonial[] } = {
 };
 
 const StarRating: React.FC<{ rating: number }> = ({ rating }) => (
-  <div className="flex items-center gap-0.5" aria-label={`${rating} stars`}>
+  <div className="flex items-center gap-0.5" role="img" aria-label={`${rating} stars`}>
     {Array.from({ length: 5 }).map((_, i) => (
       <svg
         key={i}
