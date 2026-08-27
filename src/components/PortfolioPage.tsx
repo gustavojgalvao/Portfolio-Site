@@ -132,7 +132,7 @@ export const PortfolioPage: React.FC<PortfolioPageProps> = ({
             >
               {t.portfolioPage.group2Label}
             </h2>
-            <p className="text-xs sm:text-sm font-mono text-zinc-500">
+            <p className="text-xs sm:text-sm font-mono text-zinc-400">
               {t.portfolioPage.group2Desc}
             </p>
           </div>

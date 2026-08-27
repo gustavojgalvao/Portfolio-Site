@@ -108,7 +108,7 @@ export const StickyCard: React.FC<StickyCardProps> = ({
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                 )}
               </div>
-              <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-wider md:hidden">Abrir</span>
+              <span className="text-[8px] font-mono text-zinc-400 uppercase tracking-wider md:hidden">Abrir</span>
             </div>
           </div>
 

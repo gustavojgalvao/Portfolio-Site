@@ -28,7 +28,7 @@ export const ThankYouPage: React.FC = () => {
           </div>
 
           <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/8 text-[11px] font-mono text-zinc-500 tracking-widest uppercase">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/8 text-[11px] font-mono text-zinc-400 tracking-widest uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
               Mensagem recebida
             </div>
@@ -42,7 +42,7 @@ export const ThankYouPage: React.FC = () => {
 
           {/* Response promise */}
           <div className="rounded-2xl bg-white/[0.03] border border-white/8 p-5 text-left space-y-2">
-            <p className="text-xs font-mono text-zinc-500 tracking-widest uppercase">Próximos passos</p>
+            <p className="text-xs font-mono text-zinc-400 tracking-widest uppercase">Próximos passos</p>
             <ul className="space-y-2.5 text-sm text-zinc-300">
               <li className="flex items-start gap-2.5">
                 <span className="text-[#FFC069] mt-0.5">01</span>

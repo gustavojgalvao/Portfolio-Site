@@ -99,7 +99,7 @@ export const Hero: React.FC = () => {
                     <div className="text-[11px] font-mono font-bold tracking-widest text-[#FFC069]">
                       {item.label}
                     </div>
-                    <div className="text-xs text-zinc-500 leading-relaxed">{item.desc}</div>
+                    <div className="text-xs text-zinc-400 leading-relaxed">{item.desc}</div>
                   </div>
                 ))}
               </div>

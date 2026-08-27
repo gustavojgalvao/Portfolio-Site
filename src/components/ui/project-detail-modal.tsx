@@ -118,7 +118,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             <div className="overflow-y-auto p-5 sm:p-8 md:p-10 space-y-8 flex-1">
               {/* Title & Quick Actions */}
               <div className="space-y-4">
-                <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest block">
+                <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest block">
                   {project.subtitle}
                 </span>
                 <h1 className="text-xl sm:text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">

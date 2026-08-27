@@ -120,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="text-[14px] sm:text-[15px] font-extrabold tracking-tight text-white group-hover:text-[#FFC069] transition-colors duration-200">
                   Gustavo
                 </span>
-                <span className="text-[9px] font-mono text-zinc-500 tracking-widest uppercase leading-none hidden sm:block">
+                <span className="text-[9px] font-mono text-zinc-400 tracking-widest uppercase leading-none hidden sm:block">
                   {t.nav.tagline}
                 </span>
               </div>
@@ -163,7 +163,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               {/* Language Toggle */}
               <button
                 onClick={toggleLanguage}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-mono font-bold text-zinc-500 hover:text-white border border-white/10 hover:border-white/25 bg-white/4 hover:bg-white/8 transition-all duration-200"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-mono font-bold text-zinc-400 hover:text-white border border-white/10 hover:border-white/25 bg-white/4 hover:bg-white/8 transition-all duration-200"
                 aria-label="Toggle language"
               >
                 <Globe className="w-3 h-3" />
@@ -178,7 +178,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="md:hidden flex items-center gap-3">
               <button
                 onClick={toggleLanguage}
-                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-[11px] font-mono font-bold text-zinc-500 hover:text-white border border-white/10 bg-white/4 transition-all duration-200"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-[11px] font-mono font-bold text-zinc-400 hover:text-white border border-white/10 bg-white/4 transition-all duration-200"
                 aria-label="Toggle language"
               >
                 <Globe className="w-3 h-3" />
@@ -264,7 +264,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <Link
                   to="/privacy-policy"
                   onClick={() => setMenuOpen(false)}
-                  className="w-full text-left py-4 text-xl font-medium text-zinc-500 hover:text-zinc-300 transition-colors border-b border-white/6"
+                  className="w-full text-left py-4 text-xl font-medium text-zinc-400 hover:text-zinc-300 transition-colors border-b border-white/6"
                 >
                   {language === 'en' ? 'Privacy Policy' : 'Política de Privacidade'}
                 </Link>

@@ -194,7 +194,7 @@ export const PlanOverview: React.FC = () => {
                 </div>
 
                 {/* Card subtle bottom badge */}
-                <div className="pt-2 border-t border-white/6 flex items-center gap-1.5 text-[11px] font-mono text-zinc-500">
+                <div className="pt-2 border-t border-white/6 flex items-center gap-1.5 text-[11px] font-mono text-zinc-400">
                   <ShieldCheck className="w-3.5 h-3.5 text-zinc-400" />
                   <span>Incluso no plano mensal</span>
                 </div>

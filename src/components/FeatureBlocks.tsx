@@ -18,7 +18,7 @@ const BrowserMockup: React.FC = () => (
         <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
       </div>
       <div className="flex-1 h-5 rounded-full flex items-center px-3" style={{ background: 'rgba(255,255,255,0.05)' }}>
-        <span className="text-zinc-500 text-[10px] truncate">jezlercodes.dev</span>
+        <span className="text-zinc-400 text-[10px] truncate">jezlercodes.dev</span>
       </div>
     </div>
 
@@ -81,7 +81,7 @@ const AnalyticsMockup: React.FC = () => (
 
       {/* Top keyword */}
       <div className="rounded-xl p-3 space-y-1.5" style={{ background: 'rgba(255,192,105,0.04)', border: '1px solid rgba(255,192,105,0.12)' }}>
-        <div className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">Top Keyword</div>
+        <div className="text-[9px] font-mono text-zinc-400 uppercase tracking-widest">Top Keyword</div>
         <div className="text-xs text-white font-mono">"dentista salvador centro"</div>
         <div className="flex items-center gap-2 text-[10px] font-mono">
           <span className="text-[#FFC069]">Pos. #1</span>
@@ -203,7 +203,7 @@ export const FeatureBlocks: React.FC = () => {
                       className="w-1.5 h-1.5 rounded-full"
                       style={{ background: color === 'gold' ? '#FFC069' : color === 'orange' ? '#E8642F' : '#7A1610' }}
                     />
-                    <span className="text-[11px] font-mono tracking-widest uppercase text-zinc-500">
+                    <span className="text-[11px] font-mono tracking-widest uppercase text-zinc-400">
                       {['Presence', 'Visibility', 'Intelligence'][i]}
                     </span>
                   </div>

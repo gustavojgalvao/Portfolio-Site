@@ -27,7 +27,7 @@ export const NotFoundPage: React.FC = () => {
               404
             </p>
             <div className="-mt-16 sm:-mt-24 relative z-10 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/8 text-[11px] font-mono text-zinc-500 tracking-widest uppercase">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/8 text-[11px] font-mono text-zinc-400 tracking-widest uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#E8642F]" />
                 Rota não encontrada
               </div>

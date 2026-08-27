@@ -46,7 +46,7 @@ export const FinalCTA: React.FC = () => {
 
         {/* Response promise */}
         <p className="text-xs font-mono text-zinc-600 tracking-wider flex items-center justify-center gap-1.5">
-          <Clock className="w-3.5 h-3.5 text-zinc-500" />
+          <Clock className="w-3.5 h-3.5 text-zinc-400" />
           <span>
             {language === 'en'
               ? 'Direct response in under 2 hours during business hours'

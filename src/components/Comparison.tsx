@@ -54,12 +54,12 @@ export const Comparison: React.FC = () => {
               <div className="grid grid-cols-2 gap-2">
                 {/* Agency */}
                 <div className="p-3 rounded-xl bg-white/3 border border-white/6 opacity-60 space-y-1.5">
-                  <span className="text-[9px] font-mono font-bold tracking-widest text-zinc-500 uppercase block">
+                  <span className="text-[9px] font-mono font-bold tracking-widest text-zinc-400 uppercase block">
                     {t.comparison.agencyTitle}
                   </span>
                   <div className="flex items-start gap-1.5">
                     <X className="w-3.5 h-3.5 text-zinc-600 mt-0.5 shrink-0" />
-                    <span className="text-[11px] text-zinc-500 leading-relaxed">{row.agency}</span>
+                    <span className="text-[11px] text-zinc-400 leading-relaxed">{row.agency}</span>
                   </div>
                 </div>
                 {/* Gustavo */}
@@ -85,12 +85,12 @@ export const Comparison: React.FC = () => {
           {/* Table Header */}
           <div className="grid grid-cols-12 border-b border-white/8">
             <div className="col-span-4 p-5 sm:p-6 flex items-center">
-              <span className="text-[11px] font-mono font-bold tracking-widest text-zinc-500 uppercase">
+              <span className="text-[11px] font-mono font-bold tracking-widest text-zinc-400 uppercase">
                 Critério
               </span>
             </div>
             <div className="col-span-4 p-5 sm:p-6 border-l border-white/6 opacity-40 hover:opacity-75 transition-opacity flex items-center gap-2">
-              <span className="text-[11px] font-mono font-semibold tracking-wider text-zinc-500 uppercase">
+              <span className="text-[11px] font-mono font-semibold tracking-wider text-zinc-400 uppercase">
                 {t.comparison.agencyTitle}
               </span>
             </div>

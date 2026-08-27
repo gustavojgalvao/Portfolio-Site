@@ -100,7 +100,7 @@ const ReviewCard = ({
         <div className="flex flex-row items-center gap-4 pt-4 mt-auto border-t border-white/5">
           <div className="flex flex-col">
             <p className="text-sm md:text-base font-semibold text-white">{name}</p>
-            <p className="text-xs md:text-sm font-medium text-zinc-500">
+            <p className="text-xs md:text-sm font-medium text-zinc-400">
               {role} · {company}
             </p>
           </div>

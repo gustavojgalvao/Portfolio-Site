@@ -67,7 +67,7 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
     >
       {/* Header Label */}
       <div className="flex items-center gap-2 mb-6 sm:mb-8">
-        <span className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-zinc-500 flex items-center gap-2">
+        <span className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-zinc-400 flex items-center gap-2">
           {label}
         </span>
       </div>
@@ -124,7 +124,7 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
                       className={`w-5 h-5 transition-all duration-300 ${
                         isHovered
                           ? 'text-[#FFC069] translate-x-1 -translate-y-1 opacity-100'
-                          : 'text-zinc-500 opacity-0 group-hover:opacity-80'
+                          : 'text-zinc-400 opacity-0 group-hover:opacity-80'
                       }`}
                     />
                   </div>

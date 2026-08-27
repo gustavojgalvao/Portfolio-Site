@@ -52,7 +52,7 @@ const StepCard: React.FC<StepCardProps> = ({ step, index }) => {
             >
               <Icon className="w-4 h-4" style={{ color: accent.text }} />
             </div>
-            <span className="text-[11px] font-mono font-bold tracking-widest text-zinc-500 uppercase">
+            <span className="text-[11px] font-mono font-bold tracking-widest text-zinc-400 uppercase">
               ETAPA {step.num}
             </span>
           </div>
